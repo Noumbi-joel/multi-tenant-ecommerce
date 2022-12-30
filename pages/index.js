@@ -1,18 +1,8 @@
 import React from "react";
+import { Text } from "@nextui-org/react";
 
 const Home = () => {
-  return (
-    <div>
-      <span style={{fontWeight: "700"}}>General Sans</span>
-      <br />
-      <span style={{fontWeight: "600"}}>Berger allemand</span>
-      <br />
-      <span style={{fontWeight: "500"}}>gofroi guichard</span>
-      <br />
-      <span style={{fontWeight: "400"}}>Aladin</span>
-      <br />
-    </div>
-  );
+  return <div>Hello world</div>;
 };
 
 export default Home;
