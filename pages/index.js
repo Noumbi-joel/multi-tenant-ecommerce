@@ -1,8 +1,12 @@
 import React from "react";
-import { Text } from "@nextui-org/react";
+import { HeadingText } from "../components";
 
 const Home = () => {
-  return <div>Hello world</div>;
+  return (
+    <>
+      <HeadingText type="h1" title="Heading 1" />
+    </>
+  );
 };
 
 export default Home;
