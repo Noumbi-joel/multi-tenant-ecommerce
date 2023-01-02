@@ -70,7 +70,7 @@ a {
   text-decoration: none;
 }
 
-/******* LOGIN PAGE ********/
+/******* AUTH PAGE ********/
 
 /* left-part */
 .linear-layout {
@@ -104,9 +104,9 @@ a {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  justify-content: center;
   width: 450px;
   height: 100vh;
+  padding-top: 50px;
 }
 
 .centered-container {
@@ -128,7 +128,31 @@ a {
 }
 
 .form-control {
-  height: 56px
+  background-color: var(--grayscale_50);
+  height: 56px;
+  font-size: 16px;
+}
+
+.modal-image-container {
+  display: flex;
+  width: 100px;
+  height: 56px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-left: 25px;
+}
+
+.otp-verify-button {
+  background-color: var(--primary_300);
+  color: var(--white);
+  height: 56px;
+  margin: 10px
+}
+
+.modal-input {
+  width: 56px;
+  height: 56px;
+  background-color: var(--grayscale_50);
 }
 
 /* second-part */

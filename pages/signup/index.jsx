@@ -1,10 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 
 // comp
-import { BodyText, HeadingText } from "../../components";
+import { BodyText, HeadingText, Modal, GoogleBtn, AuthStatic } from "../../components";
 import Link from "next/link";
-import GoogleBtn from "../../components/GoogleBtn";
-import AuthStatic from "../../components/AuthStatic";
 
 import {
   Button,
@@ -20,8 +18,10 @@ import {
 import { COLORS } from "../../assets/colors";
 
 const SignUp = () => {
+  const [visible, setVisible] = useState(false);
   return (
     <Grid.Container>
+      <Modal image="./mokolo.svg" visible={visible} closeModal={() => setVisible(false)} />
       <div className="signin-content">
         <div className="img-container">
           <Image src="./mokolo.svg" height={32} alt="app logo" />
@@ -40,18 +40,20 @@ const SignUp = () => {
               <Input
                 placeholder="First name"
                 className="form-control"
+                required
                 style={{ width: 200 }}
               />
               <Input
                 placeholder="Last name"
                 className="form-control"
+                required
                 style={{ width: 200 }}
               />
             </div>
             <Spacer />
-            <Input placeholder="Email" className="form-control" />
+            <Input required placeholder="Email" className="form-control" />
             <Spacer />
-            <Input.Password placeholder="Password" className="form-control" />
+            <Input.Password required placeholder="Password" className="form-control" />
             <Spacer />
             <div className="linear-layout-center">
               <Checkbox defaultSelected>
@@ -70,7 +72,7 @@ const SignUp = () => {
               </Checkbox>
             </div>
             <Spacer y={1.2} />
-            <Button disabled className="btn-auth">
+            <Button type="submit" disabled className="btn-auth">
               Sign up with email
             </Button>
             <Spacer y={1.2} />
@@ -86,7 +88,11 @@ const SignUp = () => {
               <Divider style={{ width: 150 }} />
             </div>
             <Spacer />
-            <GoogleBtn image={"./google.svg"} title="Google" />
+            <GoogleBtn
+              image={"./google.svg"}
+              title="Google"
+              onClick={() => setVisible(true)}
+            />
             <Spacer />
 
             {/* don't have an account text */}

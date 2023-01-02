@@ -1,10 +1,8 @@
 import React from "react";
 
 // comp
-import { BodyText, HeadingText } from "../components";
+import { BodyText, HeadingText, GoogleBtn, AuthStatic } from "../components";
 import Link from "next/link";
-import GoogleBtn from "../components/GoogleBtn";
-import AuthStatic from "../components/AuthStatic";
 import { Button, Grid, Image, Divider, Input, Spacer, Checkbox } from "@nextui-org/react";
 
 //assets
@@ -27,9 +25,9 @@ const Login = () => {
               color={COLORS.grayscale_900}
               title="Login to your account"
             />
-            <Input placeholder="Email" className="form-control" />
+            <Input required placeholder="Email" className="form-control" />
             <Spacer />
-            <Input.Password placeholder="Password" className="form-control" />
+            <Input.Password required placeholder="Password" className="form-control" />
             <Spacer />
             <div className="linear-layout-flat">
               <Checkbox defaultSelected>
@@ -49,7 +47,7 @@ const Login = () => {
               </Link>
             </div>
             <Spacer y={1.2} />
-            <Button disabled className="btn-auth">
+            <Button type="submit" disabled className="btn-auth">
               Sign in with email
             </Button>
             <Spacer y={1.2} />
