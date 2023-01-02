@@ -70,24 +70,88 @@ a {
   text-decoration: none;
 }
 
-/* LOGIN PAGE */
+/******* LOGIN PAGE ********/
 
+/* left-part */
 .linear-layout {
   display: flex;
   align-items: center;
+}
+
+.linear-layout-flat {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.linear-layout-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .linear-layout :nth-child(2) {
   margin-left: 5px;
 }
 
-
 .signin-content {
   width: 50%;
-  padding-left: 100px;
+  height: 100vh;
+  overflow: hidden;
 }
+
+.centered {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  width: 450px;
+  height: 100vh;
+}
+
+.centered-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-auth {
+  background-color: var(--primary_300);
+  color: var(--white);
+  height: 56px;
+}
+
+.signin-content .img-container {
+  width: 462px;
+  padding-top: 20px;
+}
+
+/* second-part */
 
 .static-content {
   width: 50%;
   background-color: var(--primary_base);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 50px;
+}
+
+.static-content .right-container-text {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.static-content .header-nav {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 100px;
+  padding-top: 20px;
+}
+
+.static-content .header-nav .header-link {
+  margin-left: 40px;
 }
