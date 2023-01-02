@@ -27,10 +27,9 @@ const Login = () => {
               color={COLORS.grayscale_900}
               title="Login to your account"
             />
-
-            <Input placeholder="Email" />
+            <Input placeholder="Email" className="form-control" />
             <Spacer />
-            <Input.Password placeholder="Password" />
+            <Input.Password placeholder="Password" className="form-control" />
             <Spacer />
             <div className="linear-layout-flat">
               <Checkbox defaultSelected>

@@ -127,6 +127,10 @@ a {
   padding-top: 20px;
 }
 
+.form-control {
+  height: 56px
+}
+
 /* second-part */
 
 .static-content {
