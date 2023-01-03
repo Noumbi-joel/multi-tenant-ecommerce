@@ -51,16 +51,19 @@ const SignUp = () => {
       return toast.error("Please enter a valid email");
     }
     if (fName.length <= 1 || lName.length <= 1) {
-      return toast.error("Please enter at least 2 characters for first name and last name");
+      return toast.error(
+        "Please enter at least 2 characters for first name and last name"
+      );
     }
     if (password.length < 4) {
       return toast.error("Please enter at least 4 characters for password");
     }
-    return toast.success(
+    toast.success(
       `Your name is ${
         fName + " " + lName
       } email is ${email} and password ${password}`
     );
+    setVisible(true);
   };
   return (
     <Grid.Container>
