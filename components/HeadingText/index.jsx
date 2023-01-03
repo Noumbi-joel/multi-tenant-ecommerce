@@ -3,7 +3,7 @@ import React from "react";
 //next UI
 import { Text } from "@nextui-org/react";
 
-const HeadingText = ({ type, title, color, login, width, lh, mb }) => {
+const HeadingText = ({ type, title, color, style }) => {
   let render = {
     normal: <Text>{title}</Text>,
     h1: (
@@ -12,26 +12,12 @@ const HeadingText = ({ type, title, color, login, width, lh, mb }) => {
       </Text>
     ),
     h2: (
-      <Text
-        weight="bold"
-        color={color}
-        size={40}
-        style={{
-          width: width ? width : null,
-          lineHeight: lh ? lh : null,
-          marginBottom: mb ? mb : 0,
-        }}
-      >
+      <Text weight="bold" color={color} size={40} style={style}>
         {title}
       </Text>
     ),
     h3: (
-      <Text
-        weight="bold"
-        style={login && { marginBottom: 40 }}
-        color={color}
-        size={32}
-      >
+      <Text weight="bold" style={style} color={color} size={32}>
         {title}
       </Text>
     ),

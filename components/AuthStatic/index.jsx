@@ -21,20 +21,18 @@ const AuthStatic = ({ image }) => {
         ))}
       </div>
 
-      <Image src={image} height={400}/>
+      <Image src={image} height={400} />
 
       <div className="right-container-text">
         <HeadingText
           type="h2"
-          lh={1.5}
-          mb={10}
+          style={{ lineHeight: 1.5, marginBottom: 10, width: 472 }}
           color={COLORS.white}
           title="The easiest way to build your own eCommerce"
-          width={472}
         />
         <BodyText
           type="xlm"
-          width={472}
+          style={{ width: 472 }}
           color={COLORS.primary_200}
           title="Create an ecommerce website backed by powerful tools that help you find customers, drive sales, and manage your day-to-day."
         />

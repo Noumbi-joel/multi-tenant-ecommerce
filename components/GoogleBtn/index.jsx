@@ -12,7 +12,7 @@ const GoogleBtn = ({ image, title, onClick }) => {
     >
       <div className="linear-layout-center">
         <Image src={image} width={22} height={22} />
-        <BodyText title={title} type="lm" ml={10} />
+        <BodyText title={title} type="lm" style={{ marginLeft: 10 }} />
       </div>
     </Button>
   );

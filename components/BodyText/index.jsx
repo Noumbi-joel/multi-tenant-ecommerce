@@ -3,7 +3,7 @@ import React from "react";
 //next UI
 import { Text } from "@nextui-org/react";
 
-const BodyText = ({ type, title, color, ml, width }) => {
+const BodyText = ({ type, title, color, style }) => {
   let render = {
     normal: <Text>{title}</Text>,
     // extra large
@@ -18,12 +18,7 @@ const BodyText = ({ type, title, color, ml, width }) => {
       </Text>
     ),
     xlm: (
-      <Text
-        weight="medium"
-        color={color}
-        style={{ width: width ? width : null }}
-        size={18}
-      >
+      <Text weight="medium" color={color} style={style} size={18}>
         {title}
       </Text>
     ),
@@ -45,12 +40,7 @@ const BodyText = ({ type, title, color, ml, width }) => {
       </Text>
     ),
     lm: (
-      <Text
-        weight="medium"
-        style={{ marginLeft: ml ? ml : 0 }}
-        color={color}
-        size={16}
-      >
+      <Text weight="medium" style={style} color={color} size={16}>
         {title}
       </Text>
     ),

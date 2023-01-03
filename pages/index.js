@@ -46,7 +46,7 @@ const Login = () => {
         <div className="centered-container">
           <div className="centered">
             <HeadingText
-              login
+              style={{ marginBottom: 40 }}
               type="h3"
               color={COLORS.grayscale_900}
               title="Login to your account"

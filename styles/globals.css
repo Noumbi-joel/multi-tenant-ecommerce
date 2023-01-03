@@ -90,6 +90,12 @@ a {
   justify-content: center;
 }
 
+.column-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
 .linear-layout :nth-child(2) {
   margin-left: 5px;
 }
@@ -200,11 +206,45 @@ a {
 .reset-page-container {
   background-color: #eaeaea;
   height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .app-header {
   background-color: var(--white);
   height: 100px;
   display: flex;
-  align-items: center
+  align-items: center;
+}
+
+.hero-new-pwd {
+  height: 450px;
+  width: 555px;
+  background-color: var(--white);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+.reset-pwd-btn {
+  color: var(--white);
+  height: 56px;
+  width: 100%;
+  margin-top: 30px;
+  border-radius: 12px;
+}
+
+.pwd-image-container {
+  height: 128px;
+  display: flex;
+  justify-self: center;
+}
+
+.reset-pwd-btn .btn-back-login {
+  width: 100%;
+  height: 56px;
+  background-color: var(--primary_base);
 }
