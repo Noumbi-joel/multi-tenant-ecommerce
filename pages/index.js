@@ -18,17 +18,41 @@ import {
   Spacer,
   Checkbox,
 } from "@nextui-org/react";
-import { useRouter } from "next/router";
+import toast from "react-hot-toast";
 
 //assets
 import { COLORS } from "../assets/colors";
+import { useRouter } from "next/router";
+
+//functions
+import { validateEmail } from "../functions";
 
 const Login = () => {
   const [visible, setVisible] = useState(false);
+  const [userInfos, setUserInfos] = useState({
+    email: "",
+    password: "",
+  });
+  const [rememberMe, setRememberMe] = useState("true");
+
+  const handleInput = (e) => {
+    setUserInfos((prev) => {
+      return { ...prev, [e.target.name]: e.target.value };
+    });
+  };
+
   const router = useRouter();
-  const handleSubmit = (type, href) => {
-    console.log(type, href);
-    console.log(router);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const { email, password } = userInfos;
+    if (!validateEmail(email)) {
+      return toast.error("Please enter a valid email");
+    }
+    if (password.length < 4) {
+      return toast.error("Please enter at least 4 characters for password");
+    }
+    return toast.success(`Your email is ${email} and password ${password}`);
   };
   return (
     <Grid.Container>
@@ -51,52 +75,61 @@ const Login = () => {
         {/* hero section */}
         <div className="centered-container">
           <div className="centered">
-            <HeadingText
-              style={{ marginBottom: 40 }}
-              type="h3"
-              color={COLORS.grayscale_900}
-              title="Login to your account"
-            />
-            <Input
-              type="email"
-              required
-              placeholder="Email"
-              className="form-control"
-            />
-            <Spacer />
-            <Input.Password
-              required
-              placeholder="Password"
-              className="form-control"
-              type="password"
-            />
-            <Spacer />
-            <div className="linear-layout-flat">
-              <Checkbox defaultSelected>
-                <BodyText
-                  type="lm"
-                  color={COLORS.grayscale_900}
-                  title="Remember me"
-                />
-              </Checkbox>
+            <form onSubmit={handleSubmit} className="form-container">
+              <HeadingText
+                style={{ marginBottom: 40 }}
+                type="h3"
+                color={COLORS.grayscale_900}
+                title="Login to your account"
+              />
+              <Input
+                type="email"
+                name="email"
+                required
+                placeholder="Email"
+                className="form-control"
+                style={{ fontSize: 16, fontWeight: "500" }}
+                onChange={(e) => handleInput(e)}
+                value={userInfos.email}
+              />
+              <Spacer />
+              <Input.Password
+                required
+                name="password"
+                placeholder="Password"
+                className="form-control"
+                style={{ fontSize: 16, fontWeight: "500" }}
+                type="password"
+                onChange={(e) => handleInput(e)}
+                value={userInfos.password}
+              />
+              <Spacer />
+              <div className="linear-layout-flat">
+                <Checkbox
+                  value={rememberMe}
+                  onChange={(e) => setRememberMe(e.valueOf())}
+                >
+                  <BodyText
+                    type="lm"
+                    color={COLORS.grayscale_900}
+                    title="Remember me"
+                  />
+                </Checkbox>
 
-              <span onClick={() => setVisible(true)}>
-                <BodyText
-                  type="lm"
-                  color={COLORS.success_base}
-                  title="Forgot password?"
-                />
-              </span>
-            </div>
-            <Spacer y={1.2} />
-            <Button
-              type="submit"
-              onPress={() => handleSubmit("signin", "/dashboard")}
-              className="app-btn"
-            >
-              Sign in with email
-            </Button>
-            <Spacer y={1.2} />
+                <span onClick={() => setVisible(true)}>
+                  <BodyText
+                    type="lm"
+                    color={COLORS.success_base}
+                    title="Forgot password?"
+                  />
+                </span>
+              </div>
+              <Spacer y={1.2} />
+              <Button type="submit" className="app-btn">
+                Sign in with email
+              </Button>
+              <Spacer y={1.2} />
+            </form>
 
             {/* Google Login */}
             <div className="linear-layout-flat">

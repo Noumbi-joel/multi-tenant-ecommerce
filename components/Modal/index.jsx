@@ -7,7 +7,6 @@ import { HeadingText, BodyText, ActiveLink } from "..";
 //assets
 import { COLORS } from "../../assets/colors";
 import OtpInput from "react-otp-input";
-import Link from "next/link";
 
 const ModalComp = ({
   visible,
@@ -25,7 +24,6 @@ const ModalComp = ({
     <Modal
       closeButton
       blur
-      aria-labelledby="modal-title"
       open={visible}
       onClose={closeModal}
       style={{}}

@@ -19,19 +19,48 @@ import {
   Spacer,
   Checkbox,
 } from "@nextui-org/react";
+import toast from "react-hot-toast";
 
 //assets
 import { COLORS } from "../../assets/colors";
 import { useRouter } from "next/router";
 
+//functions
+import { validateEmail } from "../../functions";
+
 const SignUp = () => {
   const [visible, setVisible] = useState(false);
+  const [rememberMe, setRememberMe] = useState(true);
+  const [userInfos, setUserInfos] = useState({
+    fName: "",
+    lName: "",
+    email: "",
+    password: "",
+  });
+  const handleInput = (e) => {
+    setUserInfos((prev) => {
+      return { ...prev, [e.target.name]: e.target.value };
+    });
+  };
   const router = useRouter();
 
-  const handleSubmit = (type, href) => {
-    console.log(type, href);
-    console.log(router)
-    setVisible(true)
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const { fName, lName, password, email } = userInfos;
+    if (!validateEmail(email)) {
+      return toast.error("Please enter a valid email");
+    }
+    if (fName.length <= 1 || lName.length <= 1) {
+      return toast.error("Please enter at least 2 characters for first name and last name");
+    }
+    if (password.length < 4) {
+      return toast.error("Please enter at least 4 characters for password");
+    }
+    return toast.success(
+      `Your name is ${
+        fName + " " + lName
+      } email is ${email} and password ${password}`
+    );
   };
   return (
     <Grid.Container>
@@ -53,66 +82,76 @@ const SignUp = () => {
         {/* hero section */}
         <div className="centered-container">
           <div className="centered">
-            <HeadingText
-              style={{ marginBottom: 40 }}
-              type="h3"
-              color={COLORS.grayscale_900}
-              title="Create your account"
-            />
-            <div className="linear-layout-flat">
-              <Input
-                placeholder="First name"
-                className="form-control"
-                required
-                style={{ width: 200 }}
+            <form onSubmit={handleSubmit} className="form-container">
+              <HeadingText
+                style={{ marginBottom: 40 }}
+                type="h3"
+                color={COLORS.grayscale_900}
+                title="Create your account"
               />
-              <Input
-                placeholder="Last name"
-                className="form-control"
-                required
-                style={{ width: 200 }}
-              />
-            </div>
-            <Spacer />
-            <Input
-              type="email"
-              required
-              placeholder="Email"
-              className="form-control"
-            />
-            <Spacer />
-            <Input.Password
-              type="password"
-              required
-              placeholder="Password"
-              className="form-control"
-            />
-            <Spacer />
-            <div className="linear-layout-center">
-              <Checkbox defaultSelected>
-                <BodyText
-                  type="lm"
-                  color={COLORS.grayscale_900}
-                  title="By proceeding, you agree to the"
+              <div className="linear-layout-flat">
+                <Input
+                  name="fName"
+                  placeholder="First name"
+                  className="form-control"
+                  required
+                  style={{ width: 200 }}
+                  value={userInfos.fName}
+                  onChange={handleInput}
                 />
-                <Link href="/terms_conditions">
+                <Input
+                  name="lName"
+                  placeholder="Last name"
+                  className="form-control"
+                  required
+                  style={{ width: 200 }}
+                  value={userInfos.lName}
+                  onChange={handleInput}
+                />
+              </div>
+              <Spacer />
+              <Input
+                type="email"
+                name="email"
+                required
+                placeholder="Email"
+                className="form-control"
+                value={userInfos.email}
+                onChange={handleInput}
+              />
+              <Spacer />
+              <Input.Password
+                type="password"
+                name="password"
+                required
+                placeholder="Password"
+                className="form-control"
+                value={userInfos.password}
+                onChange={handleInput}
+              />
+              <Spacer />
+              <div className="linear-layout-center">
+                <Checkbox defaultSelected>
                   <BodyText
                     type="lm"
-                    color={COLORS.primary_base}
-                    title="Terms and Conditions"
+                    color={COLORS.grayscale_900}
+                    title="By proceeding, you agree to the"
                   />
-                </Link>
-              </Checkbox>
-            </div>
-            <Spacer y={1.2} />
-            <Button
-              type="submit"
-              className="app-btn"
-              onPress={() => handleSubmit("sign up", "/businessInfo")}
-            >
-              Sign up with email
-            </Button>
-            <Spacer y={1.2} />
+                  <Link href="/terms_conditions">
+                    <BodyText
+                      type="lm"
+                      color={COLORS.primary_base}
+                      title="Terms and Conditions"
+                    />
+                  </Link>
+                </Checkbox>
+              </div>
+              <Spacer y={1.2} />
+              <Button type="submit" className="app-btn">
+                Sign up with email
+              </Button>
+              <Spacer y={1.2} />
+            </form>
 
             {/* Google Login */}
             <div className="linear-layout-flat">
