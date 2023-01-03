@@ -18,12 +18,18 @@ import {
   Spacer,
   Checkbox,
 } from "@nextui-org/react";
+import { useRouter } from "next/router";
 
 //assets
 import { COLORS } from "../assets/colors";
 
 const Login = () => {
   const [visible, setVisible] = useState(false);
+  const router = useRouter();
+  const handleSubmit = (type, href) => {
+    console.log(type, href);
+    console.log(router);
+  };
   return (
     <Grid.Container>
       <Modal
@@ -83,7 +89,11 @@ const Login = () => {
               </span>
             </div>
             <Spacer y={1.2} />
-            <Button type="submit" disabled className="btn-auth">
+            <Button
+              type="submit"
+              onPress={() => handleSubmit("signin", "/dashboard")}
+              className="app-btn"
+            >
               Sign in with email
             </Button>
             <Spacer y={1.2} />

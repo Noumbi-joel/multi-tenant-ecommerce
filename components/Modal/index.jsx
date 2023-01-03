@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 //comp
 import { Button, Image, Input, Modal } from "@nextui-org/react";
-import { HeadingText, BodyText } from "..";
+import { HeadingText, BodyText, ActiveLink } from "..";
 
 //assets
 import { COLORS } from "../../assets/colors";
@@ -73,13 +73,15 @@ const ModalComp = ({
             className="form-control"
           />
         )}
-        <BodyText type="mb" title={modalLink} color={COLORS.primary_base} />
+        <div onClick={closeModal}>
+          <BodyText type="mb" title={modalLink} color={COLORS.primary_base} />
+        </div>
       </Modal.Body>
-      <Link href={goTo} className="otp-verify-button">
-        <Button type="submit" className="modal-btn">
+      <ActiveLink href={goTo} className="app-btn" style={{ margin: 20 }}>
+        <Button type="submit" className="extended-app-btn">
           {modalBtnText}
         </Button>
-      </Link>
+      </ActiveLink>
     </Modal>
   );
 };

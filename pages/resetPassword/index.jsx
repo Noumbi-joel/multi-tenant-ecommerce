@@ -3,7 +3,7 @@ import React, { useState } from "react";
 //comp
 import AppHeader from "../../components/AppHeader";
 import { Button, Image, Input } from "@nextui-org/react";
-import { BodyText, HeadingText } from "../../components";
+import { ActiveLink, BodyText, HeadingText } from "../../components";
 
 //assets
 import { HEADER_NAV } from "../../helpers";
@@ -47,7 +47,11 @@ const resetPassword = () => {
                 type="password"
               />
             </div>
-            <Button className="reset-pwd-btn" onClick={handleResetPwd}>
+            <Button
+              className="app-btn"
+              style={{ marginTop: 30 }}
+              onClick={handleResetPwd}
+            >
               Reset Password
             </Button>
           </div>
@@ -68,9 +72,11 @@ const resetPassword = () => {
               color={COLORS.grayscale_600}
               title="Commodo gravida eget ultricies sed in lacus. Commodo, tellus duis eros pellentesque."
             />
-            <Link href="/" className="reset-pwd-btn">
-              <Button type="submit" className="btn-back-login">Back to Login</Button>
-            </Link>
+            <ActiveLink href="/" className="app-btn" style={{ marginTop: 40 }}>
+              <Button type="submit" className="extended-app-btn">
+                Back to Login
+              </Button>
+            </ActiveLink>
           </div>
         )}
       </div>

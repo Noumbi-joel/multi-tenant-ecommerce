@@ -22,9 +22,17 @@ import {
 
 //assets
 import { COLORS } from "../../assets/colors";
+import { useRouter } from "next/router";
 
 const SignUp = () => {
   const [visible, setVisible] = useState(false);
+  const router = useRouter();
+
+  const handleSubmit = (type, href) => {
+    console.log(type, href);
+    console.log(router)
+    setVisible(true)
+  };
   return (
     <Grid.Container>
       <Modal
@@ -35,7 +43,7 @@ const SignUp = () => {
         modalBodyText="We have just sent a verification code to tynisha*****@mail.com"
         modalBtnText="Verify"
         modalLink="Send the code again"
-        goTo="/home"
+        goTo="/businessInfo"
       />
       <div className="signin-content">
         <div className="img-container">
@@ -46,7 +54,7 @@ const SignUp = () => {
         <div className="centered-container">
           <div className="centered">
             <HeadingText
-              login
+              style={{ marginBottom: 40 }}
               type="h3"
               color={COLORS.grayscale_900}
               title="Create your account"
@@ -97,7 +105,11 @@ const SignUp = () => {
               </Checkbox>
             </div>
             <Spacer y={1.2} />
-            <Button type="submit" disabled className="btn-auth">
+            <Button
+              type="submit"
+              className="app-btn"
+              onPress={() => handleSubmit("sign up", "/businessInfo")}
+            >
               Sign up with email
             </Button>
             <Spacer y={1.2} />
@@ -113,11 +125,7 @@ const SignUp = () => {
               <Divider style={{ width: 150 }} />
             </div>
             <Spacer />
-            <GoogleBtn
-              image={"./google.svg"}
-              title="Google"
-              onClick={() => setVisible(true)}
-            />
+            <GoogleBtn image={"./google.svg"} title="Google" />
             <Spacer />
 
             {/* don't have an account text */}
