@@ -1,16 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 
 // comp
-import { BodyText, HeadingText, GoogleBtn, AuthStatic } from "../components";
+import {
+  BodyText,
+  HeadingText,
+  GoogleBtn,
+  AuthStatic,
+  Modal,
+} from "../components";
 import Link from "next/link";
-import { Button, Grid, Image, Divider, Input, Spacer, Checkbox } from "@nextui-org/react";
+import {
+  Button,
+  Grid,
+  Image,
+  Divider,
+  Input,
+  Spacer,
+  Checkbox,
+} from "@nextui-org/react";
 
 //assets
 import { COLORS } from "../assets/colors";
 
 const Login = () => {
+  const [visible, setVisible] = useState(false);
   return (
     <Grid.Container>
+      <Modal
+        image="./mokolo.svg"
+        closeModal={() => setVisible(false)}
+        visible={visible}
+        modalTitle="Reset your password"
+        modalBodyText="Enter the email address associated with your account and we'll send you a link to reset your password."
+        modalLink="Return to login"
+        modalBtnText="Continue"
+        isForgotPwd
+        goTo="/resetPassword"
+      />
       <div className="signin-content">
         <div className="img-container">
           <Image src="./mokolo.svg" height={32} alt="app logo" />
@@ -25,9 +51,19 @@ const Login = () => {
               color={COLORS.grayscale_900}
               title="Login to your account"
             />
-            <Input required placeholder="Email" className="form-control" />
+            <Input
+              type="email"
+              required
+              placeholder="Email"
+              className="form-control"
+            />
             <Spacer />
-            <Input.Password required placeholder="Password" className="form-control" />
+            <Input.Password
+              required
+              placeholder="Password"
+              className="form-control"
+              type="password"
+            />
             <Spacer />
             <div className="linear-layout-flat">
               <Checkbox defaultSelected>
@@ -38,13 +74,13 @@ const Login = () => {
                 />
               </Checkbox>
 
-              <Link href="/forgotPassword">
+              <span onClick={() => setVisible(true)}>
                 <BodyText
                   type="lm"
                   color={COLORS.success_base}
                   title="Forgot password?"
                 />
-              </Link>
+              </span>
             </div>
             <Spacer y={1.2} />
             <Button type="submit" disabled className="btn-auth">

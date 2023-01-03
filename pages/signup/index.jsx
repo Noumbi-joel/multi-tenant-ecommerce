@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 
 // comp
-import { BodyText, HeadingText, Modal, GoogleBtn, AuthStatic } from "../../components";
+import {
+  BodyText,
+  HeadingText,
+  Modal,
+  GoogleBtn,
+  AuthStatic,
+} from "../../components";
 import Link from "next/link";
 
 import {
@@ -21,7 +27,16 @@ const SignUp = () => {
   const [visible, setVisible] = useState(false);
   return (
     <Grid.Container>
-      <Modal image="./mokolo.svg" visible={visible} closeModal={() => setVisible(false)} />
+      <Modal
+        image="./mokolo.svg"
+        visible={visible}
+        closeModal={() => setVisible(false)}
+        modalTitle="Enter verification code"
+        modalBodyText="We have just sent a verification code to tynisha*****@mail.com"
+        modalBtnText="Verify"
+        modalLink="Send the code again"
+        goTo="/home"
+      />
       <div className="signin-content">
         <div className="img-container">
           <Image src="./mokolo.svg" height={32} alt="app logo" />
@@ -51,9 +66,19 @@ const SignUp = () => {
               />
             </div>
             <Spacer />
-            <Input required placeholder="Email" className="form-control" />
+            <Input
+              type="email"
+              required
+              placeholder="Email"
+              className="form-control"
+            />
             <Spacer />
-            <Input.Password required placeholder="Password" className="form-control" />
+            <Input.Password
+              type="password"
+              required
+              placeholder="Password"
+              className="form-control"
+            />
             <Spacer />
             <div className="linear-layout-center">
               <Checkbox defaultSelected>

@@ -143,16 +143,28 @@ a {
 }
 
 .otp-verify-button {
-  background-color: var(--primary_300);
+  background-color: var(--primary_base);
   color: var(--white);
   height: 56px;
-  margin: 10px
+  margin: 10px;
+  border-radius: 12px;
+}
+
+.otp-verify-button .modal-btn {
+  background-color: transparent;
+  height: 56px;
+  width: 100%;
 }
 
 .modal-input {
   width: 56px;
   height: 56px;
   background-color: var(--grayscale_50);
+}
+
+.app-logo {
+  padding-top: 20px;
+  padding-left: 100px;
 }
 
 /* second-part */
@@ -173,13 +185,26 @@ a {
   align-items: center;
 }
 
-.static-content .header-nav {
+.header-nav {
   display: flex;
   justify-content: flex-end;
   padding-right: 100px;
   padding-top: 20px;
 }
 
-.static-content .header-nav .header-link {
+.header-link {
   margin-left: 40px;
+}
+
+/******** RESET PWD  *********/
+.reset-page-container {
+  background-color: #eaeaea;
+  height: 100vh;
+}
+
+.app-header {
+  background-color: var(--white);
+  height: 100px;
+  display: flex;
+  align-items: center
 }

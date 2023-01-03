@@ -1,14 +1,25 @@
 import React, { useState } from "react";
 
 //comp
-import { Button, Image, Modal } from "@nextui-org/react";
+import { Button, Image, Input, Modal } from "@nextui-org/react";
 import { HeadingText, BodyText } from "..";
 
 //assets
 import { COLORS } from "../../assets/colors";
 import OtpInput from "react-otp-input";
+import Link from "next/link";
 
-const ModalComp = ({ visible, closeModal, image }) => {
+const ModalComp = ({
+  visible,
+  closeModal,
+  image,
+  modalTitle,
+  modalBodyText,
+  modalLink,
+  modalBtnText,
+  isForgotPwd,
+  goTo,
+}) => {
   const [code, setCode] = useState(0);
   return (
     <Modal
@@ -25,42 +36,50 @@ const ModalComp = ({ visible, closeModal, image }) => {
       <Modal.Body>
         <HeadingText
           type="h4"
-          title="Enter verification code"
+          title={modalTitle}
           color={COLORS.grayscale_900}
         />
         <BodyText
           type="lm"
-          title="We have just sent a verification code to tynisha*****@mail.com"
+          title={modalBodyText}
           color={COLORS.grayscale_600}
         />
-        <OtpInput
-          value={code}
-          onChange={(val) => setCode(val)}
-          numInputs={6}
-          shouldAutoFocus={true}
-          containerStyle={{ justifyContent: "space-between" }}
-          inputStyle={{
-            width: 56,
-            height: 56,
-            backgroundColor: COLORS.grayscale_50,
-            borderRadius: 12,
-            color: COLORS.grayscale_900,
-            fontSize: 24,
-            fontWeight: "800",
-            borderWidth: 1,
-            borderColor: COLORS.grayscale_50,
-            borderStyle: "none",
-          }}
-        />
-        <BodyText
-          type="mb"
-          title="Send the code again"
-          color={COLORS.primary_base}
-        />
+        {!isForgotPwd && (
+          <OtpInput
+            value={code}
+            onChange={(val) => setCode(val)}
+            numInputs={6}
+            shouldAutoFocus={true}
+            containerStyle={{ justifyContent: "space-between" }}
+            inputStyle={{
+              width: 56,
+              height: 56,
+              backgroundColor: COLORS.grayscale_50,
+              borderRadius: 12,
+              color: COLORS.grayscale_900,
+              fontSize: 24,
+              fontWeight: "800",
+              borderWidth: 1,
+              borderColor: COLORS.grayscale_50,
+              borderStyle: "none",
+            }}
+          />
+        )}
+        {isForgotPwd && (
+          <Input
+            type="email"
+            required
+            placeholder="Email"
+            className="form-control"
+          />
+        )}
+        <BodyText type="mb" title={modalLink} color={COLORS.primary_base} />
       </Modal.Body>
-      <Button type="submit" disabled className="otp-verify-button">
-        Verify
-      </Button>
+      <Link href={goTo} className="otp-verify-button">
+        <Button type="submit" className="modal-btn">
+          {modalBtnText}
+        </Button>
+      </Link>
     </Modal>
   );
 };
