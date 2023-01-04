@@ -19,7 +19,7 @@ export const AuthContext = createContext({
 });
 
 const actionCodeSettings = {
-  url: "http://localhost:3000/signup",
+  url: "https://dev-mokolo.onrender.com/signup",
   handleCodeInApp: true,
   iOS: {
     bundleId: "com.mokolo.ios",
@@ -29,7 +29,7 @@ const actionCodeSettings = {
     installApp: true,
     minimumVersion: "12",
   },
-  dynamicLinkDomain: "http://localhost:300",
+  dynamicLinkDomain: "https://dev-mokolo.onrender.com",
 };
 
 export const AuthContextProvider = ({ children }) => {
