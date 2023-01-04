@@ -1,14 +1,11 @@
 import "../styles/globals.css";
 
 //comp
-import { Layout } from "../components";
+import { Layout, ProtectedRoute } from "../components";
 
-//next UI
+//next
 import { NextUIProvider } from "@nextui-org/react";
-
-// redux
-import { Provider } from "react-redux";
-import { store } from "../store";
+import { useRouter } from "next/router";
 
 //hot toast
 import { Toaster } from "react-hot-toast";
@@ -17,15 +14,24 @@ import { Toaster } from "react-hot-toast";
 import { AuthContextProvider } from "../context/Auth";
 
 export default function App({ Component, pageProps }) {
+  // no auth required for this routes
+  const noAuthRequired = ["/signin", "/signup"];
+
+  const router = useRouter();
+
   return (
     <NextUIProvider>
       <Layout>
         <Toaster />
-        <Provider store={store}>
-          <AuthContextProvider>
+        <AuthContextProvider>
+          {noAuthRequired.includes(router.pathname) ? (
             <Component {...pageProps} />
-          </AuthContextProvider>
-        </Provider>
+          ) : (
+            <ProtectedRoute>
+              <Component {...pageProps} />
+            </ProtectedRoute>
+          )}
+        </AuthContextProvider>
       </Layout>
     </NextUIProvider>
   );

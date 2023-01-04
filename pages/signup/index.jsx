@@ -19,14 +19,12 @@ import {
   Spacer,
   Checkbox,
 } from "@nextui-org/react";
-import toast from "react-hot-toast";
 
 //assets
 import { COLORS } from "../../assets/colors";
 import { useRouter } from "next/router";
 
 //functions
-import { validateEmail } from "../../functions";
 import { AuthContext } from "../../context/Auth";
 
 const SignUp = () => {
@@ -86,6 +84,7 @@ const SignUp = () => {
                   style={{ width: 200, fontSize: 16, fontWeight: "500" }}
                   value={userInfos.fName}
                   onChange={handleInput}
+                  aria-label="fName"
                 />
                 <Input
                   name="lName"
@@ -95,6 +94,7 @@ const SignUp = () => {
                   style={{ width: 200, fontSize: 16, fontWeight: "500" }}
                   value={userInfos.lName}
                   onChange={handleInput}
+                  aria-label="lName"
                 />
               </div>
               <Spacer />
@@ -106,6 +106,8 @@ const SignUp = () => {
                 className="form-control"
                 value={userInfos.email}
                 onChange={handleInput}
+                style={{ fontSize: 16, fontWeight: "500" }}
+                aria-label="email"
               />
               <Spacer />
               <Input.Password
@@ -115,11 +117,13 @@ const SignUp = () => {
                 placeholder="Password"
                 className="form-control"
                 value={userInfos.password}
+                style={{ fontSize: 16, fontWeight: "500" }}
                 onChange={handleInput}
+                aria-label="password"
               />
               <Spacer />
               <div className="linear-layout-center">
-                <Checkbox defaultSelected>
+                <Checkbox defaultChecked>
                   <BodyText
                     type="lm"
                     color={COLORS.grayscale_900}
@@ -162,7 +166,7 @@ const SignUp = () => {
                 color={COLORS.grayscale_600}
                 title="Already have an account?"
               />
-              <Link href="/">
+              <Link href="/signin">
                 <BodyText
                   type="lb"
                   color={COLORS.primary_base}

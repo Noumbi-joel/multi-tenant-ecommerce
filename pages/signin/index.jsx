@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 // comp
 import {
@@ -26,6 +26,7 @@ import { useRouter } from "next/router";
 
 //functions
 import { validateEmail } from "../../functions";
+import { AuthContext } from "../../context/Auth";
 
 const Login = () => {
   const [visible, setVisible] = useState(false);
@@ -42,17 +43,12 @@ const Login = () => {
   };
 
   const router = useRouter();
+  const authCtx = useContext(AuthContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const { email, password } = userInfos;
-    if (!validateEmail(email)) {
-      return toast.error("Please enter a valid email");
-    }
-    if (password.length < 4) {
-      return toast.error("Please enter at least 4 characters for password");
-    }
-    return toast.success(`Your email is ${email} and password ${password}`);
+    authCtx.signin(email, password);
   };
   return (
     <Grid.Container>
@@ -91,6 +87,7 @@ const Login = () => {
                 style={{ fontSize: 16, fontWeight: "500" }}
                 onChange={(e) => handleInput(e)}
                 value={userInfos.email}
+                aria-label="email"
               />
               <Spacer />
               <Input.Password
@@ -102,6 +99,7 @@ const Login = () => {
                 type="password"
                 onChange={(e) => handleInput(e)}
                 value={userInfos.password}
+                aria-label="password"
               />
               <Spacer />
               <div className="linear-layout-flat">

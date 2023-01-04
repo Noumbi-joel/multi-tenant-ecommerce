@@ -72,12 +72,7 @@ const BusinessInfo = () => {
                 <option value="Grocery/Food/Beverages">
                   Grocery/Food/Beverages
                 </option>
-                <option
-                  value="Restaurants&Hotels
-"
-                >
-                  Restaurants & Hotels
-                </option>
+                <option value="Restaurants&Hotels">Restaurants & Hotels</option>
                 <option value="Electronics/Computer&Accessories">
                   Electronics/Computer Accessories
                 </option>

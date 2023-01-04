@@ -5,3 +5,4 @@ export { default as AuthStatic } from "./AuthStatic";
 export { default as GoogleBtn } from "./GoogleBtn";
 export { default as Modal } from "./Modal";
 export { default as ActiveLink } from "./ActiveLink";
+export { default as ProtectedRoute } from "./ProtectedRoute";
