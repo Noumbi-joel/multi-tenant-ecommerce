@@ -20,7 +20,7 @@ const AuthStatic = ({ image }) => {
           </Link>
         ))}
       </div>
-      <Image src={image} height={400} />
+      <Image src={image} width={500} height={400} />
       <div className="right-container-text">
         <HeadingText
           type="h2"

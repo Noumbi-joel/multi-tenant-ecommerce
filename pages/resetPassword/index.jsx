@@ -72,7 +72,7 @@ const resetPassword = () => {
               color={COLORS.grayscale_600}
               title="Commodo gravida eget ultricies sed in lacus. Commodo, tellus duis eros pellentesque."
             />
-            <ActiveLink href="/" className="app-btn" style={{ marginTop: 40 }}>
+            <ActiveLink href="/signin" className="app-btn" style={{ marginTop: 40 }}>
               <Button type="submit" className="extended-app-btn">
                 Back to Login
               </Button>

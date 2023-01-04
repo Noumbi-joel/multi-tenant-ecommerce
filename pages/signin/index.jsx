@@ -1,15 +1,14 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 
 // comp
 import {
   BodyText,
   HeadingText,
-  Modal,
   GoogleBtn,
   AuthStatic,
+  Modal,
 } from "../../components";
 import Link from "next/link";
-
 import {
   Button,
   Grid,
@@ -27,40 +26,46 @@ import { useRouter } from "next/router";
 
 //functions
 import { validateEmail } from "../../functions";
-import { AuthContext } from "../../context/Auth";
 
-const SignUp = () => {
+const Login = () => {
   const [visible, setVisible] = useState(false);
-  const [rememberMe, setRememberMe] = useState(true);
   const [userInfos, setUserInfos] = useState({
-    fName: "",
-    lName: "",
     email: "",
     password: "",
   });
+  const [rememberMe, setRememberMe] = useState("true");
+
   const handleInput = (e) => {
     setUserInfos((prev) => {
       return { ...prev, [e.target.name]: e.target.value };
     });
   };
+
   const router = useRouter();
-  const authCtx = useContext(AuthContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    authCtx.signup(userInfos);
+    const { email, password } = userInfos;
+    if (!validateEmail(email)) {
+      return toast.error("Please enter a valid email");
+    }
+    if (password.length < 4) {
+      return toast.error("Please enter at least 4 characters for password");
+    }
+    return toast.success(`Your email is ${email} and password ${password}`);
   };
   return (
     <Grid.Container>
       <Modal
         image="./mokolo.svg"
-        visible={visible}
         closeModal={() => setVisible(false)}
-        modalTitle="Enter verification code"
-        modalBodyText="We have just sent a verification code to tynisha*****@mail.com"
-        modalBtnText="Verify"
-        modalLink="Send the code again"
-        goTo="/businessInfo"
+        visible={visible}
+        modalTitle="Reset your password"
+        modalBodyText="Enter the email address associated with your account and we'll send you a link to reset your password."
+        modalLink="Return to login"
+        modalBtnText="Continue"
+        isForgotPwd
+        goTo="/resetPassword"
       />
       <div className="signin-content">
         <div className="img-container">
@@ -75,68 +80,53 @@ const SignUp = () => {
                 style={{ marginBottom: 40 }}
                 type="h3"
                 color={COLORS.grayscale_900}
-                title="Create your account"
+                title="Login to your account"
               />
-              <div className="linear-layout-flat">
-                <Input
-                  name="fName"
-                  placeholder="First name"
-                  className="form-control"
-                  required
-                  style={{ width: 200, fontSize: 16, fontWeight: "500" }}
-                  value={userInfos.fName}
-                  onChange={handleInput}
-                />
-                <Input
-                  name="lName"
-                  placeholder="Last name"
-                  className="form-control"
-                  required
-                  style={{ width: 200, fontSize: 16, fontWeight: "500" }}
-                  value={userInfos.lName}
-                  onChange={handleInput}
-                />
-              </div>
-              <Spacer />
               <Input
                 type="email"
                 name="email"
                 required
                 placeholder="Email"
                 className="form-control"
+                style={{ fontSize: 16, fontWeight: "500" }}
+                onChange={(e) => handleInput(e)}
                 value={userInfos.email}
-                onChange={handleInput}
               />
               <Spacer />
               <Input.Password
-                type="password"
-                name="password"
                 required
+                name="password"
                 placeholder="Password"
                 className="form-control"
+                style={{ fontSize: 16, fontWeight: "500" }}
+                type="password"
+                onChange={(e) => handleInput(e)}
                 value={userInfos.password}
-                onChange={handleInput}
               />
               <Spacer />
-              <div className="linear-layout-center">
-                <Checkbox defaultSelected>
+              <div className="linear-layout-flat">
+                <Checkbox
+                  value={rememberMe}
+                  onChange={(e) => setRememberMe(e.valueOf())}
+                >
                   <BodyText
                     type="lm"
                     color={COLORS.grayscale_900}
-                    title="By proceeding, you agree to the"
+                    title="Remember me"
                   />
-                  <Link href="/terms_conditions">
-                    <BodyText
-                      type="lm"
-                      color={COLORS.primary_base}
-                      title="Terms and Conditions"
-                    />
-                  </Link>
                 </Checkbox>
+
+                <span onClick={() => setVisible(true)}>
+                  <BodyText
+                    type="lm"
+                    color={COLORS.success_base}
+                    title="Forgot password?"
+                  />
+                </span>
               </div>
               <Spacer y={1.2} />
               <Button type="submit" className="app-btn">
-                Sign up with email
+                Sign in with email
               </Button>
               <Spacer y={1.2} />
             </form>
@@ -147,7 +137,7 @@ const SignUp = () => {
               <BodyText
                 type="lm"
                 colors={COLORS.grayscale_600}
-                title="Or sign up with"
+                title="Or login with"
               />
               <Divider style={{ width: 150 }} />
             </div>
@@ -160,13 +150,13 @@ const SignUp = () => {
               <BodyText
                 type="lr"
                 color={COLORS.grayscale_600}
-                title="Already have an account?"
+                title="Don't have an account?"
               />
-              <Link href="/">
+              <Link href="/signup">
                 <BodyText
                   type="lb"
                   color={COLORS.primary_base}
-                  title="Sign in"
+                  title="Get Started"
                 />
               </Link>
             </div>
@@ -179,4 +169,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Login;

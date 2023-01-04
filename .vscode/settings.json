@@ -1,5 +1,9 @@
 {
     "marquee.widgets.npm-stats.packageNames": [
         "mokolo"
+    ],
+    "cSpell.words": [
+        "firestore",
+        "signup"
     ]
 }
