@@ -69,6 +69,7 @@ const ModalComp = ({
             required
             placeholder="Email"
             className="form-control"
+            aria-label="email"
           />
         )}
         <div onClick={closeModal}>

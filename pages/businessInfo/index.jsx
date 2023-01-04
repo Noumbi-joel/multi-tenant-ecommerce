@@ -43,6 +43,7 @@ const BusinessInfo = () => {
               type="text"
               className="form-control"
               placeholder="e.g Nana wigs"
+              aria-label="name"
             />
             <Spacer />
             <BodyText
@@ -100,7 +101,7 @@ const BusinessInfo = () => {
       <div className="hero-business-footer">
         <Button
           className="app-btn"
-          style={{ marginTop: 30, width: 150, marginRight: 200 }}
+          style={{ marginTop: 10, width: 150, marginRight: 200 }}
         >
           Continue
         </Button>

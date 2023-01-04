@@ -22,7 +22,6 @@ import {
 
 //assets
 import { COLORS } from "../../assets/colors";
-import { useRouter } from "next/router";
 
 //functions
 import { AuthContext } from "../../context/Auth";
@@ -41,7 +40,6 @@ const SignUp = () => {
       return { ...prev, [e.target.name]: e.target.value };
     });
   };
-  const router = useRouter();
   const authCtx = useContext(AuthContext);
 
   const handleSubmit = (e) => {

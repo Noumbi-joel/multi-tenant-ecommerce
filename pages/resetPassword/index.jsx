@@ -39,12 +39,14 @@ const resetPassword = () => {
                 placeholder="New Password"
                 className="form-control"
                 type="password"
+                aria-label="password"
               />
               <Input.Password
                 required
                 placeholder="Confirm New Password"
                 className="form-control"
                 type="password"
+                aria-label="new-password"
               />
             </div>
             <Button

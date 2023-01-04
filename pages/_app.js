@@ -23,15 +23,15 @@ export default function App({ Component, pageProps }) {
     <NextUIProvider>
       <Layout>
         <Toaster />
-        <AuthContextProvider>
-          {noAuthRequired.includes(router.pathname) ? (
-            <Component {...pageProps} />
-          ) : (
-            <ProtectedRoute>
+          <AuthContextProvider>
+            {noAuthRequired.includes(router.pathname) ? (
               <Component {...pageProps} />
-            </ProtectedRoute>
-          )}
-        </AuthContextProvider>
+            ) : (
+              <ProtectedRoute>
+                <Component {...pageProps} />
+              </ProtectedRoute>
+            )}
+          </AuthContextProvider>
       </Layout>
     </NextUIProvider>
   );

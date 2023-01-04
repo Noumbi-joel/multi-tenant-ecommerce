@@ -23,23 +23,21 @@ export const AuthContext = createContext({
 });
 
 export const AuthContextProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState();
   const router = useRouter();
+  const cookies = new Cookies();
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       if (!user) {
-        return router.push("/signin");
+        return setUser(null);
       }
       cookies.set("user", user.email, {
         path: "/",
-        maxAge: 3600,
       });
-      setUser({ userId: user.uid, email: user.email });
+      setUser(user.uid);
     });
   }, []);
-
-  const cookies = new Cookies();
 
   // sign in method for old user
   const signin = async (email, password) => {
@@ -53,29 +51,7 @@ export const AuthContextProvider = ({ children }) => {
         if (!res.user.emailVerified) {
           return "Please verify your email before signing in";
         }
-        if (localStorage.getItem("noBusiness") === "true") {
-          router.push("/businessInfo");
-          return "Please provide at least one business";
-        }
-        if (localStorage.getItem("noBusiness") === "false") {
-          router.push("/dashboard");
-          return "Successfully signed in";
-        }
-        if (localStorage.getItem("noBusiness") === null) {
-          firebase
-            .firestore()
-            .collection(USERS)
-            .doc(res.user.uid)
-            .get()
-            .then((res) => {
-              if (res.data().noBusiness === "true") {
-                router.push("/businessInfo");
-                return;
-              } else {
-                router.push("/dashboard");
-              }
-            });
-        }
+        router.push("/");
       },
       error: (err) => err.message,
     });
@@ -117,7 +93,6 @@ export const AuthContextProvider = ({ children }) => {
   const logout = async () => {
     try {
       await firebase.auth().signOut();
-      cookies.remove("user");
       router.push("/signin");
     } catch (error) {
       toast.error(error.message);

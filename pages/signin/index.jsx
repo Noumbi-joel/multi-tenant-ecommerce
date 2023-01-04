@@ -18,17 +18,18 @@ import {
   Spacer,
   Checkbox,
 } from "@nextui-org/react";
-import toast from "react-hot-toast";
 
 //assets
 import { COLORS } from "../../assets/colors";
-import { useRouter } from "next/router";
 
-//functions
-import { validateEmail } from "../../functions";
+// context api
 import { AuthContext } from "../../context/Auth";
 
+// universal cookies
+import Cookies from "universal-cookie";
+
 const Login = () => {
+  const cookies = new Cookies();
   const [visible, setVisible] = useState(false);
   const [userInfos, setUserInfos] = useState({
     email: "",
@@ -42,7 +43,6 @@ const Login = () => {
     });
   };
 
-  const router = useRouter();
   const authCtx = useContext(AuthContext);
 
   const handleSubmit = (e) => {
@@ -50,6 +50,7 @@ const Login = () => {
     const { email, password } = userInfos;
     authCtx.signin(email, password);
   };
+
   return (
     <Grid.Container>
       <Modal
