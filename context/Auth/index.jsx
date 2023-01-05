@@ -18,6 +18,8 @@ import { useRouter } from "next/router";
 export const AuthContext = createContext({
   signin: (userInfos) => {},
   signup: (userInfos) => {},
+  googleLogin: () => {},
+  updatePassword: (newPwd) => {},
   logout: () => {},
 });
 
@@ -70,12 +72,16 @@ export const AuthContextProvider = ({ children }) => {
         loading: "Creating your account...",
         success: (res) => {
           Cookies.set("noBusiness", "true", { expires: 365 });
-          firebase.firestore().collection(USERS).doc(res.user.uid).set({
-            userId: res.user.uid,
-            userFName: fName,
-            userLName: lName,
-            noBusiness: true,
-          });
+          firebase
+            .firestore()
+            .collection(USERS)
+            .doc(res.user.uid)
+            .set({
+              userId: res.user.uid,
+              userName: fName + " " + lName,
+              userEmail: res.user.email,
+              noBusiness: true,
+            });
           res.user.sendEmailVerification({
             url: "http://localhost:3000/signin",
           });
@@ -84,6 +90,44 @@ export const AuthContextProvider = ({ children }) => {
         error: (err) => err.message,
       }
     );
+  };
+
+  const googleLogin = async () => {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().useDeviceLanguage();
+
+    firebase
+      .auth()
+      .signInWithPopup(provider)
+      .then((res) => {
+        if (res.additionalUserInfo.isNewUser) {
+          Cookies.set("noBusiness", "true");
+          firebase.firestore().collection(USERS).doc(res.user.uid).set({
+            userId: res.user.uid,
+            userName: res.user.displayName,
+            userEmail: res.user.email,
+            noBusiness: true,
+          });
+          router.push("/businessInfo");
+        }
+        if (!res.additionalUserInfo.isNewUser) {
+          if (Cookies.get("noBusiness") === "true")
+            router.push("/businessInfo");
+
+          if (Cookies.get("noBusiness") === "false") router.push("/dashboard");
+        }
+      })
+      .catch((err) => toast.error(err.message));
+  };
+
+  const updatePassword = (newPwd, setIsPasswordReset) => {
+    firebase
+      .auth()
+      .sendPasswordResetEmail(localStorage.getItem("resetEmail"))
+      .then(() => {
+        setIsPasswordReset(true);
+      })
+      .catch((err) => toast.error(err.message));
   };
 
   const logout = async () => {
@@ -97,8 +141,10 @@ export const AuthContextProvider = ({ children }) => {
   };
 
   const value = {
+    updatePassword: updatePassword,
     signin: signin,
     signup: signup,
+    googleLogin: googleLogin,
     logout: logout,
   };
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

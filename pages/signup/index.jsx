@@ -154,7 +154,11 @@ const SignUp = () => {
               <Divider style={{ width: 150 }} />
             </div>
             <Spacer />
-            <GoogleBtn image={"./google.svg"} title="Google" />
+            <GoogleBtn
+              image={"./google.svg"}
+              title="Google"
+              onClick={() => authCtx.googleLogin()}
+            />
             <Spacer />
 
             {/* don't have an account text */}

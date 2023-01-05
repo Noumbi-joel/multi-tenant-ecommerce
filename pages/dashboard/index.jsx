@@ -4,6 +4,8 @@ import { useRouter } from "next/router";
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/Auth";
 
+import firebase from "../../firebase.config";
+
 const Dashboard = ({}) => {
   const authCtx = useContext(AuthContext);
   const [cookie, setCookie] = useState("");
@@ -14,16 +16,20 @@ const Dashboard = ({}) => {
 
   useEffect(() => {
     setCookie(Cookies.get("noBusiness"));
+    console.log(JSON.stringify(firebase.auth().currentUser));
   }, []);
 
   if (cookie === "true") {
     return (
       <Row justify="center">
-        <Button onPress={handleSignOut}>Sign out</Button>
-        OR
-        <Button onPress={() => router.push("/businessInfo")}>
-          Go to create a business
-        </Button>
+        No business has been created yet Please provide at least one business
+        <div>
+          <Button onPress={() => router.push("/businessInfo")}>
+            Go to create a business
+          </Button>
+          OR
+          <Button onPress={handleSignOut}>Sign out</Button>
+        </div>
       </Row>
     );
   }

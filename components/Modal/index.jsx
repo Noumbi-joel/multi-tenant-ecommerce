@@ -2,11 +2,14 @@ import React, { useState } from "react";
 
 //comp
 import { Button, Image, Input, Modal } from "@nextui-org/react";
-import { HeadingText, BodyText, ActiveLink } from "..";
+import { HeadingText, BodyText } from "..";
 
 //assets
 import { COLORS } from "../../assets/colors";
-import OtpInput from "react-otp-input";
+
+// functions
+import { validateEmail } from "../../functions";
+import { useRouter } from "next/router";
 
 const ModalComp = ({
   visible,
@@ -16,33 +19,63 @@ const ModalComp = ({
   modalBodyText,
   modalLink,
   modalBtnText,
-  isForgotPwd,
-  goTo,
 }) => {
-  const [code, setCode] = useState(0);
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
+  const router = useRouter();
+
+  const handleSubmit = (e, email) => {
+    e.preventDefault();
+    if (!validateEmail(email)) {
+      return setError("Please enter a valid email address");
+    }
+    localStorage.setItem("resetEmail", email);
+    return router.push("/resetPassword");
+  };
+
   return (
-    <Modal
-      closeButton
-      blur
-      open={visible}
-      onClose={closeModal}
-      style={{}}
-    >
-      <div className="modal-image-container">
-        <Image src={image} />
-      </div>
-      <Modal.Body>
-        <HeadingText
-          type="h4"
-          title={modalTitle}
-          color={COLORS.grayscale_900}
-        />
-        <BodyText
-          type="lm"
-          title={modalBodyText}
-          color={COLORS.grayscale_600}
-        />
-        {!isForgotPwd && (
+    <Modal closeButton blur open={visible} onClose={closeModal} style={{}}>
+      <form className="form-modal" onSubmit={(e) => handleSubmit(e, email)}>
+        <div className="modal-image-container">
+          <Image src={image} />
+        </div>
+        <Modal.Body>
+          <HeadingText
+            type="h4"
+            title={modalTitle}
+            color={COLORS.grayscale_900}
+          />
+          <BodyText
+            type="lm"
+            title={modalBodyText}
+            color={COLORS.grayscale_600}
+          />
+          <Input
+            type="email"
+            required
+            placeholder="Email"
+            className="form-control"
+            aria-label="email"
+            value={email}
+            style={{ fontSize: 16, fontWeight: "500" }}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          {error && <BodyText color="red" title={error} type="mm" />}
+          <div onClick={closeModal}>
+            <BodyText type="mb" title={modalLink} color={COLORS.primary_base} />
+          </div>
+        </Modal.Body>
+        <Button type="submit" style={{ margin: 20 }} className="app-btn">
+          {modalBtnText}
+        </Button>
+      </form>
+    </Modal>
+  );
+};
+
+export default ModalComp;
+
+/**{!isForgotPwd && (
           <OtpInput
             value={code}
             onChange={(val) => setCode(val)}
@@ -62,27 +95,4 @@ const ModalComp = ({
               borderStyle: "none",
             }}
           />
-        )}
-        {isForgotPwd && (
-          <Input
-            type="email"
-            required
-            placeholder="Email"
-            className="form-control"
-            aria-label="email"
-          />
-        )}
-        <div onClick={closeModal}>
-          <BodyText type="mb" title={modalLink} color={COLORS.primary_base} />
-        </div>
-      </Modal.Body>
-      <ActiveLink href={goTo} className="app-btn" style={{ margin: 20 }}>
-        <Button type="submit" className="extended-app-btn">
-          {modalBtnText}
-        </Button>
-      </ActiveLink>
-    </Modal>
-  );
-};
-
-export default ModalComp;
+        )} */

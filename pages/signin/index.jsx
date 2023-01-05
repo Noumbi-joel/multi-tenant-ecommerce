@@ -57,7 +57,6 @@ const Login = () => {
         modalBodyText="Enter the email address associated with your account and we'll send you a link to reset your password."
         modalLink="Return to login"
         modalBtnText="Continue"
-        isForgotPwd
         goTo="/resetPassword"
       />
       <div className="signin-content">
@@ -137,7 +136,11 @@ const Login = () => {
               <Divider style={{ width: 150 }} />
             </div>
             <Spacer />
-            <GoogleBtn image={"./google.svg"} title="Google" />
+            <GoogleBtn
+              image={"./google.svg"}
+              title="Google"
+              onClick={() => authCtx.googleLogin()}
+            />
             <Spacer />
 
             {/* don't have an account text */}

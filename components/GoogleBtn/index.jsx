@@ -6,7 +6,7 @@ import BodyText from "../BodyText";
 const GoogleBtn = ({ image, title, onClick }) => {
   return (
     <Button
-      onClick={onClick}
+      onPress={onClick}
       bordered
       style={{ height: 56, borderColor: COLORS.grayscale_300 }}
     >

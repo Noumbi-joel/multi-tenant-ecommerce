@@ -122,6 +122,16 @@ a {
   width: 450px;
 }
 
+.form-modal {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-reset-pwd {
+  display: flex;
+  flex-direction: column;
+}
+
 .centered-container {
   width: 100%;
   height: 100vh;

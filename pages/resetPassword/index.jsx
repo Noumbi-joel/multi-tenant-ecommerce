@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 //comp
 import AppHeader from "../../components/AppHeader";
@@ -8,13 +8,25 @@ import { ActiveLink, BodyText, HeadingText } from "../../components";
 //assets
 import { HEADER_NAV } from "../../helpers";
 import { COLORS } from "../../assets/colors";
-import Link from "next/link";
+import toast from "react-hot-toast";
+import { AuthContext } from "../../context/Auth";
 
 const resetPassword = () => {
+  const authCtx = useContext(AuthContext);
   const [isPasswordReset, setIsPasswordReset] = useState(false);
-
-  const handleResetPwd = () => {
-    setIsPasswordReset(true);
+  const [pwd, setPwd] = useState({
+    pwd: "",
+    resetPwd: "",
+  });
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (pwd.pwd.length < 6 || pwd.resetPwd.length < 6) {
+      return toast.error("Please enter a password with 6 character at least");
+    }
+    if (pwd.pwd !== pwd.resetPwd) {
+      return toast.error("Please enter the same password");
+    }
+    authCtx.updatePassword(pwd, setIsPasswordReset);
   };
 
   return (
@@ -33,29 +45,35 @@ const resetPassword = () => {
               color={COLORS.grayscale_600}
               title="Please enter a new password. Your new password must be different from previous password."
             />
-            <div className="column-layout" style={{ marginTop: 40 }}>
-              <Input.Password
-                required
-                placeholder="New Password"
-                className="form-control"
-                type="password"
-                aria-label="password"
-              />
-              <Input.Password
-                required
-                placeholder="Confirm New Password"
-                className="form-control"
-                type="password"
-                aria-label="new-password"
-              />
-            </div>
-            <Button
-              className="app-btn"
-              style={{ marginTop: 30 }}
-              onClick={handleResetPwd}
-            >
-              Reset Password
-            </Button>
+            <form className="form-reset-pwd" onSubmit={handleSubmit}>
+              <div className="column-layout" style={{ marginTop: 40 }}>
+                <Input.Password
+                  required
+                  placeholder="New Password"
+                  className="form-control"
+                  type="password"
+                  aria-label="password"
+                  value={pwd.pwd}
+                  onChange={(e) => setPwd({ ...pwd, pwd: e.target.value })}
+                />
+                <Input.Password
+                  required
+                  placeholder="Confirm New Password"
+                  className="form-control"
+                  type="password"
+                  aria-label="new-password"
+                  value={pwd.resetPwd}
+                  onChange={(e) => setPwd({ ...pwd, resetPwd: e.target.value })}
+                />
+              </div>
+              <Button
+                type="submit"
+                className="app-btn"
+                style={{ marginTop: 30 }}
+              >
+                Reset Password
+              </Button>
+            </form>
           </div>
         )}
         {isPasswordReset && (
@@ -66,7 +84,7 @@ const resetPassword = () => {
             <HeadingText
               type="h3"
               color={COLORS.grayscale_900}
-              title="Your successfully changed your password"
+              title="Please go and check your Email | Spam to finish resetting"
               style={{ textAlign: "center", lineHeight: 1.5 }}
             />
             <BodyText
@@ -74,7 +92,11 @@ const resetPassword = () => {
               color={COLORS.grayscale_600}
               title="Commodo gravida eget ultricies sed in lacus. Commodo, tellus duis eros pellentesque."
             />
-            <ActiveLink href="/signin" className="app-btn" style={{ marginTop: 40 }}>
+            <ActiveLink
+              href="/signin"
+              className="app-btn"
+              style={{ marginTop: 40 }}
+            >
               <Button type="submit" className="extended-app-btn">
                 Back to Login
               </Button>
