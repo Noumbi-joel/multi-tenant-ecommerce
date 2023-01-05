@@ -14,8 +14,12 @@ const AuthStatic = ({ image }) => {
   return (
     <div className="static-content">
       <div className="header-nav">
-        {HEADER_NAV.map((h, i) => (
-          <Link key={i} href={h.link} className="header-link">
+        {HEADER_NAV.map((h) => (
+          <Link
+            key={h.id}
+            href={h.link}
+            className="header-link"
+          >
             <BodyText type="lm" color={COLORS.primary_200} title={h.title} />
           </Link>
         ))}

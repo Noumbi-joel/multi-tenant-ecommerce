@@ -25,11 +25,7 @@ import { COLORS } from "../../assets/colors";
 // context api
 import { AuthContext } from "../../context/Auth";
 
-// universal cookies
-import Cookies from "universal-cookie";
-
 const Login = () => {
-  const cookies = new Cookies();
   const [visible, setVisible] = useState(false);
   const [userInfos, setUserInfos] = useState({
     email: "",

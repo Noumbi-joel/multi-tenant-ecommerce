@@ -11,31 +11,25 @@ import { USERS } from "../../constants";
 import { validateEmail } from "../../functions";
 
 // cookies
-import Cookies from "universal-cookie";
+import Cookies from "js-cookie";
+
 import { useRouter } from "next/router";
 
 export const AuthContext = createContext({
-  user: null,
-  authenticate: (token) => {},
   signin: (userInfos) => {},
   signup: (userInfos) => {},
   logout: () => {},
 });
 
 export const AuthContextProvider = ({ children }) => {
-  const [user, setUser] = useState();
   const router = useRouter();
-  const cookies = new Cookies();
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       if (!user) {
-        return setUser(null);
+        return;
       }
-      cookies.set("user", user.email, {
-        path: "/",
-      });
-      setUser(user.uid);
+      Cookies.set("user", user.email, { expires: 1 });
     });
   }, []);
 
@@ -51,7 +45,9 @@ export const AuthContextProvider = ({ children }) => {
         if (!res.user.emailVerified) {
           return "Please verify your email before signing in";
         }
-        router.push("/");
+        if (Cookies.get("noBusiness") === "true") router.push("/businessInfo");
+
+        if (Cookies.get("noBusiness") === "false") router.push("/dashboard");
       },
       error: (err) => err.message,
     });
@@ -73,7 +69,7 @@ export const AuthContextProvider = ({ children }) => {
       {
         loading: "Creating your account...",
         success: (res) => {
-          localStorage.setItem("noBusiness", "true");
+          Cookies.set("noBusiness", "true", { expires: 365 });
           firebase.firestore().collection(USERS).doc(res.user.uid).set({
             userId: res.user.uid,
             userFName: fName,
@@ -81,9 +77,9 @@ export const AuthContextProvider = ({ children }) => {
             noBusiness: true,
           });
           res.user.sendEmailVerification({
-            url: "http://localhost:3000/businessInfo",
+            url: "http://localhost:3000/signin",
           });
-          return "Verify the link sent to your email account | Please check the spam otherwise";
+          return "Verify the link sent to your email  | spam email";
         },
         error: (err) => err.message,
       }
@@ -94,16 +90,13 @@ export const AuthContextProvider = ({ children }) => {
     try {
       await firebase.auth().signOut();
       router.push("/signin");
+      Cookies.remove("user");
     } catch (error) {
       toast.error(error.message);
     }
   };
 
-  const authenticate = (token) => {};
-
   const value = {
-    user: user,
-    authenticate: authenticate,
     signin: signin,
     signup: signup,
     logout: logout,

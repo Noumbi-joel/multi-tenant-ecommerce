@@ -95,7 +95,7 @@ const SignUp = () => {
                   aria-label="lName"
                 />
               </div>
-              <Spacer />
+              <Spacer y={0.5} />
               <Input
                 type="email"
                 name="email"
@@ -107,7 +107,7 @@ const SignUp = () => {
                 style={{ fontSize: 16, fontWeight: "500" }}
                 aria-label="email"
               />
-              <Spacer />
+              <Spacer y={0.5} />
               <Input.Password
                 type="password"
                 name="password"

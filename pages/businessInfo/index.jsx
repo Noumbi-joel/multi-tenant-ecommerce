@@ -1,4 +1,6 @@
 import { Button, Divider, Input, Spacer } from "@nextui-org/react";
+import Cookies from "js-cookie";
+import { useRouter } from "next/router";
 import React from "react";
 import { COLORS } from "../../assets/colors";
 import { BodyText, HeadingText } from "../../components";
@@ -10,6 +12,12 @@ import AppHeader from "../../components/AppHeader";
 import { HEADER_NAV } from "../../helpers";
 
 const BusinessInfo = () => {
+  const router = useRouter();
+  const handleSubmit = () => {
+    Cookies.set("noBusiness", "false");
+    router.push("/dashboard");
+  };
+
   return (
     <div className="business-info-container">
       <AppHeader image="./mokolo.svg" links={HEADER_NAV} />
@@ -101,6 +109,7 @@ const BusinessInfo = () => {
       <div className="hero-business-footer">
         <Button
           className="app-btn"
+          onPress={handleSubmit}
           style={{ marginTop: 10, width: 150, marginRight: 200 }}
         >
           Continue

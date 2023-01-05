@@ -1,6 +1,6 @@
 export const HEADER_NAV = [
-  { title: "Products", link: "/products" },
-  { title: "Features", link: "/features" },
-  { title: "Pricing", link: "/pricing" },
-  { title: "FAQ", link: "/faq" },
+  { id: 1, title: "Products", link: "/products" },
+  { id: 2, title: "Features", link: "/features" },
+  { id: 3, title: "Pricing", link: "/pricing" },
+  { id: 4, title: "FAQ", link: "/faq" },
 ];
