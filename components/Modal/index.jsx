@@ -34,14 +34,14 @@ const ModalComp = ({
   };
 
   return (
-    <Modal closeButton blur open={visible} onClose={closeModal} style={{}}>
+    <Modal closeButton blur open={visible} onClose={closeModal} className="modal-container">
       <form className="form-modal" onSubmit={(e) => handleSubmit(e, email)}>
         <div className="modal-image-container">
           <Logo />
         </div>
         <Modal.Body>
           <HeadingText
-            type="h4"
+            type="h5"
             title={modalTitle}
             color={COLORS.grayscale_900}
           />

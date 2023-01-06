@@ -34,12 +34,12 @@ const resetPassword = () => {
         {!isPasswordReset && (
           <div className="hero-new-pwd">
             <HeadingText
-              type="h3"
+              type="h4"
               color={COLORS.grayscale_900}
               title="Create new password"
             />
             <BodyText
-              type="xlm"
+              type="lm"
               color={COLORS.grayscale_600}
               title="Please enter a new password. Your new password must be different from previous password."
             />
@@ -80,7 +80,7 @@ const resetPassword = () => {
               <Image src="./pwd-reset.svg" width={128} height={128} />
             </div>
             <HeadingText
-              type="h3"
+              type="h4"
               color={COLORS.grayscale_900}
               title="Please go and check your Email | Spam to finish resetting"
               style={{ textAlign: "center", lineHeight: 1.5 }}

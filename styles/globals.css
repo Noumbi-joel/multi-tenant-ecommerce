@@ -273,6 +273,7 @@ a {
   flex-direction: column;
   justify-content: center;
   margin-top: 100px;
+  border-radius: 24px;
 }
 
 .pwd-image-container {
@@ -366,5 +367,19 @@ a {
 
   .divider {
     width: 100px;
+  }
+
+  .modal-container {
+    margin-right: 24px;
+    margin-left: 24px;
+  }
+
+  .hero-new-pwd {
+    height: 450px;
+    width: 350px;
+    background-color: var(--white);
+    padding: 16px;
+    border-radius: 24px;
+    margin-top: 100px;
   }
 }
