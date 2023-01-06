@@ -7,8 +7,8 @@ import {
   GoogleBtn,
   AuthStatic,
   Modal,
+  AppHeader,
 } from "../../components";
-import AppHeader from "../../components/AppHeader";
 import Link from "next/link";
 import { Button, Divider, Input, Spacer, Checkbox } from "@nextui-org/react";
 
@@ -60,8 +60,8 @@ const Login = () => {
             <div className="centered">
               <form onSubmit={handleSubmit} className="form-container">
                 <HeadingText
-                  style={{ marginBottom: 40 }}
-                  type="h3"
+                  style={{ marginBottom: 20 }}
+                  type="h4"
                   color={COLORS.grayscale_900}
                   title="Login to your account"
                 />
@@ -118,20 +118,16 @@ const Login = () => {
 
               {/* Google Login */}
               <div className="linear-layout-flat">
-                <Divider style={{ width: 150 }} />
+                <Divider className="divider"/>
                 <BodyText
                   type="lm"
                   colors={COLORS.grayscale_600}
                   title="Or login with"
                 />
-                <Divider style={{ width: 150 }} />
+                <Divider className="divider" />
               </div>
               <Spacer />
-              <GoogleBtn
-                image={"./google.svg"}
-                title="Google"
-                onClick={() => authCtx.googleLogin()}
-              />
+              <GoogleBtn title="Google" onClick={() => authCtx.googleLogin()} />
               <Spacer />
 
               {/* don't have an account text */}
@@ -153,7 +149,7 @@ const Login = () => {
           </div>
         </div>
 
-        <AuthStatic image={'./illustration.webp'} />
+        <AuthStatic image={"./illustration.webp"} />
       </div>
     </>
   );

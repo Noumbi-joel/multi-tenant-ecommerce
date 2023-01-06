@@ -11,7 +11,14 @@ import {
 } from "../../components";
 
 import Link from "next/link";
-import { Button, Divider, Input, Spacer, Checkbox } from "@nextui-org/react";
+import {
+  Button,
+  Divider,
+  Input,
+  Spacer,
+  Checkbox,
+  Text,
+} from "@nextui-org/react";
 
 //assets
 import { COLORS } from "../../assets/colors";
@@ -44,7 +51,6 @@ const SignUp = () => {
       <AppHeader />
       <div style={{ display: "flex" }}>
         <Modal
-          image="./mokolo.svg"
           visible={visible}
           closeModal={() => setVisible(false)}
           modalTitle="Enter verification code"
@@ -59,8 +65,8 @@ const SignUp = () => {
             <div className="centered">
               <form onSubmit={handleSubmit} className="form-container">
                 <HeadingText
-                  style={{ marginBottom: 40 }}
-                  type="h3"
+                  style={{ marginBottom: 20 }}
+                  type="h4"
                   color={COLORS.grayscale_900}
                   title="Create your account"
                 />
@@ -68,9 +74,9 @@ const SignUp = () => {
                   <Input
                     name="fName"
                     placeholder="First name"
-                    className="form-control"
+                    className="form-control-signup"
                     required
-                    style={{ width: 200, fontSize: 16, fontWeight: "500" }}
+                    style={{ fontSize: 16, fontWeight: "500" }}
                     value={userInfos.fName}
                     onChange={handleInput}
                     aria-label="fName"
@@ -78,15 +84,15 @@ const SignUp = () => {
                   <Input
                     name="lName"
                     placeholder="Last name"
-                    className="form-control"
+                    className="form-control-signup"
                     required
-                    style={{ width: 200, fontSize: 16, fontWeight: "500" }}
+                    style={{ fontSize: 16, fontWeight: "500" }}
                     value={userInfos.lName}
                     onChange={handleInput}
                     aria-label="lName"
                   />
                 </div>
-                <Spacer y={0.5} />
+                <Spacer />
                 <Input
                   type="email"
                   name="email"
@@ -98,7 +104,7 @@ const SignUp = () => {
                   style={{ fontSize: 16, fontWeight: "500" }}
                   aria-label="email"
                 />
-                <Spacer y={0.5} />
+                <Spacer />
                 <Input.Password
                   type="password"
                   name="password"
@@ -111,21 +117,14 @@ const SignUp = () => {
                   aria-label="password"
                 />
                 <Spacer />
-                <div className="linear-layout-center">
-                  <Checkbox>
-                    <BodyText
-                      type="lm"
-                      color={COLORS.grayscale_900}
-                      title="By proceeding, you agree to the"
-                    />
-                    <Link href="/terms_conditions">
-                      <BodyText
-                        type="lm"
-                        color={COLORS.primary_base}
-                        title="Terms and Conditions"
-                      />
-                    </Link>
-                  </Checkbox>
+                <div className="linear-layout">
+                  <Checkbox />
+                  <div className="text-large-medium">
+                    By proceeding, you agree to the {" "}
+                    <div className="text-large-medium-green">
+                      Terms and Conditions
+                    </div>
+                  </div>
                 </div>
                 <Spacer y={1.2} />
                 <Button type="submit" className="app-btn">
@@ -136,20 +135,16 @@ const SignUp = () => {
 
               {/* Google Login */}
               <div className="linear-layout-flat">
-                <Divider style={{ width: 150 }} />
+                <Divider className="divider" />
                 <BodyText
                   type="lm"
                   colors={COLORS.grayscale_600}
                   title="Or sign up with"
                 />
-                <Divider style={{ width: 150 }} />
+                <Divider className="divider" />
               </div>
               <Spacer />
-              <GoogleBtn
-                image={"./google.svg"}
-                title="Google"
-                onClick={() => authCtx.googleLogin()}
-              />
+              <GoogleBtn title="Google" onClick={() => authCtx.googleLogin()} />
               <Spacer />
 
               {/* don't have an account text */}

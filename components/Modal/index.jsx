@@ -6,6 +6,7 @@ import { HeadingText, BodyText } from "..";
 
 //assets
 import { COLORS } from "../../assets/colors";
+import Logo from "../../public/eduka.svg"
 
 // functions
 import { validateEmail } from "../../functions";
@@ -14,7 +15,6 @@ import { useRouter } from "next/router";
 const ModalComp = ({
   visible,
   closeModal,
-  image,
   modalTitle,
   modalBodyText,
   modalLink,
@@ -37,7 +37,7 @@ const ModalComp = ({
     <Modal closeButton blur open={visible} onClose={closeModal} style={{}}>
       <form className="form-modal" onSubmit={(e) => handleSubmit(e, email)}>
         <div className="modal-image-container">
-          <Image src={image} />
+          <Logo />
         </div>
         <Modal.Body>
           <HeadingText

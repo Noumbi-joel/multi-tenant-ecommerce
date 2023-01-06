@@ -22,7 +22,7 @@ const HeadingText = ({ type, title, color, style }) => {
       </Text>
     ),
     h4: (
-      <Text weight="bold" color={color} size={24}>
+      <Text weight="bold" style={style} color={color} size={24}>
         {title}
       </Text>
     ),

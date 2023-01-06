@@ -1,14 +1,12 @@
 import React, { useContext, useState } from "react";
 
 //comp
-import AppHeader from "../../components/AppHeader";
 import { Button, Image, Input } from "@nextui-org/react";
-import { ActiveLink, BodyText, HeadingText } from "../../components";
+import { ActiveLink, BodyText, HeadingText, AppHeader } from "../../components";
+import toast from "react-hot-toast";
 
 //assets
-import { HEADER_NAV } from "../../helpers";
 import { COLORS } from "../../assets/colors";
-import toast from "react-hot-toast";
 import { AuthContext } from "../../context/Auth";
 
 const resetPassword = () => {
@@ -31,7 +29,7 @@ const resetPassword = () => {
 
   return (
     <div>
-      <AppHeader image="./mokolo.svg" links={HEADER_NAV} />
+      <AppHeader bg={COLORS.white} />
       <div className="reset-page-container">
         {!isPasswordReset && (
           <div className="hero-new-pwd">

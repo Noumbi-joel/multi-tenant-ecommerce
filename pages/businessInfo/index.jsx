@@ -1,20 +1,18 @@
-import { Button, Divider, Input, Spacer } from "@nextui-org/react";
-import Cookies from "js-cookie";
-import { useRouter } from "next/router";
 import React from "react";
+
+// assets
 import { COLORS } from "../../assets/colors";
-import { BodyText, HeadingText } from "../../components";
+import Cookies from "js-cookie";
+import { USERS } from "../../constants";
 
 //comp
-import AppHeader from "../../components/AppHeader";
-
-//assets
-import { HEADER_NAV } from "../../helpers";
+import { Button, Divider, Input, Spacer } from "@nextui-org/react";
+import toast from "react-hot-toast";
+import { useRouter } from "next/router";
+import { BodyText, HeadingText, AppHeader } from "../../components";
 
 // firebase
 import firebase from "../../firebase.config";
-import { USERS } from "../../constants";
-import toast from "react-hot-toast";
 
 const BusinessInfo = () => {
   const router = useRouter();
@@ -25,14 +23,14 @@ const BusinessInfo = () => {
       Cookies.get("noBusiness") === undefined ||
       Cookies.get("noBusiness") === null
     ) {
-      console.log("no cookie found looking in the db")
+      console.log("no cookie found looking in the db");
       firebase
         .firestore()
         .collection(USERS)
         .doc(uid)
         .get()
         .then((res) => {
-          Cookies.set("noBusiness", false, {expires: 365});
+          Cookies.set("noBusiness", false, { expires: 365 });
           if (res.data()?.noBusiness) {
             firebase
               .firestore()
@@ -69,7 +67,7 @@ const BusinessInfo = () => {
 
   return (
     <div className="business-info-container">
-      <AppHeader image="./mokolo.svg" links={HEADER_NAV} />
+      <AppHeader bb />
       <Divider />
       <div className="hero-business-info">
         <div className="hero-business-center">
@@ -94,12 +92,34 @@ const BusinessInfo = () => {
               title="Business name"
             />
             <Spacer y={0.5} />
-
             <Input
               required
               type="text"
               className="form-control"
               placeholder="e.g Nana wigs"
+              aria-label="name"
+              style={{ fontSize: 16, fontWeight: "500" }}
+            />
+            <Spacer y={0.5} />
+            <BodyText
+              type="lsb"
+              color={COLORS.grayscale_900}
+              title="Business URL"
+            />
+            <Spacer y={0.5} />
+            <Input
+              required
+              type="text"
+              className="form-control"
+              contentRightStyling={false}
+              contentRight={
+                <BodyText
+                  style={{ marginRight: 10 }}
+                  type="lr"
+                  color={COLORS.grayscale_900}
+                  title=".myeduka.com"
+                />
+              }
               aria-label="name"
               style={{ fontSize: 16, fontWeight: "500" }}
             />
