@@ -26,7 +26,7 @@ const resetPassword = () => {
     if (pwd.pwd !== pwd.resetPwd) {
       return toast.error("Please enter the same password");
     }
-    authCtx.updatePassword(pwd, setIsPasswordReset);
+    authCtx.updatePassword(setIsPasswordReset);
   };
 
   return (

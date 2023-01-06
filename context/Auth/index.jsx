@@ -47,9 +47,20 @@ export const AuthContextProvider = ({ children }) => {
         if (!res.user.emailVerified) {
           return "Please verify your email before signing in";
         }
-        if (Cookies.get("noBusiness") === "true") router.push("/businessInfo");
-
-        if (Cookies.get("noBusiness") === "false") router.push("/dashboard");
+        firebase
+          .firestore()
+          .collection(USERS)
+          .doc(res.user.uid)
+          .get()
+          .then((res) => {
+            if (res.data()?.noBusiness) {
+              Cookies.set("noBusiness", true, { expires: 365 });
+              router.push("/businessInfo");
+            } else {
+              Cookies.set("noBusiness", false, { expires: 365 });
+              router.push("/dashboard");
+            }
+          });
       },
       error: (err) => err.message,
     });
@@ -71,7 +82,7 @@ export const AuthContextProvider = ({ children }) => {
       {
         loading: "Creating your account...",
         success: (res) => {
-          Cookies.set("noBusiness", "true", { expires: 365 });
+          Cookies.set("noBusiness", true, { expires: 365 });
           firebase
             .firestore()
             .collection(USERS)
@@ -101,7 +112,7 @@ export const AuthContextProvider = ({ children }) => {
       .signInWithPopup(provider)
       .then((res) => {
         if (res.additionalUserInfo.isNewUser) {
-          Cookies.set("noBusiness", "true");
+          Cookies.set("noBusiness", true, { expires: 365 });
           firebase.firestore().collection(USERS).doc(res.user.uid).set({
             userId: res.user.uid,
             userName: res.user.displayName,
@@ -111,21 +122,32 @@ export const AuthContextProvider = ({ children }) => {
           router.push("/businessInfo");
         }
         if (!res.additionalUserInfo.isNewUser) {
-          if (Cookies.get("noBusiness") === "true")
-            router.push("/businessInfo");
-
-          if (Cookies.get("noBusiness") === "false") router.push("/dashboard");
+          firebase
+            .firestore()
+            .collection(USERS)
+            .doc(res.user.uid)
+            .get()
+            .then((res) => {
+              if (res.data()?.noBusiness) {
+                Cookies.set("noBusiness", true, { expires: 365 });
+                router.push("/businessInfo");
+              } else {
+                Cookies.set("noBusiness", false, { expires: 365 });
+                router.push("/dashboard");
+              }
+            });
         }
       })
       .catch((err) => toast.error(err.message));
   };
 
-  const updatePassword = (newPwd, setIsPasswordReset) => {
+  const updatePassword = (setIsPasswordReset) => {
     firebase
       .auth()
       .sendPasswordResetEmail(localStorage.getItem("resetEmail"))
       .then(() => {
         setIsPasswordReset(true);
+        localStorage.removeItem("resetEmail");
       })
       .catch((err) => toast.error(err.message));
   };

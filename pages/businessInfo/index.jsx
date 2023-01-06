@@ -11,11 +11,22 @@ import AppHeader from "../../components/AppHeader";
 //assets
 import { HEADER_NAV } from "../../helpers";
 
+// firebase
+import firebase from "../../firebase.config";
+import { USERS } from "../../constants";
+import toast from "react-hot-toast";
+
 const BusinessInfo = () => {
   const router = useRouter();
   const handleSubmit = () => {
-    Cookies.set("noBusiness", "false");
-    router.push("/dashboard");
+    Cookies.set("noBusiness", false);
+    firebase
+      .firestore()
+      .collection(USERS)
+      .doc(firebase.auth().currentUser.uid)
+      .update({ noBusiness: false })
+      .then(() => router.push("/dashboard"))
+      .catch((err) => toast.error(err.message));
   };
 
   return (
@@ -52,6 +63,7 @@ const BusinessInfo = () => {
               className="form-control"
               placeholder="e.g Nana wigs"
               aria-label="name"
+              style={{ fontSize: 16, fontWeight: "500" }}
             />
             <Spacer />
             <BodyText
