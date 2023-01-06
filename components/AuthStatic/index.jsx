@@ -8,10 +8,14 @@ import HeadingText from "../HeadingText";
 import { COLORS } from "../../assets/colors";
 import { Image } from "@nextui-org/react";
 
+import Illustration from "../../public/illustration.svg";
+
 const AuthStatic = ({ image }) => {
   return (
     <div className="static-content">
-      <Image src={image} width={500} height={400} />
+      <div className="linear-layout-center">
+        <Illustration aria-label="illustration" />
+      </div>
       <div className="right-container-text">
         <HeadingText
           type="h2"

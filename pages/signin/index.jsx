@@ -45,7 +45,6 @@ const Login = () => {
       <AppHeader />
       <div style={{ display: "flex" }}>
         <Modal
-          image="./mokolo.svg"
           closeModal={() => setVisible(false)}
           visible={visible}
           modalTitle="Reset your password"
@@ -149,7 +148,7 @@ const Login = () => {
           </div>
         </div>
 
-        <AuthStatic image={"./illustration.webp"} />
+        <AuthStatic />
       </div>
     </>
   );
