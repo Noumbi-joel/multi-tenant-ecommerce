@@ -1,29 +1,16 @@
 import React from "react";
 
 //comp
-import Link from "next/link";
 import BodyText from "../BodyText";
 import HeadingText from "../HeadingText";
 
 //assets
 import { COLORS } from "../../assets/colors";
-import { HEADER_NAV } from "../../helpers";
 import { Image } from "@nextui-org/react";
 
 const AuthStatic = ({ image }) => {
   return (
     <div className="static-content">
-      <div className="header-nav">
-        {HEADER_NAV.map((h) => (
-          <Link
-            key={h.id}
-            href={h.link}
-            className="header-link"
-          >
-            <BodyText type="lm" color={COLORS.primary_200} title={h.title} />
-          </Link>
-        ))}
-      </div>
       <Image src={image} width={500} height={400} />
       <div className="right-container-text">
         <HeadingText
