@@ -7,7 +7,7 @@ import { COLORS } from "../../assets/colors";
 
 import Logo from "../../public/eduka.svg";
 
-const AppHeader = ({ bg, bb }) => {
+const AppHeader = ({ bg }) => {
   const [selected, setSelected] = useState("EN");
   const [size, setSize] = useState(false);
 

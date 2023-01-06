@@ -16,7 +16,8 @@ import firebase from "../../firebase.config";
 
 const BusinessInfo = () => {
   const router = useRouter();
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     const uid = firebase.auth().currentUser.uid;
     console.log(uid);
     if (
@@ -66,126 +67,124 @@ const BusinessInfo = () => {
   };
 
   return (
-    <div className="business-info-container">
-      <AppHeader bb />
-      <Divider />
-      <div className="hero-business-info">
-        <div className="hero-business-center">
-          <HeadingText
-            type="h3"
-            color={COLORS.grayscale_900}
-            title="Tell us about your business"
-            style={{ textAlign: "center" }}
-          />
-          <BodyText
-            type="xlm"
-            color={COLORS.grayscale_600}
-            title="We'll help you get started based on your responses"
-            style={{ textAlign: "center" }}
-          />
-          <Spacer />
+    <>
+      <AppHeader />
+      <div className="business-info-container">
+        <form onSubmit={handleSubmit} className="form">
+          <div className="hero-business-info">
+            <div className="hero-business-center">
+              <HeadingText
+                type="h3"
+                color={COLORS.grayscale_900}
+                title="Tell us about your business"
+                style={{ textAlign: "center" }}
+              />
+              <BodyText
+                type="xlm"
+                color={COLORS.grayscale_600}
+                title="We'll help you get started based on your responses"
+                style={{ textAlign: "center" }}
+              />
+              <Spacer />
 
-          <div className="inputs-content">
-            <BodyText
-              type="lsb"
-              color={COLORS.grayscale_900}
-              title="Business name"
-            />
-            <Spacer y={0.5} />
-            <Input
-              required
-              type="text"
-              className="form-control"
-              placeholder="e.g Nana wigs"
-              aria-label="name"
-              style={{ fontSize: 16, fontWeight: "500" }}
-            />
-            <Spacer y={0.5} />
-            <BodyText
-              type="lsb"
-              color={COLORS.grayscale_900}
-              title="Business URL"
-            />
-            <Spacer y={0.5} />
-            <Input
-              required
-              type="text"
-              className="form-control"
-              contentRightStyling={false}
-              contentRight={
+              <div className="inputs-content">
                 <BodyText
-                  style={{ marginRight: 10 }}
-                  type="lr"
+                  type="lsb"
                   color={COLORS.grayscale_900}
-                  title=".myeduka.com"
+                  title="Business name"
                 />
-              }
-              aria-label="name"
-              style={{ fontSize: 16, fontWeight: "500" }}
-            />
-            <Spacer />
-            <BodyText
-              type="lsb"
-              color={COLORS.grayscale_900}
-              title="Select country"
-            />
-            <Spacer y={0.5} />
+                <Spacer y={0.5} />
+                <Input
+                  required
+                  type="text"
+                  className="form-control"
+                  placeholder="e.g Nana wigs"
+                  aria-label="name"
+                  style={{ fontSize: 16, fontWeight: "500" }}
+                />
+                <Spacer y={0.5} />
+                <BodyText
+                  type="lsb"
+                  color={COLORS.grayscale_900}
+                  title="Business URL"
+                />
+                <Spacer y={0.5} />
+                <Input
+                  required
+                  type="text"
+                  className="form-control"
+                  contentRightStyling={false}
+                  contentRight={
+                    <BodyText
+                      style={{ marginRight: 10 }}
+                      type="lr"
+                      color={COLORS.grayscale_900}
+                      title=".myeduka.com"
+                    />
+                  }
+                  aria-label="name"
+                  style={{ fontSize: 16, fontWeight: "500" }}
+                />
+                <Spacer />
+                <BodyText
+                  type="lsb"
+                  color={COLORS.grayscale_900}
+                  title="Select country"
+                />
+                <Spacer y={0.5} />
 
-            <div>
-              <select className="select" required>
-                <option value="fruit">Fruit</option>
-                <option value="vegetable">Vegetable</option>
-                <option value="meat">Meat</option>
-              </select>
-            </div>
+                <div>
+                  <select className="select" required>
+                    <option value="fruit">Fruit</option>
+                    <option value="vegetable">Vegetable</option>
+                    <option value="meat">Meat</option>
+                  </select>
+                </div>
 
-            <Spacer />
-            <BodyText
-              type="lsb"
-              color={COLORS.grayscale_900}
-              title="Which industry will you be operating in?"
-            />
-            <Spacer y={0.5} />
-            <div>
-              <select className="select" required>
-                <option value="Grocery/Food/Beverages">
-                  Grocery/Food/Beverages
-                </option>
-                <option value="Restaurants&Hotels">Restaurants & Hotels</option>
-                <option value="Electronics/Computer&Accessories">
-                  Electronics/Computer Accessories
-                </option>
-                <option value="Art/Painting">Art/Painting</option>
-                <option value="Home essentials/furniture">
-                  Home essentials/ furniture
-                </option>
-                <option value="Apparel/Fashion/Shoes/Accessories">
-                  Apparel/Fashion/Shoes/Accessories
-                </option>
-                <option
-                  value="Sport/Fitness/Outdoors
-"
-                >
-                  Sport/Fitness/Outdoors
-                </option>
-                <option value="Toys/Crafts/Hobbies/Gifts/Pet care">
-                  Toys/Crafts/Hobbies/Gifts/Pet care
-                </option>
-              </select>
+                <Spacer />
+                <BodyText
+                  type="lsb"
+                  color={COLORS.grayscale_900}
+                  title="Which industry will you be operating in?"
+                />
+                <Spacer y={0.5} />
+                <div>
+                  <select className="select" required>
+                    <option value="Grocery/Food/Beverages">
+                      Grocery/Food/Beverages
+                    </option>
+                    <option value="Restaurants&Hotels">
+                      Restaurants & Hotels
+                    </option>
+                    <option value="Electronics/Computer&Accessories">
+                      Electronics/Computer Accessories
+                    </option>
+                    <option value="Art/Painting">Art/Painting</option>
+                    <option value="Home essentials/furniture">
+                      Home essentials/ furniture
+                    </option>
+                    <option value="Apparel/Fashion/Shoes/Accessories">
+                      Apparel/Fashion/Shoes/Accessories
+                    </option>
+                    <option value="Sport/Fitness/Outdoors">
+                      Sport/Fitness/Outdoors
+                    </option>
+                    <option value="Toys/Crafts/Hobbies/Gifts/Pet care">
+                      Toys/Crafts/Hobbies/Gifts/Pet care
+                    </option>
+                  </select>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+          <div className="hero-business-footer">
+            <Button type="submit" className="app-btn-business">
+              Continue
+            </Button>
+          </div>
+        </form>
       </div>
-      <div className="hero-business-footer">
-        <Button
-          className="app-btn"
-          onPress={handleSubmit}
-          style={{ marginTop: 10, width: 150, marginRight: 200 }}
-        >
-          Continue
-        </Button>
-      </div>
-    </div>
+    </>
   );
 };
 
