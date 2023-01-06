@@ -165,7 +165,7 @@ const SignUp = () => {
             </div>
           </div>
         </div>
-        <AuthStatic image="./illustration.webp" />
+        <AuthStatic />
       </div>
     </>
   );

@@ -8,7 +8,7 @@ import HeadingText from "../HeadingText";
 import { COLORS } from "../../assets/colors";
 import { Image } from "@nextui-org/react";
 
-import Illustration from "../../public/illustration.svg";
+import Illustration from "../../public/Illustration.svg";
 
 const AuthStatic = ({ image }) => {
   return (
