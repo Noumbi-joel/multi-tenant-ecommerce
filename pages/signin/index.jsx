@@ -101,6 +101,7 @@ const Login = () => {
               <div className="linear-layout-flat">
                 <Checkbox
                   value={rememberMe}
+                  defaultSelected
                   onChange={(e) => setRememberMe(e.valueOf())}
                 >
                   <BodyText

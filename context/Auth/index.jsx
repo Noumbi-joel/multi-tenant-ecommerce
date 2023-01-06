@@ -31,7 +31,7 @@ export const AuthContextProvider = ({ children }) => {
       if (!user) {
         return;
       }
-      Cookies.set("user", user.email, { expires: 1 });
+      Cookies.set("user", "connected", { expires: 1 });
     });
   }, []);
 
@@ -112,6 +112,7 @@ export const AuthContextProvider = ({ children }) => {
       .signInWithPopup(provider)
       .then((res) => {
         if (res.additionalUserInfo.isNewUser) {
+          console.log("new user")
           Cookies.set("noBusiness", true, { expires: 365 });
           firebase.firestore().collection(USERS).doc(res.user.uid).set({
             userId: res.user.uid,

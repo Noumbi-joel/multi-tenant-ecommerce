@@ -121,7 +121,7 @@ const SignUp = () => {
               />
               <Spacer />
               <div className="linear-layout-center">
-                <Checkbox defaultChecked>
+                <Checkbox defaultSelected>
                   <BodyText
                     type="lm"
                     color={COLORS.grayscale_900}

@@ -14,11 +14,6 @@ const Dashboard = ({}) => {
     authCtx.logout();
   };
 
-  useEffect(() => {
-    setCookie(Cookies.get("noBusiness"));
-    console.log(JSON.stringify(firebase.auth().currentUser));
-  }, []);
-
   if (cookie === "true") {
     return (
       <Row justify="center">

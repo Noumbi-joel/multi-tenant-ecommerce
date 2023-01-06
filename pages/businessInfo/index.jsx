@@ -19,14 +19,52 @@ import toast from "react-hot-toast";
 const BusinessInfo = () => {
   const router = useRouter();
   const handleSubmit = () => {
-    Cookies.set("noBusiness", false);
-    firebase
-      .firestore()
-      .collection(USERS)
-      .doc(firebase.auth().currentUser.uid)
-      .update({ noBusiness: false })
-      .then(() => router.push("/dashboard"))
-      .catch((err) => toast.error(err.message));
+    const uid = firebase.auth().currentUser.uid;
+    console.log(uid);
+    if (
+      Cookies.get("noBusiness") === undefined ||
+      Cookies.get("noBusiness") === null
+    ) {
+      console.log("no cookie found looking in the db")
+      firebase
+        .firestore()
+        .collection(USERS)
+        .doc(uid)
+        .get()
+        .then((res) => {
+          Cookies.set("noBusiness", false, {expires: 365});
+          if (res.data()?.noBusiness) {
+            firebase
+              .firestore()
+              .collection(USERS)
+              .doc(uid)
+              .update({ noBusiness: false })
+              .then(() => router.push("/dashboard"))
+              .catch((err) => toast.error(err.message));
+            return;
+          } else {
+            return toast.error(
+              "You can just manage one business for the moment"
+            );
+          }
+        });
+    }
+    if (Cookies.get("noBusiness") === "true") {
+      console.log("no business yet");
+      Cookies.set("noBusiness", false);
+      firebase
+        .firestore()
+        .collection(USERS)
+        .doc(uid)
+        .update({ noBusiness: false })
+        .then(() => router.push("/dashboard"))
+        .catch((err) => toast.error(err.message));
+      return;
+    }
+    if (Cookies.get("noBusiness") === "false") {
+      console.log("already have a business");
+      return toast.error("You can just manage one business for the moment");
+    }
   };
 
   return (
