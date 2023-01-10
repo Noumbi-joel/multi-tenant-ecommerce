@@ -14,7 +14,7 @@ const GoogleBtn = ({ title, onClick }) => {
     <Button
       onPress={onClick}
       bordered
-      style={{ height: 56, borderColor: COLORS.grayscale_300 }}
+      style={{ height: 50, borderColor: COLORS.grayscale_300 }}
     >
       <div className="linear-layout-center">
         <Google />

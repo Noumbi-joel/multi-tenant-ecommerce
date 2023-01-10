@@ -1,7 +1,7 @@
 :root {
   /****** MAIN ******/
   /* primary colors */
-  --primary_base: #5333ee;
+  --primary_base: #624ce0;
   --primary_400: #b9adf7;
   --primary_300: #cbc2fb;
   --primary_200: #dcd6fc;
@@ -56,9 +56,9 @@ body,
 * {
   padding: 0;
   margin: 0;
-  font-family: "General Sans", sans-serif, -apple-system, BlinkMacSystemFont,
-    Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
-    Helvetica Neue !important;
+  font-family: "Plus Jakarta Display", sans-serif, -apple-system,
+    BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans,
+    Droid Sans, Helvetica Neue !important;
   box-sizing: border-box;
 }
 ::-webkit-scrollbar {
@@ -101,10 +101,8 @@ a {
 }
 
 .signin-content {
-  width: 50%;
+  width: 100%;
   height: 100vh;
-  overflow: hidden;
-  z-index: 1000;
 }
 
 .centered {
@@ -120,6 +118,9 @@ a {
   flex-direction: column;
   align-items: stretch;
   width: auto;
+  padding: 30px;
+  border: 1px solid var(--grayscale_400);
+  border-radius: 8px;
 }
 
 .text-large-medium {
@@ -148,21 +149,29 @@ a {
 
 .centered-container {
   width: 100%;
-  height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  height: 100vh;
 }
 
 .divider {
-  width: 150px;
+  width: 120px;
 }
 
 .app-btn {
   background-color: var(--primary_base);
   color: var(--white);
-  height: 56px;
-  border-radius: 12px;
+  height: 50px;
+  border-radius: 5px;
+}
+
+.auth-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 450px;
 }
 
 .app-btn-business {
@@ -186,9 +195,19 @@ a {
 }
 
 .form-control {
-  background-color: var(--grayscale_50);
-  height: 56px;
-  font-size: 16px;
+  background: var(--white) !important;
+  border: 1px solid var(--grayscale_500) !important;
+  border-radius: 5px !important;
+  height: 50px;
+  font-size: 12px;
+  font-weight: "400";
+  padding: 16px;
+}
+
+.eye {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
 }
 
 .form-control-signup {
@@ -231,7 +250,7 @@ a {
 .static-content {
   width: 50%;
   background-color: var(--primary_base);
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   padding-bottom: 50px;
@@ -268,7 +287,6 @@ a {
   height: 70px;
   display: flex;
   align-items: center;
-  position: absolute;
   padding-left: 100px;
   padding-right: 100px;
 }
@@ -341,13 +359,13 @@ a {
 
 /* RESPONSIVE FOR AUTH ONLY: SORRY!!!!!!! 🤣🤣🤣🤣 */
 @media screen and (max-width: 951px) {
-  .static-content {
+  /* .static-content {
     display: none;
-  }
-  .signin-content {
+  } */
+  /* .signin-content {
     width: 100%;
     padding: 16px;
-  }
+  } */
   .signin-content .img-container {
     width: 150px;
   }
@@ -355,7 +373,7 @@ a {
 
 @media screen and (max-width: 480px) {
   .centered-container {
-    align-items: flex-start;
+    align-items: center;
   }
 
   .centered {
@@ -405,6 +423,11 @@ a {
   }
 
   .app-btn-business {
-    width: 350px
+    width: 350px;
+  }
+  
+  .auth-footer {
+    width: 100%;
+    margin-top: 25px;
   }
 }

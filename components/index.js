@@ -6,3 +6,4 @@ export { default as GoogleBtn } from "./GoogleBtn";
 export { default as Modal } from "./Modal";
 export { default as ActiveLink } from "./ActiveLink";
 export { default as AppHeader } from "./AppHeader";
+export { default as InputField } from "./InputField";

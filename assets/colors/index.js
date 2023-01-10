@@ -1,7 +1,7 @@
 export const COLORS = {
     /****** MAIN ******/
     // primary colors
-    primary_base: '#5333EE',
+    primary_base: '#624CE0',
     primary_400: '#B9ADF7',
     primary_300: '#CBC2FB',
     primary_200: '#DCD6FC',

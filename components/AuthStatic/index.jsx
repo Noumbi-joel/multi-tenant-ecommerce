@@ -6,11 +6,10 @@ import HeadingText from "../HeadingText";
 
 //assets
 import { COLORS } from "../../assets/colors";
-import { Image } from "@nextui-org/react";
 
 import Illustration from "../../public/Illustration.svg";
 
-const AuthStatic = ({ image }) => {
+const AuthStatic = () => {
   return (
     <div className="static-content">
       <div className="linear-layout-center">

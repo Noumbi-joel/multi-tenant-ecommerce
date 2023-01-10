@@ -5,9 +5,9 @@ import {
   BodyText,
   HeadingText,
   GoogleBtn,
-  AuthStatic,
   Modal,
   AppHeader,
+  InputField,
 } from "../../components";
 import Link from "next/link";
 import { Button, Divider, Input, Spacer, Checkbox } from "@nextui-org/react";
@@ -57,35 +57,35 @@ const Login = () => {
           {/* hero section */}
           <div className="centered-container">
             <div className="centered">
+              <HeadingText
+                style={{ textAlign: "center", marginTop: 20, marginBottom: 40 }}
+                type="h4"
+                color={COLORS.grayscale_900}
+                title="Log in to your account"
+              />
               <form onSubmit={handleSubmit} className="form-container">
-                <HeadingText
-                  style={{ marginBottom: 20 }}
-                  type="h4"
-                  color={COLORS.grayscale_900}
-                  title="Login to your account"
-                />
-                <Input
+                <InputField
+                  label="Email"
                   type="email"
                   name="email"
                   required
-                  placeholder="Email"
+                  placeholder="Enter your email address"
                   className="form-control"
-                  style={{ fontSize: 16, fontWeight: "500" }}
-                  onChange={(e) => handleInput(e)}
+                  onChange={handleInput}
                   value={userInfos.email}
                   aria-label="email"
                 />
                 <Spacer />
-                <Input.Password
-                  required
-                  name="password"
-                  placeholder="Password"
-                  className="form-control"
-                  style={{ fontSize: 16, fontWeight: "500" }}
+                <InputField
+                  label="Password"
                   type="password"
-                  onChange={(e) => handleInput(e)}
-                  value={userInfos.password}
+                  name="password"
+                  required
                   aria-label="password"
+                  className="form-control"
+                  placeholder="Enter your password"
+                  onChange={handleInput}
+                  value={userInfos.password}
                 />
                 <Spacer />
                 <div className="linear-layout-flat">
@@ -103,52 +103,68 @@ const Login = () => {
                   <span onClick={() => setVisible(true)}>
                     <BodyText
                       type="lm"
-                      color={COLORS.success_base}
+                      color={COLORS.grayscale_900}
                       title="Forgot password?"
                     />
                   </span>
                 </div>
                 <Spacer y={1.2} />
                 <Button type="submit" className="app-btn">
-                  Sign in with email
+                  Log in
                 </Button>
                 <Spacer y={1.2} />
-              </form>
 
-              {/* Google Login */}
-              <div className="linear-layout-flat">
-                <Divider className="divider"/>
-                <BodyText
-                  type="lm"
-                  colors={COLORS.grayscale_600}
-                  title="Or login with"
-                />
-                <Divider className="divider" />
-              </div>
-              <Spacer />
-              <GoogleBtn title="Google" onClick={() => authCtx.googleLogin()} />
-              <Spacer />
-
-              {/* don't have an account text */}
-              <div className="linear-layout">
-                <BodyText
-                  type="lr"
-                  color={COLORS.grayscale_600}
-                  title="Don't have an account?"
-                />
-                <Link href="/signup">
+                {/* Google Login */}
+                <div className="linear-layout-flat">
+                  <Divider className="divider" />
                   <BodyText
-                    type="lb"
-                    color={COLORS.primary_base}
-                    title="Get Started"
+                    type="lm"
+                    colors={COLORS.grayscale_600}
+                    title="Or login with"
                   />
-                </Link>
-              </div>
+                  <Divider className="divider" />
+                </div>
+                <Spacer />
+                <GoogleBtn
+                  title="Google"
+                  onClick={() => authCtx.googleLogin()}
+                />
+                <Spacer />
+
+                {/* don't have an account text */}
+                <div className="linear-layout">
+                  <BodyText
+                    type="lr"
+                    color={COLORS.grayscale_600}
+                    title="Don't have an account?"
+                  />
+                  <Link href="/signup">
+                    <BodyText
+                      type="lb"
+                      color={COLORS.primary_base}
+                      title="Sign Up"
+                    />
+                  </Link>
+                </div>
+              </form>
+            </div>
+
+            <div className="auth-footer">
+              <BodyText
+                type="sr"
+                title="Privacy Policy"
+                color={COLORS.grayscale_900}
+              />
+              <BodyText
+                type="sr"
+                title="Terms of Service"
+                color={COLORS.grayscale_900}
+              />
             </div>
           </div>
         </div>
 
-        <AuthStatic />
+        {/* <AuthStatic /> */}
       </div>
     </>
   );

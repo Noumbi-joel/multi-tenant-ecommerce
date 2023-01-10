@@ -11,17 +11,17 @@ const AppHeader = ({ bg }) => {
   const [selected, setSelected] = useState("EN");
   const [size, setSize] = useState(false);
 
-  useEffect(() => {
-    window.addEventListener("resize", () => {
-      if (window.innerWidth <= 950) {
-        return setSize(true);
-      } else {
-        if (size) {
-          setSize(false);
-        }
-      }
-    });
-  }, [size]);
+  // useEffect(() => {
+  //   window.addEventListener("resize", () => {
+  //     if (window.innerWidth <= 950) {
+  //       return setSize(true);
+  //     } else {
+  //       if (size) {
+  //         setSize(false);
+  //       }
+  //     }
+  //   });
+  // }, [size]);
 
   const handleSelected = (e) => {
     setSelected(e.currentKey.toUpperCase());
@@ -31,7 +31,7 @@ const AppHeader = ({ bg }) => {
       className="app-header"
       style={{
         backgroundColor: bg ? bg : "transparent",
-        borderBottom: size && `1px solid ${COLORS.grayscale_200}`,
+        borderBottom: `1px solid ${COLORS.grayscale_200}`,
       }}
     >
       <Row justify="space-between">

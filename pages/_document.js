@@ -16,10 +16,7 @@ export default class MyDocument extends Document {
       <Html lang="en">
         <Head>
           {CssBaseline.flush()}
-          <link
-            href="https://api.fontshare.com/v2/css?f[]=general-sans@500,600,400,700&display=swap"
-            rel="stylesheet"
-          />
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/plus-jakarta-display.min.css" /> 
         </Head>
         <body>
           <Main />
