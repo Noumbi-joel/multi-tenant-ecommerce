@@ -172,15 +172,9 @@ a {
   align-items: center;
   justify-content: space-evenly;
   width: 450px;
-}
-
-.app-btn-business {
-  background-color: var(--primary_base);
-  color: var(--white);
-  height: 56px;
-  border-radius: 12px;
-  width: 150px;
-  margin-top: 20px;
+  margin-top: 100px;
+  padding-bottom: 50px;
+  cursor: pointer;
 }
 
 .extended-app-btn {
@@ -204,16 +198,20 @@ a {
   padding: 16px;
 }
 
+.form-control-sg {
+  background: var(--white) !important;
+  border: 1px solid var(--grayscale_500) !important;
+  border-radius: 5px !important;
+  height: 50px;
+  font-size: 12px;
+  font-weight: "400";
+  padding: 16px;
+}
+
 .eye {
   position: absolute;
   right: 16px;
-  bottom: 16px;
-}
-
-.form-control-signup {
-  background-color: var(--grayscale_50);
-  height: 56px;
-  font-size: 16px;
+  bottom: 10px;
 }
 
 .modal-image-container {
@@ -317,14 +315,24 @@ a {
 }
 
 .select {
-  background-color: var(--grayscale_200);
-  border: none;
-  height: 56px;
+  background-color: var(--white);
+  border: 1px solid var(--grayscale_500);
+  height: 50px;
   border-radius: 12px;
-  font-weight: 500;
-  font-size: 18px;
+  font-weight: 400;
+  font-size: 12px;
   padding: 16px;
   width: 100%;
+}
+
+.select-lang {
+  background-color: var(--grayscale_200);
+  height: 40px;
+  width: 65px;
+  border-radius: 8px;
+  font-weight: 400;
+  font-size: 12px;
+  border: none;
 }
 
 .hero-business-info {
@@ -334,10 +342,9 @@ a {
 }
 
 .hero-business-info .hero-business-center {
-  width: 820px;
+  width: 480px;
   display: flex;
   flex-direction: column;
-  margin-top: 100px;
 }
 
 .inputs-content {
@@ -348,48 +355,37 @@ a {
   border-radius: 24px;
 }
 
-.hero-business-footer {
-  border-top: 2px solid var(--grayscale_300);
-  margin-top: 60px;
-  display: flex;
-  justify-content: flex-end;
-  padding-right: 200px;
-  height: 100px;
-}
-
-/* RESPONSIVE FOR AUTH ONLY: SORRY!!!!!!! 🤣🤣🤣🤣 */
-@media screen and (max-width: 951px) {
+/* YEAH MEN I USE @MEDIA QUERY: SORRY!!!!!!! 🤣🤣🤣🤣 */
+@media screen and (max-width: 950px) {
   /* .static-content {
     display: none;
   } */
-  /* .signin-content {
-    width: 100%;
-    padding: 16px;
-  } */
+  .centered {
+    width: 650px;
+  }
+
+  .form-control-sg {
+    width: 250px;
+  }
+
   .signin-content .img-container {
     width: 150px;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .centered-container {
-    align-items: center;
-  }
-
   .centered {
     width: 350px;
     height: fit-content;
-    display: flex;
   }
 
   .app-header {
-    position: static;
     padding-right: 16px;
     padding-left: 16px;
   }
 
-  .form-control-signup {
-    width: 165px;
+  .form-control-sg {
+    width: 130px;
   }
 
   .divider {
@@ -412,22 +408,15 @@ a {
 
   .hero-business-info .hero-business-center {
     width: 350px;
-    margin-top: 100px;
-  }
-
-  .hero-business-footer {
-    border-top: 2px solid var(--grayscale_300);
-    padding-right: 0;
-    justify-content: center;
-    height: 100px;
   }
 
   .app-btn-business {
     width: 350px;
   }
-  
+
   .auth-footer {
     width: 100%;
     margin-top: 25px;
+    padding-bottom: 25px;
   }
 }

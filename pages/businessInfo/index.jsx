@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 // assets
 import { COLORS } from "../../assets/colors";
@@ -6,16 +6,35 @@ import Cookies from "js-cookie";
 import { USERS } from "../../constants";
 
 //comp
-import { Button, Divider, Input, Spacer } from "@nextui-org/react";
+import { Button, Spacer } from "@nextui-org/react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/router";
-import { BodyText, HeadingText, AppHeader } from "../../components";
+import {
+  BodyText,
+  HeadingText,
+  AppHeader,
+  InputField,
+  Select,
+  AuthFooter,
+} from "../../components";
 
 // firebase
 import firebase from "../../firebase.config";
 
 const BusinessInfo = () => {
   const router = useRouter();
+  const [businessInfos, setBusinessInfo] = useState({
+    bName: "",
+    bUrl: "",
+    bCategory: "",
+  });
+
+  const handleInput = (e) => {
+    setBusinessInfo((prev) => {
+      return { ...prev, [e.target.name]: e.target.value };
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const uid = firebase.auth().currentUser.uid;
@@ -88,99 +107,50 @@ const BusinessInfo = () => {
               <Spacer />
 
               <div className="inputs-content">
-                <BodyText
-                  type="lsb"
-                  color={COLORS.grayscale_900}
-                  title="Business name"
-                />
-                <Spacer y={0.5} />
-                <Input
-                  required
+                <InputField
+                  label="Business name"
                   type="text"
                   className="form-control"
                   placeholder="e.g Nana wigs"
-                  aria-label="name"
-                  style={{ fontSize: 16, fontWeight: "500" }}
+                  ariaLabel="bName"
+                  value={businessInfos.bName}
+                  onChange={handleInput}
                 />
-                <Spacer y={0.5} />
-                <BodyText
-                  type="lsb"
-                  color={COLORS.grayscale_900}
-                  title="Business URL"
-                />
-                <Spacer y={0.5} />
-                <Input
-                  required
+                <Spacer y={0.2} />
+                <InputField
                   type="text"
+                  label="Store link"
                   className="form-control"
-                  contentRightStyling={false}
-                  contentRight={
-                    <BodyText
-                      style={{ marginRight: 10 }}
-                      type="lr"
-                      color={COLORS.grayscale_900}
-                      title=".myeduka.com"
-                    />
-                  }
-                  aria-label="name"
-                  style={{ fontSize: 16, fontWeight: "500" }}
+                  placeholder="business name"
+                  ariaLabel="bUrl"
+                  value={businessInfos.bUrl}
+                  onChange={handleInput}
                 />
                 <Spacer />
                 <BodyText
-                  type="lsb"
-                  color={COLORS.grayscale_900}
-                  title="Select country"
-                />
-                <Spacer y={0.5} />
-
-                <div>
-                  <select className="select" required>
-                    <option value="fruit">Fruit</option>
-                    <option value="vegetable">Vegetable</option>
-                    <option value="meat">Meat</option>
-                  </select>
-                </div>
-
-                <Spacer />
-                <BodyText
-                  type="lsb"
+                  type="mr"
                   color={COLORS.grayscale_900}
                   title="Which industry will you be operating in?"
                 />
-                <Spacer y={0.5} />
-                <div>
-                  <select className="select" required>
-                    <option value="Grocery/Food/Beverages">
-                      Grocery/Food/Beverages
-                    </option>
-                    <option value="Restaurants&Hotels">
-                      Restaurants & Hotels
-                    </option>
-                    <option value="Electronics/Computer&Accessories">
-                      Electronics/Computer Accessories
-                    </option>
-                    <option value="Art/Painting">Art/Painting</option>
-                    <option value="Home essentials/furniture">
-                      Home essentials/ furniture
-                    </option>
-                    <option value="Apparel/Fashion/Shoes/Accessories">
-                      Apparel/Fashion/Shoes/Accessories
-                    </option>
-                    <option value="Sport/Fitness/Outdoors">
-                      Sport/Fitness/Outdoors
-                    </option>
-                    <option value="Toys/Crafts/Hobbies/Gifts/Pet care">
-                      Toys/Crafts/Hobbies/Gifts/Pet care
-                    </option>
-                  </select>
-                </div>
+                <Spacer y={0.2} />
+                <Select
+                  onSelect={(e) =>
+                    setBusinessInfo({
+                      ...businessInfos,
+                      bCategory: e.target.value,
+                    })
+                  }
+                />
+                <Button
+                  type="submit"
+                  className="app-btn"
+                  style={{ marginTop: 25 }}
+                >
+                  Continue
+                </Button>
               </div>
             </div>
-          </div>
-          <div className="hero-business-footer">
-            <Button type="submit" className="app-btn-business">
-              Continue
-            </Button>
+            <AuthFooter />
           </div>
         </form>
       </div>

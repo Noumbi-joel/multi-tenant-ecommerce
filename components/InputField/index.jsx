@@ -16,6 +16,7 @@ const InputField = ({
   value,
   ariaLabel,
   label,
+  className
 }) => {
   const [eye, setEye] = useState(false);
   return (
@@ -39,7 +40,7 @@ const InputField = ({
             name={name}
             required
             placeholder={placeholder}
-            className="form-control"
+            className={className}
             onChange={onChange}
             value={value}
             aria-label={ariaLabel}
@@ -64,7 +65,7 @@ const InputField = ({
           name={name}
           required
           placeholder={placeholder}
-          className="form-control"
+          className={className}
           onChange={onChange}
           value={value}
           aria-label={ariaLabel}

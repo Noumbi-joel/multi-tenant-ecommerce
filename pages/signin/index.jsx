@@ -8,6 +8,7 @@ import {
   Modal,
   AppHeader,
   InputField,
+  AuthFooter,
 } from "../../components";
 import Link from "next/link";
 import { Button, Divider, Input, Spacer, Checkbox } from "@nextui-org/react";
@@ -68,9 +69,8 @@ const Login = () => {
                   label="Email"
                   type="email"
                   name="email"
-                  required
-                  placeholder="Enter your email address"
                   className="form-control"
+                  placeholder="Enter your email address"
                   onChange={handleInput}
                   value={userInfos.email}
                   aria-label="email"
@@ -80,9 +80,8 @@ const Login = () => {
                   label="Password"
                   type="password"
                   name="password"
-                  required
-                  aria-label="password"
                   className="form-control"
+                  aria-label="password"
                   placeholder="Enter your password"
                   onChange={handleInput}
                   value={userInfos.password}
@@ -90,6 +89,7 @@ const Login = () => {
                 <Spacer />
                 <div className="linear-layout-flat">
                   <Checkbox
+                    aria-label="check"
                     value={rememberMe}
                     onChange={(e) => setRememberMe(e.valueOf())}
                   >
@@ -118,7 +118,7 @@ const Login = () => {
                 <div className="linear-layout-flat">
                   <Divider className="divider" />
                   <BodyText
-                    type="lm"
+                    type="mr"
                     colors={COLORS.grayscale_600}
                     title="Or login with"
                   />
@@ -148,19 +148,7 @@ const Login = () => {
                 </div>
               </form>
             </div>
-
-            <div className="auth-footer">
-              <BodyText
-                type="sr"
-                title="Privacy Policy"
-                color={COLORS.grayscale_900}
-              />
-              <BodyText
-                type="sr"
-                title="Terms of Service"
-                color={COLORS.grayscale_900}
-              />
-            </div>
+            <AuthFooter />
           </div>
         </div>
 

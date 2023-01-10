@@ -1,16 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 //comp
-import { Button, Image, Input, Modal } from "@nextui-org/react";
-import { HeadingText, BodyText } from "..";
+import { Button, Modal } from "@nextui-org/react";
+import { HeadingText, BodyText, InputField } from "..";
 
 //assets
 import { COLORS } from "../../assets/colors";
-import Logo from "../../public/eduka.svg"
+import Logo from "../../public/eduka.svg";
 
 // functions
 import { validateEmail } from "../../functions";
 import { useRouter } from "next/router";
+import { AuthContext } from "../../context/Auth";
 
 const ModalComp = ({
   visible,
@@ -22,19 +23,24 @@ const ModalComp = ({
 }) => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
-  const router = useRouter();
+  const authCtx = useContext(AuthContext);
 
   const handleSubmit = (e, email) => {
     e.preventDefault();
     if (!validateEmail(email)) {
       return setError("Please enter a valid email address");
     }
-    localStorage.setItem("resetEmail", email);
-    return router.push("/resetPassword");
+    authCtx.updatePassword(closeModal, email);
   };
 
   return (
-    <Modal closeButton blur open={visible} onClose={closeModal} className="modal-container">
+    <Modal
+      closeButton
+      blur
+      open={visible}
+      onClose={closeModal}
+      className="modal-container"
+    >
       <form className="form-modal" onSubmit={(e) => handleSubmit(e, email)}>
         <div className="modal-image-container">
           <Logo />
@@ -50,14 +56,12 @@ const ModalComp = ({
             title={modalBodyText}
             color={COLORS.grayscale_600}
           />
-          <Input
+          <InputField
             type="email"
-            required
             placeholder="Email"
             className="form-control"
             aria-label="email"
             value={email}
-            style={{ fontSize: 16, fontWeight: "500" }}
             onChange={(e) => setEmail(e.target.value)}
           />
           {error && <BodyText color="red" title={error} type="mm" />}

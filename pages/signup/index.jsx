@@ -6,19 +6,13 @@ import {
   HeadingText,
   Modal,
   GoogleBtn,
-  AuthStatic,
   AppHeader,
+  InputField,
+  AuthFooter,
 } from "../../components";
 
 import Link from "next/link";
-import {
-  Button,
-  Divider,
-  Input,
-  Spacer,
-  Checkbox,
-  Text,
-} from "@nextui-org/react";
+import { Button, Divider, Input, Spacer, Checkbox } from "@nextui-org/react";
 
 //assets
 import { COLORS } from "../../assets/colors";
@@ -63,64 +57,64 @@ const SignUp = () => {
           {/* hero section */}
           <div className="centered-container">
             <div className="centered">
+              <HeadingText
+                style={{
+                  marginTop: 20,
+                  marginBottom: 40,
+                  textAlign: "center",
+                }}
+                type="h4"
+                color={COLORS.grayscale_900}
+                title="Create your account"
+              />
               <form onSubmit={handleSubmit} className="form-container">
-                <HeadingText
-                  style={{ marginBottom: 20 }}
-                  type="h4"
-                  color={COLORS.grayscale_900}
-                  title="Create your account"
-                />
                 <div className="linear-layout-flat">
-                  <Input
+                  <InputField
+                    label="First name"
                     name="fName"
+                    className="form-control-sg"
                     placeholder="First name"
-                    className="form-control-signup"
-                    required
-                    style={{ fontSize: 16, fontWeight: "500" }}
                     value={userInfos.fName}
                     onChange={handleInput}
                     aria-label="fName"
                   />
-                  <Input
+                  <InputField
+                    label="Last name"
                     name="lName"
+                    className="form-control-sg"
                     placeholder="Last name"
-                    className="form-control-signup"
-                    required
-                    style={{ fontSize: 16, fontWeight: "500" }}
                     value={userInfos.lName}
                     onChange={handleInput}
                     aria-label="lName"
                   />
                 </div>
                 <Spacer />
-                <Input
+                <InputField
+                  label="Email"
                   type="email"
                   name="email"
-                  required
-                  placeholder="Email"
                   className="form-control"
+                  placeholder="Email"
                   value={userInfos.email}
                   onChange={handleInput}
-                  style={{ fontSize: 16, fontWeight: "500" }}
-                  aria-label="email"
+                  aria-label="email-s"
                 />
                 <Spacer />
-                <Input.Password
+                <InputField
+                  label="Password"
                   type="password"
                   name="password"
-                  required
-                  placeholder="Password"
                   className="form-control"
+                  placeholder="Password"
                   value={userInfos.password}
-                  style={{ fontSize: 16, fontWeight: "500" }}
                   onChange={handleInput}
-                  aria-label="password"
+                  aria-label="password-s"
                 />
                 <Spacer />
                 <div className="linear-layout">
-                  <Checkbox />
+                  <Checkbox aria-label="check-s" />
                   <div className="text-large-medium">
-                    By proceeding, you agree to the {" "}
+                    By proceeding, you agree to the{" "}
                     <div className="text-large-medium-green">
                       Terms and Conditions
                     </div>
@@ -128,44 +122,48 @@ const SignUp = () => {
                 </div>
                 <Spacer y={1.2} />
                 <Button type="submit" className="app-btn">
-                  Sign up with email
+                  Sign up
                 </Button>
                 <Spacer y={1.2} />
-              </form>
 
-              {/* Google Login */}
-              <div className="linear-layout-flat">
-                <Divider className="divider" />
-                <BodyText
-                  type="lm"
-                  colors={COLORS.grayscale_600}
-                  title="Or sign up with"
-                />
-                <Divider className="divider" />
-              </div>
-              <Spacer />
-              <GoogleBtn title="Google" onClick={() => authCtx.googleLogin()} />
-              <Spacer />
-
-              {/* don't have an account text */}
-              <div className="linear-layout">
-                <BodyText
-                  type="lr"
-                  color={COLORS.grayscale_600}
-                  title="Already have an account?"
-                />
-                <Link href="/signin">
+                {/* Google Login */}
+                <div className="linear-layout-flat">
+                  <Divider className="divider" />
                   <BodyText
-                    type="lb"
-                    color={COLORS.primary_base}
-                    title="Sign in"
+                    type="mr"
+                    colors={COLORS.grayscale_600}
+                    title="Or sign up with"
                   />
-                </Link>
-              </div>
+                  <Divider className="divider" />
+                </div>
+                <Spacer />
+                <GoogleBtn
+                  title="Google"
+                  onClick={() => authCtx.googleLogin()}
+                />
+                <Spacer />
+
+                {/* don't have an account text */}
+                <div className="linear-layout">
+                  <BodyText
+                    type="lr"
+                    color={COLORS.grayscale_600}
+                    title="Already have an account?"
+                  />
+                  <Link href="/signin">
+                    <BodyText
+                      type="lb"
+                      color={COLORS.primary_base}
+                      title="Sign in"
+                    />
+                  </Link>
+                </div>
+              </form>
             </div>
+            <AuthFooter />
           </div>
         </div>
-        <AuthStatic />
+        {/* <AuthStatic /> */}
       </div>
     </>
   );

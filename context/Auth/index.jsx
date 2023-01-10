@@ -112,7 +112,7 @@ export const AuthContextProvider = ({ children }) => {
       .signInWithPopup(provider)
       .then((res) => {
         if (res.additionalUserInfo.isNewUser) {
-          console.log("new user")
+          console.log("new user");
           Cookies.set("noBusiness", true, { expires: 365 });
           firebase.firestore().collection(USERS).doc(res.user.uid).set({
             userId: res.user.uid,
@@ -142,15 +142,18 @@ export const AuthContextProvider = ({ children }) => {
       .catch((err) => toast.error(err.message));
   };
 
-  const updatePassword = (setIsPasswordReset) => {
+  const updatePassword = (closeModal, email) => {
     firebase
       .auth()
-      .sendPasswordResetEmail(localStorage.getItem("resetEmail"))
+      .sendPasswordResetEmail(email)
       .then(() => {
-        setIsPasswordReset(true);
-        localStorage.removeItem("resetEmail");
+        closeModal();
+        toast.success("Please go and check your email or spam");
       })
-      .catch((err) => toast.error(err.message));
+      .catch((err) => {
+        closeModal();
+        toast.error(err.message);
+      });
   };
 
   const logout = async () => {
