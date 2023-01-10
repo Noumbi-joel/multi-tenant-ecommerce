@@ -189,9 +189,9 @@ a {
 }
 
 .form-control {
-  background: var(--white) !important;
-  border: 1px solid var(--grayscale_500) !important;
-  border-radius: 5px !important;
+  background: var(--white) ;
+  border: 1px solid var(--grayscale_500) ;
+  border-radius: 5px;
   height: 50px;
   font-size: 12px;
   font-weight: "400";
@@ -348,7 +348,7 @@ a {
 }
 
 .inputs-content {
-  border: 1px solid var(--grayscale_300);
+  border: 1px solid var(--grayscale_400);
   padding: 25px;
   display: flex;
   flex-direction: column;

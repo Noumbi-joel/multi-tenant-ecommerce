@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 // assets
 import { COLORS } from "../../assets/colors";
-import Cookies from "js-cookie";
-import { USERS } from "../../constants";
 
 //comp
 import { Button, Spacer } from "@nextui-org/react";
@@ -18,11 +16,12 @@ import {
   AuthFooter,
 } from "../../components";
 
-// firebase
-import firebase from "../../firebase.config";
+// context API
+import { AuthContext } from "../../context/Auth";
 
 const BusinessInfo = () => {
   const router = useRouter();
+  const authCtx = useContext(AuthContext);
   const [businessInfos, setBusinessInfo] = useState({
     bName: "",
     bUrl: "",
@@ -37,52 +36,15 @@ const BusinessInfo = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const uid = firebase.auth().currentUser.uid;
-    console.log(uid);
     if (
-      Cookies.get("noBusiness") === undefined ||
-      Cookies.get("noBusiness") === null
+      businessInfos.bName.length <= 1 ||
+      businessInfos.bUrl.length <= 1 ||
+      !businessInfos.bCategory
     ) {
-      console.log("no cookie found looking in the db");
-      firebase
-        .firestore()
-        .collection(USERS)
-        .doc(uid)
-        .get()
-        .then((res) => {
-          Cookies.set("noBusiness", false, { expires: 365 });
-          if (res.data()?.noBusiness) {
-            firebase
-              .firestore()
-              .collection(USERS)
-              .doc(uid)
-              .update({ noBusiness: false })
-              .then(() => router.push("/dashboard"))
-              .catch((err) => toast.error(err.message));
-            return;
-          } else {
-            return toast.error(
-              "You can just manage one business for the moment"
-            );
-          }
-        });
+      return toast.error("Please fill correctly the business informations");
     }
-    if (Cookies.get("noBusiness") === "true") {
-      console.log("no business yet");
-      Cookies.set("noBusiness", false);
-      firebase
-        .firestore()
-        .collection(USERS)
-        .doc(uid)
-        .update({ noBusiness: false })
-        .then(() => router.push("/dashboard"))
-        .catch((err) => toast.error(err.message));
-      return;
-    }
-    if (Cookies.get("noBusiness") === "false") {
-      console.log("already have a business");
-      return toast.error("You can just manage one business for the moment");
-    }
+
+    authCtx.saveBusiness(businessInfos);
   };
 
   return (
@@ -93,14 +55,14 @@ const BusinessInfo = () => {
           <div className="hero-business-info">
             <div className="hero-business-center">
               <HeadingText
-                type="h3"
+                type="h4"
                 color={COLORS.grayscale_900}
                 title="Tell us about your business"
                 style={{ textAlign: "center" }}
               />
               <BodyText
-                type="xlm"
-                color={COLORS.grayscale_600}
+                type="mr"
+                color={COLORS.grayscale_900}
                 title="We'll help you get started based on your responses"
                 style={{ textAlign: "center" }}
               />
@@ -110,8 +72,9 @@ const BusinessInfo = () => {
                 <InputField
                   label="Business name"
                   type="text"
+                  name="bName"
                   className="form-control"
-                  placeholder="e.g Nana wigs"
+                  placeholder="Enter the name of your business"
                   ariaLabel="bName"
                   value={businessInfos.bName}
                   onChange={handleInput}
@@ -120,27 +83,21 @@ const BusinessInfo = () => {
                 <InputField
                   type="text"
                   label="Store link"
+                  name="bUrl"
                   className="form-control"
-                  placeholder="business name"
+                  placeholder="business link"
                   ariaLabel="bUrl"
                   value={businessInfos.bUrl}
                   onChange={handleInput}
                 />
-                <Spacer />
+                <Spacer y={0.2} />
                 <BodyText
                   type="mr"
                   color={COLORS.grayscale_900}
                   title="Which industry will you be operating in?"
                 />
                 <Spacer y={0.2} />
-                <Select
-                  onSelect={(e) =>
-                    setBusinessInfo({
-                      ...businessInfos,
-                      bCategory: e.target.value,
-                    })
-                  }
-                />
+                <Select name="bCategory" onChange={handleInput} />
                 <Button
                   type="submit"
                   className="app-btn"

@@ -7,6 +7,7 @@ import EyeOff from "../../public/eye-off.svg";
 
 // comp
 import BodyText from "../BodyText";
+import { Text } from "@nextui-org/react";
 
 const InputField = ({
   type,
@@ -16,27 +17,29 @@ const InputField = ({
   value,
   ariaLabel,
   label,
-  className
+  className,
 }) => {
   const [eye, setEye] = useState(false);
-  return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        position: "relative",
-      }}
-    >
-      <BodyText
-        type="mr"
-        color={COLORS.grayscale_900}
-        title={label}
-        style={{ marginBottom: 5 }}
-      />
-      {name === "password" ? (
+
+  if (name === "bUrl") {
+    return (
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          position: "relative",
+        }}
+      >
+        <BodyText
+          type="mr"
+          color={COLORS.grayscale_900}
+          title={label}
+          style={{ marginBottom: 5 }}
+        />
+
         <>
           <input
-            type={eye ? "text" : type}
+            type={type}
             name={name}
             required
             placeholder={placeholder}
@@ -45,23 +48,35 @@ const InputField = ({
             value={value}
             aria-label={ariaLabel}
           />
-          {eye ? (
-            <EyeOff
-              className="eye"
-              aria-label="eye"
-              onClick={() => setEye(false)}
-            />
-          ) : (
-            <Eye
-              className="eye"
-              aria-label="eye"
-              onClick={() => setEye(true)}
-            />
-          )}
+          <BodyText
+            className="eye"
+            type="sr"
+            title=".myeduka.com"
+            color={COLORS.grayscale_900}
+          />
         </>
-      ) : (
+      </div>
+    );
+  }
+
+  if (name === "password") {
+    return (
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          position: "relative",
+        }}
+      >
+        <BodyText
+          type="mr"
+          color={COLORS.grayscale_900}
+          title={label}
+          style={{ marginBottom: 5 }}
+        />
+
         <input
-          type={type}
+          type={eye ? "text" : type}
           name={name}
           required
           placeholder={placeholder}
@@ -70,8 +85,38 @@ const InputField = ({
           value={value}
           aria-label={ariaLabel}
         />
-      )}
-    </div>
+        {eye ? (
+          <EyeOff
+            className="eye"
+            aria-label="eye"
+            onClick={() => setEye(false)}
+          />
+        ) : (
+          <Eye className="eye" aria-label="eye" onClick={() => setEye(true)} />
+        )}
+      </div>
+    );
+  }
+
+  return (
+    <>
+      <BodyText
+        type="mr"
+        color={COLORS.grayscale_900}
+        title={label}
+        style={{ marginBottom: 5 }}
+      />
+      <input
+        type={type}
+        name={name}
+        required
+        placeholder={placeholder}
+        className={className}
+        onChange={onChange}
+        value={value}
+        aria-label={ariaLabel}
+      />
+    </>
   );
 };
 

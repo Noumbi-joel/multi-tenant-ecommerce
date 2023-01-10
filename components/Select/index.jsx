@@ -3,14 +3,15 @@ import React from "react";
 // helpers
 import { SELECT_VALUES } from "../../helpers";
 
-const Select = ({ setSelected, lang }) => {
+const Select = ({ onChange, lang, name }) => {
   return (
     <div>
       <select
         className={lang ? "select-lang" : "select"}
-        onChange={(e) => setSelected(e.target.value)}
+        onChange={onChange}
         aria-label="select-s"
         required
+        name={name}
       >
         {!lang &&
           SELECT_VALUES.bCategory.map((v) => (

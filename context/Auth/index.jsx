@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import firebase from "../../firebase.config";
 
 //constants
-import { USERS } from "../../constants";
+import { STORES, USERS } from "../../constants";
 
 // functions
 import { validateEmail } from "../../functions";
@@ -14,13 +14,15 @@ import { validateEmail } from "../../functions";
 import Cookies from "js-cookie";
 
 import { useRouter } from "next/router";
+import axios from "axios";
 
 export const AuthContext = createContext({
-  signin: (userInfos) => {},
-  signup: (userInfos) => {},
-  googleLogin: () => {},
-  updatePassword: (newPwd) => {},
-  logout: () => {},
+  signin: async () => {},
+  signup: async () => {},
+  googleLogin: async () => {},
+  updatePassword: () => {},
+  saveBusiness: async () => {},
+  logout: async () => {},
 });
 
 export const AuthContextProvider = ({ children }) => {
@@ -92,6 +94,7 @@ export const AuthContextProvider = ({ children }) => {
               userName: fName + " " + lName,
               userEmail: res.user.email,
               noBusiness: true,
+              createAt: new Date().toISOString(),
             });
           res.user.sendEmailVerification({
             url: "http://localhost:3000/signin",
@@ -119,6 +122,7 @@ export const AuthContextProvider = ({ children }) => {
             userName: res.user.displayName,
             userEmail: res.user.email,
             noBusiness: true,
+            createAt: new Date().toISOString(),
           });
           router.push("/businessInfo");
         }
@@ -166,10 +170,88 @@ export const AuthContextProvider = ({ children }) => {
     }
   };
 
+  const saveBusiness = async ({ bName, bUrl, bCategory }) => {
+    const uid = firebase.auth().currentUser.uid;
+    Cookies.set("storeCredentials", bName + "/" + bUrl + "/" + bCategory, { expires: 365 });
+    if (
+      Cookies.get("noBusiness") === undefined ||
+      Cookies.get("noBusiness") === null
+    ) {
+      console.log("no cookie found looking in the db");
+      firebase
+        .firestore()
+        .collection(USERS)
+        .doc(uid)
+        .get()
+        .then((res) => {
+          Cookies.set("noBusiness", false, { expires: 365 });
+          if (res.data()?.noBusiness) {
+            firebase
+              .firestore()
+              .collection(USERS)
+              .doc(uid)
+              .collection(STORES)
+              .doc(bName)
+              .set({
+                storeId: uid + "/" + bName,
+                storeName: bName,
+                storeLink: bUrl,
+                storeCategory: bCategory,
+                createdAt: new Date().toISOString(),
+              });
+            firebase
+              .firestore()
+              .collection(USERS)
+              .doc(uid)
+              .update({ noBusiness: false })
+              .then(() => router.push("/dashboard"))
+              .catch((err) => toast.error(err.message));
+            return;
+          } else {
+            return toast.error(
+              "You can just manage one business for the moment"
+            );
+          }
+        })
+        .catch((e) => toast.error(e.message));
+    }
+
+    if (Cookies.get("noBusiness") === "true") {
+      console.log("no business yet");
+      Cookies.set("noBusiness", false, { expires: 365 });
+      firebase
+        .firestore()
+        .collection(USERS)
+        .doc(uid)
+        .collection(STORES)
+        .doc(bName)
+        .set({
+          storeId: uid + "/" + bName,
+          storeName: bName,
+          storeLink: bUrl,
+          storeCategory: bCategory,
+          createdAt: new Date().toISOString(),
+        });
+      firebase
+        .firestore()
+        .collection(USERS)
+        .doc(uid)
+        .update({ noBusiness: false })
+        .then(() => router.push("/dashboard"))
+        .catch((err) => toast.error(err.message));
+      return;
+    }
+    if (Cookies.get("noBusiness") === "false") {
+      console.log("already have a business");
+      return toast.error("You can just manage one business for the moment");
+    }
+  };
+
   const value = {
     updatePassword: updatePassword,
     signin: signin,
     signup: signup,
+    saveBusiness: saveBusiness,
     googleLogin: googleLogin,
     logout: logout,
   };

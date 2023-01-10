@@ -2,36 +2,43 @@ import { Button, Row } from "@nextui-org/react";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
 import React, { useContext, useEffect, useState } from "react";
+import { STORES, USERS } from "../../constants";
 import { AuthContext } from "../../context/Auth";
 
 import firebase from "../../firebase.config";
 
-const Dashboard = ({}) => {
+const Dashboard = () => {
   const authCtx = useContext(AuthContext);
-  const [cookie, setCookie] = useState("");
-  const router = useRouter();
-  const handleSignOut = () => {
-    authCtx.logout();
-  };
+  const [link, setLink] = useState("");
+  const handleSignOut = () => authCtx.logout();
 
-  if (cookie === "true") {
-    return (
-      <Row justify="center">
-        No business has been created yet Please provide at least one business
-        <div>
-          <Button onPress={() => router.push("/businessInfo")}>
-            Go to create a business
-          </Button>
-          OR
-          <Button onPress={handleSignOut}>Sign out</Button>
-        </div>
-      </Row>
-    );
-  }
+  // useEffect(() => {
+  //   console.log(firebase.auth().currentUser.uid)
+  //   async () => {
+  //     const userStore = await firebase
+  //       .firestore()
+  //       .collection(USERS)
+  //       .doc(firebase.auth().currentUser.uid)
+  //       .collection(STORES)
+  //       .get();
+
+  //     console.log(userStore.docs.map((doc) => doc.data()));
+  //   };
+  // }, []);
 
   return (
     <div>
-      Hello Admin Dashboard <Button onPress={handleSignOut}>Sign out</Button>
+      {/* <a href="" target="_blank">
+        Go to your business site
+      </a>
+      <br /> */}
+      {/* <a href="" target="_blank">
+        Go to your admin business dashboard
+      </a>{" "}
+      <br />
+      <br />
+      <br /> */}
+      <Button onPress={handleSignOut}>Sign out</Button>
     </div>
   );
 };
