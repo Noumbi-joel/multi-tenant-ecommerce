@@ -172,7 +172,6 @@ export const AuthContextProvider = ({ children }) => {
 
   const saveBusiness = async ({ bName, bUrl, bCategory }) => {
     const uid = firebase.auth().currentUser.uid;
-    Cookies.set("storeCredentials", bName + "/" + bUrl + "/" + bCategory, { expires: 365 });
     if (
       Cookies.get("noBusiness") === undefined ||
       Cookies.get("noBusiness") === null

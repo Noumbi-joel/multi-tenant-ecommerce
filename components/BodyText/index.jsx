@@ -67,7 +67,13 @@ const BodyText = ({ type, title, color, style, className }) => {
       </Text>
     ),
     mr: (
-      <Text weight="normal" style={style} color={color} size={14}>
+      <Text
+        weight="normal"
+        style={style}
+        className={className}
+        color={color}
+        size={14}
+      >
         {title}
       </Text>
     ),

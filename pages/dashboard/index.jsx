@@ -1,64 +1,49 @@
-import { Button, Row } from "@nextui-org/react";
-import Cookies from "js-cookie";
-import { useRouter } from "next/router";
-import React, { useContext, useEffect, useState } from "react";
-import { STORES, USERS } from "../../constants";
-import { AuthContext } from "../../context/Auth";
+import React, { useState } from "react";
+// import { STORES, USERS } from "../../constants";
+// import { AuthContext } from "../../context/Auth";
+// import firebase from "../../firebase.config";
+// import Cookies from "js-cookie";
+// import { useRouter } from "next/router"
 
-import firebase from "../../firebase.config";
+// comp
+import {
+  BodyText,
+  Box,
+  DashboardContainer,
+  HelpCenter,
+} from "../../components";
+
+// assets
+import { COLORS } from "../../assets/colors";
 
 const Dashboard = () => {
-  const authCtx = useContext(AuthContext);
-  const [link, setLink] = useState("");
-  const handleSignOut = () => authCtx.logout();
-
-  // useEffect(() => {
-  //   console.log(firebase.auth().currentUser.uid)
-  //   async () => {
-  //     const userStore = await firebase
-  //       .firestore()
-  //       .collection(USERS)
-  //       .doc(firebase.auth().currentUser.uid)
-  //       .collection(STORES)
-  //       .get();
-
-  //     console.log(userStore.docs.map((doc) => doc.data()));
-  //   };
-  // }, []);
-
+  const [helperVisible, setHelperVisible] = useState(true);
   return (
-    <div>
-      {/* <a href="" target="_blank">
-        Go to your business site
-      </a>
-      <br /> */}
-      {/* <a href="" target="_blank">
-        Go to your admin business dashboard
-      </a>{" "}
-      <br />
-      <br />
-      <br /> */}
-      <Button onPress={handleSignOut}>Sign out</Button>
-    </div>
+    <DashboardContainer>
+      <div className="dashboard-dynamic">
+        <div className="dashboard-content">
+          <BodyText
+            type="mr"
+            color={COLORS.grayscale_900}
+            title="Hey, John! - here's what's happening with your store."
+            className="greeting"
+          />
+          {helperVisible && (
+            <HelpCenter closeHelper={() => setHelperVisible(false)} />
+          )}
+          <div className="linear-layout-flat">
+            <Box title="TODAY'S SALES" amount="FCFA100,000" type="today-s" />
+            <Box title="TOTAL SALES" amount="FCFA750,000" type="top-s" />
+            <Box title="TOTAL ORDERS" amount="20" type="top-o" />
+          </div>
+          <div className="linear-layout-flat">
+            <Box form="topContainer" title="TOP PRODUCTS" avatar />
+            <Box form="topContainer" title="TOP CUSTOMERS" />
+          </div>
+        </div>
+      </div>
+    </DashboardContainer>
   );
 };
 
 export default Dashboard;
-
-// export async function getStaticProps(context) {
-//   const noBusiness = firebase
-//     .firestore()
-//     .collection(USERS)
-//     .doc(firebase.auth().currentUser.uid)
-//     .get()
-//     .then((res) => res.data().noBusiness)
-//     .catch((err) => toast.error("An errror occurred"));
-
-//   console.log(noBusiness);
-
-//   return {
-//     props: {
-//       noBusiness: noBusiness,
-//     },
-//   };
-// }

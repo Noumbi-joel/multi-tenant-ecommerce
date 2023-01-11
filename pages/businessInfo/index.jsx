@@ -44,7 +44,8 @@ const BusinessInfo = () => {
       return toast.error("Please fill correctly the business informations");
     }
 
-    authCtx.saveBusiness(businessInfos);
+    // authCtx.saveBusiness(businessInfos);
+    router.push("/dashboard");
   };
 
   return (

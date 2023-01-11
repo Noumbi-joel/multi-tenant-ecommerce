@@ -1,33 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 //comp
 import { Row } from "@nextui-org/react";
+import { BodyText, Select } from "..";
 
+// assets
 import { COLORS } from "../../assets/colors";
-
 import Logo from "../../public/eduka.svg";
-import { Select } from "..";
+import Store from "../../public/store.svg";
 
-const AppHeader = ({ bg }) => {
+const AppHeader = ({ bg, dashboard }) => {
   const [selected, setSelected] = useState("EN");
-  const [size, setSize] = useState(false);
-
-  // useEffect(() => {
-  //   window.addEventListener("resize", () => {
-  //     if (window.innerWidth <= 950) {
-  //       return setSize(true);
-  //     } else {
-  //       if (size) {
-  //         setSize(false);
-  //       }
-  //     }
-  //   });
-  // }, [size]);
-
-  // const handleSelected = (e) => {
-  //   setSelected(e.current.value);
-  //   console.log(e.target.value)
-  // };
   return (
     <div
       className="app-header"
@@ -36,9 +19,23 @@ const AppHeader = ({ bg }) => {
         borderBottom: `1px solid ${COLORS.grayscale_200}`,
       }}
     >
-      <Row justify="space-between">
-        <Logo />
-        <Select lang setSelected={setSelected} />
+      <Row justify={dashboard ? "flex-end" : "space-between"}>
+        {dashboard ? (
+          <>
+            <Store aria-label="store" />
+            <BodyText
+              type="mr"
+              title="Visit store"
+              color={COLORS.grayscale_900}
+              style={{ marginLeft: 10 }}
+            />
+          </>
+        ) : (
+          <>
+            <Logo aria-label="logo" />
+            <Select lang setSelected={setSelected} />
+          </>
+        )}
       </Row>
     </div>
   );

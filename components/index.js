@@ -9,3 +9,8 @@ export { default as AppHeader } from "./AppHeader";
 export { default as InputField } from "./InputField";
 export { default as AuthFooter } from "./AuthFooter";
 export { default as Select } from "./Select";
+export { default as DashboardContainer } from "./DashboardContainer";
+export { default as VerticalHeader } from "./VerticalHeader";
+export { default as HelpCenter } from "./HelpCenter";
+export { default as Box } from "./Box";
+export { default as ProductListItem } from "./ProductListItem";
