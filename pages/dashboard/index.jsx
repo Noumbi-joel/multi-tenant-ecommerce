@@ -40,6 +40,7 @@ const Dashboard = () => {
             <Box form="topContainer" title="TOP PRODUCTS" avatar />
             <Box form="topContainer" title="TOP CUSTOMERS" />
           </div>
+          <HelpCenter community />
         </div>
       </div>
     </DashboardContainer>

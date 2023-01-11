@@ -18,26 +18,32 @@ import { Avatar } from "@nextui-org/react";
 const VerticalHeader = () => {
   return (
     <div className="vertical-header-container">
-      <div className="app-logo">
-        <Eduka aria-label="app-logo" />
-      </div>
-      <div className="vertical-header-items">
-        {VERTICAL_HEADER_ITEMS.map((item, i) => (
-          <Link href={item.link} className="vertical-header-item" key={item.id}>
-            <div className="linear-layout">
-              {item.icon}
-              <BodyText
-                type="lr"
-                style={{ marginLeft: 10 }}
-                color={COLORS.white}
-                title={item.value}
-              />
-            </div>
-            {i === 2 && (
-              <Avatar color="error" textColor="white" rounded text="7" />
-            )}
-          </Link>
-        ))}
+      <div>
+        <div className="app-logo">
+          <Eduka aria-label="app-logo" />
+        </div>
+        <div className="vertical-header-items">
+          {VERTICAL_HEADER_ITEMS.map((item, i) => (
+            <Link
+              href={item.link}
+              className="vertical-header-item"
+              key={item.id}
+            >
+              <div className="linear-layout">
+                {item.icon}
+                <BodyText
+                  type="lr"
+                  style={{ marginLeft: 10 }}
+                  color={COLORS.white}
+                  title={item.value}
+                />
+              </div>
+              {i === 2 && (
+                <Avatar color="error" textColor="white" rounded text="7" />
+              )}
+            </Link>
+          ))}
+        </div>
       </div>
       <div className="vertical-footer">
         <Avatar squared text="JD" />
