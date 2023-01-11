@@ -14,3 +14,5 @@ export { default as VerticalHeader } from "./VerticalHeader";
 export { default as HelpCenter } from "./HelpCenter";
 export { default as Box } from "./Box";
 export { default as ProductListItem } from "./ProductListItem";
+export { default as Dropdown } from "./Dropdown";
+export { default as FilterBtn } from "./FilterBtn";

@@ -403,10 +403,6 @@ a {
   background-color: var(--primary_base);
 }
 
-.active {
-  background-color: var(--primary_base);
-}
-
 .vertical-footer {
   width: 100%;
   height: 65px;
@@ -506,6 +502,114 @@ a {
 
 .product-item:hover {
   background-color: var(--grayscale_100);
+}
+
+.dropdown {
+  width: 200px;
+  height: fit-content;
+  background-color: var(--white);
+  border-radius: 4px;
+  position: absolute;
+  left: 15.5%;
+  bottom: 1%;
+  padding: 8px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.dropdown-filter {
+  width: 200px;
+  height: fit-content;
+  background-color: var(--white);
+  border-radius: 4px;
+  position: absolute;
+  right: 0;
+  padding: 8px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.dropdown-item {
+  display: flex;
+  height: 35px;
+  cursor: pointer;
+  align-items: center;
+}
+
+.dropdown-item:nth-child(1) {
+  background-color: var(--grayscale_100);
+}
+
+.dropdown-item:hover {
+  background-color: var(--grayscale_100);
+  border-radius: 4px;
+}
+
+/* DASHBOARD / PRODUCTS */
+.search-product {
+  height: 50px;
+  width: 500px;
+  padding: 10px 50px;
+  font-size: 14px;
+  font-weight: "400";
+  border: 1px solid var(--grayscale_400);
+  border-radius: 4px;
+}
+
+.search-product::placeholder {
+  font-weight: "400";
+  font-size: 14px;
+}
+
+.search-p {
+  position: absolute;
+  bottom: 15px;
+  left: 10px;
+}
+
+.filters {
+  height: 50px;
+  width: 200px;
+  background-color: var(--grayscale_200);
+}
+
+.divider-item {
+  height: 1px;
+  background-color: var(--grayscale_300);
+  margin-top: 24px;
+}
+
+.product-item-search {
+  border-radius: 4px;
+  width: 56px;
+  height: 56px;
+  margin-top: 16px;
+}
+
+.draft {
+  border: 1px solid var(--primary_base);
+  border-radius: 50px;
+  padding: 0 5px;
+}
+
+.modal-header {
+  position: relative;
+  height: 60px;
+  background-color: var(--grayscale_300);
+}
+
+.sm-cross {
+}
+
+.modal-header .rounded {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  background-color: var(--grayscale_400);
+  border-radius: 50px;
+  top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 8px;
 }
 
 /* YEAH MEN I USE @MEDIA QUERY: SORRY!!!!!!! 🤣🤣🤣🤣 */

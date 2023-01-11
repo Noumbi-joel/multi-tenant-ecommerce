@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { COLORS } from "../../assets/colors";
 import Eye from "../../public/eye.svg";
 import EyeOff from "../../public/eye-off.svg";
+import Search from "../../public/search.svg";
 
 // comp
 import BodyText from "../BodyText";
@@ -94,6 +95,30 @@ const InputField = ({
         ) : (
           <Eye className="eye" aria-label="eye" onClick={() => setEye(true)} />
         )}
+      </div>
+    );
+  }
+
+  if (name === "products") {
+    return (
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          position: "relative",
+        }}
+      >
+        <input
+          type={type}
+          name={name}
+          required
+          placeholder={placeholder}
+          className={className}
+          onChange={onChange}
+          value={value}
+          aria-label={ariaLabel}
+        />
+        <Search className="search-p" aria-label="search-p" />
       </div>
     );
   }

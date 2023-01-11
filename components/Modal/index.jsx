@@ -1,12 +1,13 @@
 import React, { useContext, useState } from "react";
 
 //comp
-import { Button, Modal } from "@nextui-org/react";
+import { Button, Modal, Text } from "@nextui-org/react";
 import { HeadingText, BodyText, InputField } from "..";
 
 //assets
 import { COLORS } from "../../assets/colors";
 import Logo from "../../public/eduka.svg";
+import SmCross from "../../public/sm-cross.svg";
 
 // functions
 import { validateEmail } from "../../functions";
@@ -20,6 +21,9 @@ const ModalComp = ({
   modalBodyText,
   modalLink,
   modalBtnText,
+  dashboard,
+  modalBodyTextOne,
+  modalBodyTextTwo,
 }) => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
@@ -32,6 +36,60 @@ const ModalComp = ({
     }
     authCtx.updatePassword(closeModal, email);
   };
+
+  if (dashboard) {
+    return (
+      <div>
+        <Modal
+          aria-labelledby="modal-title"
+          open={visible}
+          onClose={closeModal}
+        >
+          <div className="modal-header">
+            <div className="rounded" onClick={closeModal}>
+              <SmCross className="sm-cross" />
+            </div>
+          </div>
+          <Modal.Body>
+            <HeadingText
+              type="h4"
+              title={modalTitle}
+              color={COLORS.grayscale_900}
+            />
+
+            <BodyText
+              type="mr"
+              title={modalBodyTextOne}
+              color={COLORS.grayscale_600}
+            />
+
+            <BodyText
+              type="mr"
+              title={modalBodyTextTwo}
+              color={COLORS.grayscale_600}
+            />
+          </Modal.Body>
+
+          <Modal.Footer>
+            <Button
+              auto
+              style={{ backgroundColor: COLORS.grayscale_400, borderRadius: 4 }}
+              onPress={closeModal}
+            >
+              <BodyText type="lr" title="Cancel" color={COLORS.white} />
+            </Button>
+            <Button
+              auto
+              style={{ backgroundColor: COLORS.danger_base, borderRadius: 4 }}
+              onPress={closeModal}
+            >
+              <BodyText type="lr" title="Delete" color={COLORS.white} />
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </div>
+    );
+  }
 
   return (
     <Modal

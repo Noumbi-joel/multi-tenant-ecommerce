@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 // helpers
 import { VERTICAL_HEADER_ITEMS } from "../../helpers";
@@ -12,10 +12,12 @@ import DotVertical from "../../public/Dots.svg";
 import Link from "next/link";
 
 // comp
-import { BodyText } from "..";
+import { BodyText, Dropdown } from "..";
 import { Avatar } from "@nextui-org/react";
 
 const VerticalHeader = () => {
+  const [dropdownVisible, setDropdownVisible] = useState(false);
+  const [active, setActive] = useState("D");
   return (
     <div className="vertical-header-container">
       <div>
@@ -54,7 +56,11 @@ const VerticalHeader = () => {
             style={{ marginLeft: 10 }}
             title="John Doe"
           />
-          <DotVertical aria-label="dots" />
+          <DotVertical
+            aria-label="dots"
+            onClick={() => setDropdownVisible(!dropdownVisible)}
+          />
+          {dropdownVisible && <Dropdown />}
         </div>
       </div>
     </div>

@@ -7,6 +7,10 @@ import Plugin from "../public/plugin-icon.svg";
 import Theme from "../public/theme-icon.svg";
 import Setting from "../public/setting-icon.svg";
 
+import Account from "../public/account.svg";
+import SettingA from "../public/setting.svg";
+import Logout from "../public/logout.svg";
+
 export const HEADER_NAV = [
   { id: 1, title: "Products", link: "/products" },
   { id: 2, title: "Features", link: "/features" },
@@ -79,4 +83,10 @@ export const PRODUCTS = [
   { id: 3, image: "", title: "Cotton Sweater", nbSales: 10 },
   { id: 4, image: "", title: "Boyfriend sweater", nbSales: 10 },
   { id: 5, image: "", title: "Full zip sweater", nbSales: 10 },
+];
+
+export const ACTIONS = [
+  { id: 1, title: "Account", icon: <Account aria-label="account" /> },
+  { id: 2, title: "Help center", icon: <SettingA aria-label="setting" /> },
+  { id: 3, title: "Logout", icon: <Logout aria-label="logout" /> },
 ];
