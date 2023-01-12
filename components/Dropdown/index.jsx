@@ -4,24 +4,41 @@ import { BodyText } from "..";
 import { COLORS } from "../../assets/colors";
 import { AuthContext } from "../../context/Auth";
 
-const Dropdown = ({ filters }) => {
+const Dropdown = ({ filters, last, data }) => {
   const { logout } = useContext(AuthContext);
 
-  // if (filters) {
-  //   <div className="dropdown-filter">
-  //     {ACTIONS.map((a) => (
-  //       <div key={a.id}>
-  //         <div style={{ marginRight: 6 }}>{a.icon}</div>
-  //         <BodyText type="mr" title={a.title} color={COLORS.grayscale_900} />
-  //       </div>
-  //     ))}
-  //     <BodyText
-  //       type="sr"
-  //       title="v1.0.0 Terms of service"
-  //       color={COLORS.grayscale_500}
-  //     />
-  //   </div>;
-  // }
+  if (filters) {
+    return (
+      <div className="dropdown-filter">
+        {filters &&
+          data.map((a, i) => (
+            <BodyText
+              style={{ padding: 5 }}
+              type="mr"
+              title={a.title}
+              color={COLORS.grayscale_900}
+              className="product-action"
+            />
+          ))}
+      </div>
+    );
+  }
+
+  if (last) {
+    return (
+      <div className="dropdown-filter">
+        {data.map((a, i) => (
+          <BodyText
+            style={{ padding: 5 }}
+            type="mr"
+            title={a.title}
+            color={COLORS.grayscale_900}
+            className="product-action"
+          />
+        ))}
+      </div>
+    );
+  }
 
   return (
     <div className="dropdown">

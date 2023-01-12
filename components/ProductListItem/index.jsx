@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 // comp
 import { Avatar, Checkbox, Divider } from "@nextui-org/react";
@@ -9,20 +9,26 @@ import { COLORS } from "../../assets/colors";
 import RightArrowMd from "../../public/right-arrow-md.svg";
 import VerticalDots from "../../public/VerticalDots.svg";
 
-const ProductListItem = ({ image, title, nbSales, avatar, type, draft, onClick }) => {
+const ProductListItem = ({
+  image,
+  title,
+  nbSales,
+  avatar,
+  type,
+  draft,
+  onClick,
+  price,
+  stock,
+}) => {
   if (type === "search-p") {
     return (
       <div>
         <div className="linear-layout-flat">
           <Checkbox>
-            <img
-              src="https://i1.adis.ws/i/fv/PRODZFRSP000000000050217_rene_3-seater-fabric-sofa__lifestyle?$medium$&w=579&fmt=webp"
-              alt="res"
-              className="product-item-search"
-            />
+            <img src={image} alt="res" className="product-item-search" />
             <BodyText
               type="mr"
-              title="Shelves"
+              title={title}
               color={COLORS.grayscale_900}
               style={{ marginLeft: 20, marginRight: 20 }}
             />
@@ -34,20 +40,17 @@ const ProductListItem = ({ image, title, nbSales, avatar, type, draft, onClick }
           </Checkbox>
           <BodyText
             type="mr"
-            title="FCFA32,500"
+            title={price}
             color={COLORS.grayscale_900}
             style={{ marginLeft: 20 }}
           />
           <BodyText
             type="mr"
-            title="23 in stock"
+            title={stock}
             color={COLORS.grayscale_900}
             style={{ marginLeft: 20 }}
           />
-          <VerticalDots
-            aria-label="v-dots"
-            onClick={onClick}
-          />
+          <VerticalDots aria-label="v-dots" onClick={onClick} />
         </div>
         <Divider style={{ marginTop: 16 }} />
       </div>

@@ -90,3 +90,51 @@ export const ACTIONS = [
   { id: 2, title: "Help center", icon: <SettingA aria-label="setting" /> },
   { id: 3, title: "Logout", icon: <Logout aria-label="logout" /> },
 ];
+
+export const PRODUCT_ITEM = [
+  {
+    id: 1,
+    image:
+      "https://i1.adis.ws/i/fv/PRODZFRSP000000000050217_rene_3-seater-fabric-sofa__lifestyle?$medium$&w=579&fmt=webp",
+    title: "Sofa",
+    price: "FCFA32,500",
+    stock: "23 in stock",
+  },
+  {
+    id: 2,
+    image:
+      "http://cdn.shopify.com/s/files/1/2660/5106/products/73170500_S1_800x.jpg?v=1570051074",
+    title: "Sofa",
+    price: "FCFA32,500",
+    stock: "23 in stock",
+  },
+  {
+    id: 3,
+    image:
+      "https://cdn-images.article.com/products/SKU312A/2890x1500/image88310.jpg?fit=max&w=1200&q=100",
+    title: "Sofa",
+    price: "FCFA32,500",
+    stock: "23 in stock",
+  },
+  {
+    id: 4,
+    image:
+      "https://images.tcdn.com.br/img/img_prod/936739/sofa_retratil_reclinavel_1_80m_de_largura_modelo_berlim_1333_1_beb8f865110501f1ff37754bd57c78c1.jpg",
+    title: "Sofa",
+    price: "FCFA32,500",
+    stock: "23 in stock",
+  },
+];
+
+export const FILTERS = [
+  { id: 1, title: "All products" },
+  { id: 2, title: "Published" },
+  { id: 3, title: "Draft" },
+  { id: 4, title: "Hidden" },
+];
+
+export const UPDATES = [
+  { id: 1, title: "Last updated" },
+  { id: 2, title: "Name" },
+  { id: 3, title: "In stock" },
+];

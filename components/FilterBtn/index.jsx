@@ -8,29 +8,38 @@ import { COLORS } from "../../assets/colors";
 // comp
 import { BodyText, Dropdown } from "..";
 import { Button } from "@nextui-org/react";
+import { FILTERS, UPDATES } from "../../helpers";
 
 const FilterBtn = ({ title, type }) => {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
+  const [lastUpdate, setLastUpdate] = useState(false);
   return (
-    <>
-    <Button
-      icon={
-        type === "filter" ? (
-          <Filter aria-label="filter" />
-        ) : (
-          <Expand aria-label="expand" />
-        )
-      }
-      className="filters"
-    >
-      <BodyText
-        type="lr"
-        title={title}
-        color={COLORS.grayscale_900}
-        style={{ marginLeft: 15 }}
-      />
-    </Button>
-    </>
+    <div style={{ position: "relative" }}>
+      <Button
+        icon={
+          type === "filter" ? (
+            <Filter aria-label="filter" />
+          ) : (
+            <Expand aria-label="expand" />
+          )
+        }
+        className="filters"
+        onClick={
+          type === "filter"
+            ? () => setVisible(!visible)
+            : () => setLastUpdate(!lastUpdate)
+        }
+      >
+        <BodyText
+          type="lr"
+          title={title}
+          color={COLORS.grayscale_900}
+          style={{ marginLeft: 15 }}
+        />
+      </Button>
+      {visible && <Dropdown filters data={FILTERS} />}
+      {lastUpdate && <Dropdown last data={UPDATES} />}
+    </div>
   );
 };
 
