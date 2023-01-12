@@ -17,9 +17,9 @@ export default function App({ Component, pageProps }) {
     <NextUIProvider>
       <Layout>
         <Toaster />
-          <AuthContextProvider>
-                <Component {...pageProps} />
-          </AuthContextProvider>
+        <AuthContextProvider>
+          <Component {...pageProps} />
+        </AuthContextProvider>
       </Layout>
     </NextUIProvider>
   );

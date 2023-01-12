@@ -25,6 +25,7 @@ import Trash from "../../../public/trash.svg";
 
 const Products = () => {
   const [search, setSearch] = useState("");
+  const [selectProd, setSelectProd] = useState(true);
   const [modalVisible, setModalVisible] = useState(false);
   const router = useRouter();
   return (
@@ -37,6 +38,7 @@ const Products = () => {
       <div className="dashboard-dynamic">
         <div className="dashboard-content">
           <div className="linear-layout-flat">
+            {/* Page description */}
             <div className="linear-layout">
               <HeadingText
                 type="h3"
@@ -46,31 +48,54 @@ const Products = () => {
               />
               <HeadingText type="h3" title="7" color={COLORS.grayscale_500} />
             </div>
-
-            <div className="linear-layout" onClick={() => setSelectProd(false)}>
-              <BodyText
-                type="lr"
-                title="7 selected"
-                color={COLORS.grayscale_900}
-                style={{ marginRight: 20 }}
-              />
-              <div className="product-selected-btn-outline">
+            {!selectProd && (
+              <Button
+                icon={<Plus aria-label="plus" />}
+                style={{
+                  backgroundColor: COLORS.primary_base,
+                  width: 175,
+                  height: 50,
+                  borderRadius: 4,
+                }}
+                onClick={() => router.push("/dashboard/products/create")}
+              >
                 <BodyText
                   type="lr"
-                  title="Discard"
-                  color={COLORS.primary_base}
+                  title="Create product"
+                  color={COLORS.white}
                 />
-              </div>
+              </Button>
+            )}
+            {selectProd && (
               <div
+                className="linear-layout"
                 onClick={() => setSelectProd(false)}
-                className="product-selected-btn"
               >
-                <Trash aria-label="trash" />
-                <BodyText type="lr" title="Delete" color={COLORS.white} />
+                <BodyText
+                  type="lr"
+                  title="7 selected"
+                  color={COLORS.grayscale_900}
+                  style={{ marginRight: 20 }}
+                />
+                <div className="product-selected-btn-outline">
+                  <BodyText
+                    type="lr"
+                    title="Discard"
+                    color={COLORS.primary_base}
+                  />
+                </div>
+                <div
+                  onClick={() => setSelectProd(false)}
+                  className="product-selected-btn"
+                >
+                  <Trash aria-label="trash" />
+                  <BodyText type="lr" title="Delete" color={COLORS.white} />
+                </div>
               </div>
-            </div>
+            )}
           </div>
 
+          {/* Search input & actions */}
           <div className="linear-layout-flat" style={{ marginTop: 70 }}>
             <InputField
               type="text"
@@ -85,6 +110,7 @@ const Products = () => {
             <FilterBtn title="Sort by last updated" />
           </div>
 
+          {/* Row descriptor of table */}
           <div className="linear-layout-flat" style={{ marginTop: 50 }}>
             <Checkbox>
               <BodyText
@@ -104,6 +130,7 @@ const Products = () => {
 
           <Divider className="divider-item" />
 
+          {/* List of products */}
           {PRODUCT_ITEM.map((p, i) => (
             <ProductListItem
               key={p.id}

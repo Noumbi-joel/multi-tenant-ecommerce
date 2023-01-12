@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 // helpers
 import { VERTICAL_HEADER_ITEMS } from "../../helpers";
@@ -17,7 +17,8 @@ import { Avatar } from "@nextui-org/react";
 
 const VerticalHeader = () => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
-  const [active, setActive] = useState("D");
+  const link = useRef(null);
+
   return (
     <div className="vertical-header-container">
       <div>
@@ -30,6 +31,7 @@ const VerticalHeader = () => {
               href={item.link}
               className="vertical-header-item"
               key={item.id}
+              ref={link}
             >
               <div className="linear-layout">
                 {item.icon}

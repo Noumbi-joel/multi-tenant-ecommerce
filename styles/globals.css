@@ -390,7 +390,7 @@ a {
   border-radius: 4px;
 }
 
-.vertical-header-item:nth-child(1) {
+.active {
   background-color: var(--primary_base);
 }
 
@@ -638,6 +638,130 @@ a {
   border: 1px solid var(--primary_base);
   margin-right: 10px;
   cursor: pointer;
+}
+
+/* CREATE PRODUCT */
+
+.inputs-container {
+  height: 95vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+.inputs-container .create-left-container {
+  border-right: 1px solid var(--grayscale_300);
+  width: 70%;
+  padding: 20px 10px;
+}
+
+.inputs-container .create-right-container {
+  width: 30%;
+  padding: 35px 15px;
+}
+
+.select-status-text {
+  font-size: 12px;
+  color: var(--grayscale_900);
+}
+
+.status {
+  width: 100%;
+}
+
+.categories {
+  height: 50px;
+  padding: 10px 45px;
+  border: 1px solid var(--grayscale_400);
+  border-radius: 4px;
+  font-size: 14px;
+  color: var(--grayscale_900);
+}
+
+.categories::placeholder {
+  font-size: 14px;
+  color: var(--grayscale_400);
+}
+
+.cross-black {
+  position: absolute;
+  right: 5px;
+  top: 34px;
+}
+
+.fcfa {
+  position: absolute;
+  right: 10px;
+  top: 40px;
+}
+
+.tags {
+  height: 50px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--grayscale_400);
+  border-radius: 4px;
+  font-size: 14px;
+  color: var(--grayscale_900);
+}
+
+.price {
+  height: 50px;
+  width: 330px;
+  padding: 10px;
+  border: 1px solid var(--grayscale_400);
+  border-radius: 4px;
+  font-size: 14px;
+  color: var(--grayscale_900);
+}
+
+.trash {
+  margin-top: 25px;
+}
+
+.attr {
+  height: 50px;
+  width: 300px;
+  padding: 10px;
+  border: 1px solid var(--grayscale_400);
+  border-radius: 4px;
+  font-size: 14px;
+  color: var(--grayscale_900);
+}
+
+.tags::placeholder {
+  font-size: 14px;
+  color: var(--grayscale_400);
+}
+
+.inventory::placeholder {
+  font-size: 14px;
+  color: var(--grayscale_400);
+}
+
+.inventory {
+  height: 50px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--grayscale_400);
+  border-radius: 4px;
+  font-size: 14px;
+  color: var(--grayscale_900);
+}
+
+.file-container {
+  border: 1px solid var(--grayscale_400);
+  border-style: dashed;
+  height: 200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.file {
+  display: none;
 }
 
 /* YEAH MEN I USE @MEDIA QUERY: SORRY!!!!!!! 🤣🤣🤣🤣 */
