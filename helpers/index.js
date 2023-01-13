@@ -46,6 +46,12 @@ export const VERTICAL_HEADER_ITEMS = [
     icon: <Product aria-label="product" />,
   },
   {
+    id: 7,
+    value: "Categories",
+    link: "/dashboard/products/categories",
+    icon: "",
+  },
+  {
     id: 3,
     value: "Orders",
     link: "/dashboard/orders",
@@ -99,7 +105,7 @@ export const PRODUCT_ITEM = [
     title: "Sofa",
     price: "FCFA32,500",
     stock: "23 in stock",
-    visible: false
+    visible: false,
   },
   {
     id: 2,
@@ -108,7 +114,7 @@ export const PRODUCT_ITEM = [
     title: "Sofa",
     price: "FCFA32,500",
     stock: "23 in stock",
-    visible: false
+    visible: false,
   },
   {
     id: 3,
@@ -117,7 +123,7 @@ export const PRODUCT_ITEM = [
     title: "Sofa",
     price: "FCFA32,500",
     stock: "23 in stock",
-    visible: false
+    visible: false,
   },
   {
     id: 4,
@@ -126,7 +132,7 @@ export const PRODUCT_ITEM = [
     title: "Sofa",
     price: "FCFA32,500",
     stock: "23 in stock",
-    visible: false
+    visible: false,
   },
 ];
 
@@ -141,4 +147,29 @@ export const UPDATES = [
   { id: 1, title: "Last updated" },
   { id: 2, title: "Name" },
   { id: 3, title: "In stock" },
+];
+
+export const CATEGORY_ITEMS = [
+  {
+    id: 1,
+    image:
+      "https://i1.adis.ws/i/fv/PRODZFRSP000000000050217_rene_3-seater-fabric-sofa__lifestyle?$medium$&w=579&fmt=webp",
+    title: "Men",
+    slug: "men",
+    items: "0",
+  },
+  {
+    id: 2,
+    image:
+      "http://cdn.shopify.com/s/files/1/2660/5106/products/73170500_S1_800x.jpg?v=1570051074",
+    title: "Women",
+    slug: "men",
+    items: "0",
+  },
+];
+
+export const FILTERS_CAT = [
+  { id: 1, title: "All categories" },
+  { id: 2, title: "Published" },
+  { id: 3, title: "Draft" },
 ];

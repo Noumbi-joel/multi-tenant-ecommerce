@@ -1,8 +1,4 @@
 import React, { useState } from "react";
-// import { STORES, USERS } from "../../constants";
-// import { AuthContext } from "../../context/Auth";
-// import firebase from "../../firebase.config";
-// import Cookies from "js-cookie";
 import { useRouter } from "next/router";
 
 // comp
@@ -10,18 +6,15 @@ import {
   BodyText,
   Button,
   DashboardContainer,
-  FilterBtn,
   HeadingText,
-  InputField,
   Modal,
-  ProductListItem,
+  SearchFilter,
+  Table,
 } from "../../../components";
-import { Checkbox, Divider } from "@nextui-org/react";
 
 // assets
 import { COLORS } from "../../../assets/colors";
 import Plus from "../../../public/Plus.svg";
-import { PRODUCT_ITEM } from "../../../helpers";
 import Trash from "../../../public/trash.svg";
 
 const Products = () => {
@@ -94,53 +87,18 @@ const Products = () => {
           </div>
 
           {/* Search input & actions */}
-          <div className="linear-layout-flat" style={{ marginTop: 70 }}>
-            <InputField
-              type="text"
-              name="products"
-              placeholder="Search products"
-              onChange={(e) => setSearch(e.target.value)}
-              value={search}
-              ariaLabel="search-p"
-              className="search-product"
-            />
-            <FilterBtn type="filter" title="Show all products" />
-            <FilterBtn title="Sort by last updated" />
-          </div>
+          <SearchFilter
+            value={search}
+            filterTitle="Show all products"
+            onChange={(e) => setSearch(e.target.value)}
+          />
 
-          {/* Row descriptor of table */}
-          <div className="linear-layout-flat" style={{ marginTop: 50 }}>
-            <Checkbox>
-              <BodyText
-                type="mr"
-                title="Displaying: 7 of 7 items"
-                color={COLORS.grayscale_900}
-              />
-            </Checkbox>
-            <BodyText type="mr" title="Price" color={COLORS.grayscale_900} />
-            <BodyText
-              type="mr"
-              title="Inventory"
-              color={COLORS.grayscale_900}
-            />
-            <div />
-          </div>
-
-          <Divider className="divider-item" />
-
-          {/* List of products */}
-          {PRODUCT_ITEM.map((p, i) => (
-            <ProductListItem
-              key={p.id}
-              type="search-p"
-              image={p.image}
-              price={p.price}
-              stock={p.stock}
-              title={p.title}
-              draft={i === 2 && true}
-              onClick={() => setModalVisible(true)}
-            />
-          ))}
+          <Table
+            tableHeaderTitle="Displaying: 7 of 7 items"
+            tableHeaderOne="Price"
+            tableHeaderTwo="Inventory"
+            onClick={() => setModalVisible(true)}
+          />
         </div>
       </div>
     </DashboardContainer>

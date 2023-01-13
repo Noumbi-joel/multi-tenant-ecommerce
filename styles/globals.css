@@ -643,6 +643,15 @@ a {
   cursor: pointer;
 }
 
+.cat-btn {
+  height: 50px;
+  width: 190px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* CREATE PRODUCT */
 
 .inputs-container {
@@ -668,7 +677,7 @@ a {
 }
 
 .active {
-  background-color: var(--primary_base)
+  background-color: var(--primary_base);
 }
 
 .status {
@@ -823,17 +832,60 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .plus {
   margin-right: 5px;
 }
 
+.no-category {
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.editProdBtn {
+  width: 185px;
+  height: 40px;
+  padding: 8px;
+  border: 1px solid var(--grayscale_900);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.deleteProd {
+  width: 185px;
+  height: 40px;
+  padding: 8px;
+  border: 1px solid var(--danger_base);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.grayBtn {
+  background-color: var(--grayscale_400);
+  height: 50px;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+.redBtn {
+  background-color: var(--danger_base);
+  height: 50px;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
 /* YEAH MEN I USE @MEDIA QUERY: SORRY!!!!!!! 🤣🤣🤣🤣 */
 @media screen and (max-width: 950px) {
-  /* .static-content {
-    display: none;
-  } */
   .centered {
     width: 650px;
   }

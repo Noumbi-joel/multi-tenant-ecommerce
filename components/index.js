@@ -19,3 +19,5 @@ export { default as FilterBtn } from "./FilterBtn";
 export { default as TipTap } from "./TipTap";
 export { default as FileContainer } from "./FileContainer";
 export { default as Button } from "./Button";
+export { default as SearchFilter } from "./SearchFilter";
+export { default as Table } from "./Table";

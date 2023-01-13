@@ -8,9 +8,9 @@ import { COLORS } from "../../assets/colors";
 // comp
 import { BodyText, Dropdown } from "..";
 import { Button } from "@nextui-org/react";
-import { FILTERS, UPDATES } from "../../helpers";
+import { FILTERS, FILTERS_CAT, UPDATES, UPDATES_CAT } from "../../helpers";
 
-const FilterBtn = ({ title, type }) => {
+const FilterBtn = ({ title, type, cat }) => {
   const [visible, setVisible] = useState(false);
   const [lastUpdate, setLastUpdate] = useState(false);
   return (
@@ -37,7 +37,7 @@ const FilterBtn = ({ title, type }) => {
           style={{ marginLeft: 15 }}
         />
       </Button>
-      {visible && <Dropdown filters data={FILTERS} />}
+      {visible && <Dropdown filters data={cat ? FILTERS_CAT : FILTERS} />}
       {lastUpdate && <Dropdown last data={UPDATES} />}
     </div>
   );

@@ -64,7 +64,14 @@ const ProductListItem = ({
   return (
     <div className="product-item">
       <div className="linear-layout">
-        {avatar && <Avatar squared text="JD" />}
+        {avatar && (
+          <img
+            src={
+              "https://images.ctfassets.net/lh3zuq09vnm2/yBDals8aU8RWtb0xLnPkI/19b391bda8f43e16e64d40b55561e5cd/How_tracking_user_behavior_on_your_website_can_improve_customer_experience.png"
+            }
+            className="product-item-search"
+          />
+        )}
         <div>
           <BodyText type="mm" title={title} color={COLORS.grayscale_900} />
           <BodyText type="mr" title={nbSales} color={COLORS.grayscale_900} />

@@ -33,7 +33,7 @@ const ModalComp = ({
   sndBtnClassName,
   firstBtnClassName,
   firstBtnTitleColor,
-  sndBtnTitleColor
+  sndBtnTitleColor,
 }) => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
@@ -49,22 +49,32 @@ const ModalComp = ({
 
   if (productEdit) {
     return (
-      <Modal closeButton blur open={visible} onClose={closeModal}>
-        <div style={{ marginTop: 20 }} />
+      <Modal css={{width: "fit-content"}} closeButton blur open={visible} onClose={closeModal}>
+        <div style={{ marginTop: 10 }} />
         <Modal.Body>
-          <Button color="dark" bordered icon={<Edit aria-label="red" />}>
-            Edit product
-          </Button>
-          <Button color="dark" bordered icon={<Hide aria-label="red" />}>
-            Hide product
+          <Button
+            titleType="mr"
+            title="Edit product"
+            titleColor={COLORS.grayscale_900}
+            className="editProdBtn"
+          >
+            <Edit aria-label="red" style={{ marginRight: 5 }} />
           </Button>
           <Button
-            color="error"
-            bordered
-            icon={<TrashRed aria-label="red" />}
-            className="del-prod"
+            titleType="mr"
+            title="Hide product"
+            titleColor={COLORS.grayscale_900}
+            className="editProdBtn"
           >
-            Delete product
+            <Hide aria-label="red" style={{ marginRight: 5 }} />
+          </Button>
+          <Button
+            titleType="mr"
+            title="Delete product"
+            titleColor={COLORS.danger_base}
+            className="deleteProd"
+          >
+            <TrashRed aria-label="red" style={{ marginRight: 5 }} />
           </Button>
         </Modal.Body>
       </Modal>

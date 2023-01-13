@@ -49,7 +49,7 @@ const VerticalHeader = () => {
                   title={item.value}
                 />
               </div>
-              {i === 2 && (
+              {item.value === "Products" && (
                 <Avatar color="error" textColor="white" rounded text="7" />
               )}
             </Link>
