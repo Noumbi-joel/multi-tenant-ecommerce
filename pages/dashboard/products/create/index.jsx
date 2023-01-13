@@ -1,12 +1,14 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 
 // comp
 import {
   BodyText,
+  Button,
   DashboardContainer,
   HeadingText,
   InputField,
   Modal,
+  TipTap,
 } from "../../../../components";
 import { Checkbox, Divider, Spacer } from "@nextui-org/react";
 
@@ -15,7 +17,7 @@ import { COLORS } from "../../../../assets/colors";
 import { FormControl, MenuItem, Select } from "@mui/material";
 import PurplePlus from "../../../../public/purple-plus.svg";
 import Trash from "../../../../public/covered-trash.svg";
-import Upload from "../../../../public/upload.svg";
+import FileContainer from "../../../../components/FileContainer";
 
 const Products = () => {
   const [select, setSelect] = useState({
@@ -30,6 +32,7 @@ const Products = () => {
     price: "",
     salePrice: "",
     attribute: "",
+    desc: "",
   });
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -48,7 +51,15 @@ const Products = () => {
       <Modal
         closeModal={() => setModalVisible(false)}
         visible={modalVisible}
-        productEdit
+        firstBtnTitle="Leave"
+        secondBtnTitle="Save Changes"
+        modalTitle="You have unsaved changes"
+        modalBodyTextOne="Are you sure you want to leave ?"
+        sndBtnClassName="purpleBtn"
+        firstBtnClassName="purpleBtnOutline"
+        firstBtnTitleColor={COLORS.primary_base}
+        sndBtnTitleColor={COLORS.white}
+        dashboard
       />
       <div className="dashboard-dynamic">
         <div className="dashboard-content">
@@ -61,16 +72,22 @@ const Products = () => {
               style={{ marginRight: 20 }}
             />
             <div className="linear-layout">
-              <div className="product-selected-btn-outline">
-                <BodyText type="lr" title="Back" color={COLORS.primary_base} />
-              </div>
-              <div
-                onClick={() => {}}
-                className="product-selected-btn"
+              <Button
+                className="product-selected-btn-outline"
+                onClick={() => setModalVisible(true)}
+                title="Back"
+                titleType="lr"
+                titleColor={COLORS.primary_base}
+              />
+
+              <Button
+                className="product-selected-btn-outline"
+                onClick={() => setModalVisible(true)}
+                title="Delete"
+                titleType="lr"
+                titleColor={COLORS.white}
                 style={{ backgroundColor: COLORS.primary_base }}
-              >
-                <BodyText type="lr" title="Delete" color={COLORS.white} />
-              </div>
+              />
             </div>
           </div>
 
@@ -91,29 +108,25 @@ const Products = () => {
                 onChange={(e) => handleInputs(e, true)}
               />
               <Spacer />
-              {/* Media file */}
-              <BodyText type="mr" title="Media" color={COLORS.grayscale_900} />
 
-              <div className="file-container">
-                <input
-                  type="file"
-                  accept="image/png, image/jpg, image/gif, image/jpeg"
-                  className="file"
-                //   ref={input}
-                />
-                <Upload aria-label="upload" />
-                <BodyText
-                  type="lr"
-                  title="Drag drop some files here, or click to select files"
-                  color={COLORS.grayscale_900}
-                />
-                <BodyText
-                  type="sr"
-                  title="1080 x 1080 (1:1) recommended, up to 2MB each."
-                  color="#A2A2A2"
-                />
-              </div>
+              {/* Text editor */}
+              <BodyText
+                type="mr"
+                title="Description"
+                color={COLORS.grayscale_900}
+              />
+              <TipTap
+                value={inputs.desc}
+                onChange={(e) =>
+                  handleInputs({ ...inputs, desc: e.target.value })
+                }
+                editor
+              />
+
               <Spacer />
+              {/* Media file */}
+
+              <FileContainer />
 
               {/* Price & sale */}
               <div className="linear-layout-flat">
@@ -159,7 +172,7 @@ const Products = () => {
               </div>
 
               <Spacer />
-              <Checkbox defaultSelected>
+              <Checkbox>
                 <BodyText
                   type="mr"
                   title="This product is variable: has different colors, size, weight, etc."
@@ -277,15 +290,9 @@ const Products = () => {
           </div>
         </div>
       </div>
+      <div style={{ marginTop: 100 }} />
     </DashboardContainer>
   );
 };
 
 export default Products;
-
-{
-  /* <Input
-            type="file"
-            accept="image/png, image/jpg, image/gif, image/jpeg"
-          /> */
-}

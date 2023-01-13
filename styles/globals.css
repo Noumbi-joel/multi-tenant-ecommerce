@@ -358,7 +358,7 @@ a {
 /* DASHBOARD */
 .dashboard-container {
   width: 100%;
-  height: 120vh;
+  height: fit-content;
   display: flex;
 }
 
@@ -367,7 +367,7 @@ a {
   flex-direction: column;
   justify-content: space-between;
   width: 15%;
-  height: 120vh;
+  height: 100vh;
   background-color: var(--grayscale_900);
 }
 
@@ -419,7 +419,7 @@ a {
 }
 
 .right-container {
-  height: 100vh;
+  height: fit-content;
   width: 85%;
 }
 
@@ -513,11 +513,13 @@ a {
   left: 15.5%;
   bottom: 1%;
   padding: 8px;
+  z-index: 1000;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .dropdown-filter {
   width: 200px;
+  z-index: 1000;
   height: fit-content;
   background-color: var(--white);
   border-radius: 4px;
@@ -539,6 +541,7 @@ a {
   display: flex;
   height: 35px;
   cursor: pointer;
+  z-index: 1000;
   align-items: center;
 }
 
@@ -664,6 +667,10 @@ a {
   color: var(--grayscale_900);
 }
 
+.active {
+  background-color: var(--primary_base)
+}
+
 .status {
   width: 100%;
 }
@@ -764,6 +771,64 @@ a {
   display: none;
 }
 
+.desc {
+  height: 75px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--grayscale_400);
+  border-radius: 4px;
+  font-size: 14px;
+  color: var(--grayscale_900);
+}
+
+.editor {
+  background-color: var(--grayscale_400);
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.editor .editor-content {
+  width: 50%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.input-editor {
+  border: 1px solid var(--grayscale_400);
+}
+
+.purpleBtn {
+  background-color: var(--primary_base);
+  height: 50px;
+  width: fit-content;
+  padding: 8px 10px;
+  border-radius: 4px;
+}
+
+.purpleBtnOutline {
+  border: 1px solid var(--primary_base);
+  height: 50px;
+  width: fit-content;
+  padding: 8px 10px;
+  border-radius: 4px;
+  width: 77px;
+}
+
+.create-prod {
+  background-color: var(--primary_base);
+  width: 175px;
+  height: 50px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.plus {
+  margin-right: 5px;
+}
+
 /* YEAH MEN I USE @MEDIA QUERY: SORRY!!!!!!! 🤣🤣🤣🤣 */
 @media screen and (max-width: 950px) {
   /* .static-content {
@@ -790,7 +855,7 @@ a {
 
   .app-header {
     padding-right: 16px;
-    padding-left: 16px;
+    padding: 16px;
   }
 
   .form-control-sg {

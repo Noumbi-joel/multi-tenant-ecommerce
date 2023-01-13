@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 // comp
 import {
   BodyText,
+  Button,
   DashboardContainer,
   FilterBtn,
   HeadingText,
@@ -15,7 +16,7 @@ import {
   Modal,
   ProductListItem,
 } from "../../../components";
-import { Button, Checkbox, Divider } from "@nextui-org/react";
+import { Checkbox, Divider } from "@nextui-org/react";
 
 // assets
 import { COLORS } from "../../../assets/colors";
@@ -50,20 +51,13 @@ const Products = () => {
             </div>
             {!selectProd && (
               <Button
-                icon={<Plus aria-label="plus" />}
-                style={{
-                  backgroundColor: COLORS.primary_base,
-                  width: 175,
-                  height: 50,
-                  borderRadius: 4,
-                }}
+                className="create-prod"
                 onClick={() => router.push("/dashboard/products/create")}
+                title="Create product"
+                titleColor={COLORS.white}
+                titleType="lr"
               >
-                <BodyText
-                  type="lr"
-                  title="Create product"
-                  color={COLORS.white}
-                />
+                <Plus className="plus" aria-label="plus" />
               </Button>
             )}
             {selectProd && (
@@ -77,20 +71,24 @@ const Products = () => {
                   color={COLORS.grayscale_900}
                   style={{ marginRight: 20 }}
                 />
-                <div className="product-selected-btn-outline">
-                  <BodyText
-                    type="lr"
-                    title="Discard"
-                    color={COLORS.primary_base}
-                  />
-                </div>
-                <div
-                  onClick={() => setSelectProd(false)}
+
+                <Button
+                  className="product-selected-btn-outline"
+                  onClick={() => {}}
+                  title="Discard"
+                  titleColor={COLORS.primary_base}
+                  titleType="lr"
+                />
+
+                <Button
                   className="product-selected-btn"
+                  onClick={() => setSelectProd(false)}
+                  title="Delete"
+                  titleColor={COLORS.white}
+                  titleType="lr"
                 >
                   <Trash aria-label="trash" />
-                  <BodyText type="lr" title="Delete" color={COLORS.white} />
-                </div>
+                </Button>
               </div>
             )}
           </div>
@@ -158,6 +156,10 @@ export default Products;
         modalBodyTextOne="Removed products can't be restored."
         modalBodyTextTwo="Products with order and cart history won't be deleted"
         dashboard
+        firstBtn="Cancel"
+        secondBtn="Delete"
+        firstBtnStyle={{ backgroundColor: COLORS.grayscale_400, borderRadius: 4 }}
+        secondBtnStyle={{ backgroundColor: COLORS.danger_base, borderRadius: 4 }}
       />
       <Modal
         closeModal={() => setModalVisibleTwo(false)}
@@ -166,4 +168,8 @@ export default Products;
         modalBodyTextOne="Removed products can't be restored."
         modalBodyTextTwo="Products with order and cart history won't be deleted"
         dashboard
+        firstBtn="Cancel"
+        secondBtn="Delete"
+        firstBtnStyle={{ backgroundColor: COLORS.grayscale_400, borderRadius: 4 }}
+        secondBtnStyle={{ backgroundColor: COLORS.danger_base, borderRadius: 4 }}
       /> */

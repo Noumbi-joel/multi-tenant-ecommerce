@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 // comp
 import { Avatar, Checkbox, Divider } from "@nextui-org/react";
-import { BodyText } from "..";
+import { BodyText, Dropdown } from "..";
 
 // assets
 import { COLORS } from "../../assets/colors";
@@ -19,6 +19,7 @@ const ProductListItem = ({
   onClick,
   price,
   stock,
+  modalVisible,
 }) => {
   if (type === "search-p") {
     return (
@@ -50,7 +51,10 @@ const ProductListItem = ({
             color={COLORS.grayscale_900}
             style={{ marginLeft: 20 }}
           />
-          <VerticalDots aria-label="v-dots" onClick={onClick} />
+          <div style={{ position: "relative" }}>
+            <VerticalDots aria-label="v-dots" onClick={onClick} />
+            {modalVisible && <Dropdown />}
+          </div>
         </div>
         <Divider style={{ marginTop: 16 }} />
       </div>

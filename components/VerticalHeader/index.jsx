@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 
 // helpers
 import { VERTICAL_HEADER_ITEMS } from "../../helpers";
@@ -14,10 +14,16 @@ import Link from "next/link";
 // comp
 import { BodyText, Dropdown } from "..";
 import { Avatar } from "@nextui-org/react";
+import { AuthContext } from "../../context/Auth";
 
 const VerticalHeader = () => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const link = useRef(null);
+  const [active, setActive] = useState("dashboard");
+
+  const handleClick = (item) => {
+   
+  };
 
   return (
     <div className="vertical-header-container">
@@ -29,9 +35,10 @@ const VerticalHeader = () => {
           {VERTICAL_HEADER_ITEMS.map((item, i) => (
             <Link
               href={item.link}
-              className="vertical-header-item"
+              className={"vertical-header-item"}
               key={item.id}
               ref={link}
+              onClick={() => handleClick(item)}
             >
               <div className="linear-layout">
                 {item.icon}

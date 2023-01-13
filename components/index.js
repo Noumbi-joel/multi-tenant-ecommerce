@@ -16,3 +16,6 @@ export { default as Box } from "./Box";
 export { default as ProductListItem } from "./ProductListItem";
 export { default as Dropdown } from "./Dropdown";
 export { default as FilterBtn } from "./FilterBtn";
+export { default as TipTap } from "./TipTap";
+export { default as FileContainer } from "./FileContainer";
+export { default as Button } from "./Button";

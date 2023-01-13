@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
 
 //comp
-import { Button, Modal, Text } from "@nextui-org/react";
-import { HeadingText, BodyText, InputField } from "..";
+import { Modal, Text } from "@nextui-org/react";
+import { HeadingText, BodyText, InputField, Button } from "..";
 
 //assets
 import { COLORS } from "../../assets/colors";
@@ -28,6 +28,12 @@ const ModalComp = ({
   modalBodyTextOne,
   modalBodyTextTwo,
   productEdit,
+  firstBtnTitle,
+  secondBtnTitle,
+  sndBtnClassName,
+  firstBtnClassName,
+  firstBtnTitleColor,
+  sndBtnTitleColor
 }) => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
@@ -95,19 +101,20 @@ const ModalComp = ({
 
         <Modal.Footer>
           <Button
-            auto
-            style={{ backgroundColor: COLORS.grayscale_400, borderRadius: 4 }}
-            onPress={closeModal}
-          >
-            <BodyText type="lr" title="Cancel" color={COLORS.white} />
-          </Button>
+            className={firstBtnClassName}
+            onClick={closeModal}
+            title={firstBtnTitle}
+            titleType="lr"
+            titleColor={firstBtnTitleColor}
+          />
+
           <Button
-            auto
-            style={{ backgroundColor: COLORS.danger_base, borderRadius: 4 }}
-            onPress={closeModal}
-          >
-            <BodyText type="lr" title="Delete" color={COLORS.white} />
-          </Button>
+            className={sndBtnClassName}
+            onClick={closeModal}
+            title={secondBtnTitle}
+            titleType="lr"
+            titleColor={sndBtnTitleColor}
+          />
         </Modal.Footer>
       </Modal>
     );

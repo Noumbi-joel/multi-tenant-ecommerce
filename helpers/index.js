@@ -99,6 +99,7 @@ export const PRODUCT_ITEM = [
     title: "Sofa",
     price: "FCFA32,500",
     stock: "23 in stock",
+    visible: false
   },
   {
     id: 2,
@@ -107,6 +108,7 @@ export const PRODUCT_ITEM = [
     title: "Sofa",
     price: "FCFA32,500",
     stock: "23 in stock",
+    visible: false
   },
   {
     id: 3,
@@ -115,6 +117,7 @@ export const PRODUCT_ITEM = [
     title: "Sofa",
     price: "FCFA32,500",
     stock: "23 in stock",
+    visible: false
   },
   {
     id: 4,
@@ -123,6 +126,7 @@ export const PRODUCT_ITEM = [
     title: "Sofa",
     price: "FCFA32,500",
     stock: "23 in stock",
+    visible: false
   },
 ];
 
