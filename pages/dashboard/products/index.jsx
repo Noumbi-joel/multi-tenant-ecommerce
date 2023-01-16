@@ -12,6 +12,9 @@ import {
   Table,
 } from "../../../components";
 
+// redux
+import { useDispatch, useSelector } from "react-redux";
+
 // assets
 import { COLORS } from "../../../assets/colors";
 import Plus from "../../../public/Plus.svg";
@@ -20,10 +23,23 @@ import Trash from "../../../public/trash.svg";
 const Products = () => {
   const [search, setSearch] = useState("");
   const [selectProd, setSelectProd] = useState(true);
-  const [modalVisible, setModalVisible] = useState(false);
   const router = useRouter();
+  const dispatch = useDispatch();
+
+  const products = useSelector((state) => state.products.products);
+  const { modalSingleItem, itemName } = useSelector((state) => state.modal);
+
   return (
     <DashboardContainer>
+      <Modal
+        closeModal={() => dispatch({ type: "closeSingleModal" })}
+        visible={modalSingleItem}
+        modalTitle={`Remove "${itemName}"?`}
+        modalBodyTextOne="Removed products can't be restored."
+        modalBodyTextTwo="Products with order and cart history won't be deleted"
+        dashboard
+        remove
+      />
       <div className="dashboard-dynamic">
         <div className="dashboard-content">
           <div className="linear-layout-flat">
@@ -93,6 +109,7 @@ const Products = () => {
             tableHeaderOne="Price"
             tableHeaderTwo="Inventory"
             productList
+            data={products}
           />
         </div>
       </div>
@@ -102,18 +119,7 @@ const Products = () => {
 
 export default Products;
 
-/**<Modal
-        closeModal={() => setModalVisible(false)}
-        visible={modalVisible}
-        modalTitle='Remove "Sofas"?'
-        modalBodyTextOne="Removed products can't be restored."
-        modalBodyTextTwo="Products with order and cart history won't be deleted"
-        dashboard
-        firstBtn="Cancel"
-        secondBtn="Delete"
-        firstBtnStyle={{ backgroundColor: COLORS.grayscale_400, borderRadius: 4 }}
-        secondBtnStyle={{ backgroundColor: COLORS.danger_base, borderRadius: 4 }}
-      />
+/*
       <Modal
         closeModal={() => setModalVisibleTwo(false)}
         visible={modalVisibleTwo}

@@ -170,6 +170,10 @@ a {
   color: var(--white);
   height: 50px;
   border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  cursor: pointer;
 }
 
 .auth-footer {
@@ -522,6 +526,31 @@ a {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.item-edit {
+  width: 200px;
+  height: fit-content;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  overflow: hidden;
+  padding: 8px;
+  right: 0px;
+  background-color: var(--white);
+  z-index: 1000;
+}
+
+.item-edit-content {
+  display: flex;
+  margin-top: 8px;
+  cursor: pointer;
+}
+
+.item-edit-content:hover{
+  background-color: var(--grayscale_100)
+}
+
 .dropdown-filter {
   width: 200px;
   z-index: 1000;
@@ -623,6 +652,7 @@ a {
   align-items: center;
   justify-content: center;
   right: 8px;
+  cursor: pointer;
 }
 
 .product-selected-btn {
@@ -853,33 +883,12 @@ a {
   align-items: center;
 }
 
-.editProdBtn {
-  width: 185px;
-  height: 40px;
-  padding: 8px;
-  border: 1px solid var(--grayscale_900);
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-
-.deleteProd {
-  width: 185px;
-  height: 40px;
-  padding: 8px;
-  border: 1px solid var(--danger_base);
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-
 .grayBtn {
   background-color: var(--grayscale_400);
   height: 50px;
   padding: 8px 16px;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 .redBtn {
@@ -887,6 +896,7 @@ a {
   height: 50px;
   padding: 8px 16px;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 /* YEAH MEN I USE @MEDIA QUERY: SORRY!!!!!!! 🤣🤣🤣🤣 */

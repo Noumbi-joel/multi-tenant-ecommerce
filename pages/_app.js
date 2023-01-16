@@ -12,15 +12,21 @@ import { Toaster } from "react-hot-toast";
 // context API
 import { AuthContextProvider } from "../context/Auth";
 
+// redux
+import { store } from "../store";
+import { Provider } from "react-redux";
+
 export default function App({ Component, pageProps }) {
   return (
-    <NextUIProvider>
-      <Layout>
-        <Toaster />
-        <AuthContextProvider>
-          <Component {...pageProps} />
-        </AuthContextProvider>
-      </Layout>
-    </NextUIProvider>
+    <Provider store={store}>
+      <NextUIProvider>
+        <Layout>
+          <Toaster />
+          <AuthContextProvider>
+            <Component {...pageProps} />
+          </AuthContextProvider>
+        </Layout>
+      </NextUIProvider>
+    </Provider>
   );
 }

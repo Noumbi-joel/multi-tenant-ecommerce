@@ -1,5 +1,4 @@
 import React from "react";
-import { COLORS } from "../../assets/colors";
 import BodyText from "../BodyText";
 
 const Button = ({

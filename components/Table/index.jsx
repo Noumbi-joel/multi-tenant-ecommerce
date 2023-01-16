@@ -1,21 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 
 // comp
 import { Checkbox, Divider } from "@nextui-org/react";
 import BodyText from "../BodyText";
-import { ProductList, ProductListItem } from "..";
+import { ProductList } from "..";
 
 // assets
 import { COLORS } from "../../assets/colors";
-import { CATEGORY_ITEMS, PRODUCTS } from "../../helpers";
 
 const Table = ({
   tableHeaderTitle,
   tableHeaderOne,
   tableHeaderTwo,
   productList,
+  data,
 }) => {
-  const [products, setProducts] = useState(PRODUCTS);
   return (
     <div>
       <div className="linear-layout-flat" style={{ marginTop: 50 }}>
@@ -40,7 +39,7 @@ const Table = ({
       </div>
       <Divider className="divider-item" />
 
-      {productList && <ProductList data={products} />}
+      {productList && <ProductList data={data} />}
 
       {/* {CATEGORY_ITEMS.map((c, i) => (
         <ProductListItem

@@ -1,5 +1,12 @@
-// import { configureStore } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 
-// export const store = configureStore({
-//   reducer: {},
-// });
+// slices
+import modalSlice from "./slices/modal";
+import productSlice from "./slices/products";
+
+export const store = configureStore({
+  reducer: {
+    modal: modalSlice,
+    products: productSlice
+  },
+});

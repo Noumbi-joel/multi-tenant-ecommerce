@@ -1,7 +1,7 @@
 import React from "react";
 
 // comp
-import ListItem from "../ListItem";
+import { ListItem } from "..";
 
 const ProductList = ({ data }) => {
   return (

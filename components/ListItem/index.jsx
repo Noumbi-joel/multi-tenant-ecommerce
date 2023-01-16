@@ -1,15 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 
 // comp
-import { Avatar, Checkbox, Divider } from "@nextui-org/react";
+import { Checkbox, Divider } from "@nextui-org/react";
 import { BodyText, Dropdown } from "..";
 
 // assets
 import { COLORS } from "../../assets/colors";
 import RightArrowMd from "../../public/right-arrow-md.svg";
 import VerticalDots from "../../public/VerticalDots.svg";
+import { ITEM_ACTIONS } from "../../helpers";
+
+// redux
+import { useDispatch } from "react-redux";
 
 const ListItem = ({ avatar, type, draft, item }) => {
+  const dispatch = useDispatch();
   if (type === "itemList") {
     return (
       <div>
@@ -41,8 +46,15 @@ const ListItem = ({ avatar, type, draft, item }) => {
             style={{ marginLeft: 20 }}
           />
           <div style={{ position: "relative" }}>
-            <VerticalDots aria-label="v-dots" />
-            <Dropdown />
+            <VerticalDots
+              aria-label="v-dots"
+              onClick={() =>
+                dispatch({ type: "handleModalVisible", payload: item.id })
+              }
+            />
+            {item.visible && (
+              <Dropdown item={item} itemEdit data={ITEM_ACTIONS} />
+            )}
           </div>
         </div>
         <Divider style={{ marginTop: 16 }} />

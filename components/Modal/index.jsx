@@ -25,15 +25,9 @@ const ModalComp = ({
   modalLink,
   modalBtnText,
   dashboard,
+  remove,
   modalBodyTextOne,
   modalBodyTextTwo,
-  productEdit,
-  firstBtnTitle,
-  secondBtnTitle,
-  sndBtnClassName,
-  firstBtnClassName,
-  firstBtnTitleColor,
-  sndBtnTitleColor,
 }) => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
@@ -47,38 +41,17 @@ const ModalComp = ({
     authCtx.updatePassword(closeModal, email);
   };
 
-  if (productEdit) {
-    return (
-      <Modal css={{width: "fit-content"}} closeButton blur open={visible} onClose={closeModal}>
-        <div style={{ marginTop: 10 }} />
-        <Modal.Body>
-          <Button
-            titleType="mr"
-            title="Edit product"
-            titleColor={COLORS.grayscale_900}
-            className="editProdBtn"
-          >
-            <Edit aria-label="red" style={{ marginRight: 5 }} />
-          </Button>
-          <Button
-            titleType="mr"
-            title="Hide product"
-            titleColor={COLORS.grayscale_900}
-            className="editProdBtn"
-          >
-            <Hide aria-label="red" style={{ marginRight: 5 }} />
-          </Button>
-          <Button
-            titleType="mr"
-            title="Delete product"
-            titleColor={COLORS.danger_base}
-            className="deleteProd"
-          >
-            <TrashRed aria-label="red" style={{ marginRight: 5 }} />
-          </Button>
-        </Modal.Body>
-      </Modal>
-    );
+  {
+    /*
+      @params: 
+        closeModal
+        visible
+        modalTitle
+        modalBodyTextOne
+        modalBodyTextTwo
+        dashboard 
+        remove
+    */
   }
 
   if (dashboard) {
@@ -86,7 +59,7 @@ const ModalComp = ({
       <Modal aria-labelledby="modal-title" open={visible} onClose={closeModal}>
         <div className="modal-header">
           <div className="rounded" onClick={closeModal}>
-            <SmCross className="sm-cross" />
+            <SmCross aria-label="sm-cross" />
           </div>
         </div>
         <Modal.Body>
@@ -110,26 +83,59 @@ const ModalComp = ({
         </Modal.Body>
 
         <Modal.Footer>
-          <Button
-            className={firstBtnClassName}
-            onClick={closeModal}
-            title={firstBtnTitle}
-            titleType="lr"
-            titleColor={firstBtnTitleColor}
-          />
+          {remove ? (
+            <div className="linear-layout">
+              <Button
+                className="grayBtn"
+                onClick={closeModal}
+                title="Cancel"
+                titleType="lr"
+                titleColor={COLORS.grayscale_900}
+              />
 
-          <Button
-            className={sndBtnClassName}
-            onClick={closeModal}
-            title={secondBtnTitle}
-            titleType="lr"
-            titleColor={sndBtnTitleColor}
-          />
+              <Button
+                className="redBtn"
+                onClick={closeModal}
+                title="Delete"
+                titleType="lr"
+                titleColor={COLORS.white}
+              />
+            </div>
+          ) : (
+            <div className="linear-layout">
+              <Button
+                className="purpleBtnOutline"
+                onClick={closeModal}
+                title="Leave"
+                titleType="lr"
+                titleColor={COLORS.primary_base}
+              />
+
+              <Button
+                className="purpleBtn"
+                onClick={closeModal}
+                title="Save changes"
+                titleType="lr"
+                titleColor={COLORS.white}
+              />
+            </div>
+          )}
         </Modal.Footer>
       </Modal>
     );
   }
-
+  {
+    /*
+      @params: 
+        closeModal
+        visible
+        modalTitle
+        modalBodyText
+        modalLink
+        modalBtnText
+        goTo 
+    */
+  }
   return (
     <Modal
       closeButton
@@ -138,7 +144,7 @@ const ModalComp = ({
       onClose={closeModal}
       className="modal-container"
     >
-      <form className="form-modal" onSubmit={(e) => handleSubmit(e, email)}>
+      <form className="form-modal">
         <div className="modal-image-container">
           <Logo />
         </div>
@@ -166,7 +172,11 @@ const ModalComp = ({
             <BodyText type="mb" title={modalLink} color={COLORS.primary_base} />
           </div>
         </Modal.Body>
-        <Button type="submit" style={{ margin: 20 }} className="app-btn">
+        <Button
+          onClick={(e) => handleSubmit(e, email)}
+          style={{ margin: 20 }}
+          className="app-btn"
+        >
           {modalBtnText}
         </Button>
       </form>

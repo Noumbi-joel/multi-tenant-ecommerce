@@ -6,10 +6,12 @@ import Customer from "../public/customer-icon.svg";
 import Plugin from "../public/plugin-icon.svg";
 import Theme from "../public/theme-icon.svg";
 import Setting from "../public/setting-icon.svg";
-
 import Account from "../public/account.svg";
 import SettingA from "../public/setting.svg";
 import Logout from "../public/logout.svg";
+import RedTrash from "../public/red-trash.svg";
+import SmallEye from "../public/sm-eye.svg";
+import Pencil from "../public/pencil.svg";
 
 export const SELECT_VALUES = {
   lang: ["FR", "ENG"],
@@ -39,7 +41,7 @@ export const VERTICAL_HEADER_ITEMS = [
     icon: <Product aria-label="product" />,
   },
   {
-    id: 7,
+    id: 8,
     value: "Categories",
     link: "/dashboard/products/categories",
     icon: "",
@@ -103,7 +105,7 @@ export const PRODUCTS = [
     id: 1,
     image:
       "https://i1.adis.ws/i/fv/PRODZFRSP000000000050217_rene_3-seater-fabric-sofa__lifestyle?$medium$&w=579&fmt=webp",
-    title: "Sofa",
+    title: "Shelves",
     price: "FCFA32,500",
     stock: "23 in stock",
     visible: false,
@@ -121,7 +123,7 @@ export const PRODUCTS = [
     id: 3,
     image:
       "https://cdn-images.article.com/products/SKU312A/2890x1500/image88310.jpg?fit=max&w=1200&q=100",
-    title: "Sofa",
+    title: "Tables",
     price: "FCFA32,500",
     stock: "23 in stock",
     visible: false,
@@ -130,7 +132,7 @@ export const PRODUCTS = [
     id: 4,
     image:
       "https://images.tcdn.com.br/img/img_prod/936739/sofa_retratil_reclinavel_1_80m_de_largura_modelo_berlim_1333_1_beb8f865110501f1ff37754bd57c78c1.jpg",
-    title: "Sofa",
+    title: "DIY TV Units",
     price: "FCFA32,500",
     stock: "23 in stock",
     visible: false,
@@ -173,4 +175,10 @@ export const FILTERS_CAT = [
   { id: 1, title: "All categories" },
   { id: 2, title: "Published" },
   { id: 3, title: "Draft" },
+];
+
+export const ITEM_ACTIONS = [
+  { id: 1, title: "Edit product", icon: <Pencil aria-label="pencil" /> },
+  { id: 2, title: "Hide product", icon: <SmallEye aria-label="sm-eye" /> },
+  { id: 3, title: "Delete product", icon: <RedTrash aria-label="red-trash" /> },
 ];

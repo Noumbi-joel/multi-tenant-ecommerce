@@ -24,7 +24,7 @@ const FilterBtn = ({ title, type, cat }) => {
           )
         }
         className="filters"
-        onClick={
+        onPress={
           type === "filter"
             ? () => setVisible(!visible)
             : () => setLastUpdate(!lastUpdate)
