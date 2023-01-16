@@ -11,7 +11,7 @@ import {
   AuthFooter,
 } from "../../components";
 import Link from "next/link";
-import { Button, Divider, Input, Spacer, Checkbox } from "@nextui-org/react";
+import { Button, Divider, Spacer, Checkbox } from "@nextui-org/react";
 
 //assets
 import { COLORS } from "../../assets/colors";

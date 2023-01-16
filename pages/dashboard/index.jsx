@@ -37,7 +37,7 @@ const Dashboard = () => {
             <Box title="TOTAL ORDERS" amount="20" type="top-o" />
           </div>
           <div className="linear-layout-flat">
-            <Box form="topContainer" title="TOP PRODUCTS" avatar />
+            <Box form="topContainer" title="TOP PRODUCTS" />
             <Box form="topContainer" title="TOP CUSTOMERS" />
           </div>
           <HelpCenter community />

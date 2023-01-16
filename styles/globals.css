@@ -96,6 +96,11 @@ a {
   gap: 15px;
 }
 
+.column-layout-default {
+  display: flex;
+  flex-direction: column;
+}
+
 .linear-layout :nth-child(2) {
   margin-left: 5px;
 }
@@ -487,10 +492,10 @@ a {
   border-radius: 8px;
   height: 320px;
   padding: 25px;
-  overflow: hidden;
+  overflow-y: scroll;
 }
 
-.product-item {
+.top-item {
   height: 65px;
   margin-top: 20px;
   cursor: pointer;
@@ -500,7 +505,7 @@ a {
   justify-content: space-between;
 }
 
-.product-item:hover {
+.top-item:hover {
   background-color: var(--grayscale_100);
 }
 

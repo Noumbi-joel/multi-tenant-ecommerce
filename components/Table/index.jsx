@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 
 // comp
 import { Checkbox, Divider } from "@nextui-org/react";
 import BodyText from "../BodyText";
-import { ProductListItem } from "..";
+import { ProductList, ProductListItem } from "..";
 
 // assets
 import { COLORS } from "../../assets/colors";
-import { CATEGORY_ITEMS } from "../../helpers";
+import { CATEGORY_ITEMS, PRODUCTS } from "../../helpers";
 
-const Table = ({ onClick, tableHeaderTitle, tableHeaderOne, tableHeaderTwo }) => {
+const Table = ({
+  tableHeaderTitle,
+  tableHeaderOne,
+  tableHeaderTwo,
+  productList,
+}) => {
+  const [products, setProducts] = useState(PRODUCTS);
   return (
     <div>
       <div className="linear-layout-flat" style={{ marginTop: 50 }}>
@@ -20,13 +26,23 @@ const Table = ({ onClick, tableHeaderTitle, tableHeaderOne, tableHeaderTwo }) =>
             color={COLORS.grayscale_900}
           />
         </Checkbox>
-        <BodyText type="mr" title={tableHeaderOne} color={COLORS.grayscale_900} />
-        <BodyText type="mr" title={tableHeaderTwo} color={COLORS.grayscale_900} />
+        <BodyText
+          type="mr"
+          title={tableHeaderOne}
+          color={COLORS.grayscale_900}
+        />
+        <BodyText
+          type="mr"
+          title={tableHeaderTwo}
+          color={COLORS.grayscale_900}
+        />
         <div />
       </div>
       <Divider className="divider-item" />
 
-      {CATEGORY_ITEMS.map((c, i) => (
+      {productList && <ProductList data={products} />}
+
+      {/* {CATEGORY_ITEMS.map((c, i) => (
         <ProductListItem
           key={c.id}
           type="search-p"
@@ -37,7 +53,7 @@ const Table = ({ onClick, tableHeaderTitle, tableHeaderOne, tableHeaderTwo }) =>
           draft={i === 1 && true}
           onClick={onClick}
         />
-      ))}
+      ))} */}
     </div>
   );
 };

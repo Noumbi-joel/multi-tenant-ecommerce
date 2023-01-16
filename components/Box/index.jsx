@@ -1,7 +1,7 @@
 import React from "react";
 
 // comp
-import { BodyText, HeadingText, ProductListItem } from "..";
+import { BodyText, HeadingText, TopCustomerList, TopProductList } from "..";
 
 // assets
 import TopSaleGraph from "../../public/top-sale-graph.svg";
@@ -9,9 +9,9 @@ import TodaySaleGraph from "../../public/today-sale-graph.svg";
 import TopOrderGraph from "../../public/top-order-graph.svg";
 import RightArrowSm from "../../public/right-arrow-sm.svg";
 import { COLORS } from "../../assets/colors";
-import { PRODUCTS } from "../../helpers";
+import { TOP_CUSTOMERS, TOP_PRODUCTS } from "../../helpers";
 
-const Box = ({ title, amount, type, form, avatar }) => {
+const Box = ({ title, amount, type, form }) => {
   if (form === "topContainer") {
     return (
       <div className="topContainer-box">
@@ -27,15 +27,8 @@ const Box = ({ title, amount, type, form, avatar }) => {
             <RightArrowSm aria-label="right arrow" />
           </div>
         </div>
-        {PRODUCTS.map((prod) => (
-          <ProductListItem
-            key={prod.id}
-            nbSales={prod.nbSales}
-            title={prod.title}
-            image={prod.image}
-            avatar={avatar}
-          />
-        ))}
+        {title === "TOP CUSTOMERS" && <TopCustomerList data={TOP_CUSTOMERS} />}
+        {title === "TOP PRODUCTS" && <TopProductList data={TOP_PRODUCTS} />}
       </div>
     );
   }

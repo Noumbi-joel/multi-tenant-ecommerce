@@ -11,13 +11,6 @@ import Account from "../public/account.svg";
 import SettingA from "../public/setting.svg";
 import Logout from "../public/logout.svg";
 
-export const HEADER_NAV = [
-  { id: 1, title: "Products", link: "/products" },
-  { id: 2, title: "Features", link: "/features" },
-  { id: 3, title: "Pricing", link: "/pricing" },
-  { id: 4, title: "FAQ", link: "/faq" },
-];
-
 export const SELECT_VALUES = {
   lang: ["FR", "ENG"],
   bCategory: [
@@ -83,12 +76,20 @@ export const VERTICAL_HEADER_ITEMS = [
   },
 ];
 
-export const PRODUCTS = [
+export const TOP_PRODUCTS = [
   { id: 1, image: "", title: "Hand knitted sweater", nbSales: 10 },
   { id: 2, image: "", title: "V-neck sweater", nbSales: 10 },
   { id: 3, image: "", title: "Cotton Sweater", nbSales: 10 },
   { id: 4, image: "", title: "Boyfriend sweater", nbSales: 10 },
   { id: 5, image: "", title: "Full zip sweater", nbSales: 10 },
+];
+
+export const TOP_CUSTOMERS = [
+  { id: 1,  name: "Chimdaalu Daniel", totalSpent: '25,000' },
+  { id: 2,  name: "Chuba Okadigbo", totalSpent: '25,000' },
+  { id: 3,  name: "Herbert Macaulay", totalSpent: '25,000' },
+  { id: 4,  name: "Paul Omu", totalSpent: '25,000' },
+  { id: 5,  name: "Chimaroke Nnamani", totalSpent: '25,000' },
 ];
 
 export const ACTIONS = [
@@ -97,7 +98,7 @@ export const ACTIONS = [
   { id: 3, title: "Logout", icon: <Logout aria-label="logout" /> },
 ];
 
-export const PRODUCT_ITEM = [
+export const PRODUCTS = [
   {
     id: 1,
     image:

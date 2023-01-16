@@ -24,11 +24,6 @@ const Products = () => {
   const router = useRouter();
   return (
     <DashboardContainer>
-      <Modal
-        closeModal={() => setModalVisible(false)}
-        visible={modalVisible}
-        productEdit
-      />
       <div className="dashboard-dynamic">
         <div className="dashboard-content">
           <div className="linear-layout-flat">
@@ -97,7 +92,7 @@ const Products = () => {
             tableHeaderTitle="Displaying: 7 of 7 items"
             tableHeaderOne="Price"
             tableHeaderTwo="Inventory"
-            onClick={() => setModalVisible(true)}
+            productList
           />
         </div>
       </div>
