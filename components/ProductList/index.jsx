@@ -6,12 +6,11 @@ import { ListItem } from "..";
 const ProductList = ({ data }) => {
   return (
     <div>
-      {data.map((product, i) => (
+      {data.map((product) => (
         <ListItem
           key={product.id}
           type="itemList"
           item={product}
-          draft={i === 2 && true}
         />
       ))}
     </div>

@@ -19,7 +19,12 @@ const ListItem = ({ avatar, type, draft, item }) => {
     return (
       <div>
         <div className="linear-layout-flat">
-          <Checkbox>
+          <Checkbox
+            isSelected={item.selected}
+            onChange={() =>
+              dispatch({ type: "handleItemSelected", payload: item })
+            }
+          >
             <img src={item.image} alt="res" className="product-item-search" />
             <BodyText
               type="mr"
@@ -27,7 +32,7 @@ const ListItem = ({ avatar, type, draft, item }) => {
               color={COLORS.grayscale_900}
               style={{ marginLeft: 20, marginRight: 20 }}
             />
-            {draft && (
+            {item.draft && (
               <div className="draft">
                 <BodyText type="sr" title="Draft" color={COLORS.primary_base} />
               </div>

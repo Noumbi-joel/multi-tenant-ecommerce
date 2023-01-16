@@ -87,11 +87,11 @@ export const TOP_PRODUCTS = [
 ];
 
 export const TOP_CUSTOMERS = [
-  { id: 1,  name: "Chimdaalu Daniel", totalSpent: '25,000' },
-  { id: 2,  name: "Chuba Okadigbo", totalSpent: '25,000' },
-  { id: 3,  name: "Herbert Macaulay", totalSpent: '25,000' },
-  { id: 4,  name: "Paul Omu", totalSpent: '25,000' },
-  { id: 5,  name: "Chimaroke Nnamani", totalSpent: '25,000' },
+  { id: 1, name: "Chimdaalu Daniel", totalSpent: "25,000" },
+  { id: 2, name: "Chuba Okadigbo", totalSpent: "25,000" },
+  { id: 3, name: "Herbert Macaulay", totalSpent: "25,000" },
+  { id: 4, name: "Paul Omu", totalSpent: "25,000" },
+  { id: 5, name: "Chimaroke Nnamani", totalSpent: "25,000" },
 ];
 
 export const ACTIONS = [
@@ -109,6 +109,9 @@ export const PRODUCTS = [
     price: "FCFA32,500",
     stock: "23 in stock",
     visible: false,
+    published: false,
+    draft: false,
+    selected: false,
   },
   {
     id: 2,
@@ -118,6 +121,9 @@ export const PRODUCTS = [
     price: "FCFA32,500",
     stock: "23 in stock",
     visible: false,
+    published: false,
+    draft: false,
+    selected: false,
   },
   {
     id: 3,
@@ -127,6 +133,9 @@ export const PRODUCTS = [
     price: "FCFA32,500",
     stock: "23 in stock",
     visible: false,
+    published: false,
+    draft: true,
+    selected: false,
   },
   {
     id: 4,
@@ -136,6 +145,9 @@ export const PRODUCTS = [
     price: "FCFA32,500",
     stock: "23 in stock",
     visible: false,
+    published: false,
+    draft: false,
+    selected: false,
   },
 ];
 

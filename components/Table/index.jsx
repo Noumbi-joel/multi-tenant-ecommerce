@@ -14,11 +14,22 @@ const Table = ({
   tableHeaderTwo,
   productList,
   data,
+  dispatch,
+  allChecker,
 }) => {
+  const handleChange = () => {
+    dispatch({ type: "handleItemsSelected" });
+    if (allChecker) {
+      dispatch({ type: "closeAllChecker" });
+      return;
+    }
+    dispatch({ type: "openAllChecker" });
+  };
+
   return (
     <div>
       <div className="linear-layout-flat" style={{ marginTop: 50 }}>
-        <Checkbox>
+        <Checkbox isSelected={allChecker} onChange={handleChange}>
           <BodyText
             type="mr"
             title={tableHeaderTitle}

@@ -4,14 +4,19 @@ import { createSlice, createAction } from "@reduxjs/toolkit";
 
 //actions
 const openSingleModal = createAction("openSingleModal");
-const closeSingleModal = createAction("closeSingleModal")
+const closeSingleModal = createAction("closeSingleModal");
 const setItemName = createAction("setItemName");
 const toggleModalAllItem = createAction("toggleModalAllItem");
+const openAllChecker = createAction("openAllChecker");
+const closeAllChecker = createAction("closeAllChecker");
+const openAllItemModal = createAction("openAllItemModal");
+const closeAllSelectedModal = createAction("closeAllSelectedModal");
 
 //init states
 const initialState = {
   modalSingleItem: false,
   modalAllItem: false,
+  allChecker: false,
   itemName: "",
 };
 
@@ -27,6 +32,21 @@ export const modalSlice = createSlice({
 
     builder.addCase(closeSingleModal, (state) => {
       state.modalSingleItem = false;
+    });
+
+    builder.addCase(openAllItemModal, (state) => {
+      state.modalAllItem = true;
+    });
+
+    builder.addCase(closeAllSelectedModal, (state) => {
+      state.modalAllItem = false;
+    });
+
+    builder.addCase(openAllChecker, (state) => {
+      state.allChecker = true;
+    });
+    builder.addCase(closeAllChecker, (state) => {
+      state.allChecker = false;
     });
 
     builder.addCase(setItemName, (state, action) => {
