@@ -8,9 +8,7 @@ import { HeadingText, BodyText, InputField, Button } from "..";
 import { COLORS } from "../../assets/colors";
 import Logo from "../../public/eduka.svg";
 import SmCross from "../../public/sm-cross.svg";
-import TrashRed from "../../public/trash-red.svg";
-import Hide from "../../public/hide.svg";
-import Edit from "../../public/edit.svg";
+
 
 // functions
 import { validateEmail } from "../../functions";
@@ -28,6 +26,7 @@ const ModalComp = ({
   remove,
   modalBodyTextOne,
   modalBodyTextTwo,
+  deleteItem
 }) => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
@@ -95,7 +94,7 @@ const ModalComp = ({
 
               <Button
                 className="redBtn"
-                onClick={closeModal}
+                onClick={deleteItem}
                 title="Delete"
                 titleType="lr"
                 titleColor={COLORS.white}

@@ -26,13 +26,34 @@ const Products = () => {
   const router = useRouter();
   const dispatch = useDispatch();
 
-  const products = useSelector((state) => state.products.products);
+  const { products, filteredProducts } = useSelector((state) => state.products);
   const { modalSingleItem, itemName } = useSelector((state) => state.modal);
+
+  const searchFilter = (e) => {
+    const value = e.target.value;
+    if (value) {
+      const newData = filteredProducts.filter((item) => {
+        const itemData = item.title
+          ? item.title.toUpperCase()
+          : "".toUpperCase();
+        return itemData.indexOf(value.toUpperCase()) > -1;
+      });
+      dispatch({ type: "filtering", payload: newData });
+      setSearch(value);
+    } else {
+      dispatch({ type: "filtering", payload: products });
+      setSearch(value);
+    }
+  };
 
   return (
     <DashboardContainer>
       <Modal
         closeModal={() => dispatch({ type: "closeSingleModal" })}
+        deleteItem={() => {
+          dispatch({ type: "deleteItem" });
+          dispatch({ type: "closeSingleModal" });
+        }}
         visible={modalSingleItem}
         modalTitle={`Remove "${itemName}"?`}
         modalBodyTextOne="Removed products can't be restored."
@@ -51,7 +72,11 @@ const Products = () => {
                 color={COLORS.grayscale_900}
                 style={{ marginRight: 20 }}
               />
-              <HeadingText type="h3" title="7" color={COLORS.grayscale_500} />
+              <HeadingText
+                type="h3"
+                title={products.length}
+                color={COLORS.grayscale_500}
+              />
             </div>
             {!selectProd && (
               <Button
@@ -101,11 +126,12 @@ const Products = () => {
           <SearchFilter
             value={search}
             filterTitle="Show all products"
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={searchFilter}
+            products={products}
           />
 
           <Table
-            tableHeaderTitle="Displaying: 7 of 7 items"
+            tableHeaderTitle={`Displaying ${products.length} of ${products.length} items`}
             tableHeaderOne="Price"
             tableHeaderTwo="Inventory"
             productList

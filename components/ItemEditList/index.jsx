@@ -15,6 +15,7 @@ const ItemEditList = ({ data, item }) => {
     }
     if (a.id === 3) {
       dispatch({ type: "setItemName", payload: item.title });
+      dispatch({ type: "setId", payload: item.id });
       dispatch({ type: "openSingleModal" });
     }
   };

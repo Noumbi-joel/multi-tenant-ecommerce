@@ -5,10 +5,15 @@ import { PRODUCTS } from "../../helpers";
 
 //actions
 const handleModalVisible = createAction("handleModalVisible");
+const setId = createAction("setId");
+const deleteItem = createAction("deleteItem");
+const filtering = createAction("filtering");
 
 //init states
 const initialState = {
   products: PRODUCTS,
+  idToDelete: null,
+  filteredProducts: PRODUCTS,
 };
 
 let foundProduct, index, updatedProducts;
@@ -27,6 +32,19 @@ export const productSlice = createSlice({
       foundProduct.visible = !foundProduct.visible;
       updatedProducts[index] = foundProduct;
       state.products = updatedProducts;
+    });
+
+    builder.addCase(setId, (state, action) => {
+      state.idToDelete = action.payload;
+    });
+
+    builder.addCase(deleteItem, (state, action) => {
+      state.products = state.products.filter((p) => p.id !== state.idToDelete);
+      state.idToDelete = null;
+    });
+
+    builder.addCase(filtering, (state, action) => {
+      state.filteredProducts = action.payload;
     });
 
     builder.addDefaultCase((state) => {
