@@ -12,12 +12,20 @@ const closeAllChecker = createAction("closeAllChecker");
 const openAllItemModal = createAction("openAllItemModal");
 const closeAllSelectedModal = createAction("closeAllSelectedModal");
 
+// category
+const openCatSingleModal = createAction("openCategorySingleModal");
+const closeCatSingleModal = createAction("closeCategorySingleModal");
+const setCatName = createAction("setCategoryName");
+
 //init states
 const initialState = {
   modalSingleItem: false,
   modalAllItem: false,
   allChecker: false,
   itemName: "",
+  allCheckerCat: false,
+  modalSingleItemCat: false,
+  modalAllItemCat: false,
 };
 
 //slices && reducers

@@ -18,6 +18,7 @@ import { FormControl, MenuItem, Select } from "@mui/material";
 import PurplePlus from "../../../../../public/purple-plus.svg";
 import Trash from "../../../../../public/covered-trash.svg";
 import FileContainer from "../../../../../components/FileContainer";
+import { useDispatch, useSelector } from "react-redux";
 
 const Categories = () => {
   const [select, setSelect] = useState({
@@ -46,6 +47,8 @@ const Categories = () => {
         });
   };
 
+  const dispatch = useDispatch();
+  const { productCat } = useSelector((state) => state.image);
   return (
     <DashboardContainer>
       <Modal
@@ -126,7 +129,7 @@ const Categories = () => {
               <Spacer />
               {/* Media file */}
 
-              <FileContainer />
+              <FileContainer dispatch={dispatch} images={productCat} cat />
             </div>
 
             <div className="create-right-container">

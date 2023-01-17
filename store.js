@@ -4,11 +4,15 @@ import { configureStore } from "@reduxjs/toolkit";
 import modalSlice from "./slices/modal";
 import productSlice from "./slices/products";
 import filterSlice from "./slices/filters";
+import imageSlice from "./slices/images";
+import categorySlice from "./slices/category";
 
 export const store = configureStore({
   reducer: {
     modal: modalSlice,
     products: productSlice,
-    filter: filterSlice
+    filter: filterSlice,
+    image: imageSlice,
+    categories: categorySlice
   },
 });

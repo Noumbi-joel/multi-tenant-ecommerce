@@ -12,9 +12,9 @@ import { ITEM_ACTIONS } from "../../helpers";
 
 // redux
 import { useDispatch } from "react-redux";
-import { HANDLE_ITEMS_SELECTED, HANDLE_MODAL_VISIBLE } from "../../constants";
+import { HANDLE_ITEM_SELECTED, HANDLE_MODAL_VISIBLE } from "../../constants";
 
-const ListItem = ({ avatar, type, draft, item }) => {
+const ListItem = ({ avatar, type, item }) => {
   const dispatch = useDispatch();
   if (type === "itemList") {
     return (
@@ -23,7 +23,7 @@ const ListItem = ({ avatar, type, draft, item }) => {
           <Checkbox
             isSelected={item.selected}
             onChange={() =>
-              dispatch({ type: HANDLE_ITEMS_SELECTED, payload: item })
+              dispatch({ type: HANDLE_ITEM_SELECTED, payload: item })
             }
           >
             <img src={item.image} alt="res" className="product-item-search" />
@@ -58,6 +58,48 @@ const ListItem = ({ avatar, type, draft, item }) => {
                 dispatch({ type: HANDLE_MODAL_VISIBLE, payload: item.id })
               }
             />
+            {item.visible && (
+              <Dropdown item={item} itemEdit data={ITEM_ACTIONS} />
+            )}
+          </div>
+        </div>
+        <Divider style={{ marginTop: 16 }} />
+      </div>
+    );
+  }
+
+  if (type === "catList") {
+    return (
+      <div>
+        <div className="linear-layout-flat">
+          <Checkbox isSelected={item.selected} onChange={() => {}}>
+            <img src={item.image} alt="res" className="product-item-search" />
+            <BodyText
+              type="mr"
+              title={item.title}
+              color={COLORS.grayscale_900}
+              style={{ marginLeft: 20, marginRight: 20 }}
+            />
+            {item.draft && (
+              <div className="draft">
+                <BodyText type="sr" title="Draft" color={COLORS.primary_base} />
+              </div>
+            )}
+          </Checkbox>
+          <BodyText
+            type="mr"
+            title={item.slug}
+            color={COLORS.grayscale_900}
+            style={{ marginLeft: 20 }}
+          />
+          <BodyText
+            type="mr"
+            title={item.items}
+            color={COLORS.grayscale_900}
+            style={{ marginLeft: 20 }}
+          />
+          <div style={{ position: "relative" }}>
+            <VerticalDots aria-label="v-dots" onClick={() => {}} />
             {item.visible && (
               <Dropdown item={item} itemEdit data={ITEM_ACTIONS} />
             )}

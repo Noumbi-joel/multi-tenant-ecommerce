@@ -18,8 +18,11 @@ import { FormControl, MenuItem, Select } from "@mui/material";
 import PurplePlus from "../../../../public/purple-plus.svg";
 import Trash from "../../../../public/covered-trash.svg";
 import FileContainer from "../../../../components/FileContainer";
+import { useSelector, useDispatch } from "react-redux";
 
 const Products = () => {
+  const { images } = useSelector((state) => state.image);
+  const dispatch = useDispatch();
   const [select, setSelect] = useState({
     status: "publish",
     weight: "Less-than-1-kg",
@@ -51,14 +54,8 @@ const Products = () => {
       <Modal
         closeModal={() => setModalVisible(false)}
         visible={modalVisible}
-        firstBtnTitle="Leave"
-        secondBtnTitle="Save Changes"
         modalTitle="You have unsaved changes"
         modalBodyTextOne="Are you sure you want to leave ?"
-        sndBtnClassName="purpleBtn"
-        firstBtnClassName="purpleBtnOutline"
-        firstBtnTitleColor={COLORS.primary_base}
-        sndBtnTitleColor={COLORS.white}
         dashboard
       />
       <div className="dashboard-dynamic">
@@ -126,7 +123,7 @@ const Products = () => {
               <Spacer />
               {/* Media file */}
 
-              <FileContainer />
+              <FileContainer dispatch={dispatch} images={images} />
 
               {/* Price & sale */}
               <div className="linear-layout-flat">

@@ -22,3 +22,7 @@ export const FILTERING = "filtering";
 export const HANDLE_ITEMS_SELECTED = "handleItemsSelected";
 export const DISCARD_ITEM_SELECTED = "discardItemSelected";
 export const DELETE_ITEMS = "deleteItems";
+export const SET_IMAGES = "setImages";
+export const DELETE_IMAGE = "deleteImage";
+export const SET_IMAGES_CAT = "setImagesCat";
+export const DELETE_IMAGE_CAT = "deleteImagesCat";

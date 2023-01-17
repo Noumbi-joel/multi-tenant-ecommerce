@@ -3,11 +3,15 @@ import React from "react";
 // comp
 import { Checkbox, Divider } from "@nextui-org/react";
 import BodyText from "../BodyText";
-import { ProductList } from "..";
+import { CategoryList, ProductList } from "..";
 
 // assets
 import { COLORS } from "../../assets/colors";
-import { CLOSE_ALL_CHECKER, HANDLE_ITEMS_SELECTED, OPEN_ALL_CHECKER } from "../../constants";
+import {
+  CLOSE_ALL_CHECKER,
+  HANDLE_ITEMS_SELECTED,
+  OPEN_ALL_CHECKER,
+} from "../../constants";
 
 const Table = ({
   tableHeaderTitle,
@@ -17,6 +21,8 @@ const Table = ({
   data,
   dispatch,
   allChecker,
+  allCheckerCat,
+  cat
 }) => {
   const handleChange = () => {
     dispatch({ type: HANDLE_ITEMS_SELECTED });
@@ -27,10 +33,22 @@ const Table = ({
     dispatch({ type: OPEN_ALL_CHECKER });
   };
 
+  const handleChangeCat = () => {
+    // dispatch({ type: HANDLE_ITEMS_SELECTED });
+    // if (allChecker) {
+    //   dispatch({ type: CLOSE_ALL_CHECKER });
+    //   return;
+    // }
+    // dispatch({ type: OPEN_ALL_CHECKER });
+  };
+
   return (
     <div>
       <div className="linear-layout-flat" style={{ marginTop: 50 }}>
-        <Checkbox isSelected={allChecker} onChange={handleChange}>
+        <Checkbox
+          isSelected={allChecker ? allChecker : allCheckerCat}
+          onChange={allChecker ? handleChange : handleChangeCat}
+        >
           <BodyText
             type="mr"
             title={tableHeaderTitle}
@@ -52,19 +70,7 @@ const Table = ({
       <Divider className="divider-item" />
 
       {productList && <ProductList data={data} />}
-
-      {/* {CATEGORY_ITEMS.map((c, i) => (
-        <ProductListItem
-          key={c.id}
-          type="search-p"
-          image={c.image}
-          price={c.slug}
-          stock={c.items}
-          title={c.title}
-          draft={i === 1 && true}
-          onClick={onClick}
-        />
-      ))} */}
+      {cat && <CategoryList data={data} />}
     </div>
   );
 };

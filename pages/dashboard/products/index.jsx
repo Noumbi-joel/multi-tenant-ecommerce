@@ -27,7 +27,8 @@ import {
   CLOSE_ALL_SELECTED_MODAL,
   DELETE_ITEMS,
   CLOSE_SINGLE_MODAL,
-  DELETE_ITEM
+  DELETE_ITEM,
+  OPEN_ALL_ITEM_MODAL
 } from "../../../constants";
 
 const Products = () => {
@@ -63,9 +64,7 @@ const Products = () => {
     dispatch({ type: DISCARD_ITEM_SELECTED });
     if (allChecker) {
       dispatch({ type: CLOSE_ALL_CHECKER });
-      return;
     }
-    dispatch({ type: OPEN_ALL_CHECKER });
   };
 
   const handleDeleteItems = () => {

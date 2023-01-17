@@ -16,8 +16,8 @@ const deleteItems = createAction("deleteItems");
 //init states
 const initialState = {
   products: PRODUCTS,
-  idToDelete: null,
   filteredProducts: PRODUCTS,
+  idToDelete: null,
   itemsSelected: [],
 };
 
@@ -25,7 +25,7 @@ let foundProduct, index, updatedProducts;
 
 //slices && reducers
 export const productSlice = createSlice({
-  name: "modal",
+  name: "product",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -72,7 +72,9 @@ export const productSlice = createSlice({
     builder.addCase(discardItemSelected, (state, action) => {
       state.itemsSelected = [];
       for (let i = 0; i < state.filteredProducts.length; i++) {
-        state.filteredProducts[i].selected = false;
+        if (state.filteredProducts[i].selected) {
+          state.filteredProducts[i].selected = false;
+        }
       }
     });
 

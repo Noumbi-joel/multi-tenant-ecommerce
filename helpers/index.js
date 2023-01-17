@@ -164,7 +164,7 @@ export const UPDATES = [
   { id: 3, title: "in stock" },
 ];
 
-export const CATEGORY_ITEMS = [
+export const CATEGORIES = [
   {
     id: 1,
     image:
@@ -172,14 +172,22 @@ export const CATEGORY_ITEMS = [
     title: "Men",
     slug: "men",
     items: "0",
+    visible: false,
+    published: false,
+    draft: false,
+    selected: false,
   },
   {
     id: 2,
     image:
       "http://cdn.shopify.com/s/files/1/2660/5106/products/73170500_S1_800x.jpg?v=1570051074",
     title: "Women",
-    slug: "men",
+    slug: "women",
     items: "0",
+    visible: false,
+    published: false,
+    draft: true,
+    selected: false,
   },
 ];
 
