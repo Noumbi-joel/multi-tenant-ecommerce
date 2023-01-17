@@ -10,12 +10,12 @@ import {
   Modal,
   SearchFilter,
   Table,
-} from "../../../../components";
+} from "../../../components";
 
 // assets
-import { COLORS } from "../../../../assets/colors";
-import Plus from "../../../../public/Plus.svg";
-import Trash from "../../../../public/trash.svg";
+import { COLORS } from "../../../assets/colors";
+import Plus from "../../../public/plus.svg";
+import Trash from "../../../public/trash.svg";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -66,7 +66,7 @@ const Categories = () => {
                 titleColor={COLORS.white}
                 style={{ backgroundColor: COLORS.primary_base }}
                 onClick={() =>
-                  router.push("/dashboard/products/categories/create")
+                  router.push("/dashboard/categories/create")
                 }
               >
                 <Plus aria-label="plus" className="plus" />
@@ -114,6 +114,8 @@ const Categories = () => {
                 value={search}
                 cat
                 onChange={(e) => setSearch(e.target.value)}
+                type="categories"
+                dispatch={dispatch}
               />
               <Table
                 tableHeaderTitle={`Displaying: ${filteredCategories.length} of ${filteredCategories.length} items`}

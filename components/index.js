@@ -30,3 +30,4 @@ export { default as ItemEditList } from "./ItemEditList";
 export { default as DropdownUserActionList } from "./DropdownUserActionList";
 export { default as Empty } from "./Empty";
 export { default as CategoryList } from "./CategoryList";
+export { default as PageDescription } from "./PageDescription";

@@ -17,18 +17,17 @@ import { useDispatch, useSelector } from "react-redux";
 
 // assets
 import { COLORS } from "../../../assets/colors";
-import Plus from "../../../public/Plus.svg";
+import Plus from "../../../public/plus.svg";
 import Trash from "../../../public/trash.svg";
 import {
   CLOSE_ALL_CHECKER,
   DISCARD_ITEM_SELECTED,
   FILTERING,
-  OPEN_ALL_CHECKER,
   CLOSE_ALL_SELECTED_MODAL,
   DELETE_ITEMS,
   CLOSE_SINGLE_MODAL,
   DELETE_ITEM,
-  OPEN_ALL_ITEM_MODAL
+  OPEN_ALL_ITEM_MODAL,
 } from "../../../constants";
 
 const Products = () => {
@@ -161,7 +160,12 @@ const Products = () => {
           </div>
 
           {/* Search input & actions */}
-          <SearchFilter value={search} onChange={searchFilter} />
+          <SearchFilter
+            type="products"
+            value={search}
+            onChange={searchFilter}
+            dispatch={dispatch}
+          />
 
           <Table
             tableHeaderTitle={`Displaying ${filteredProducts.length} of ${filteredProducts.length} items`}

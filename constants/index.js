@@ -26,3 +26,7 @@ export const SET_IMAGES = "setImages";
 export const DELETE_IMAGE = "deleteImage";
 export const SET_IMAGES_CAT = "setImagesCat";
 export const DELETE_IMAGE_CAT = "deleteImagesCat";
+
+export const GET_ORDERS = "getOrders";
+export const GET_PRODUCTS = "getProducts";
+export const GET_CATEGORIES = "getCategories";

@@ -1,36 +1,28 @@
 import React, { useState } from "react";
-// import { STORES, USERS } from "../../constants";
-// import { AuthContext } from "../../context/Auth";
-// import firebase from "../../firebase.config";
-// import Cookies from "js-cookie";
-// import { useRouter } from "next/router"
 
 // comp
 import {
-  BodyText,
   Box,
   DashboardContainer,
   HelpCenter,
+  PageDescription,
 } from "../../components";
-
-// assets
-import { COLORS } from "../../assets/colors";
 
 const Dashboard = () => {
   const [helperVisible, setHelperVisible] = useState(true);
+
+  const handleVisible = () => {
+    setHelperVisible(false);
+  };
   return (
     <DashboardContainer>
       <div className="dashboard-dynamic">
         <div className="dashboard-content">
-          <BodyText
-            type="mr"
-            color={COLORS.grayscale_900}
+          <PageDescription
+            handleVisible={handleVisible}
+            helperVisible={helperVisible}
             title="Hey, John! - here's what's happening with your store."
-            className="greeting"
           />
-          {helperVisible && (
-            <HelpCenter closeHelper={() => setHelperVisible(false)} />
-          )}
           <div className="linear-layout-flat">
             <Box title="TODAY'S SALES" amount="FCFA100,000" type="today-s" />
             <Box title="TOTAL SALES" amount="FCFA750,000" type="top-s" />

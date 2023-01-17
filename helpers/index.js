@@ -12,6 +12,10 @@ import Logout from "../public/logout.svg";
 import RedTrash from "../public/red-trash.svg";
 import SmallEye from "../public/sm-eye.svg";
 import Pencil from "../public/pencil.svg";
+import Fullfilled from "../public/fullfilled.svg";
+import UnFullfilled from "../public/unfullfilled.svg";
+
+import moment from "moment/moment";
 
 export const SELECT_VALUES = {
   lang: ["FR", "ENG"],
@@ -43,7 +47,7 @@ export const VERTICAL_HEADER_ITEMS = [
   {
     id: 8,
     value: "Categories",
-    link: "/dashboard/products/categories",
+    link: "/dashboard/categories",
     icon: "",
   },
   {
@@ -201,4 +205,74 @@ export const ITEM_ACTIONS = [
   { id: 1, title: "Edit product", icon: <Pencil aria-label="pencil" /> },
   { id: 2, title: "Hide product", icon: <SmallEye aria-label="sm-eye" /> },
   { id: 3, title: "Delete product", icon: <RedTrash aria-label="red-trash" /> },
+];
+
+let date = moment().format("MMM, DD YYYY");
+
+export const ORDERS = [
+  {
+    id: Date.now().toString(),
+    date: date,
+    customerName: "Muhammed Shuwa",
+    fullF: <Fullfilled aria-label="fullF" />,
+  },
+  {
+    id: Date.now().toString(),
+    date: date,
+    customerName: "Muhammed Shuwa",
+    fullF: <UnFullfilled aria-label="unFullF" />,
+  },
+  {
+    id: Date.now().toString(),
+    date: date,
+    customerName: "Muhammed Shuwa",
+    fullF: <Fullfilled aria-label="fullF" />,
+  },
+  {
+    id: Date.now().toString(),
+    date: date,
+    customerName: "Muhammed Shuwa",
+    fullF: <Fullfilled aria-label="fullF" />,
+  },
+  {
+    id: Date.now().toString(),
+    date: date,
+    customerName: "Muhammed Shuwa",
+    fullF: <Fullfilled aria-label="fullF" />,
+  },
+  {
+    id: Date.now().toString(),
+    date: date,
+    customerName: "Muhammed Shuwa",
+    fullF: <UnFullfilled aria-label="unFullF" />,
+  },
+  {
+    id: Date.now().toString(),
+    date: date,
+    customerName: "Muhammed Shuwa",
+    fullF: <Fullfilled aria-label="fullF" />,
+  },
+  {
+    id: Date.now().toString(),
+    date: date,
+    customerName: "Muhammed Shuwa",
+    fullF: <UnFullfilled aria-label="unFullF" />,
+  },
+  {
+    id: Date.now().toString(),
+    date: date,
+    customerName: "Muhammed Shuwa",
+    fullF: <Fullfilled aria-label="fullF" />,
+  },
+];
+
+export const ORDERS_FILTERS = [
+  { id: 1, title: "All  orders" },
+  { id: 2, title: "Fullfilled" },
+  { id: 3, title: "Unfulfilled" },
+];
+
+export const ORDERS_SORT = [
+  { id: 1, title: "Last created" },
+  { id: 2, title: "Order number" },
 ];

@@ -9,15 +9,15 @@ import {
   InputField,
   Modal,
   TipTap,
-} from "../../../../../components";
+  FileContainer
+} from "../../../../components";
 import { Checkbox, Divider, Spacer } from "@nextui-org/react";
 
 // assets
-import { COLORS } from "../../../../../assets/colors";
+import { COLORS } from "../../../../assets/colors";
 import { FormControl, MenuItem, Select } from "@mui/material";
-import PurplePlus from "../../../../../public/purple-plus.svg";
-import Trash from "../../../../../public/covered-trash.svg";
-import FileContainer from "../../../../../components/FileContainer";
+
+// redux
 import { useDispatch, useSelector } from "react-redux";
 
 const Categories = () => {
