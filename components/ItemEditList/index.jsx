@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import BodyText from "../BodyText";
 import { COLORS } from "../../assets/colors";
+import { OPEN_SINGLE_MODAL, SET_ID, SET_ITEM_NAME } from "../../constants";
 
 const ItemEditList = ({ data, item }) => {
   const router = useRouter();
@@ -14,9 +15,9 @@ const ItemEditList = ({ data, item }) => {
       return router.push("/dashboard/products/create");
     }
     if (a.id === 3) {
-      dispatch({ type: "setItemName", payload: item.title });
-      dispatch({ type: "setId", payload: item.id });
-      dispatch({ type: "openSingleModal" });
+      dispatch({ type: SET_ITEM_NAME, payload: item.title });
+      dispatch({ type: SET_ID, payload: item.id });
+      dispatch({ type: OPEN_SINGLE_MODAL });
     }
   };
   return (

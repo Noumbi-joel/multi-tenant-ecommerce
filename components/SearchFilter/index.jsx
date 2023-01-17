@@ -3,10 +3,12 @@ import React from "react";
 // comp
 import InputField from "../InputField";
 import FilterBtn from "../FilterBtn";
+import { useSelector } from "react-redux";
 
 // assets
 
-const SearchFilter = ({ onChange, value, cat, filterTitle }) => {
+const SearchFilter = ({ onChange, value, cat }) => {
+  const { filter, sortBy } = useSelector((state) => state.filter);
   return (
     <div className="linear-layout-flat" style={{ marginTop: 70 }}>
       <InputField
@@ -18,8 +20,8 @@ const SearchFilter = ({ onChange, value, cat, filterTitle }) => {
         ariaLabel="search-p"
         className="search-product"
       />
-      <FilterBtn cat={cat} type="filter" title={filterTitle} />
-      <FilterBtn cat={cat} title="Sort by last updated" />
+      <FilterBtn cat={cat} type="filter" title={"Show " + filter} />
+      <FilterBtn cat={cat} title={"Sort by " + sortBy} />
     </div>
   );
 };

@@ -12,6 +12,7 @@ import { ITEM_ACTIONS } from "../../helpers";
 
 // redux
 import { useDispatch } from "react-redux";
+import { HANDLE_ITEMS_SELECTED, HANDLE_MODAL_VISIBLE } from "../../constants";
 
 const ListItem = ({ avatar, type, draft, item }) => {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ const ListItem = ({ avatar, type, draft, item }) => {
           <Checkbox
             isSelected={item.selected}
             onChange={() =>
-              dispatch({ type: "handleItemSelected", payload: item })
+              dispatch({ type: HANDLE_ITEMS_SELECTED, payload: item })
             }
           >
             <img src={item.image} alt="res" className="product-item-search" />
@@ -54,7 +55,7 @@ const ListItem = ({ avatar, type, draft, item }) => {
             <VerticalDots
               aria-label="v-dots"
               onClick={() =>
-                dispatch({ type: "handleModalVisible", payload: item.id })
+                dispatch({ type: HANDLE_MODAL_VISIBLE, payload: item.id })
               }
             />
             {item.visible && (

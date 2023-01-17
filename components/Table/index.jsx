@@ -7,6 +7,7 @@ import { ProductList } from "..";
 
 // assets
 import { COLORS } from "../../assets/colors";
+import { CLOSE_ALL_CHECKER, HANDLE_ITEMS_SELECTED, OPEN_ALL_CHECKER } from "../../constants";
 
 const Table = ({
   tableHeaderTitle,
@@ -18,12 +19,12 @@ const Table = ({
   allChecker,
 }) => {
   const handleChange = () => {
-    dispatch({ type: "handleItemsSelected" });
+    dispatch({ type: HANDLE_ITEMS_SELECTED });
     if (allChecker) {
-      dispatch({ type: "closeAllChecker" });
+      dispatch({ type: CLOSE_ALL_CHECKER });
       return;
     }
-    dispatch({ type: "openAllChecker" });
+    dispatch({ type: OPEN_ALL_CHECKER });
   };
 
   return (

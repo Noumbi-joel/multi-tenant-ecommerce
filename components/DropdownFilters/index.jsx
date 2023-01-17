@@ -4,18 +4,25 @@ import BodyText from "../BodyText";
 
 // assets
 import { COLORS } from "../../assets/colors";
+import { SET_FILTER } from "../../constants";
 
-const DropdownFilters = ({ data }) => {
+const DropdownFilters = ({ data, dispatch }) => {
+  const handleClick = (a) => {
+    dispatch({ type: SET_FILTER, payload: a.title });
+  };
+
   return (
     <div className="dropdown-filter">
       {data.map((a) => (
-        <BodyText
-          style={{ padding: 5 }}
-          type="mr"
-          title={a.title}
-          color={COLORS.grayscale_900}
-          className="product-action"
-        />
+        <div key={a.id} onClick={() => handleClick(a)}>
+          <BodyText
+            style={{ padding: 5 }}
+            type="mr"
+            title={a.title}
+            color={COLORS.grayscale_900}
+            className="product-action"
+          />
+        </div>
       ))}
     </div>
   );

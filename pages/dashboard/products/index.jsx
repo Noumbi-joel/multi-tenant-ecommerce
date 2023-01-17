@@ -19,6 +19,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { COLORS } from "../../../assets/colors";
 import Plus from "../../../public/Plus.svg";
 import Trash from "../../../public/trash.svg";
+import {
+  CLOSE_ALL_CHECKER,
+  DISCARD_ITEM_SELECTED,
+  FILTERING,
+  OPEN_ALL_CHECKER,
+  CLOSE_ALL_SELECTED_MODAL,
+  DELETE_ITEMS,
+  CLOSE_SINGLE_MODAL,
+  DELETE_ITEM
+} from "../../../constants";
 
 const Products = () => {
   const [search, setSearch] = useState("");
@@ -41,40 +51,40 @@ const Products = () => {
           : "".toUpperCase();
         return itemData.indexOf(value.toUpperCase()) > -1;
       });
-      dispatch({ type: "filtering", payload: newData });
+      dispatch({ type: FILTERING, payload: newData });
       setSearch(value);
     } else {
-      dispatch({ type: "filtering", payload: products });
+      dispatch({ type: FILTERING, payload: products });
       setSearch(value);
     }
   };
 
   const handleDiscard = () => {
-    dispatch({ type: "discardItemSelected" });
+    dispatch({ type: DISCARD_ITEM_SELECTED });
     if (allChecker) {
-      dispatch({ type: "closeAllChecker" });
+      dispatch({ type: CLOSE_ALL_CHECKER });
       return;
     }
-    dispatch({ type: "openAllChecker" });
+    dispatch({ type: OPEN_ALL_CHECKER });
   };
 
   const handleDeleteItems = () => {
-    dispatch({ type: "openAllItemModal" });
+    dispatch({ type: OPEN_ALL_ITEM_MODAL });
   };
 
   const handleDeleteAllItems = () => {
-    dispatch({ type: "deleteItems" });
-    dispatch({ type: "closeAllSelectedModal" });
-    dispatch({ type: "closeAllChecker" });
+    dispatch({ type: DELETE_ITEMS });
+    dispatch({ type: CLOSE_ALL_SELECTED_MODAL });
+    dispatch({ type: CLOSE_ALL_CHECKER });
   };
 
   return (
     <DashboardContainer>
       <Modal
-        closeModal={() => dispatch({ type: "closeSingleModal" })}
+        closeModal={() => dispatch({ type: CLOSE_SINGLE_MODAL })}
         deleteItem={() => {
-          dispatch({ type: "deleteItem" });
-          dispatch({ type: "closeSingleModal" });
+          dispatch({ type: DELETE_ITEM });
+          dispatch({ type: CLOSE_SINGLE_MODAL });
         }}
         visible={modalSingleItem}
         modalTitle={`Remove "${itemName}"?`}
@@ -84,7 +94,7 @@ const Products = () => {
         remove
       />
       <Modal
-        closeModal={() => dispatch({ type: "closeAllSelectedModal" })}
+        closeModal={() => dispatch({ type: CLOSE_ALL_SELECTED_MODAL })}
         deleteItem={handleDeleteAllItems}
         visible={modalAllItem}
         modalTitle={`Remove ${itemsSelected.length} items selected`}
@@ -152,11 +162,7 @@ const Products = () => {
           </div>
 
           {/* Search input & actions */}
-          <SearchFilter
-            value={search}
-            filterTitle="Show all products"
-            onChange={searchFilter}
-          />
+          <SearchFilter value={search} onChange={searchFilter} />
 
           <Table
             tableHeaderTitle={`Displaying ${filteredProducts.length} of ${filteredProducts.length} items`}

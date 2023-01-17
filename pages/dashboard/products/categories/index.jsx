@@ -16,7 +16,7 @@ import { Divider, Spacer } from "@nextui-org/react";
 
 // assets
 import { COLORS } from "../../../../assets/colors";
-import Plus from "../../../../public/plus.svg";
+import Plus from "../../../../public/Plus.svg";
 import Trash from "../../../../public/trash.svg";
 import PurplePlus from "../../../../public/purple-plus.svg";
 import Alien from "../../../../public/alien.svg";
