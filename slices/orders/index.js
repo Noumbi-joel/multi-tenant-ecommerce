@@ -1,11 +1,12 @@
 import { createSlice, createAction } from "@reduxjs/toolkit";
+import { ORDERS } from "../../helpers";
 
 //actions
 
 //init states
 const initialState = {
-  filteredOrders: [],
-  orders: [],
+  filteredOrders: ORDERS,
+  orders: ORDERS,
 };
 
 //slices && reducers

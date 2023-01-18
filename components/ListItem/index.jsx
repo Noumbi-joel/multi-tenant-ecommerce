@@ -8,14 +8,22 @@ import { BodyText, Dropdown } from "..";
 import { COLORS } from "../../assets/colors";
 import RightArrowMd from "../../public/right-arrow-md.svg";
 import VerticalDots from "../../public/VerticalDots.svg";
+import FullFilled from "../../public/fullfilled.svg";
+import UnFullFilled from "../../public/unfullfilled.svg";
 import { ITEM_ACTIONS } from "../../helpers";
 
 // redux
 import { useDispatch } from "react-redux";
 import { HANDLE_ITEM_SELECTED, HANDLE_MODAL_VISIBLE } from "../../constants";
+import { useRouter } from "next/router";
 
 const ListItem = ({ avatar, type, item }) => {
   const dispatch = useDispatch();
+  const router = useRouter();
+  const handleClick = (orderId) => {
+    router.push(`/dashboard/orders/orderDetails`);
+  };
+
   if (type === "itemList") {
     return (
       <div>
@@ -64,6 +72,25 @@ const ListItem = ({ avatar, type, item }) => {
           </div>
         </div>
         <Divider style={{ marginTop: 16 }} />
+      </div>
+    );
+  }
+
+  if (type === "orderList") {
+    return (
+      <div className="order-item" onClick={() => handleClick(item.id)}>
+        <div className="linear-layout-flat" style={{ margin: "10px 0" }}>
+          <BodyText type="mr" color={COLORS.grayscale_900} title={item.id} />
+          <BodyText type="mr" color={COLORS.grayscale_900} title={item.date} />
+          <BodyText
+            type="mr"
+            color={COLORS.grayscale_900}
+            title={item.customerName}
+          />
+          {item.fullF ? <FullFilled /> : <UnFullFilled />}
+          <BodyText type="mr" color={COLORS.grayscale_900} title={item.total} />
+        </div>
+        <Divider />
       </div>
     );
   }

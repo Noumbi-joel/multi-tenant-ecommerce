@@ -12,8 +12,6 @@ import Logout from "../public/logout.svg";
 import RedTrash from "../public/red-trash.svg";
 import SmallEye from "../public/sm-eye.svg";
 import Pencil from "../public/pencil.svg";
-import Fullfilled from "../public/fullfilled.svg";
-import UnFullfilled from "../public/unfullfilled.svg";
 
 import moment from "moment/moment";
 
@@ -211,58 +209,67 @@ let date = moment().format("MMM, DD YYYY");
 
 export const ORDERS = [
   {
-    id: Date.now().toString(),
+    id: 1,
     date: date,
     customerName: "Muhammed Shuwa",
-    fullF: <Fullfilled aria-label="fullF" />,
+    fullF: true,
+    total: "FCFA19,300",
   },
   {
-    id: Date.now().toString(),
+    id: 2,
     date: date,
     customerName: "Muhammed Shuwa",
-    fullF: <UnFullfilled aria-label="unFullF" />,
+    fullF: false,
+    total: "FCFA19,300",
   },
   {
-    id: Date.now().toString(),
+    id: 3,
     date: date,
     customerName: "Muhammed Shuwa",
-    fullF: <Fullfilled aria-label="fullF" />,
+    fullF: true,
+    total: "FCFA19,300",
   },
   {
-    id: Date.now().toString(),
+    id: 4,
     date: date,
     customerName: "Muhammed Shuwa",
-    fullF: <Fullfilled aria-label="fullF" />,
+    fullF: true,
+    total: "FCFA19,300",
   },
   {
-    id: Date.now().toString(),
+    id: 5,
     date: date,
     customerName: "Muhammed Shuwa",
-    fullF: <Fullfilled aria-label="fullF" />,
+    fullF: true,
+    total: "FCFA19,300",
   },
   {
-    id: Date.now().toString(),
+    id: 6,
     date: date,
     customerName: "Muhammed Shuwa",
-    fullF: <UnFullfilled aria-label="unFullF" />,
+    fullF: false,
+    total: "FCFA19,300",
   },
   {
-    id: Date.now().toString(),
+    id: 7,
     date: date,
     customerName: "Muhammed Shuwa",
-    fullF: <Fullfilled aria-label="fullF" />,
+    fullF: true,
+    total: "FCFA19,300",
   },
   {
-    id: Date.now().toString(),
+    id: 8,
     date: date,
     customerName: "Muhammed Shuwa",
-    fullF: <UnFullfilled aria-label="unFullF" />,
+    fullF: false,
+    total: "FCFA19,300",
   },
   {
-    id: Date.now().toString(),
+    id: 9,
     date: date,
     customerName: "Muhammed Shuwa",
-    fullF: <Fullfilled aria-label="fullF" />,
+    fullF: true,
+    total: "FCFA19,300",
   },
 ];
 
@@ -275,4 +282,25 @@ export const ORDERS_FILTERS = [
 export const ORDERS_SORT = [
   { id: 1, title: "Last created" },
   { id: 2, title: "Order number" },
+];
+
+export const ORDERS_HEADER = [
+  { id: 1, title: "ID" },
+  { id: 2, title: "Date" },
+  { id: 3, title: "Customers" },
+  { id: 4, title: "Fullfillment" },
+  { id: 5, title: "Total" },
+];
+
+export const TRANSACTIONS = [
+  { id: 1, title: "Payment method" },
+  { id: 2, title: "Status" },
+  { id: 3, title: "Amount" },
+  { id: 4, title: "Date" },
+];
+
+export const PAID = [
+  { id: 1, header: { headerValue: "Subtotal", value: "FCFA54,000" } },
+  { id: 2, header: { headerValue: "Shipping cost", value: "FCFA54,000" } },
+  { id: 3, header: { headerValue: "Total", value: "FCFA54,000" } },
 ];

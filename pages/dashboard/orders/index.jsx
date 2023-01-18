@@ -7,7 +7,10 @@ import {
   Empty,
   PageDescription,
   SearchFilter,
+  ListOrders,
+  Table,
 } from "../../../components";
+import { ORDERS_HEADER } from "../../../helpers";
 
 const Orders = () => {
   const { filteredOrders } = useSelector((state) => state.orders);
@@ -34,6 +37,14 @@ const Orders = () => {
               msg="Create a product to start receiving orders in your store"
               btnTitle="Add products"
               link="/dashboard/products"
+            />
+          )}
+          {filteredOrders.length > 0 && (
+            <Table
+              type="orders"
+              checkboxTitle={`Display: ${filteredOrders.length} of ${filteredOrders.length} items`}
+              dataHeaders={ORDERS_HEADER}
+              data={filteredOrders}
             />
           )}
         </div>
