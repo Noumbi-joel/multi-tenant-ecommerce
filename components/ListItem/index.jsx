@@ -20,8 +20,11 @@ import { useRouter } from "next/router";
 const ListItem = ({ avatar, type, item }) => {
   const dispatch = useDispatch();
   const router = useRouter();
-  const handleClick = (orderId) => {
-    router.push(`/dashboard/orders/orderDetails`);
+  const handleClick = (type) => {
+    if (type === "customerDetails") {
+      return router.push(`/dashboard/customers/customerDetails`);
+    }
+    return router.push(`/dashboard/orders/orderDetails`);
   };
 
   if (type === "itemList") {
@@ -76,9 +79,38 @@ const ListItem = ({ avatar, type, item }) => {
     );
   }
 
+  if (type === "customerList") {
+    return (
+      <div
+        style={{ marginTop: 16 }}
+        onClick={() => handleClick("customerDetails")}
+        className="clickable"
+      >
+        <div className="linear-layout-flat">
+          <BodyText
+            type="mr"
+            title={item.customerName}
+            color={COLORS.grayscale_900}
+          />
+          <BodyText
+            type="mr"
+            title={item.totalSpent}
+            color={COLORS.grayscale_900}
+          />
+          <BodyText
+            type="mr"
+            title={item.orders}
+            color={COLORS.grayscale_900}
+          />
+        </div>
+        <Divider style={{ marginTop: 16 }} />
+      </div>
+    );
+  }
+
   if (type === "orderList") {
     return (
-      <div className="order-item" onClick={() => handleClick(item.id)}>
+      <div className="order-item" onClick={() => handleClick("")}>
         <div className="linear-layout-flat" style={{ margin: "10px 0" }}>
           <BodyText type="mr" color={COLORS.grayscale_900} title={item.id} />
           <BodyText type="mr" color={COLORS.grayscale_900} title={item.date} />

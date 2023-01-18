@@ -7,13 +7,11 @@ import {
   Empty,
   PageDescription,
   SearchFilter,
-  ListOrders,
   Table,
 } from "../../../components";
-import { ORDERS_HEADER } from "../../../helpers";
 
-const Orders = () => {
-  const { filteredOrders } = useSelector((state) => state.orders);
+const Customers = () => {
+  const { filteredCustomers } = useSelector((state) => state.customers);
   const [search, setSearch] = useState("");
   const dispatch = useDispatch();
   return (
@@ -22,30 +20,31 @@ const Orders = () => {
         <div className="dashboard-content">
           <PageDescription
             type="orders"
-            filteredOrders={filteredOrders}
-            title="Orders"
+            filteredOrders={filteredCustomers}
+            title="Customers"
           />
           <SearchFilter
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            type="orders"
-            searchType="orders"
+            type="customers"
+            searchType="customers"
             dispatch={dispatch}
           />
-          {filteredOrders.length <= 0 && (
+          {filteredCustomers.length <= 0 && (
             <Empty
-              emptyConcern="orders"
-              msg="Create a product to start receiving orders in your store"
+              emptyConcern="customers"
+              msg="Create a product to get orders from customers in your store"
               btnTitle="Add products"
               link="/dashboard/products"
             />
           )}
-          {filteredOrders.length > 0 && (
+          {filteredCustomers.length > 0 && (
             <Table
-              type="orders"
-              checkboxTitle={`Display: ${filteredOrders.length} of ${filteredOrders.length} items`}
-              dataHeaders={ORDERS_HEADER}
-              data={filteredOrders}
+              type="customers"
+              tableHeaderTitle={`Display: ${filteredCustomers.length} of ${filteredCustomers.length} items`}
+              tableHeaderOne="Total spent"
+              tableHeaderTwo="Orders"
+              data={filteredCustomers}
             />
           )}
         </div>
@@ -54,4 +53,4 @@ const Orders = () => {
   );
 };
 
-export default Orders;
+export default Customers;

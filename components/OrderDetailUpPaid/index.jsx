@@ -35,6 +35,7 @@ const OrderDetailUpPaid = () => {
           />
         </div>
       </div>
+      <BodyText type="lr" title="Paid" color={COLORS.grayscale_900} />
       <Divider />
     </div>
   );

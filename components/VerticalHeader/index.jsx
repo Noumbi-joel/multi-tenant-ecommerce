@@ -14,14 +14,14 @@ import Link from "next/link";
 // comp
 import { BodyText, Dropdown } from "..";
 import { Avatar } from "@nextui-org/react";
+import { useSelector } from "react-redux";
 
 const VerticalHeader = () => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const link = useRef(null);
+  const { filteredOrders } = useSelector((state) => state.orders);
 
-  const handleClick = (item) => {
-   
-  };
+  const handleClick = (item) => {};
 
   return (
     <div className="vertical-header-container">
@@ -47,8 +47,14 @@ const VerticalHeader = () => {
                   title={item.value}
                 />
               </div>
-              {item.value === "Products" && (
-                <Avatar color="error" textColor="white" rounded text="7" />
+              {item.value === "Orders" && (
+                <div className="nb-request">
+                  <BodyText
+                    type="sr"
+                    title={filteredOrders.length}
+                    color={COLORS.white}
+                  />
+                </div>
               )}
             </Link>
           ))}

@@ -378,6 +378,18 @@ a {
   width: 15%;
   height: 100vh;
   background-color: var(--grayscale_900);
+  overflow: hidden;
+}
+
+.nb-request {
+  width: 24px;
+  height: 24px;
+  background-color: var(--danger_dark);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  margin-right: 10px;
 }
 
 .vertical-header-items {
@@ -597,6 +609,10 @@ a {
   font-weight: "400";
   border: 1px solid var(--grayscale_400);
   border-radius: 4px;
+}
+
+.clickable {
+  cursor: pointer;
 }
 
 .search-product::placeholder {

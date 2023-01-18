@@ -5,6 +5,7 @@ import {
   ORDERS_SORT,
   FILTERS,
   UPDATES,
+  CUSTOMERS_SORT,
 } from "../../helpers";
 
 //actions
@@ -13,6 +14,8 @@ const setSort = createAction("setSort");
 const getOrders = createAction("getOrders");
 const getCategories = createAction("getCategories");
 const getProducts = createAction("getProducts");
+const getCustomers = createAction("getCustomers");
+
 
 //init states
 const initialState = {
@@ -53,6 +56,10 @@ export const filterSlice = createSlice({
       state.sortBy = UPDATES;
       state.filterValue = FILTERS_CAT[0].title;
       state.sortByValue = UPDATES[0].title;
+    });
+    builder.addCase(getCustomers, (state, action) => {
+      state.sortBy = CUSTOMERS_SORT;
+      state.sortByValue = CUSTOMERS_SORT[0].title;
     });
 
     builder.addDefaultCase((state) => {

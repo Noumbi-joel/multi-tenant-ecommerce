@@ -116,6 +116,7 @@ const Categories = () => {
                 onChange={(e) => setSearch(e.target.value)}
                 type="categories"
                 dispatch={dispatch}
+                searchType="categories"
               />
               <Table
                 tableHeaderTitle={`Displaying: ${filteredCategories.length} of ${filteredCategories.length} items`}

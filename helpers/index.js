@@ -304,3 +304,81 @@ export const PAID = [
   { id: 2, header: { headerValue: "Shipping cost", value: "FCFA54,000" } },
   { id: 3, header: { headerValue: "Total", value: "FCFA54,000" } },
 ];
+
+export const CONTACT_DETAILS = {
+  userName: "Johanna Mbappe",
+  phone: "+237 650 18 21 34",
+  email: "johanna.m@gmail.com",
+};
+
+export const SHIPPING_ADDRESS = {
+  location: "Immeuble kontchou Akwa, Douala Cameroon",
+};
+
+export const SHIPPING_CARRIER = {
+  courseType: "Course express",
+  fullfillment: "Fulfilled - Jan 13, 2023"
+};
+
+export const CUSTOMERS_SORT = [
+  { id: 1, title: "Last created" },
+  { id: 2, title: "Ascending total spent" },
+  { id: 3, title: "Descending total spent" },
+];
+
+export const CUSTOMERS = [
+  {
+    id: 1,
+    customerName: "Muhammed Shuwa",
+    totalSpent: "FCFA19,300",
+    orders: "12",
+  },
+  {
+    id: 2,
+    customerName: "Muhammed Shuwa",
+    totalSpent: "FCFA19,300",
+    orders: "15",
+  },
+  {
+    id: 3,
+    customerName: "Muhammed Shuwa",
+    totalSpent: "FCFA19,300",
+    orders: "1",
+  },
+  {
+    id: 4,
+    customerName: "Muhammed Shuwa",
+    totalSpent: "FCFA19,300",
+    orders: "5",
+  },
+  {
+    id: 5,
+    customerName: "Muhammed Shuwa",
+    totalSpent: "FCFA19,300",
+    orders: "56",
+  },
+  {
+    id: 6,
+    customerName: "Muhammed Shuwa",
+    totalSpent: "FCFA19,300",
+    orders: "4",
+  },
+  {
+    id: 7,
+    customerName: "Muhammed Shuwa",
+    totalSpent: "FCFA19,300",
+    orders: "2",
+  },
+  {
+    id: 8,
+    customerName: "Muhammed Shuwa",
+    totalSpent: "FCFA19,300",
+    orders: "5",
+  },
+  {
+    id: 9,
+    customerName: "Muhammed Shuwa",
+    totalSpent: "FCFA19,300",
+    orders: "0",
+  },
+];

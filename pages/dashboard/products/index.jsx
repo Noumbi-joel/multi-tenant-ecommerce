@@ -165,6 +165,7 @@ const Products = () => {
             value={search}
             onChange={searchFilter}
             dispatch={dispatch}
+            searchType="products"
           />
 
           <Table
@@ -183,17 +184,3 @@ const Products = () => {
 };
 
 export default Products;
-
-/*
-      <Modal
-        closeModal={() => setModalVisibleTwo(false)}
-        visible={modalVisibleTwo}
-        modalTitle="Remove 7 selected products?"
-        modalBodyTextOne="Removed products can't be restored."
-        modalBodyTextTwo="Products with order and cart history won't be deleted"
-        dashboard
-        firstBtn="Cancel"
-        secondBtn="Delete"
-        firstBtnStyle={{ backgroundColor: COLORS.grayscale_400, borderRadius: 4 }}
-        secondBtnStyle={{ backgroundColor: COLORS.danger_base, borderRadius: 4 }}
-      /> */

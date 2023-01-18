@@ -7,6 +7,7 @@ import filterSlice from "./slices/filters";
 import imageSlice from "./slices/images";
 import categorySlice from "./slices/category";
 import orderSlice from "./slices/orders";
+import customerSlice from "./slices/customers";
 
 export const store = configureStore({
   reducer: {
@@ -15,6 +16,7 @@ export const store = configureStore({
     filter: filterSlice,
     image: imageSlice,
     categories: categorySlice,
-    orders: orderSlice
+    orders: orderSlice,
+    customers: customerSlice
   },
 });

@@ -3,7 +3,7 @@ import React from "react";
 // comp
 import { Checkbox, Divider } from "@nextui-org/react";
 import BodyText from "../BodyText";
-import { CategoryList, ListOrders, ProductList } from "..";
+import { CategoryList, CustomerList, ListOrders, ProductList } from "..";
 
 // assets
 import { COLORS } from "../../assets/colors";
@@ -78,16 +78,24 @@ const Table = ({
   return (
     <div>
       <div className="linear-layout-flat" style={{ marginTop: 50 }}>
-        <Checkbox
-          isSelected={allChecker ? allChecker : allCheckerCat}
-          onChange={allChecker ? handleChange : handleChangeCat}
-        >
+        {type === "customers" ? (
           <BodyText
             type="mr"
             title={tableHeaderTitle}
             color={COLORS.grayscale_900}
           />
-        </Checkbox>
+        ) : (
+          <Checkbox
+            isSelected={allChecker}
+            onChange={handleChange}
+          >
+            <BodyText
+              type="mr"
+              title={tableHeaderTitle}
+              color={COLORS.grayscale_900}
+            />
+          </Checkbox>
+        )}
         <BodyText
           type="mr"
           title={tableHeaderOne}
@@ -98,10 +106,10 @@ const Table = ({
           title={tableHeaderTwo}
           color={COLORS.grayscale_900}
         />
-        <div />
+        {type === "customers" ? null : <div />}
       </div>
       <Divider className="divider-item" />
-
+      {type === "customers" && <CustomerList data={data} />}
       {productList && <ProductList data={data} />}
       {cat && <CategoryList data={data} />}
     </div>

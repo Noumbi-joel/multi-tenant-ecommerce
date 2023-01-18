@@ -1,19 +1,19 @@
-import React, { useLayoutEffect } from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 
 // comp
 import InputField from "../InputField";
 import FilterBtn from "../FilterBtn";
 import { useSelector } from "react-redux";
-import { GET_CATEGORIES, GET_ORDERS, GET_PRODUCTS } from "../../constants";
+import { GET_CATEGORIES, GET_CUSTOMERS, GET_ORDERS, GET_PRODUCTS } from "../../constants";
 
 // assets
 
-const SearchFilter = ({ onChange, value, type, dispatch }) => {
+const SearchFilter = ({ onChange, value, type, dispatch, searchType }) => {
   const { filter, sortBy, filterValue, sortByValue } = useSelector(
     (state) => state.filter
   );
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (type === "orders") {
       dispatch({ type: GET_ORDERS });
     }
@@ -23,6 +23,9 @@ const SearchFilter = ({ onChange, value, type, dispatch }) => {
     if (type === "categories") {
       dispatch({ type: GET_CATEGORIES });
     }
+    if (type === "customers") {
+      dispatch({ type: GET_CUSTOMERS });
+    }
   }, []);
 
   return (
@@ -30,17 +33,19 @@ const SearchFilter = ({ onChange, value, type, dispatch }) => {
       <InputField
         type="text"
         name="products"
-        placeholder="Search products"
+        placeholder={`Search ${searchType}`}
         onChange={onChange}
         value={value}
         ariaLabel="search-p"
         className="search-product"
       />
-      <FilterBtn
-        type="filter"
-        title={"Show " + filterValue.toLowerCase()}
-        data={filter}
-      />
+      {searchType === "customers" ? null : (
+        <FilterBtn
+          type="filter"
+          title={"Show " + filterValue.toLowerCase()}
+          data={filter}
+        />
+      )}
       <FilterBtn data={sortBy} title={"Sort by " + sortByValue.toLowerCase()} />
     </div>
   );

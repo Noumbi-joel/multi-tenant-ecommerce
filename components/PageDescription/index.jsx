@@ -12,6 +12,7 @@ const PageDescription = ({
   type,
   filteredOrders,
   orderId,
+  customer,
 }) => {
   if (type === "orders") {
     return (
@@ -43,7 +44,13 @@ const PageDescription = ({
           />
           <HeadingText type="h3" title={orderId} color={COLORS.grayscale_900} />
         </div>
-        <BodyText type="mr" title={moment().format("MMM DD, YYYY")} color={"#212121"} />
+        <BodyText
+          type="mr"
+          title={
+            customer ? moment().fromNow() : moment().format("MMM DD, YYYY")
+          }
+          color={"#212121"}
+        />
       </div>
     );
   }

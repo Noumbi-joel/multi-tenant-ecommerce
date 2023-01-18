@@ -4,43 +4,36 @@ import React from "react";
 import {
   ContactDetails,
   DashboardContainer,
-  OrderDetailUpPaid,
   PageDescription,
-  Paid,
+  RecentOrders,
   ShippingAddress,
-  ShippingCarrier,
-  Transaction,
+  SumCustomer
 } from "../../../../components";
 import { Divider } from "@nextui-org/react";
 
 // assets
-import {
-  PAID,
-  TRANSACTIONS,
-  CONTACT_DETAILS,
-  SHIPPING_ADDRESS,
-  SHIPPING_CARRIER,
-} from "../../../../helpers";
+import { CONTACT_DETAILS, SHIPPING_ADDRESS } from "../../../../helpers";
 
-const OrderDetails = () => {
+const CustomerDetails = () => {
   return (
     <DashboardContainer>
       <div className="dashboard-dynamic">
         <div className="dashboard-content">
-          <PageDescription type="orderDetails" title="Order #1010" />
+          <PageDescription
+            type="orderDetails"
+            title="Chimbuchi Buchi"
+            customer
+          />
           <div style={{ marginTop: 40 }}>
             <Divider />
             <div className="orderDetails">
               <div className="orderDLeft">
-                <OrderDetailUpPaid />
-                <Paid data={PAID} />
-                <Transaction data={TRANSACTIONS} />
-                <Transaction results />
+                <SumCustomer />
+                <RecentOrders/>
               </div>
               <div className="orderDRight">
                 <ContactDetails data={CONTACT_DETAILS} />
                 <ShippingAddress data={SHIPPING_ADDRESS} />
-                <ShippingCarrier data={SHIPPING_CARRIER} />
               </div>
             </div>
           </div>
@@ -50,4 +43,4 @@ const OrderDetails = () => {
   );
 };
 
-export default OrderDetails;
+export default CustomerDetails;
