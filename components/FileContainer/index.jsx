@@ -10,7 +10,7 @@ import Upload from "../../public/upload.svg";
 import { DELETE_IMAGE, DELETE_IMAGE_CAT, SET_IMAGES, SET_IMAGES_CAT } from "../../constants";
 import ImagePlus from "../../public/image-plus.svg";
 import ImageCross from "../../public/image-cross.svg";
-import { toast } from "react-hot-toast";
+import toast  from "react-hot-toast";
 
 const FileContainer = ({ dispatch, images, cat }) => {
   const onSelectFiles = (e) => {

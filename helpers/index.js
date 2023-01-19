@@ -382,3 +382,35 @@ export const CUSTOMERS = [
     orders: "0",
   },
 ];
+
+export const SETTINGS_NAV = [
+  { id: 1, title: "General" },
+  { id: 2, title: "Account" },
+  { id: 3, title: "Payments" },
+  { id: 4, title: "Geo zones" },
+  { id: 5, title: "Shipping" },
+  { id: 6, title: "Taxes" },
+  { id: 7, title: "Locations" },
+  { id: 8, title: "Social profiles" },
+  { id: 9, title: "Legal" },
+  { id: 10, title: "Updates" },
+  { id: 11, title: "Password" },
+];
+
+export const SITE_LANG = [
+  { id: 1, title: "en-US" },
+  { id: 2, title: "fr-FRA" },
+];
+
+
+export const TIMEZONE = [
+  { id: 1, title: "UTC" },
+  { id: 2, title: "PNT" },
+  { id: 3, title: "PST" },
+  { id: 4, title: "MST" },
+];
+
+export const CURRENCY = [
+  { id: 1, title: "USD" },
+  { id: 2, title: "FCFA" },
+];

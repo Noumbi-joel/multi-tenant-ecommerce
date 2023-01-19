@@ -9,6 +9,7 @@ import CrossBlack from "../../public/cross-black.svg";
 
 // comp
 import BodyText from "../BodyText";
+import { FormControl, Select, MenuItem } from "@mui/material";
 
 const InputField = ({
   type,
@@ -19,6 +20,7 @@ const InputField = ({
   ariaLabel,
   label,
   className,
+  data,
 }) => {
   const [eye, setEye] = useState(false);
 
@@ -194,6 +196,58 @@ const InputField = ({
           color={COLORS.grayscale_500}
           className="fcfa"
         />
+      </div>
+    );
+  }
+
+  if (name === "desc") {
+    return (
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          position: "relative",
+        }}
+      >
+        <BodyText
+          type="mr"
+          color={COLORS.grayscale_900}
+          title={label}
+          style={{ marginBottom: 5 }}
+        />
+        <textarea
+          cols={10}
+          type={type}
+          name={name}
+          required
+          placeholder={placeholder}
+          className={className}
+          onChange={onChange}
+          value={value}
+          aria-label={ariaLabel}
+        />
+      </div>
+    );
+  }
+
+  if (name === "select") {
+    return (
+      <div>
+        <BodyText
+          type="mr"
+          title={label}
+          color={COLORS.grayscale_900}
+          style={{ marginBottom: 5 }}
+        />
+        <FormControl className={className}>
+          <Select value={value} onChange={onChange} className="" name={name}>
+            {data.map((select) => (
+              <MenuItem key={select.id} value={select.title}>
+                {select.title}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
       </div>
     );
   }

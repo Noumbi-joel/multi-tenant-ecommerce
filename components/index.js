@@ -42,3 +42,4 @@ export { default as CustomerList } from "./CustomerList";
 export { default as SumCustomer } from "./SumCustomer";
 export { default as RecentOrders } from "./RecentOrders";
 export { default as ListRecentOrders } from "./ListRecentOrders";
+export { default as StoreDetails } from "./StoreDetails";

@@ -13,7 +13,34 @@ const PageDescription = ({
   filteredOrders,
   orderId,
   customer,
+  data,
+  children
 }) => {
+  if (type === "settings") {
+    return (
+      <div>
+        <HeadingText
+          type="h3"
+          title={title}
+          color={COLORS.grayscale_900}
+          style={{ marginBottom: 20 }}
+        />
+        <div className="linear-layout-flat">
+          {data.map((nav) => (
+            <BodyText
+              key={nav.id}
+              type="lr"
+              color={COLORS.grayscale_900}
+              title={nav.title}
+              className="setting-nav clickable"
+            />
+          ))}
+        </div>
+        {children}
+      </div>
+    );
+  }
+
   if (type === "orders") {
     return (
       <div className="linear-layout">

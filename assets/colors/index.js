@@ -44,6 +44,7 @@ export const COLORS = {
     grayscale_700: '#4A5568',
     grayscale_800: '#2D3748',
     grayscale_900: '#1A202C',
+    grayscale_8080: '#808080',
 
 
     /****** ADDITIONAL COLORS ******/

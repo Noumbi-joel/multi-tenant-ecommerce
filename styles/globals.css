@@ -878,13 +878,14 @@ a {
 }
 
 .desc {
-  height: 75px;
+  height: 100px;
   width: 100%;
   padding: 10px;
   border: 1px solid var(--grayscale_400);
   border-radius: 4px;
   font-size: 14px;
   color: var(--grayscale_900);
+  resize: none;
 }
 
 .editor {
@@ -998,7 +999,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--success_light)
+  background-color: var(--success_light);
 }
 
 .order-failed {
@@ -1008,7 +1009,77 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--danger_light)
+  background-color: var(--danger_light);
+}
+
+/* SETTINGS */
+.storeDetailsInputs {
+  height: 50px;
+  width: 500px;
+  border-radius: 4px;
+  padding: 10px;
+  border: 1px solid var(--grayscale_400);
+}
+
+.storeAddressInput {
+  height: 50px;
+  width: 100%;
+  border-radius: 4px;
+  padding: 10px;
+  border: 1px solid var(--grayscale_400);
+}
+
+.select-siteLang {
+  width: 500px;
+  height: 50px;
+}
+
+.select-storeAddr {
+  width: 300px;
+  height: 50px;
+}
+
+.storeDetailsZipCode {
+  width: 300px;
+  height: 50px;
+  border-radius: 4px;
+  padding: 10px;
+  border: 1px solid var(--grayscale_400);
+}
+
+.setting-favico {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.updateImg {
+  margin: 0 20px 0 0;
+  height: 50px;
+  width: 145px;
+  border: 1px solid var(--primary_base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.social-img-container {
+  width: 330px;
+  height: 185px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.saveChanges {
+  height: 50px;
+  width: 145px;
+  background-color: var(--primary_base);
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 /* YEAH MEN I USE @MEDIA QUERY: SORRY!!!!!!! 🤣🤣🤣🤣 */
