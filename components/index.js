@@ -49,3 +49,4 @@ export { default as SettingPayments } from "./SettingPayments";
 export { default as Legal } from "./Legal";
 export { default as SettingPassword } from "./SettingPassword";
 export { default as SubContentSettings } from "./SubContentSettings";
+export { default as PaymentCard } from "./PaymentCard";

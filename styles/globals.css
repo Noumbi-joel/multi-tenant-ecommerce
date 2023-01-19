@@ -1122,6 +1122,39 @@ a {
   margin-right: 20px;
 }
 
+.status-container {
+  width: 60px;
+  height: 25px;
+  background-color: var(--success_light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+}
+
+.check-container {
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+  border: 1px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-payment-container {
+  width: 500px;
+  padding: 20px;
+}
+
+.setting-nav-active {
+  border-bottom: 2px solid #000;
+}
+
+.vertical-header-nav-active {
+  background-color: var(--primary_base)
+}
+
 /* YEAH MEN I USE @MEDIA QUERY: SORRY!!!!!!! 🤣🤣🤣🤣 */
 @media screen and (max-width: 950px) {
   .centered {

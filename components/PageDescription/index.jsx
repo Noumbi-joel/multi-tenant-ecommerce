@@ -4,7 +4,7 @@ import React from "react";
 // comp
 import { BodyText, HeadingText, HelpCenter } from "..";
 import { COLORS } from "../../assets/colors";
-import { NAVIGATE } from "../../constants";
+import { NAVIGATE, SET_ACTIVE } from "../../constants";
 
 const PageDescription = ({
   helperVisible,
@@ -16,12 +16,12 @@ const PageDescription = ({
   customer,
   data,
   children,
-  navStates,
   dispatch,
 }) => {
   if (type === "settings") {
-    const handleClick = (nav) => {
-      dispatch({ type: NAVIGATE, payload: nav.title });
+    const handleClick = (title) => {
+      dispatch({ type: NAVIGATE, payload: title });
+      dispatch({ type: SET_ACTIVE, payload: title });
     };
     return (
       <div>
@@ -33,12 +33,18 @@ const PageDescription = ({
         />
         <div className="linear-layout-flat">
           {data.map((nav) => (
-            <span key={nav.id} onClick={() => handleClick(nav)}>
+            <span key={nav.id} onClick={() => handleClick(nav.title)}>
               <BodyText
                 type="lr"
-                color={COLORS.grayscale_8080}
+                color={
+                  nav.isActive ? COLORS.grayscale_900 : COLORS.grayscale_8080
+                }
                 title={nav.title}
-                className="setting-nav clickable"
+                className={
+                  nav.isActive
+                    ? "setting-nav-active clickable"
+                    : "setting-nav clickable"
+                }
               />
             </span>
           ))}

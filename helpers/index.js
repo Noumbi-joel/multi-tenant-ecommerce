@@ -35,48 +35,56 @@ export const VERTICAL_HEADER_ITEMS = [
     value: "Dashboard",
     link: "/dashboard",
     icon: <Home aria-label="home" />,
+    isActive: true,
   },
   {
     id: 2,
     value: "Products",
     link: "/dashboard/products",
     icon: <Product aria-label="product" />,
+    isActive: false,
   },
   {
     id: 8,
     value: "Categories",
     link: "/dashboard/categories",
     icon: "",
+    isActive: false,
   },
   {
     id: 3,
     value: "Orders",
     link: "/dashboard/orders",
     icon: <Order aria-label="order" />,
+    isActive: false,
   },
   {
     id: 4,
     value: "Customers",
     link: "/dashboard/customers",
     icon: <Customer aria-label="customer" />,
+    isActive: false,
   },
   {
     id: 5,
     value: "Plugins",
     link: "/dashboard/plugins",
     icon: <Plugin aria-label="plugin" />,
+    isActive: false,
   },
   {
     id: 6,
     value: "Themes",
     link: "/dashboard/themes",
     icon: <Theme aria-label="theme" />,
+    isActive: false,
   },
   {
     id: 7,
     value: "Settings",
     link: "/dashboard/settings",
     icon: <Setting aria-label="setting" />,
+    isActive: false,
   },
 ];
 
@@ -317,7 +325,7 @@ export const SHIPPING_ADDRESS = {
 
 export const SHIPPING_CARRIER = {
   courseType: "Course express",
-  fullfillment: "Fulfilled - Jan 13, 2023"
+  fullfillment: "Fulfilled - Jan 13, 2023",
 };
 
 export const CUSTOMERS_SORT = [
@@ -384,24 +392,23 @@ export const CUSTOMERS = [
 ];
 
 export const SETTINGS_NAV = [
-  { id: 1, title: "General" },
-  { id: 2, title: "Account" },
-  { id: 3, title: "Payments" },
-  { id: 4, title: "Geo zones" },
-  { id: 5, title: "Shipping" },
-  { id: 6, title: "Taxes" },
-  { id: 7, title: "Locations" },
-  { id: 8, title: "Social profiles" },
-  { id: 9, title: "Legal" },
-  { id: 10, title: "Updates" },
-  { id: 11, title: "Password" },
+  { id: 1, title: "General", isActive: true },
+  { id: 2, title: "Account", isActive: false },
+  { id: 3, title: "Payments", isActive: false },
+  { id: 4, title: "Geo zones", isActive: false },
+  { id: 5, title: "Shipping", isActive: false },
+  { id: 6, title: "Taxes", isActive: false },
+  { id: 7, title: "Locations", isActive: false },
+  { id: 8, title: "Social profiles", isActive: false },
+  { id: 9, title: "Legal", isActive: false },
+  { id: 10, title: "Updates", isActive: false },
+  { id: 11, title: "Password", isActive: false },
 ];
 
 export const SITE_LANG = [
   { id: 1, title: "en-US" },
   { id: 2, title: "fr-FRA" },
 ];
-
 
 export const TIMEZONE = [
   { id: 1, title: "UTC" },

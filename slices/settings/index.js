@@ -1,16 +1,24 @@
+import { SETTINGS_NAV, VERTICAL_HEADER_ITEMS } from "../../helpers";
+
 import { createSlice, createAction } from "@reduxjs/toolkit";
 
 //actions
 const navigate = createAction("navigate");
+const setActive = createAction("setActive");
+const setVerticalActive = createAction("setVerticalActive");
 
 //init states
 const initialState = {
-  general: true,
-  account: false,
-  socialProfiles: false,
-  payments: false,
-  legal: false,
-  password: false,
+  state: {
+    general: true,
+    account: false,
+    socialProfiles: false,
+    payments: false,
+    legal: false,
+    password: false,
+  },
+  settings_nav: SETTINGS_NAV,
+  vertical_header_nav: VERTICAL_HEADER_ITEMS,
 };
 
 let temp;
@@ -22,30 +30,50 @@ export const settingSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(navigate, (state, action) => {
-      Object.keys(state).forEach(function (key, index) {
-        state[key] = false;
+      Object.keys(state.state).forEach(function (key, index) {
+        state.state[key] = false;
       });
       switch (action.payload) {
         case "General":
-          state.general = true;
+          state.state.general = true;
           break;
         case "Account":
-          state.account = true;
+          state.state.account = true;
           break;
         case "Payments":
-          state.payments = true;
+          state.state.payments = true;
           break;
         case "Social profiles":
-          state.socialProfiles = true;
+          state.state.socialProfiles = true;
           break;
         case "Legal":
-          state.legal = true;
+          state.state.legal = true;
           break;
         case "Password":
-          state.password = true;
+          state.state.password = true;
           break;
         default:
           break;
+      }
+    });
+
+    builder.addCase(setActive, (state, action) => {
+      for (let i = 0; i < state.settings_nav.length; i++) {
+        if (state.settings_nav[i].title === action.payload) {
+          state.settings_nav[i].isActive = true;
+        } else {
+          state.settings_nav[i].isActive = false;
+        }
+      }
+    });
+
+    builder.addCase(setVerticalActive, (state, action) => {
+      for (let i = 0; i < state.vertical_header_nav.length; i++) {
+        if (state.vertical_header_nav[i].value === action.payload) {
+          state.vertical_header_nav[i].isActive = true;
+        } else {
+          state.vertical_header_nav[i].isActive = false;
+        }
       }
     });
 

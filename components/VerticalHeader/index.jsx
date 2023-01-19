@@ -14,14 +14,16 @@ import Link from "next/link";
 // comp
 import { BodyText, Dropdown } from "..";
 import { Avatar } from "@nextui-org/react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { SET_VERTICAL_ACTIVE } from "../../constants";
 
 const VerticalHeader = () => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
+  const dispatch = useDispatch();
+
   const link = useRef(null);
   const { filteredOrders } = useSelector((state) => state.orders);
-
-  const handleClick = (item) => {};
+  const { vertical_header_nav } = useSelector((state) => state.settings);
 
   return (
     <div className="vertical-header-container">
@@ -30,13 +32,19 @@ const VerticalHeader = () => {
           <Eduka aria-label="app-logo" />
         </div>
         <div className="vertical-header-items">
-          {VERTICAL_HEADER_ITEMS.map((item, i) => (
+          {vertical_header_nav.map((item, i) => (
             <Link
               href={item.link}
-              className={"vertical-header-item"}
+              className={
+                item.isActive
+                  ? "vertical-header-nav-active vertical-header-item"
+                  : "vertical-header-item"
+              }
               key={item.id}
               ref={link}
-              onClick={() => handleClick(item)}
+              onClick={() =>
+                dispatch({ type: SET_VERTICAL_ACTIVE, payload: item.value })
+              }
             >
               <div className="linear-layout">
                 {item.icon}

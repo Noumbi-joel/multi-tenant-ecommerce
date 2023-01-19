@@ -16,7 +16,7 @@ import {
 } from "../../../components";
 
 // assets
-import { SETTINGS_NAV, SITE_LANG, TIMEZONE, CURRENCY } from "../../../helpers";
+import { SITE_LANG, TIMEZONE, CURRENCY } from "../../../helpers";
 
 const Settings = () => {
   const dispatch = useDispatch();
@@ -30,18 +30,17 @@ const Settings = () => {
           <PageDescription
             type="settings"
             dispatch={dispatch}
-            navStates={navStates}
-            data={SETTINGS_NAV}
+            data={navStates.settings_nav}
             title="Settings"
           >
-            {navStates.general && (
+            {navStates.state.general && (
               <StoreDetails data={{ SITE_LANG, TIMEZONE, CURRENCY }} />
             )}
-            {navStates.account && <AccountSettings data={{ SITE_LANG }} />}
-            {navStates.socialProfiles && <SocialProfiles />}
-            {navStates.payments && <SettingPayments />}
-            {navStates.legal && <Legal />}
-            {navStates.password && <SettingPassword />}
+            {navStates.state.account && <AccountSettings data={{ SITE_LANG }} />}
+            {navStates.state.socialProfiles && <SocialProfiles />}
+            {navStates.state.payments && <SettingPayments />}
+            {navStates.state.legal && <Legal />}
+            {navStates.state.password && <SettingPassword />}
           </PageDescription>
         </div>
       </div>
