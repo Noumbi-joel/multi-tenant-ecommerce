@@ -14,6 +14,8 @@ import Center from "../../public/center.svg";
 import Left from "../../public/left.svg";
 import Colors from "../../public/colors.svg";
 import Line from "../../public/line.svg";
+import BodyText from "../BodyText";
+import { COLORS } from "../../assets/colors";
 
 const MenuBar = ({ editor }) => {
   if (!editor) {
@@ -67,7 +69,7 @@ const MenuBar = ({ editor }) => {
   );
 };
 
-export default ({ value, onChange }) => {
+export default ({ value, onChange, settings, label }) => {
   const editor = useEditor({
     extensions: [StarterKit],
     content: "",
@@ -75,6 +77,9 @@ export default ({ value, onChange }) => {
 
   return (
     <div>
+      {settings && (
+        <BodyText type="mr" title={label} color={COLORS.grayscale_900} />
+      )}
       <MenuBar editor={editor} />
       <EditorContent
         value={value}
