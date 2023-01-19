@@ -21,6 +21,7 @@ const InputField = ({
   label,
   className,
   data,
+  dashboard,
 }) => {
   const [eye, setEye] = useState(false);
 
@@ -70,6 +71,7 @@ const InputField = ({
           flexDirection: "column",
           position: "relative",
         }}
+        className={dashboard ? "settingPwdContainer" : ""}
       >
         <BodyText
           type="mr"

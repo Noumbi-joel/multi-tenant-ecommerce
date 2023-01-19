@@ -1,6 +1,6 @@
 import React from "react";
 // comp
-import { BodyText, Button, InputField } from "..";
+import { BodyText, Button, InputField, SubContentSettings } from "..";
 import { Checkbox, Spacer } from "@nextui-org/react";
 
 // assets
@@ -11,11 +11,9 @@ const StoreDetails = ({ data: { SITE_LANG, TIMEZONE, CURRENCY } }) => {
   return (
     <div>
       <Spacer y={1.5} />
-      <BodyText type="lr" color={COLORS.grayscale_900} title="Store details" />
-      <BodyText
-        type="mr"
-        color={COLORS.grayscale_8080}
-        title="Uvodo and your customers will use this information to contact you."
+      <SubContentSettings
+        subTitle="Store details"
+        subDesc="Eduka and your customers will use this information to contact you."
       />
       <Spacer />
       <div className="linear-layout-flat">
@@ -100,11 +98,9 @@ const StoreDetails = ({ data: { SITE_LANG, TIMEZONE, CURRENCY } }) => {
       </div>
       <Spacer y={2.5} />
 
-      <BodyText type="lr" color={COLORS.grayscale_900} title="Store address" />
-      <BodyText
-        type="mr"
-        color={COLORS.grayscale_8080}
-        title="This address will appear on your invoices."
+      <SubContentSettings
+        subTitle="Store address"
+        subDesc="This address will appear on your invoices."
       />
       <Spacer />
       <InputField
@@ -176,11 +172,9 @@ const StoreDetails = ({ data: { SITE_LANG, TIMEZONE, CURRENCY } }) => {
       </div>
       <Spacer />
 
-      <BodyText type="lr" color={COLORS.grayscale_900} title="Favicon" />
-      <BodyText
-        type="mr"
-        color={COLORS.grayscale_8080}
-        title="A favicon is a small icon next to your site title. Display a custom favicon to help visitors recognize your brand and stand out in their browser tabs."
+      <SubContentSettings
+        subTitle="Favicon"
+        subDesc="A favicon is a small icon next to your site title. Display a custom favicon to help visitors recognize your brand and stand out in their browser tabs."
       />
       <Spacer />
       <div className="linear-layout">
@@ -200,15 +194,9 @@ const StoreDetails = ({ data: { SITE_LANG, TIMEZONE, CURRENCY } }) => {
       </div>
       <Spacer />
 
-      <BodyText
-        type="lr"
-        color={COLORS.grayscale_900}
-        title="Storefront logo"
-      />
-      <BodyText
-        type="mr"
-        color={COLORS.grayscale_8080}
-        title="You can upload the storefront logo here."
+      <SubContentSettings
+        subTitle="Storefront logo"
+        subDesc="You can upload the storefront logo here."
       />
       <Spacer />
 
@@ -229,15 +217,9 @@ const StoreDetails = ({ data: { SITE_LANG, TIMEZONE, CURRENCY } }) => {
       </div>
       <Spacer />
 
-      <BodyText
-        type="lr"
-        color={COLORS.grayscale_900}
-        title="General social image"
-      />
-      <BodyText
-        type="mr"
-        color={COLORS.grayscale_8080}
-        title="This image will be shared on social networks, including Facebook and Twitter. It's a great way to help visitors recognize your brand."
+      <SubContentSettings
+        subTitle="General social image"
+        subDesc="This image will be shared on social networks, including Facebook and Twitter. It's a great way to help visitors recognize your brand."
       />
       <Spacer />
 
@@ -260,18 +242,11 @@ const StoreDetails = ({ data: { SITE_LANG, TIMEZONE, CURRENCY } }) => {
       </div>
 
       <Spacer />
-      <BodyText
-        type="lr"
-        color={COLORS.grayscale_900}
-        title="Maintenance mode & access restriction"
-      />
-      <BodyText
-        type="mr"
-        color={COLORS.grayscale_8080}
-        title="Put your store into maintenance mode or restrict the access."
+      <SubContentSettings
+        subTitle="Maintenance mode & access restriction"
+        subDesc="Put your store into maintenance mode or restrict the access."
       />
       <Spacer />
-
       <Checkbox>
         <BodyText
           type="mr"

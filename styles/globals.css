@@ -1082,6 +1082,38 @@ a {
   cursor: pointer;
 }
 
+.settingPwdContainer {
+  width: 500px;
+}
+
+.settingPwdInput {
+  background-color: var(--white);
+  border: 1px solid var(--grayscale_500);
+  border-radius: 5px;
+  height: 50px;
+  font-size: 12px;
+  font-weight: "400";
+  padding: 16px;
+  width: 500px;
+}
+
+.save-pwd-btn {
+  width: 145px;
+  height: 50px;
+  border-radius: 4px;
+  background-color: var(--primary_base);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.save-pwd-btn-container {
+  width: 500px;
+  display: flex;
+  justify-content: flex-end;
+}
+
 /* YEAH MEN I USE @MEDIA QUERY: SORRY!!!!!!! 🤣🤣🤣🤣 */
 @media screen and (max-width: 950px) {
   .centered {
