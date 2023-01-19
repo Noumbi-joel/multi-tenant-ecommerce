@@ -37,7 +37,7 @@ const Settings = () => {
             {navStates.general && (
               <StoreDetails data={{ SITE_LANG, TIMEZONE, CURRENCY }} />
             )}
-            {navStates.account && <AccountSettings />}
+            {navStates.account && <AccountSettings data={{ SITE_LANG }} />}
             {navStates.socialProfiles && <SocialProfiles />}
             {navStates.payments && <SettingPayments />}
             {navStates.legal && <Legal />}

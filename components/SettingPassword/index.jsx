@@ -43,7 +43,7 @@ const SettingPassword = () => {
           titleType="lr"
           titleColor={COLORS.white}
           title="Save changes"
-          className="save-pwd-btn"
+          className="setting-submit-btn"
         />
       </div>
     </div>

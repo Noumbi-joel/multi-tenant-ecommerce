@@ -2,7 +2,8 @@ import React from "react";
 
 // comp
 import { Spacer } from "@nextui-org/react";
-import { SubContentSettings, TipTap } from "..";
+import { Button, SubContentSettings, TipTap } from "..";
+import { COLORS } from "../../assets/colors";
 
 const Legal = () => {
   return (
@@ -13,13 +14,25 @@ const Legal = () => {
         subDesc="Write down legal and policy information below and revise them whenever you want."
       />
       <Spacer />
-      <TipTap label="Refund policy" settings />
-      <Spacer />
-      <TipTap label="Privacy policy" settings />
-      <Spacer />
-      <TipTap label="Terms of services" settings />
-      <Spacer />
-      <TipTap label="Shipping policy" settings />
+      <div className="tiptap-container">
+        <TipTap label="Refund policy" settings />
+        <Spacer />
+        <TipTap label="Privacy policy" settings />
+        <Spacer />
+        <TipTap label="Terms of services" settings />
+        <Spacer />
+        <TipTap label="Shipping policy" settings />
+        <Spacer />
+        <div className="alignRight">
+          <Button
+            titleType="lr"
+            titleColor={COLORS.white}
+            title="Save Changes"
+            className="setting-submit-btn"
+          />
+        </div>
+      </div>
+
       <Spacer y={2.5} />
     </div>
   );

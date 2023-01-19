@@ -261,7 +261,7 @@ const StoreDetails = ({ data: { SITE_LANG, TIMEZONE, CURRENCY } }) => {
           titleType="lr"
           titleColor={COLORS.white}
           title="Save Changes"
-          className="saveChanges linear-layout-center"
+          className="setting-submit-btn"
         />
       </div>
 

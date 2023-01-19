@@ -22,6 +22,7 @@ const InputField = ({
   className,
   data,
   dashboard,
+  disabled
 }) => {
   const [eye, setEye] = useState(false);
 
@@ -277,6 +278,7 @@ const InputField = ({
         onChange={onChange}
         value={value}
         aria-label={ariaLabel}
+        disabled={disabled}
       />
     </div>
   );

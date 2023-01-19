@@ -1074,12 +1074,15 @@ a {
   justify-content: center;
 }
 
-.saveChanges {
+.setting-submit-btn {
   height: 50px;
   width: 145px;
   background-color: var(--primary_base);
   border-radius: 4px;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .settingPwdContainer {
@@ -1097,21 +1100,26 @@ a {
   width: 500px;
 }
 
-.save-pwd-btn {
-  width: 145px;
-  height: 50px;
-  border-radius: 4px;
-  background-color: var(--primary_base);
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .save-pwd-btn-container {
   width: 500px;
   display: flex;
   justify-content: flex-end;
+}
+
+.tiptap-container {
+  width: 700px;
+}
+
+.alignRight {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.account-img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  margin-right: 20px;
 }
 
 /* YEAH MEN I USE @MEDIA QUERY: SORRY!!!!!!! 🤣🤣🤣🤣 */
