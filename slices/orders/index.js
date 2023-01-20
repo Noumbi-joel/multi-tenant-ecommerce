@@ -3,6 +3,7 @@ import { ORDERS } from "../../helpers";
 
 //actions
 const filteringOrders = createAction("filteringOrders");
+const setFilterOrder = createAction("setFilterOrder");
 
 //init states
 const initialState = {
@@ -18,6 +19,20 @@ export const orderSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(filteringOrders, (state, action) => {
       state.filteredOrders = action.payload;
+    });
+
+    builder.addCase(setFilterOrder, (state, action) => {
+      switch (action.payload) {
+        case "fullfilled":
+          state.filteredOrders = state.orders.filter((p) => p.fullF !== false);
+          break;
+        case "unfullfilled":
+          state.filteredOrders = state.orders.filter((p) => p.fullF !== true);
+          break;
+        default:
+          state.filteredOrders = state.orders;
+          break;
+      }
     });
 
     builder.addDefaultCase((state) => {

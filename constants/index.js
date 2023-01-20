@@ -38,3 +38,6 @@ export const FILTERING_CATEGORY = "filteringCategory";
 export const FILTERING_ORDERS = "filteringOrders";
 export const FILTERING_CUSTOMERS = "filteringCustomers";
 export const HANDLE_VISIBLE = "handleVisible";
+export const SET_FILTER_PRODUCT = "setFilterProduct";
+export const SET_FILTER_CATEGORY = "setFilterCategory";
+export const SET_FILTER_ORDER = "setFilterOrder";

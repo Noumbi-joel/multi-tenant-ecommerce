@@ -3,6 +3,10 @@ import {
   FILTERING_CATEGORY,
   FILTERING_CUSTOMERS,
   FILTERING_ORDERS,
+  SET_FILTER,
+  SET_FILTER_CATEGORY,
+  SET_FILTER_ORDER,
+  SET_FILTER_PRODUCT,
 } from "../constants";
 
 // verify if email is valid or not
@@ -71,4 +75,32 @@ export const searchFilterName = (
       dispatch({ type: FILTERING_CUSTOMERS, payload: items });
     setSearch(value);
   }
+};
+
+// filter products && categories && orders
+export const handleClickFilters = (a, dispatch, closeVisible, data) => {
+  closeVisible();
+  let temp = data.map((d) => d.title);
+  if (temp.includes("All categories")) {
+    dispatch({
+      type: SET_FILTER_CATEGORY,
+      payload: a.title.toLowerCase(),
+    });
+  }
+
+  if (temp.includes("All  orders")) {
+    dispatch({
+      type: SET_FILTER_ORDER,
+      payload: a.title.toLowerCase(),
+    });
+  }
+
+  if (temp.includes("All products")) {
+    dispatch({
+      type: SET_FILTER_PRODUCT,
+      payload: a.title.toLowerCase(),
+    });
+  }
+
+  dispatch({ type: SET_FILTER, payload: a.title });
 };

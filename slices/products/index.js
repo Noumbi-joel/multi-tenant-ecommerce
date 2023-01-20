@@ -1,8 +1,6 @@
 import { createSlice, createAction } from "@reduxjs/toolkit";
 import { PRODUCTS } from "../../helpers";
 
-// import { toast } from "react-hot-toast";
-
 //actions
 const handleModalVisible = createAction("handleModalVisible");
 const handleItemSelected = createAction("handleItemSelected");
@@ -13,8 +11,7 @@ const handleItemsSelected = createAction("handleItemsSelected");
 const discardItemSelected = createAction("discardItemSelected");
 const deleteItems = createAction("deleteItems");
 const handleVisible = createAction("handleVisible");
-const setFilter = createAction("setFilter");
-const setSort = createAction("setSort");
+const setFilterProduct = createAction("setFilterProduct");
 
 //init states
 const initialState = {
@@ -113,7 +110,7 @@ export const productSlice = createSlice({
       state.invisibleProducts.push(product);
     });
 
-    builder.addCase(setFilter, (state, action) => {
+    builder.addCase(setFilterProduct, (state, action) => {
       switch (action.payload) {
         case "published":
           state.filteredProducts = state.products.filter(

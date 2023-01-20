@@ -155,23 +155,23 @@ export const PRODUCTS = [
     price: "FCFA32,500",
     stock: "23 in stock",
     visible: false,
-    published: true,
+    published: false,
     draft: false,
     selected: false,
   },
 ];
 
 export const FILTERS = [
-  { id: 1, title: "all products" },
-  { id: 2, title: "published" },
-  { id: 3, title: "draft" },
-  { id: 4, title: "hidden" },
+  { id: 1, title: "All products" },
+  { id: 2, title: "Published" },
+  { id: 3, title: "Draft" },
+  { id: 4, title: "Hidden" },
 ];
 
 export const UPDATES = [
-  { id: 1, title: "last updated" },
-  { id: 2, title: "name" },
-  { id: 3, title: "in stock" },
+  { id: 1, title: "Last updated" },
+  { id: 2, title: "Name" },
+  { id: 3, title: "In stock" },
 ];
 
 export const CATEGORIES = [
@@ -183,7 +183,7 @@ export const CATEGORIES = [
     slug: "men",
     items: "0",
     visible: false,
-    published: false,
+    published: true,
     draft: false,
     selected: false,
   },
@@ -284,7 +284,7 @@ export const ORDERS = [
 export const ORDERS_FILTERS = [
   { id: 1, title: "All  orders" },
   { id: 2, title: "Fullfilled" },
-  { id: 3, title: "Unfulfilled" },
+  { id: 3, title: "Unfullfilled" },
 ];
 
 export const ORDERS_SORT = [
