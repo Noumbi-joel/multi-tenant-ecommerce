@@ -6,8 +6,9 @@ import BodyText from "../BodyText";
 import { COLORS } from "../../assets/colors";
 import { SET_FILTER } from "../../constants";
 
-const DropdownFilters = ({ data, dispatch }) => {
+const DropdownFilters = ({ data, dispatch, closeVisible }) => {
   const handleClick = (a) => {
+    closeVisible();
     dispatch({ type: SET_FILTER, payload: a.title });
   };
 

@@ -3,8 +3,9 @@ import { COLORS } from "../../assets/colors";
 import { SET_SORT } from "../../constants";
 import BodyText from "../BodyText";
 
-const DropdownLast = ({ data, dispatch }) => {
+const DropdownLast = ({ data, dispatch, closeVisible }) => {
   const handleClick = (a) => {
+    closeVisible();
     dispatch({ type: SET_SORT, payload: a.title });
   };
 

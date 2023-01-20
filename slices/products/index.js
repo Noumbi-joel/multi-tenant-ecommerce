@@ -13,6 +13,8 @@ const handleItemsSelected = createAction("handleItemsSelected");
 const discardItemSelected = createAction("discardItemSelected");
 const deleteItems = createAction("deleteItems");
 const handleVisible = createAction("handleVisible");
+const setFilter = createAction("setFilter");
+const setSort = createAction("setSort");
 
 //init states
 const initialState = {
@@ -105,8 +107,31 @@ export const productSlice = createSlice({
 
     builder.addCase(handleVisible, (state, action) => {
       let product = state.filteredProducts.find((p) => p.id === action.payload);
-      state.filteredProducts = state.filteredProducts.filter((p) => p.id !== product.id);
+      state.filteredProducts = state.filteredProducts.filter(
+        (p) => p.id !== product.id
+      );
       state.invisibleProducts.push(product);
+    });
+
+    builder.addCase(setFilter, (state, action) => {
+      switch (action.payload) {
+        case "published":
+          state.filteredProducts = state.products.filter(
+            (p) => p.published !== false
+          );
+          break;
+        case "draft":
+          state.filteredProducts = state.products.filter(
+            (p) => p.draft !== false
+          );
+          break;
+        case "hidden":
+          state.filteredProducts = state.invisibleProducts;
+          break;
+        default:
+          state.filteredProducts = state.products;
+          break;
+      }
     });
 
     builder.addDefaultCase((state) => {

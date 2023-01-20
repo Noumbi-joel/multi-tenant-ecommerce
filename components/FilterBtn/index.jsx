@@ -36,8 +36,10 @@ const FilterBtn = ({ type, data, title }) => {
           style={{ marginLeft: 15 }}
         />
       </Button>
-      {visible && <Dropdown filters data={data} />}
-      {lastUpdate && <Dropdown last data={data} />}
+      {visible && (
+        <Dropdown filters data={data} closeVisible={() => setVisible(false)} />
+      )}
+      {lastUpdate && <Dropdown last data={data} closeVisible={() => setLastUpdate(false)} />}
     </div>
   );
 };
