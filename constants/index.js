@@ -41,3 +41,12 @@ export const HANDLE_VISIBLE = "handleVisible";
 export const SET_FILTER_PRODUCT = "setFilterProduct";
 export const SET_FILTER_CATEGORY = "setFilterCategory";
 export const SET_FILTER_ORDER = "setFilterOrder";
+
+export const HANDLE_CAT_ITEM_SELECT = "handleCatItemSelect";
+export const HANDLE_ITEMS_CAT_SELECTED = "handleItemsCatSelected";
+export const CLOSE_ALL_CAT_CHECKER = "closeAllCatChecker";
+export const OPEN_ALL_CAT_CHECKER = "openAllCatChecker";
+export const DISCARD_CAT_ITEMS_SELECTED = "discardCatItemsSelected";
+export const OPEN_MODAL_ALL_ITEMS_CAT = "openModalAllItemsCat";
+export const CLOSE_ALL_SELECTED_MODAL_CAT = "closeAllSelectedModalCat"
+export const DELETE_CAT_ITEMS = "deleteCatItems"

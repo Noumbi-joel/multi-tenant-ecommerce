@@ -79,7 +79,7 @@ const Products = () => {
         closeModal={() => dispatch({ type: CLOSE_ALL_SELECTED_MODAL })}
         deleteItem={handleDeleteAllItems}
         visible={modalAllItem}
-        modalTitle={`Remove ${itemsSelected.length} items selected`}
+        modalTitle={`Remove ${itemsSelected.length} selected products`}
         modalBodyTextOne="Removed products can't be restored."
         modalBodyTextTwo="Products with order and cart history won't be deleted"
         dashboard

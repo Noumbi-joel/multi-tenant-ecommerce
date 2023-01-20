@@ -29,7 +29,7 @@ const Empty = ({ emptyConcern, msg, btnTitle, link }) => {
       </div>
       <div className="linear-layout" style={{ marginTop: 25 }}>
         <PurplePlus aria-label="plus" className="plus" />
-        <Link href={link}>
+        <Link href={`${link}`}>
           <BodyText
             type="lr"
             title={btnTitle}

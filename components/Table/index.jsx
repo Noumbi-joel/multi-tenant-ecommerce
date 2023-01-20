@@ -8,8 +8,11 @@ import { CategoryList, CustomerList, ListOrders, ProductList } from "..";
 // assets
 import { COLORS } from "../../assets/colors";
 import {
+  CLOSE_ALL_CAT_CHECKER,
   CLOSE_ALL_CHECKER,
+  HANDLE_ITEMS_CAT_SELECTED,
   HANDLE_ITEMS_SELECTED,
+  OPEN_ALL_CAT_CHECKER,
   OPEN_ALL_CHECKER,
 } from "../../constants";
 
@@ -21,7 +24,6 @@ const Table = ({
   data,
   dispatch,
   allChecker,
-  allCheckerCat,
   cat,
   type,
   checkboxTitle,
@@ -37,12 +39,12 @@ const Table = ({
   };
 
   const handleChangeCat = () => {
-    // dispatch({ type: HANDLE_ITEMS_SELECTED });
-    // if (allChecker) {
-    //   dispatch({ type: CLOSE_ALL_CHECKER });
-    //   return;
-    // }
-    // dispatch({ type: OPEN_ALL_CHECKER });
+    dispatch({ type: HANDLE_ITEMS_CAT_SELECTED });
+    if (allChecker) {
+      dispatch({ type: CLOSE_ALL_CAT_CHECKER });
+      return;
+    }
+    dispatch({ type: OPEN_ALL_CAT_CHECKER });
   };
 
   if (type === "orders") {
@@ -88,7 +90,7 @@ const Table = ({
         ) : (
           <Checkbox
             isSelected={allChecker}
-            onChange={handleChange}
+            onChange={cat ? handleChangeCat : handleChange}
           >
             <BodyText
               type="mr"

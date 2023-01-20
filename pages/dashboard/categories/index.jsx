@@ -19,6 +19,14 @@ import Trash from "../../../public/trash.svg";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { searchFilter } from "../../../functions";
+import {
+  CLOSE_ALL_CAT_CHECKER,
+  CLOSE_ALL_SELECTED_MODAL_CAT,
+  CLOSE_MODAL_ALL_ITEMS_CAT,
+  DELETE_CAT_ITEMS,
+  DISCARD_CAT_ITEMS_SELECTED,
+  OPEN_MODAL_ALL_ITEMS_CAT,
+} from "../../../constants";
 
 const Categories = () => {
   const { filteredCategories, categories, itemsSelected } = useSelector(
@@ -32,13 +40,29 @@ const Categories = () => {
   const [search, setSearch] = useState("");
   const dispatch = useDispatch();
   const router = useRouter();
+
+  const handleDiscard = () => {
+    dispatch({ type: DISCARD_CAT_ITEMS_SELECTED });
+    if (allCheckerCat) {
+      dispatch({ type: CLOSE_ALL_CAT_CHECKER });
+    }
+  };
+
+  const handleDeleteAllItems = () => {
+    dispatch({ type: DELETE_CAT_ITEMS });
+    dispatch({ type: CLOSE_ALL_SELECTED_MODAL_CAT });
+    dispatch({ type: CLOSE_ALL_CAT_CHECKER });
+  };
+
   return (
     <DashboardContainer>
       <Modal
-        closeModal={() => {}}
-        visible={modalSingleItemCat}
-        modalTitle="Remove 2 selected categorie(s) ?"
+        closeModal={() => dispatch({ type: CLOSE_ALL_SELECTED_MODAL_CAT })}
+        deleteItem={handleDeleteAllItems}
+        visible={modalAllItemCat}
+        modalTitle={`Remove ${itemsSelected.length} selected categories`}
         modalBodyTextOne="Removed categories can't be restored."
+        dashboard
         remove
       />
       <div className="dashboard-dynamic">
@@ -72,17 +96,17 @@ const Categories = () => {
               </Button>
             )}
             {itemsSelected.length > 0 && (
-              <div className="linear-layout" onClick={() => {}}>
+              <div className="linear-layout">
                 <BodyText
                   type="lr"
-                  title="7 selected"
+                  title={`${itemsSelected.length} selected`}
                   color={COLORS.grayscale_900}
                   style={{ marginRight: 20 }}
                 />
 
                 <Button
                   className="product-selected-btn-outline"
-                  onClick={() => {}}
+                  onClick={handleDiscard}
                   title="Discard"
                   titleColor={COLORS.primary_base}
                   titleType="lr"
@@ -90,7 +114,7 @@ const Categories = () => {
 
                 <Button
                   className="product-selected-btn"
-                  onClick={() => setSelectProd(false)}
+                  onClick={() => dispatch({ type: OPEN_MODAL_ALL_ITEMS_CAT })}
                   title="Delete"
                   titleColor={COLORS.white}
                   titleType="lr"
@@ -100,39 +124,40 @@ const Categories = () => {
               </div>
             )}
           </div>
+          <SearchFilter
+            value={search}
+            cat
+            onChange={(e) =>
+              searchFilter(
+                e,
+                "categories",
+                categories,
+                filteredCategories,
+                setSearch,
+                dispatch
+              )
+            }
+            type="categories"
+            dispatch={dispatch}
+            searchType="categories"
+          />
 
           {filteredCategories.length <= 0 ? (
             <Empty
               emptyConcern="categories"
               msg="Create categories to group similar products in your store."
               btnTitle="Add collection"
+              link="/dashboard/product/create"
             />
           ) : (
             <div>
-              <SearchFilter
-                value={search}
-                cat
-                onChange={(e) =>
-                  searchFilter(
-                    e,
-                    "categories",
-                    categories,
-                    filteredCategories,
-                    setSearch,
-                    dispatch
-                  )
-                }
-                type="categories"
-                dispatch={dispatch}
-                searchType="categories"
-              />
               <Table
                 tableHeaderTitle={`Displaying: ${filteredCategories.length} of ${filteredCategories.length} items`}
                 tableHeaderOne="Slug"
                 tableHeaderTwo="Items"
                 data={filteredCategories}
                 dispatch={dispatch}
-                allCheckerCat={allCheckerCat}
+                allChecker={allCheckerCat}
                 cat
               />
             </div>

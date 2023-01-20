@@ -14,7 +14,7 @@ import { ITEM_ACTIONS } from "../../helpers";
 
 // redux
 import { useDispatch } from "react-redux";
-import { HANDLE_ITEM_SELECTED, HANDLE_MODAL_VISIBLE } from "../../constants";
+import { HANDLE_CAT_ITEM_SELECT, HANDLE_ITEM_SELECTED, HANDLE_MODAL_VISIBLE } from "../../constants";
 import { useRouter } from "next/router";
 
 const ListItem = ({ avatar, type, item }) => {
@@ -30,7 +30,13 @@ const ListItem = ({ avatar, type, item }) => {
   if (type === "itemList") {
     return (
       <div>
-        <div className="linear-layout-flat">
+        <div
+          className={
+            item.selected
+              ? "linear-layout-flat item-list-active"
+              : "linear-layout-flat"
+          }
+        >
           <Checkbox
             isSelected={item.selected}
             onChange={() =>
@@ -130,8 +136,19 @@ const ListItem = ({ avatar, type, item }) => {
   if (type === "catList") {
     return (
       <div>
-        <div className="linear-layout-flat">
-          <Checkbox isSelected={item.selected} onChange={() => {}}>
+        <div
+          className={
+            item.selected
+              ? "linear-layout-flat item-list-active"
+              : "linear-layout-flat"
+          }
+        >
+          <Checkbox
+            isSelected={item.selected}
+            onChange={() =>
+              dispatch({ type: HANDLE_CAT_ITEM_SELECT, payload: item })
+            }
+          >
             <img src={item.image} alt="res" className="product-item-search" />
             <BodyText
               type="mr"

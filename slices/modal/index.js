@@ -13,8 +13,11 @@ const openAllItemModal = createAction("openAllItemModal");
 const closeAllSelectedModal = createAction("closeAllSelectedModal");
 
 // category
-const openCatSingleModal = createAction("openCategorySingleModal");
-const closeCatSingleModal = createAction("closeCategorySingleModal");
+const closeAllCatChecker = createAction("closeAllCatChecker");
+const openAllCatChecker = createAction("openAllCatChecker");
+const openModalAllItemsCat = createAction("openModalAllItemsCat");
+const closeAllSelectedModalCat = createAction("closeAllSelectedModalCat");
+
 const setCatName = createAction("setCategoryName");
 
 //init states
@@ -55,6 +58,19 @@ export const modalSlice = createSlice({
     });
     builder.addCase(closeAllChecker, (state) => {
       state.allChecker = false;
+    });
+
+    builder.addCase(openAllCatChecker, (state) => {
+      state.allCheckerCat = true;
+    });
+    builder.addCase(closeAllCatChecker, (state) => {
+      state.allCheckerCat = false;
+    });
+    builder.addCase(openModalAllItemsCat, (state) => {
+      state.modalAllItemCat = true;
+    });
+    builder.addCase(closeAllSelectedModalCat, (state) => {
+      state.modalAllItemCat = false;
     });
 
     builder.addCase(setItemName, (state, action) => {
