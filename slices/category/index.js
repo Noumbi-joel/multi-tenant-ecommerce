@@ -2,6 +2,7 @@ import { createSlice, createAction } from "@reduxjs/toolkit";
 import { CATEGORIES } from "../../helpers";
 
 //actions
+const filteringCategory = createAction("filteringCategory");
 
 //init states
 const initialState = {
@@ -17,6 +18,9 @@ export const categorySlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
+    builder.addCase(filteringCategory, (state, action) => {
+      state.filteredCategories = action.payload;
+    });
 
     builder.addDefaultCase((state) => {
       return state;

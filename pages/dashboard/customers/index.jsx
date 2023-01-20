@@ -9,9 +9,10 @@ import {
   SearchFilter,
   Table,
 } from "../../../components";
+import { searchFilterName } from "../../../functions";
 
 const Customers = () => {
-  const { filteredCustomers } = useSelector((state) => state.customers);
+  const { filteredCustomers, customers } = useSelector((state) => state.customers);
   const [search, setSearch] = useState("");
   const dispatch = useDispatch();
   return (
@@ -25,7 +26,16 @@ const Customers = () => {
           />
           <SearchFilter
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={(e) =>
+              searchFilterName(
+                e,
+                "customers",
+                customers,
+                filteredCustomers,
+                setSearch,
+                dispatch
+              )
+            }
             type="customers"
             searchType="customers"
             dispatch={dispatch}

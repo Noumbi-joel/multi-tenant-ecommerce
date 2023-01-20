@@ -1,7 +1,7 @@
 import React from "react";
 
 // comp
-import { Checkbox, Divider } from "@nextui-org/react";
+import { Checkbox, Divider, Spacer } from "@nextui-org/react";
 import BodyText from "../BodyText";
 import { CategoryList, CustomerList, ListOrders, ProductList } from "..";
 
@@ -71,6 +71,7 @@ const Table = ({
         </div>
         <Divider className="divider-item" />
         <ListOrders data={data} />
+        <Spacer y={2.5} />
       </div>
     );
   }
@@ -112,6 +113,7 @@ const Table = ({
       {type === "customers" && <CustomerList data={data} />}
       {productList && <ProductList data={data} />}
       {cat && <CategoryList data={data} />}
+      <Spacer y={2.5} />
     </div>
   );
 };

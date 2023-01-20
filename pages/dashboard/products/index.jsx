@@ -29,6 +29,7 @@ import {
   DELETE_ITEM,
   OPEN_ALL_ITEM_MODAL,
 } from "../../../constants";
+import { searchFilter } from "../../../functions";
 
 const Products = () => {
   const [search, setSearch] = useState("");
@@ -41,23 +42,6 @@ const Products = () => {
   const { modalSingleItem, itemName, modalAllItem, allChecker } = useSelector(
     (state) => state.modal
   );
-
-  const searchFilter = (e) => {
-    const value = e.target.value;
-    if (value) {
-      const newData = filteredProducts.filter((item) => {
-        const itemData = item.title
-          ? item.title.toUpperCase()
-          : "".toUpperCase();
-        return itemData.indexOf(value.toUpperCase()) > -1;
-      });
-      dispatch({ type: FILTERING, payload: newData });
-      setSearch(value);
-    } else {
-      dispatch({ type: FILTERING, payload: products });
-      setSearch(value);
-    }
-  };
 
   const handleDiscard = () => {
     dispatch({ type: DISCARD_ITEM_SELECTED });
@@ -163,7 +147,16 @@ const Products = () => {
           <SearchFilter
             type="products"
             value={search}
-            onChange={searchFilter}
+            onChange={(e) =>
+              searchFilter(
+                e,
+                "products",
+                products,
+                filteredProducts,
+                setSearch,
+                dispatch
+              )
+            }
             dispatch={dispatch}
             searchType="products"
           />

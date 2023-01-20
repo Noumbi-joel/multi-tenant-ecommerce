@@ -10,10 +10,11 @@ import {
   ListOrders,
   Table,
 } from "../../../components";
+import { searchFilterName } from "../../../functions";
 import { ORDERS_HEADER } from "../../../helpers";
 
 const Orders = () => {
-  const { filteredOrders } = useSelector((state) => state.orders);
+  const { filteredOrders, orders } = useSelector((state) => state.orders);
   const [search, setSearch] = useState("");
   const dispatch = useDispatch();
   return (
@@ -27,7 +28,16 @@ const Orders = () => {
           />
           <SearchFilter
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={(e) =>
+              searchFilterName(
+                e,
+                "orders",
+                orders,
+                filteredOrders,
+                setSearch,
+                dispatch
+              )
+            }
             type="orders"
             searchType="orders"
             dispatch={dispatch}

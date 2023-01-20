@@ -4,7 +4,13 @@ import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import BodyText from "../BodyText";
 import { COLORS } from "../../assets/colors";
-import { OPEN_SINGLE_MODAL, SET_ID, SET_ITEM_NAME } from "../../constants";
+import {
+  HANDLE_MODAL_VISIBLE,
+  HANDLE_VISIBLE,
+  OPEN_SINGLE_MODAL,
+  SET_ID,
+  SET_ITEM_NAME,
+} from "../../constants";
 
 const ItemEditList = ({ data, item }) => {
   const router = useRouter();
@@ -14,10 +20,15 @@ const ItemEditList = ({ data, item }) => {
     if (a.id === 1) {
       return router.push("/dashboard/products/create");
     }
+    if (a.id === 2) {
+      dispatch({ type: HANDLE_MODAL_VISIBLE, payload: item.id });
+      dispatch({ type: HANDLE_VISIBLE, payload: item.id });
+    }
     if (a.id === 3) {
       dispatch({ type: SET_ITEM_NAME, payload: item.title });
       dispatch({ type: SET_ID, payload: item.id });
       dispatch({ type: OPEN_SINGLE_MODAL });
+      dispatch({ type: HANDLE_MODAL_VISIBLE, payload: item.id });
     }
   };
   return (

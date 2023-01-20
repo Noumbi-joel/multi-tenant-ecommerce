@@ -18,6 +18,7 @@ import Plus from "../../../public/plus.svg";
 import Trash from "../../../public/trash.svg";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
+import { searchFilter } from "../../../functions";
 
 const Categories = () => {
   const { filteredCategories, categories, itemsSelected } = useSelector(
@@ -65,9 +66,7 @@ const Categories = () => {
                 titleType="lr"
                 titleColor={COLORS.white}
                 style={{ backgroundColor: COLORS.primary_base }}
-                onClick={() =>
-                  router.push("/dashboard/categories/create")
-                }
+                onClick={() => router.push("/dashboard/categories/create")}
               >
                 <Plus aria-label="plus" className="plus" />
               </Button>
@@ -113,7 +112,16 @@ const Categories = () => {
               <SearchFilter
                 value={search}
                 cat
-                onChange={(e) => setSearch(e.target.value)}
+                onChange={(e) =>
+                  searchFilter(
+                    e,
+                    "categories",
+                    categories,
+                    filteredCategories,
+                    setSearch,
+                    dispatch
+                  )
+                }
                 type="categories"
                 dispatch={dispatch}
                 searchType="categories"

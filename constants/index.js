@@ -34,3 +34,7 @@ export const GET_CUSTOMERS = "getCustomers";
 export const NAVIGATE = "navigate";
 export const SET_ACTIVE = "setActive";
 export const SET_VERTICAL_ACTIVE = "setVerticalActive";
+export const FILTERING_CATEGORY = "filteringCategory";
+export const FILTERING_ORDERS = "filteringOrders";
+export const FILTERING_CUSTOMERS = "filteringCustomers";
+export const HANDLE_VISIBLE = "handleVisible";

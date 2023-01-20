@@ -12,6 +12,7 @@ const filtering = createAction("filtering");
 const handleItemsSelected = createAction("handleItemsSelected");
 const discardItemSelected = createAction("discardItemSelected");
 const deleteItems = createAction("deleteItems");
+const handleVisible = createAction("handleVisible");
 
 //init states
 const initialState = {
@@ -19,6 +20,7 @@ const initialState = {
   filteredProducts: PRODUCTS,
   idToDelete: null,
   itemsSelected: [],
+  invisibleProducts: [],
 };
 
 let foundProduct, index, updatedProducts;
@@ -99,6 +101,12 @@ export const productSlice = createSlice({
 
     builder.addCase(filtering, (state, action) => {
       state.filteredProducts = action.payload;
+    });
+
+    builder.addCase(handleVisible, (state, action) => {
+      let product = state.filteredProducts.find((p) => p.id === action.payload);
+      state.filteredProducts = state.filteredProducts.filter((p) => p.id !== product.id);
+      state.invisibleProducts.push(product);
     });
 
     builder.addDefaultCase((state) => {

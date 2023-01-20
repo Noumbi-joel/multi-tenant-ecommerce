@@ -2,6 +2,7 @@ import { createSlice, createAction } from "@reduxjs/toolkit";
 import { ORDERS } from "../../helpers";
 
 //actions
+const filteringOrders = createAction("filteringOrders");
 
 //init states
 const initialState = {
@@ -15,6 +16,9 @@ export const orderSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
+    builder.addCase(filteringOrders, (state, action) => {
+      state.filteredOrders = action.payload;
+    });
 
     builder.addDefaultCase((state) => {
       return state;
