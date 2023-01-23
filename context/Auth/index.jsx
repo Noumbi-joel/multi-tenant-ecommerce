@@ -60,7 +60,7 @@ export const AuthContextProvider = ({ children }) => {
               router.push("/businessInfo");
             } else {
               Cookies.set("noBusiness", false, { expires: 365 });
-              router.push("/dashboard");
+              router.push("/_sites/dashboard");
             }
           });
       },
@@ -138,7 +138,7 @@ export const AuthContextProvider = ({ children }) => {
                 router.push("/businessInfo");
               } else {
                 Cookies.set("noBusiness", false, { expires: 365 });
-                router.push("/dashboard");
+                router.push("/_sites/dashboard");
               }
             });
         }
@@ -203,7 +203,7 @@ export const AuthContextProvider = ({ children }) => {
               .collection(USERS)
               .doc(uid)
               .update({ noBusiness: false })
-              .then(() => router.push("/dashboard"))
+              .then(() => router.push("/_sites/dashboard"))
               .catch((err) => toast.error(err.message));
             return;
           } else {
@@ -236,7 +236,7 @@ export const AuthContextProvider = ({ children }) => {
         .collection(USERS)
         .doc(uid)
         .update({ noBusiness: false })
-        .then(() => router.push("/dashboard"))
+        .then(() => router.push("/_sites/dashboard"))
         .catch((err) => toast.error(err.message));
       return;
     }

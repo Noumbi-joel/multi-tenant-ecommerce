@@ -8,11 +8,11 @@ import {
   RecentOrders,
   ShippingAddress,
   SumCustomer
-} from "../../../../components";
+} from "../../../../../components";
 import { Divider } from "@nextui-org/react";
 
 // assets
-import { CONTACT_DETAILS, SHIPPING_ADDRESS } from "../../../../helpers";
+import { CONTACT_DETAILS, SHIPPING_ADDRESS } from "../../../../../helpers";
 
 const CustomerDetails = () => {
   return (

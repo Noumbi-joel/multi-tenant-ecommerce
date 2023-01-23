@@ -10,11 +10,11 @@ import {
   Modal,
   TipTap,
   FileContainer
-} from "../../../../components";
+} from "../../../../../components";
 import { Checkbox, Divider, Spacer } from "@nextui-org/react";
 
 // assets
-import { COLORS } from "../../../../assets/colors";
+import { COLORS } from "../../../../../assets/colors";
 import { FormControl, MenuItem, Select } from "@mui/material";
 
 // redux

@@ -10,32 +10,32 @@ import {
   Modal,
   SearchFilter,
   Table,
-} from "../../../components";
+} from "../../../../components";
 
 // assets
-import { COLORS } from "../../../assets/colors";
-import Plus from "../../../public/plus.svg";
-import Trash from "../../../public/trash.svg";
+import { COLORS } from "../../../../assets/colors";
+import Plus from "../../../../public/plus.svg";
+import Trash from "../../../../public/trash.svg";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
-import { searchFilter } from "../../../functions";
+import { searchFilter } from "../../../../functions";
 import {
   CLOSE_ALL_CAT_CHECKER,
   CLOSE_ALL_SELECTED_MODAL_CAT,
-  CLOSE_MODAL_ALL_ITEMS_CAT,
+  DELETE_CAT_ITEM,
+  CLOSE_SINGLE_MODAL_CAT,
   DELETE_CAT_ITEMS,
   DISCARD_CAT_ITEMS_SELECTED,
   OPEN_MODAL_ALL_ITEMS_CAT,
-} from "../../../constants";
+} from "../../../../constants";
 
 const Categories = () => {
   const { filteredCategories, categories, itemsSelected } = useSelector(
     (state) => state.categories
   );
 
-  const { modalSingleItemCat, modalAllItemCat, allCheckerCat } = useSelector(
-    (state) => state.modal
-  );
+  const { modalSingleItemCat, modalAllItemCat, allCheckerCat, itemName } =
+    useSelector((state) => state.modal);
 
   const [search, setSearch] = useState("");
   const dispatch = useDispatch();
@@ -65,6 +65,18 @@ const Categories = () => {
         dashboard
         remove
       />
+      <Modal
+        closeModal={() => dispatch({ type: CLOSE_SINGLE_MODAL_CAT })}
+        deleteItem={() => {
+          dispatch({ type: DELETE_CAT_ITEM });
+          dispatch({ type: CLOSE_SINGLE_MODAL_CAT });
+        }}
+        visible={modalSingleItemCat}
+        modalTitle={`Remove ${itemName}?`}
+        modalBodyTextOne="Removed categories can't be restored."
+        dashboard
+        remove
+      />
       <div className="dashboard-dynamic">
         <div className="dashboard-content">
           {/* Page description */}
@@ -90,7 +102,9 @@ const Categories = () => {
                 titleType="lr"
                 titleColor={COLORS.white}
                 style={{ backgroundColor: COLORS.primary_base }}
-                onClick={() => router.push("/dashboard/categories/create")}
+                onClick={() =>
+                  router.push("/_sites/dashboard/categories/create")
+                }
               >
                 <Plus aria-label="plus" className="plus" />
               </Button>
@@ -147,7 +161,7 @@ const Categories = () => {
               emptyConcern="categories"
               msg="Create categories to group similar products in your store."
               btnTitle="Add collection"
-              link="/dashboard/product/create"
+              link="/_sites/dashboard/product/create"
             />
           ) : (
             <div>

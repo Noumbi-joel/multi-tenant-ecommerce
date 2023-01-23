@@ -9,9 +9,9 @@ import {
   SearchFilter,
   ListOrders,
   Table,
-} from "../../../components";
-import { searchFilterName } from "../../../functions";
-import { ORDERS_HEADER } from "../../../helpers";
+} from "../../../../components";
+import { searchFilterName } from "../../../../functions";
+import { ORDERS_HEADER } from "../../../../helpers";
 
 const Orders = () => {
   const { filteredOrders, orders } = useSelector((state) => state.orders);
@@ -47,7 +47,7 @@ const Orders = () => {
               emptyConcern="orders"
               msg="Create a product to start receiving orders in your store"
               btnTitle="Add products"
-              link="/dashboard/products"
+              link="/_sites/dashboard/products/create"
             />
           )}
           {filteredOrders.length > 0 && (

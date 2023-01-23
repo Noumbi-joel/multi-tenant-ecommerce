@@ -10,15 +10,15 @@ import {
   Modal,
   SearchFilter,
   Table,
-} from "../../../components";
+} from "../../../../components";
 
 // redux
 import { useDispatch, useSelector } from "react-redux";
 
 // assets
-import { COLORS } from "../../../assets/colors";
-import Plus from "../../../public/plus.svg";
-import Trash from "../../../public/trash.svg";
+import { COLORS } from "../../../../assets/colors";
+import Plus from "../../../../public/plus.svg";
+import Trash from "../../../../public/trash.svg";
 import {
   CLOSE_ALL_CHECKER,
   DISCARD_ITEM_SELECTED,
@@ -28,8 +28,8 @@ import {
   CLOSE_SINGLE_MODAL,
   DELETE_ITEM,
   OPEN_ALL_ITEM_MODAL,
-} from "../../../constants";
-import { searchFilter } from "../../../functions";
+} from "../../../../constants";
+import { searchFilter } from "../../../../functions";
 
 const Products = () => {
   const [search, setSearch] = useState("");
@@ -105,7 +105,7 @@ const Products = () => {
             {itemsSelected.length <= 0 && (
               <Button
                 className="create-prod"
-                onClick={() => router.push("/dashboard/products/create")}
+                onClick={() => router.push("/_sites/dashboard/products/create")}
                 title="Create product"
                 titleColor={COLORS.white}
                 titleType="lr"

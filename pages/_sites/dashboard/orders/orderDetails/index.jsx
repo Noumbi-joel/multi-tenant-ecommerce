@@ -10,7 +10,7 @@ import {
   ShippingAddress,
   ShippingCarrier,
   Transaction,
-} from "../../../../components";
+} from "../../../../../components";
 import { Divider } from "@nextui-org/react";
 
 // assets
@@ -20,7 +20,7 @@ import {
   CONTACT_DETAILS,
   SHIPPING_ADDRESS,
   SHIPPING_CARRIER,
-} from "../../../../helpers";
+} from "../../../../../helpers";
 
 const OrderDetails = () => {
   return (

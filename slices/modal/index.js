@@ -17,8 +17,9 @@ const closeAllCatChecker = createAction("closeAllCatChecker");
 const openAllCatChecker = createAction("openAllCatChecker");
 const openModalAllItemsCat = createAction("openModalAllItemsCat");
 const closeAllSelectedModalCat = createAction("closeAllSelectedModalCat");
-
-const setCatName = createAction("setCategoryName");
+const openSingleModalCat = createAction("openSingleModalCat");
+const closeSingleModalCat = createAction("closeSingleModalCat");
+const setCatName = createAction("setCatName");
 
 //init states
 const initialState = {
@@ -79,6 +80,18 @@ export const modalSlice = createSlice({
 
     builder.addCase(toggleModalAllItem, (state) => {
       state.modalAllItem = !state.modalAllItem;
+    });
+
+    builder.addCase(setCatName, (state, action) => {
+      state.itemName = action.payload;
+    });
+
+    builder.addCase(openSingleModalCat, (state) => {
+      state.modalSingleItemCat = true;
+    });
+
+    builder.addCase(closeSingleModalCat, (state) => {
+      state.modalSingleItemCat = false;
     });
 
     builder.addDefaultCase((state) => {

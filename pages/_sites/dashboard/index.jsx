@@ -6,7 +6,7 @@ import {
   DashboardContainer,
   HelpCenter,
   PageDescription,
-} from "../../components";
+} from "../../../components";
 
 const Dashboard = () => {
   const [helperVisible, setHelperVisible] = useState(true);

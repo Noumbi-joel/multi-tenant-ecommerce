@@ -10,11 +10,16 @@ import RightArrowMd from "../../public/right-arrow-md.svg";
 import VerticalDots from "../../public/VerticalDots.svg";
 import FullFilled from "../../public/fullfilled.svg";
 import UnFullFilled from "../../public/unfullfilled.svg";
-import { ITEM_ACTIONS } from "../../helpers";
+import { ITEM_ACTIONS, ITEM_CAT_ACTIONS } from "../../helpers";
 
 // redux
 import { useDispatch } from "react-redux";
-import { HANDLE_CAT_ITEM_SELECT, HANDLE_ITEM_SELECTED, HANDLE_MODAL_VISIBLE } from "../../constants";
+import {
+  HANDLE_CAT_ITEM_SELECT,
+  HANDLE_DROPDOWN_CAT_ITEM,
+  HANDLE_ITEM_SELECTED,
+  HANDLE_MODAL_VISIBLE,
+} from "../../constants";
 import { useRouter } from "next/router";
 
 const ListItem = ({ avatar, type, item }) => {
@@ -22,9 +27,9 @@ const ListItem = ({ avatar, type, item }) => {
   const router = useRouter();
   const handleClick = (type) => {
     if (type === "customerDetails") {
-      return router.push(`/dashboard/customers/customerDetails`);
+      return router.push(`/_sites/dashboard/customers/customerDetails`);
     }
-    return router.push(`/dashboard/orders/orderDetails`);
+    return router.push(`/_sites/dashboard/orders/orderDetails`);
   };
 
   if (type === "itemList") {
@@ -175,9 +180,14 @@ const ListItem = ({ avatar, type, item }) => {
             style={{ marginLeft: 20 }}
           />
           <div style={{ position: "relative" }}>
-            <VerticalDots aria-label="v-dots" onClick={() => {}} />
+            <VerticalDots
+              aria-label="v-dots"
+              onClick={() =>
+                dispatch({ type: HANDLE_DROPDOWN_CAT_ITEM, payload: item.id })
+              }
+            />
             {item.visible && (
-              <Dropdown item={item} itemEdit data={ITEM_ACTIONS} />
+              <Dropdown item={item} itemEdit data={ITEM_CAT_ACTIONS} cat />
             )}
           </div>
         </div>

@@ -13,10 +13,10 @@ import {
   AccountSettings,
   SettingPayments,
   SettingPassword,
-} from "../../../components";
+} from "../../../../components";
 
 // assets
-import { SITE_LANG, TIMEZONE, CURRENCY } from "../../../helpers";
+import { SITE_LANG, TIMEZONE, CURRENCY } from "../../../../helpers";
 
 const Settings = () => {
   const dispatch = useDispatch();

@@ -33,56 +33,56 @@ export const VERTICAL_HEADER_ITEMS = [
   {
     id: 1,
     value: "Dashboard",
-    link: "/dashboard",
+    link: "/_sites/dashboard",
     icon: <Home aria-label="home" />,
     isActive: true,
   },
   {
     id: 2,
     value: "Products",
-    link: "/dashboard/products",
+    link: "/_sites/dashboard/products",
     icon: <Product aria-label="product" />,
     isActive: false,
   },
   {
     id: 8,
     value: "Categories",
-    link: "/dashboard/categories",
+    link: "/_sites/dashboard/categories",
     icon: "",
     isActive: false,
   },
   {
     id: 3,
     value: "Orders",
-    link: "/dashboard/orders",
+    link: "/_sites/dashboard/orders",
     icon: <Order aria-label="order" />,
     isActive: false,
   },
   {
     id: 4,
     value: "Customers",
-    link: "/dashboard/customers",
+    link: "/_sites/dashboard/customers",
     icon: <Customer aria-label="customer" />,
     isActive: false,
   },
   {
     id: 5,
     value: "Plugins",
-    link: "/dashboard/plugins",
+    link: "/_sites/dashboard/plugins",
     icon: <Plugin aria-label="plugin" />,
     isActive: false,
   },
   {
     id: 6,
     value: "Themes",
-    link: "/dashboard/themes",
+    link: "/_sites/dashboard/themes",
     icon: <Theme aria-label="theme" />,
     isActive: false,
   },
   {
     id: 7,
     value: "Settings",
-    link: "/dashboard/settings",
+    link: "/_sites/dashboard/settings",
     icon: <Setting aria-label="setting" />,
     isActive: false,
   },
@@ -211,6 +211,11 @@ export const ITEM_ACTIONS = [
   { id: 1, title: "Edit product", icon: <Pencil aria-label="pencil" /> },
   { id: 2, title: "Hide product", icon: <SmallEye aria-label="sm-eye" /> },
   { id: 3, title: "Delete product", icon: <RedTrash aria-label="red-trash" /> },
+];
+
+export const ITEM_CAT_ACTIONS = [
+  { id: 1, title: "Edit category", icon: <Pencil aria-label="pencil" /> },
+  { id: 2, title: "Delete category", icon: <RedTrash aria-label="red-trash" /> },
 ];
 
 let date = moment().format("MMM, DD YYYY");
@@ -395,14 +400,8 @@ export const SETTINGS_NAV = [
   { id: 1, title: "General", isActive: true },
   { id: 2, title: "Account", isActive: false },
   { id: 3, title: "Payments", isActive: false },
-  { id: 4, title: "Geo zones", isActive: false },
-  { id: 5, title: "Shipping", isActive: false },
-  { id: 6, title: "Taxes", isActive: false },
-  { id: 7, title: "Locations", isActive: false },
   { id: 8, title: "Social profiles", isActive: false },
   { id: 9, title: "Legal", isActive: false },
-  { id: 10, title: "Updates", isActive: false },
-  { id: 11, title: "Password", isActive: false },
 ];
 
 export const SITE_LANG = [

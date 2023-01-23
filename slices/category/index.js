@@ -8,6 +8,9 @@ const handleCatItemSelect = createAction("handleCatItemSelect");
 const handleItemsCatSelected = createAction("handleItemsCatSelected");
 const discardCatItemsSelected = createAction("discardCatItemsSelected");
 const deleteCatItems = createAction("deleteCatItems");
+const handleDropdownCatItem = createAction("handleDropdownCatItem");
+const setIdCat = createAction("setIdCat");
+const deleteCatItem = createAction("deleteCatItem");
 
 //init states
 const initialState = {
@@ -92,6 +95,28 @@ export const categorySlice = createSlice({
         }
       }
     });
+
+    builder.addCase(handleDropdownCatItem, (state, action) => {
+      const { payload } = action;
+      let updatedProducts = [...state.filteredCategories];
+      let foundProduct = updatedProducts.find((p) => p.id === payload);
+      let index = updatedProducts.findIndex((p) => p.id === payload);
+      foundProduct.visible = !foundProduct.visible;
+      updatedProducts[index] = foundProduct;
+      state.filteredCategories = updatedProducts;
+    });
+
+    builder.addCase(setIdCat, (state, action) => {
+      state.idToDelete = action.payload;
+    });
+
+    builder.addCase(deleteCatItem, (state, action) => {
+      state.filteredCategories = state.filteredCategories.filter(
+        (p) => p.id !== state.idToDelete
+      );
+      state.idToDelete = null;
+    });
+
 
     builder.addDefaultCase((state) => {
       return state;

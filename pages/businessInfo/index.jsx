@@ -45,7 +45,7 @@ const BusinessInfo = () => {
     }
 
     // authCtx.saveBusiness(businessInfos);
-    router.push("/dashboard");
+    router.push("/_sites/dashboard");
   };
 
   return (

@@ -11,7 +11,15 @@ import {
 
 // assets
 import { ACTIONS } from "../../helpers";
-const Dropdown = ({ filters, last, data, itemEdit, item, closeVisible }) => {
+const Dropdown = ({
+  filters,
+  last,
+  data,
+  itemEdit,
+  item,
+  closeVisible,
+  cat,
+}) => {
   const dispatch = useDispatch();
 
   if (filters) {
@@ -35,7 +43,9 @@ const Dropdown = ({ filters, last, data, itemEdit, item, closeVisible }) => {
   }
 
   if (itemEdit) {
-    return <ItemEditList data={data} item={item} dispatch={dispatch} />;
+    return (
+      <ItemEditList data={data} item={item} dispatch={dispatch} cat={cat} />
+    );
   }
 
   return <DropdownUserActionList data={ACTIONS} dispatch={dispatch} />;
