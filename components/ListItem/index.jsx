@@ -42,34 +42,40 @@ const ListItem = ({ avatar, type, item }) => {
               : "linear-layout-flat"
           }
         >
-          <Checkbox
-            isSelected={item.selected}
-            onChange={() =>
-              dispatch({ type: HANDLE_ITEM_SELECTED, payload: item })
-            }
-          >
-            <img src={item.image} alt="res" className="product-item-search" />
-            <BodyText
-              type="mr"
-              title={item.title}
-              color={COLORS.grayscale_900}
-              style={{ marginLeft: 20, marginRight: 20 }}
-            />
-            {item.draft && (
-              <div className="draft">
-                <BodyText type="sr" title="Draft" color={COLORS.primary_base} />
-              </div>
-            )}
-          </Checkbox>
+          <div className="itemList-checkbox">
+            <Checkbox
+              isSelected={item.selected}
+              onChange={() =>
+                dispatch({ type: HANDLE_ITEM_SELECTED, payload: item })
+              }
+            >
+              <img src={item.image} alt="res" className="product-item-search" />
+              <BodyText
+                type="mr"
+                title={item.title}
+                color={COLORS.grayscale_900}
+                style={{ marginLeft: 20, marginRight: 20 }}
+              />
+              {item.draft && (
+                <div className="draft">
+                  <BodyText
+                    type="sr"
+                    title="Draft"
+                    color={COLORS.primary_base}
+                  />
+                </div>
+              )}
+            </Checkbox>
+          </div>
           <BodyText
             type="mr"
-            title={item.price}
+            title={"FCFA" + item.price}
             color={COLORS.grayscale_900}
             style={{ marginLeft: 20 }}
           />
           <BodyText
             type="mr"
-            title={item.stock}
+            title={item.stock+" in stock"}
             color={COLORS.grayscale_900}
             style={{ marginLeft: 20 }}
           />
@@ -92,26 +98,26 @@ const ListItem = ({ avatar, type, item }) => {
 
   if (type === "customerList") {
     return (
-      <div
-        style={{ marginTop: 16 }}
-        onClick={() => handleClick("customerDetails")}
-        className="clickable"
-      >
+      <div onClick={() => handleClick("customerDetails")} className="clickable">
         <div className="linear-layout-flat">
           <BodyText
             type="mr"
             title={item.customerName}
             color={COLORS.grayscale_900}
+            className="customer-fixed-width"
           />
           <BodyText
             type="mr"
-            title={item.totalSpent}
+            title={"FCFA " + item.totalSpent}
             color={COLORS.grayscale_900}
+            className="customer-fixed-width"
           />
           <BodyText
             type="mr"
             title={item.orders}
             color={COLORS.grayscale_900}
+            className="customer-fixed-width"
+            style={{ textAlign: "right" }}
           />
         </div>
         <Divider style={{ marginTop: 16 }} />
@@ -122,16 +128,33 @@ const ListItem = ({ avatar, type, item }) => {
   if (type === "orderList") {
     return (
       <div className="order-item" onClick={() => handleClick("")}>
-        <div className="linear-layout-flat" style={{ margin: "10px 0" }}>
-          <BodyText type="mr" color={COLORS.grayscale_900} title={item.id} />
-          <BodyText type="mr" color={COLORS.grayscale_900} title={item.date} />
+        <div className="linear-layout-flat">
+          <BodyText
+            type="mr"
+            color={COLORS.grayscale_900}
+            title={item.id}
+            className="order-fix-width"
+          />
+          <BodyText
+            type="mr"
+            color={COLORS.grayscale_900}
+            title={item.date}
+            className="order-fix-width"
+          />
           <BodyText
             type="mr"
             color={COLORS.grayscale_900}
             title={item.customerName}
+            className="order-fix-width"
           />
           {item.fullF ? <FullFilled /> : <UnFullFilled />}
-          <BodyText type="mr" color={COLORS.grayscale_900} title={item.total} />
+          <BodyText
+            type="mr"
+            color={COLORS.grayscale_900}
+            title={"FCFA" + item.total}
+            className="order-fix-width"
+            style={{ textAlign: "right" }}
+          />
         </div>
         <Divider />
       </div>
@@ -148,25 +171,31 @@ const ListItem = ({ avatar, type, item }) => {
               : "linear-layout-flat"
           }
         >
-          <Checkbox
-            isSelected={item.selected}
-            onChange={() =>
-              dispatch({ type: HANDLE_CAT_ITEM_SELECT, payload: item })
-            }
-          >
-            <img src={item.image} alt="res" className="product-item-search" />
-            <BodyText
-              type="mr"
-              title={item.title}
-              color={COLORS.grayscale_900}
-              style={{ marginLeft: 20, marginRight: 20 }}
-            />
-            {item.draft && (
-              <div className="draft">
-                <BodyText type="sr" title="Draft" color={COLORS.primary_base} />
-              </div>
-            )}
-          </Checkbox>
+          <div className="itemList-checkbox">
+            <Checkbox
+              isSelected={item.selected}
+              onChange={() =>
+                dispatch({ type: HANDLE_CAT_ITEM_SELECT, payload: item })
+              }
+            >
+              <img src={item.image} alt="res" className="product-item-search" />
+              <BodyText
+                type="mr"
+                title={item.title}
+                color={COLORS.grayscale_900}
+                style={{ marginLeft: 20, marginRight: 20 }}
+              />
+              {item.draft && (
+                <div className="draft">
+                  <BodyText
+                    type="sr"
+                    title="Draft"
+                    color={COLORS.primary_base}
+                  />
+                </div>
+              )}
+            </Checkbox>
+          </div>
           <BodyText
             type="mr"
             title={item.slug}

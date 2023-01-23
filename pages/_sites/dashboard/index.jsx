@@ -7,6 +7,7 @@ import {
   HelpCenter,
   PageDescription,
 } from "../../../components";
+import { Spacer } from "@nextui-org/react";
 
 const Dashboard = () => {
   const [helperVisible, setHelperVisible] = useState(true);
@@ -34,6 +35,7 @@ const Dashboard = () => {
           </div>
           <HelpCenter community />
         </div>
+        <Spacer y={3.5} />
       </div>
     </DashboardContainer>
   );

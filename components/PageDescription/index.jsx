@@ -31,7 +31,7 @@ const PageDescription = ({
           color={COLORS.grayscale_900}
           style={{ marginBottom: 20 }}
         />
-        <div className="linear-layout-flat">
+        <div className="linear-layout">
           {data.map((nav) => (
             <span key={nav.id} onClick={() => handleClick(nav.title)}>
               <BodyText

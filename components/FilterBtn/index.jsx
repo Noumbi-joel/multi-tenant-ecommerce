@@ -33,13 +33,15 @@ const FilterBtn = ({ type, data, title }) => {
           type="lr"
           title={title}
           color={COLORS.grayscale_900}
-          style={{ marginLeft: 15 }}
+          style={{ marginLeft: 15, width: 120 }}
         />
       </Button>
       {visible && (
         <Dropdown filters data={data} closeVisible={() => setVisible(false)} />
       )}
-      {lastUpdate && <Dropdown last data={data} closeVisible={() => setLastUpdate(false)} />}
+      {lastUpdate && (
+        <Dropdown last data={data} closeVisible={() => setLastUpdate(false)} />
+      )}
     </div>
   );
 };

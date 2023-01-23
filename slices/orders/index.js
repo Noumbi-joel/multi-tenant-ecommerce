@@ -4,6 +4,8 @@ import { ORDERS } from "../../helpers";
 //actions
 const filteringOrders = createAction("filteringOrders");
 const setFilterOrder = createAction("setFilterOrder");
+const sortOrderByDate = createAction("sortOrderByDate");
+const sortOrderByNumber = createAction("sortOrderByNumber");
 
 //init states
 const initialState = {
@@ -33,6 +35,20 @@ export const orderSlice = createSlice({
           state.filteredOrders = state.orders;
           break;
       }
+    });
+
+    builder.addCase(sortOrderByDate, (state, action) => {
+      state.filteredOrders.sort((o1, o2) => {
+        let x = new Date(o1.createdAt);
+        let y = new Date(o2.createdAt);
+        return y - x;
+      });
+    });
+
+    builder.addCase(sortOrderByNumber, (state, action) => {
+      state.filteredOrders.sort((o1, o2) => {
+        return o1.id - o2.id;
+      });
     });
 
     builder.addDefaultCase((state) => {

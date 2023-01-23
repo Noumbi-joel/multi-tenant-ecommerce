@@ -1,12 +1,16 @@
 import React, { useRef, useState } from "react";
 
-// helpers
-import { VERTICAL_HEADER_ITEMS } from "../../helpers";
-
 // assets
 import { COLORS } from "../../assets/colors";
 import Eduka from "../../public/eduka-white.svg";
 import DotVertical from "../../public/Dots.svg";
+import Home from "../../public/home-icon.svg";
+import Product from "../../public/product-icon.svg";
+import Order from "../../public/order-icon.svg";
+import Customer from "../../public/customer-icon.svg";
+import Plugin from "../../public/plugin-icon.svg";
+import Theme from "../../public/theme-icon.svg";
+import Setting from "../../public/setting-icon.svg";
 
 // link
 import Link from "next/link";
@@ -47,7 +51,13 @@ const VerticalHeader = () => {
               }
             >
               <div className="linear-layout">
-                {item.icon}
+                {item.id === 1 && <Home aria-label="home" />}
+                {item.id === 2 && <Product aria-label="product" />}
+                {item.id === 3 && <Order aria-label="order" />}
+                {item.id === 4 && <Customer aria-label="customer" />}
+                {item.id === 5 && <Plugin aria-label="plugin" />}
+                {item.id === 6 && <Theme aria-label="theme" />}
+                {item.id === 7 && <Setting aria-label="setting" />}
                 <BodyText
                   type="lr"
                   style={{ marginLeft: 10 }}

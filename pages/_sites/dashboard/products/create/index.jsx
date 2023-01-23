@@ -19,9 +19,11 @@ import PurplePlus from "../../../../../public/purple-plus.svg";
 import Trash from "../../../../../public/covered-trash.svg";
 import FileContainer from "../../../../../components/FileContainer";
 import { useSelector, useDispatch } from "react-redux";
+import { useRouter } from "next/router";
 
 const Products = () => {
   const { images } = useSelector((state) => state.image);
+  const router = useRouter();
   const dispatch = useDispatch();
   const [select, setSelect] = useState({
     status: "publish",
@@ -52,7 +54,10 @@ const Products = () => {
   return (
     <DashboardContainer>
       <Modal
-        closeModal={() => setModalVisible(false)}
+        closeModal={() => {
+          router.push("/_sites/dashboard/products");
+          setModalVisible(false);
+        }}
         visible={modalVisible}
         modalTitle="You have unsaved changes"
         modalBodyTextOne="Are you sure you want to leave ?"

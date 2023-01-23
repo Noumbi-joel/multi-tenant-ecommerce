@@ -368,11 +368,11 @@ a {
 .dashboard-container {
   width: 100%;
   height: fit-content;
-  display: flex;
 }
 
 .vertical-header-container {
   display: flex;
+  position: fixed;
   flex-direction: column;
   justify-content: space-between;
   width: 15%;
@@ -411,10 +411,6 @@ a {
   border-radius: 4px;
 }
 
-.active {
-  background-color: var(--primary_base);
-}
-
 .app-logo {
   margin-top: 20px;
   margin-left: 25px;
@@ -422,6 +418,7 @@ a {
 
 .vertical-header-item:hover {
   background-color: var(--primary_base);
+  transition: all 0.5s linear;
 }
 
 .vertical-footer {
@@ -442,6 +439,8 @@ a {
 .right-container {
   height: fit-content;
   width: 85%;
+  overflow-y: scroll;
+  margin-left: 15%;
 }
 
 .helper-center-container {
@@ -493,7 +492,7 @@ a {
 .box-container {
   margin-top: 25px;
   border: 1px solid var(--grayscale_400);
-  width: 300px;
+  width: 320px;
   border-radius: 8px;
   height: 100px;
   padding: 16px;
@@ -531,8 +530,8 @@ a {
   background-color: var(--white);
   border-radius: 4px;
   position: absolute;
-  left: 15.5%;
-  bottom: 1%;
+  left: 10%;
+  bottom: 10%;
   padding: 8px;
   z-index: 1000;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -1149,6 +1148,11 @@ a {
 
 .setting-nav-active {
   border-bottom: 2px solid #000;
+  margin-right: 20px;
+}
+
+.setting-nav {
+  margin-right: 20px;
 }
 
 .vertical-header-nav-active {
@@ -1157,6 +1161,19 @@ a {
 
 .item-list-active {
   background-color: var(--grayscale_300);
+}
+
+.itemList-checkbox {
+  width: 200px;
+}
+
+.order-fix-width {
+  width: 150px;
+  margin: 10px 0;
+}
+
+.customer-fixed-width {
+  width: 150px;
 }
 
 /* YEAH MEN I USE @MEDIA QUERY: SORRY!!!!!!! 🤣🤣🤣🤣 */

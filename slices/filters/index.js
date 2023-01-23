@@ -6,6 +6,7 @@ import {
   FILTERS,
   UPDATES,
   CUSTOMERS_SORT,
+  UPDATES_CAT
 } from "../../helpers";
 
 //actions
@@ -53,7 +54,7 @@ export const filterSlice = createSlice({
     });
     builder.addCase(getCategories, (state, action) => {
       state.filter = FILTERS_CAT;
-      state.sortBy = UPDATES;
+      state.sortBy = UPDATES_CAT;
       state.filterValue = FILTERS_CAT[0].title;
       state.sortByValue = UPDATES[0].title;
     });

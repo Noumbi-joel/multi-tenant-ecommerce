@@ -12,6 +12,9 @@ const handleDropdownCatItem = createAction("handleDropdownCatItem");
 const setIdCat = createAction("setIdCat");
 const deleteCatItem = createAction("deleteCatItem");
 
+const sortCategoryByDate = createAction("sortCategoryByDate");
+const sortCategoryByName = createAction("sortCategoryByName");
+
 //init states
 const initialState = {
   categories: CATEGORIES,
@@ -117,6 +120,28 @@ export const categorySlice = createSlice({
       state.idToDelete = null;
     });
 
+    builder.addCase(sortCategoryByDate, (state) => {
+      state.filteredCategories.sort((c1, c2) => {
+        let x = new Date(c1.createdAt);
+        let y = new Date(c2.createdAt);
+        return y - x;
+      });
+    });
+
+    builder.addCase(sortCategoryByName, (state) => {
+      state.filteredCategories.sort(function (a, b) {
+        const nameA = a.title.toUpperCase();
+        const nameB = b.title.toUpperCase();
+
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+        return 0;
+      });
+    });
 
     builder.addDefaultCase((state) => {
       return state;

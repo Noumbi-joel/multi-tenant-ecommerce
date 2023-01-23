@@ -1,8 +1,17 @@
 import {
+  CLOSE_ALL_CAT_CHECKER,
+  CLOSE_ALL_CHECKER,
+  CLOSE_ALL_SELECTED_MODAL,
+  CLOSE_ALL_SELECTED_MODAL_CAT,
+  DELETE_CAT_ITEMS,
+  DELETE_ITEMS,
+  DISCARD_CAT_ITEMS_SELECTED,
+  DISCARD_ITEM_SELECTED,
   FILTERING,
   FILTERING_CATEGORY,
   FILTERING_CUSTOMERS,
   FILTERING_ORDERS,
+  OPEN_ALL_ITEM_MODAL,
   SET_FILTER,
   SET_FILTER_CATEGORY,
   SET_FILTER_ORDER,
@@ -103,4 +112,36 @@ export const handleClickFilters = (a, dispatch, closeVisible, data) => {
   }
 
   dispatch({ type: SET_FILTER, payload: a.title });
+};
+
+// products page functions
+export const handleDiscard = (dispatch, allChecker) => {
+  dispatch({ type: DISCARD_ITEM_SELECTED });
+  if (allChecker) {
+    dispatch({ type: CLOSE_ALL_CHECKER });
+  }
+};
+
+export const handleDeleteItems = (dispatch) => {
+  dispatch({ type: OPEN_ALL_ITEM_MODAL });
+};
+
+export const handleDeleteAllItems = (dispatch) => {
+  dispatch({ type: DELETE_ITEMS });
+  dispatch({ type: CLOSE_ALL_SELECTED_MODAL });
+  dispatch({ type: CLOSE_ALL_CHECKER });
+};
+
+// categories page functions
+export const handleDiscardCat = (dispatch, allCheckerCat) => {
+  dispatch({ type: DISCARD_CAT_ITEMS_SELECTED });
+  if (allCheckerCat) {
+    dispatch({ type: CLOSE_ALL_CAT_CHECKER });
+  }
+};
+
+export const handleDeleteAllItemsCat = (dispatch) => {
+  dispatch({ type: DELETE_CAT_ITEMS });
+  dispatch({ type: CLOSE_ALL_SELECTED_MODAL_CAT });
+  dispatch({ type: CLOSE_ALL_CAT_CHECKER });
 };

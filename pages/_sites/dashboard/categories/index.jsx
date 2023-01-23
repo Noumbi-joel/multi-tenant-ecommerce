@@ -12,20 +12,19 @@ import {
   Table,
 } from "../../../../components";
 
+// functions
+import { handleDeleteAllItemsCat, handleDiscardCat, searchFilter } from "../../../../functions";
+
 // assets
 import { COLORS } from "../../../../assets/colors";
 import Plus from "../../../../public/plus.svg";
 import Trash from "../../../../public/trash.svg";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
-import { searchFilter } from "../../../../functions";
 import {
-  CLOSE_ALL_CAT_CHECKER,
   CLOSE_ALL_SELECTED_MODAL_CAT,
   DELETE_CAT_ITEM,
   CLOSE_SINGLE_MODAL_CAT,
-  DELETE_CAT_ITEMS,
-  DISCARD_CAT_ITEMS_SELECTED,
   OPEN_MODAL_ALL_ITEMS_CAT,
 } from "../../../../constants";
 
@@ -41,24 +40,11 @@ const Categories = () => {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const handleDiscard = () => {
-    dispatch({ type: DISCARD_CAT_ITEMS_SELECTED });
-    if (allCheckerCat) {
-      dispatch({ type: CLOSE_ALL_CAT_CHECKER });
-    }
-  };
-
-  const handleDeleteAllItems = () => {
-    dispatch({ type: DELETE_CAT_ITEMS });
-    dispatch({ type: CLOSE_ALL_SELECTED_MODAL_CAT });
-    dispatch({ type: CLOSE_ALL_CAT_CHECKER });
-  };
-
   return (
     <DashboardContainer>
       <Modal
         closeModal={() => dispatch({ type: CLOSE_ALL_SELECTED_MODAL_CAT })}
-        deleteItem={handleDeleteAllItems}
+        deleteItem={() => handleDeleteAllItemsCat(dispatch)}
         visible={modalAllItemCat}
         modalTitle={`Remove ${itemsSelected.length} selected categories`}
         modalBodyTextOne="Removed categories can't be restored."
@@ -120,7 +106,7 @@ const Categories = () => {
 
                 <Button
                   className="product-selected-btn-outline"
-                  onClick={handleDiscard}
+                  onClick={() => handleDiscardCat(dispatch, allCheckerCat)}
                   title="Discard"
                   titleColor={COLORS.primary_base}
                   titleType="lr"

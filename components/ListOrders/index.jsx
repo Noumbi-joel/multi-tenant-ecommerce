@@ -1,11 +1,11 @@
 import React from "react";
-import {  ListItem } from "..";
+import { ListItem } from "..";
 
 const ListOrders = ({ data }) => {
   return (
     <div>
       {data.map((order) => (
-        <ListItem type="orderList" item={order} />
+        <ListItem key={order.id} type="orderList" item={order} />
       ))}
     </div>
   );

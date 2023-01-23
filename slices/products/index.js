@@ -13,6 +13,11 @@ const deleteItems = createAction("deleteItems");
 const handleVisible = createAction("handleVisible");
 const setFilterProduct = createAction("setFilterProduct");
 
+const sortProductByName = createAction("sortProductByName");
+const sortProductByDate = createAction("sortProductByDate");
+const sortProductByStock = createAction("sortProductByStock");
+
+
 //init states
 const initialState = {
   products: PRODUCTS,
@@ -129,6 +134,35 @@ export const productSlice = createSlice({
           state.filteredProducts = state.products;
           break;
       }
+    });
+
+    builder.addCase(sortProductByDate, (state) => {
+      state.filteredProducts.sort((p1, p2) => {
+        let x = new Date(p1.createdAt);
+        let y = new Date(p2.createdAt);
+        return y - x;
+      });
+    });
+
+    builder.addCase(sortProductByStock, (state) => {
+      state.filteredProducts.sort((p1, p2) => {
+        return p2.stock - p1.stock;
+      });
+    });
+
+    builder.addCase(sortProductByName, (state) => {
+      state.filteredProducts.sort(function (a, b) {
+        const nameA = a.title.toUpperCase();
+        const nameB = b.title.toUpperCase();
+
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+        return 0;
+      });
     });
 
     builder.addDefaultCase((state) => {

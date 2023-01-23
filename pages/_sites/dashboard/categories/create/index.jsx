@@ -9,7 +9,7 @@ import {
   InputField,
   Modal,
   TipTap,
-  FileContainer
+  FileContainer,
 } from "../../../../../components";
 import { Checkbox, Divider, Spacer } from "@nextui-org/react";
 
@@ -19,12 +19,14 @@ import { FormControl, MenuItem, Select } from "@mui/material";
 
 // redux
 import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/router";
 
 const Categories = () => {
   const [select, setSelect] = useState({
     status: "publish",
     weight: "Less-than-1-kg",
   });
+  const router = useRouter();
   const [inputs, setInputs] = useState({
     products: "",
     tags: "",
@@ -52,7 +54,10 @@ const Categories = () => {
   return (
     <DashboardContainer>
       <Modal
-        closeModal={() => setModalVisible(false)}
+        closeModal={() => {
+          router.push("/_sites/dashboard/categories");
+          setModalVisible(false);
+        }}
         visible={modalVisible}
         firstBtnTitle="Leave"
         secondBtnTitle="Save Changes"

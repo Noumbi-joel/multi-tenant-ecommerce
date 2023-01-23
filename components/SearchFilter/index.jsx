@@ -1,10 +1,15 @@
-import React, { useEffect, useLayoutEffect } from "react";
+import React, { useEffect } from "react";
 
 // comp
 import InputField from "../InputField";
 import FilterBtn from "../FilterBtn";
 import { useSelector } from "react-redux";
-import { GET_CATEGORIES, GET_CUSTOMERS, GET_ORDERS, GET_PRODUCTS } from "../../constants";
+import {
+  GET_CATEGORIES,
+  GET_CUSTOMERS,
+  GET_ORDERS,
+  GET_PRODUCTS,
+} from "../../constants";
 
 // assets
 
@@ -46,7 +51,14 @@ const SearchFilter = ({ onChange, value, type, dispatch, searchType }) => {
           data={filter}
         />
       )}
-      <FilterBtn data={sortBy} title={"Sort by " + sortByValue.toLowerCase()} />
+      <FilterBtn
+        data={sortBy}
+        title={
+          "Sort by ".length + sortByValue.length > 20
+            ? `Sort by ${sortByValue.substring(0, 10).toLowerCase()}...`
+            : "Sort by " + sortByValue.toLowerCase()
+        }
+      />
     </div>
   );
 };

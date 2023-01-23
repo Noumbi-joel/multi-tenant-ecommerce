@@ -20,16 +20,13 @@ import { COLORS } from "../../../../assets/colors";
 import Plus from "../../../../public/plus.svg";
 import Trash from "../../../../public/trash.svg";
 import {
-  CLOSE_ALL_CHECKER,
-  DISCARD_ITEM_SELECTED,
-  FILTERING,
   CLOSE_ALL_SELECTED_MODAL,
-  DELETE_ITEMS,
   CLOSE_SINGLE_MODAL,
   DELETE_ITEM,
-  OPEN_ALL_ITEM_MODAL,
 } from "../../../../constants";
-import { searchFilter } from "../../../../functions";
+
+// functions
+import { handleDeleteAllItems, handleDeleteItems, handleDiscard, searchFilter } from "../../../../functions";
 
 const Products = () => {
   const [search, setSearch] = useState("");
@@ -42,23 +39,6 @@ const Products = () => {
   const { modalSingleItem, itemName, modalAllItem, allChecker } = useSelector(
     (state) => state.modal
   );
-
-  const handleDiscard = () => {
-    dispatch({ type: DISCARD_ITEM_SELECTED });
-    if (allChecker) {
-      dispatch({ type: CLOSE_ALL_CHECKER });
-    }
-  };
-
-  const handleDeleteItems = () => {
-    dispatch({ type: OPEN_ALL_ITEM_MODAL });
-  };
-
-  const handleDeleteAllItems = () => {
-    dispatch({ type: DELETE_ITEMS });
-    dispatch({ type: CLOSE_ALL_SELECTED_MODAL });
-    dispatch({ type: CLOSE_ALL_CHECKER });
-  };
 
   return (
     <DashboardContainer>
@@ -77,7 +57,7 @@ const Products = () => {
       />
       <Modal
         closeModal={() => dispatch({ type: CLOSE_ALL_SELECTED_MODAL })}
-        deleteItem={handleDeleteAllItems}
+        deleteItem={() => handleDeleteAllItems(dispatch)}
         visible={modalAllItem}
         modalTitle={`Remove ${itemsSelected.length} selected products`}
         modalBodyTextOne="Removed products can't be restored."
@@ -124,7 +104,7 @@ const Products = () => {
 
                 <Button
                   className="product-selected-btn-outline"
-                  onClick={handleDiscard}
+                  onClick={() => handleDiscard(dispatch, allChecker)}
                   title="Discard"
                   titleColor={COLORS.primary_base}
                   titleType="lr"
@@ -132,7 +112,7 @@ const Products = () => {
 
                 <Button
                   className="product-selected-btn"
-                  onClick={handleDeleteItems}
+                  onClick={() => handleDeleteItems(dispatch)}
                   title="Delete"
                   titleColor={COLORS.white}
                   titleType="lr"
