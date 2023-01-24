@@ -1,3 +1,4 @@
+import { Spacer } from "@nextui-org/react";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -51,12 +52,15 @@ const Orders = () => {
             />
           )}
           {filteredOrders.length > 0 && (
-            <Table
-              type="orders"
-              checkboxTitle={`Display: ${filteredOrders.length} of ${filteredOrders.length} items`}
-              dataHeaders={ORDERS_HEADER}
-              data={filteredOrders}
-            />
+            <div>
+              <Spacer />
+              <ListOrders
+                data={filteredOrders}
+                dataHeaders={ORDERS_HEADER}
+                checkboxTitle={`Display: ${filteredOrders.length} of ${filteredOrders.length} items`}
+              />
+              <Spacer y={2.5} />
+            </div>
           )}
         </div>
       </div>

@@ -8,8 +8,6 @@ import { BodyText, Dropdown } from "..";
 import { COLORS } from "../../assets/colors";
 import RightArrowMd from "../../public/right-arrow-md.svg";
 import VerticalDots from "../../public/VerticalDots.svg";
-import FullFilled from "../../public/fullfilled.svg";
-import UnFullFilled from "../../public/unfullfilled.svg";
 import { ITEM_ACTIONS, ITEM_CAT_ACTIONS } from "../../helpers";
 
 // redux
@@ -24,13 +22,6 @@ import { useRouter } from "next/router";
 
 const ListItem = ({ avatar, type, item }) => {
   const dispatch = useDispatch();
-  const router = useRouter();
-  const handleClick = (type) => {
-    if (type === "customerDetails") {
-      return router.push(`/_sites/dashboard/customers/customerDetails`);
-    }
-    return router.push(`/_sites/dashboard/orders/orderDetails`);
-  };
 
   if (type === "itemList") {
     return (
@@ -42,7 +33,7 @@ const ListItem = ({ avatar, type, item }) => {
               : "linear-layout-flat"
           }
         >
-          <div className="itemList-checkbox">
+          <div className="itemList-cat">
             <Checkbox
               isSelected={item.selected}
               onChange={() =>
@@ -67,18 +58,22 @@ const ListItem = ({ avatar, type, item }) => {
               )}
             </Checkbox>
           </div>
-          <BodyText
-            type="mr"
-            title={"FCFA" + item.price}
-            color={COLORS.grayscale_900}
-            style={{ marginLeft: 20 }}
-          />
-          <BodyText
-            type="mr"
-            title={item.stock+" in stock"}
-            color={COLORS.grayscale_900}
-            style={{ marginLeft: 20 }}
-          />
+          <div className="itemList-cat">
+            <BodyText
+              type="mr"
+              title={"FCFA" + item.price}
+              color={COLORS.grayscale_900}
+              style={{ marginLeft: 20 }}
+            />
+          </div>
+          <div className="itemList-cat">
+            <BodyText
+              type="mr"
+              title={item.stock + " in stock"}
+              color={COLORS.grayscale_900}
+              style={{ marginLeft: 20 }}
+            />
+          </div>
           <div style={{ position: "relative" }}>
             <VerticalDots
               aria-label="v-dots"
@@ -91,72 +86,7 @@ const ListItem = ({ avatar, type, item }) => {
             )}
           </div>
         </div>
-        <Divider style={{ marginTop: 16 }} />
-      </div>
-    );
-  }
-
-  if (type === "customerList") {
-    return (
-      <div onClick={() => handleClick("customerDetails")} className="clickable">
-        <div className="linear-layout-flat">
-          <BodyText
-            type="mr"
-            title={item.customerName}
-            color={COLORS.grayscale_900}
-            className="customer-fixed-width"
-          />
-          <BodyText
-            type="mr"
-            title={"FCFA " + item.totalSpent}
-            color={COLORS.grayscale_900}
-            className="customer-fixed-width"
-          />
-          <BodyText
-            type="mr"
-            title={item.orders}
-            color={COLORS.grayscale_900}
-            className="customer-fixed-width"
-            style={{ textAlign: "right" }}
-          />
-        </div>
-        <Divider style={{ marginTop: 16 }} />
-      </div>
-    );
-  }
-
-  if (type === "orderList") {
-    return (
-      <div className="order-item" onClick={() => handleClick("")}>
-        <div className="linear-layout-flat">
-          <BodyText
-            type="mr"
-            color={COLORS.grayscale_900}
-            title={item.id}
-            className="order-fix-width"
-          />
-          <BodyText
-            type="mr"
-            color={COLORS.grayscale_900}
-            title={item.date}
-            className="order-fix-width"
-          />
-          <BodyText
-            type="mr"
-            color={COLORS.grayscale_900}
-            title={item.customerName}
-            className="order-fix-width"
-          />
-          {item.fullF ? <FullFilled /> : <UnFullFilled />}
-          <BodyText
-            type="mr"
-            color={COLORS.grayscale_900}
-            title={"FCFA" + item.total}
-            className="order-fix-width"
-            style={{ textAlign: "right" }}
-          />
-        </div>
-        <Divider />
+        <Divider className="divider-item" />
       </div>
     );
   }
@@ -171,7 +101,7 @@ const ListItem = ({ avatar, type, item }) => {
               : "linear-layout-flat"
           }
         >
-          <div className="itemList-checkbox">
+          <div className="itemList-cat">
             <Checkbox
               isSelected={item.selected}
               onChange={() =>
@@ -196,18 +126,22 @@ const ListItem = ({ avatar, type, item }) => {
               )}
             </Checkbox>
           </div>
-          <BodyText
-            type="mr"
-            title={item.slug}
-            color={COLORS.grayscale_900}
-            style={{ marginLeft: 20 }}
-          />
-          <BodyText
-            type="mr"
-            title={item.items}
-            color={COLORS.grayscale_900}
-            style={{ marginLeft: 20 }}
-          />
+          <div className="itemList-cat">
+            <BodyText
+              type="mr"
+              title={item.slug}
+              color={COLORS.grayscale_900}
+              style={{ marginLeft: 20 }}
+            />
+          </div>
+          <div className="itemList-cat">
+            <BodyText
+              type="mr"
+              title={item.items}
+              color={COLORS.grayscale_900}
+              style={{ marginLeft: 20 }}
+            />
+          </div>
           <div style={{ position: "relative" }}>
             <VerticalDots
               aria-label="v-dots"
@@ -220,7 +154,7 @@ const ListItem = ({ avatar, type, item }) => {
             )}
           </div>
         </div>
-        <Divider style={{ marginTop: 16 }} />
+        <Divider className="divider-item" />
       </div>
     );
   }

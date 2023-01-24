@@ -1,13 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 
 // comp
 import { Spacer } from "@nextui-org/react";
-import { Button, SubContentSettings, TipTap } from "..";
+import { Button, Modal, SubContentSettings, TipTap } from "..";
+
+// assets
 import { COLORS } from "../../assets/colors";
 
 const Legal = () => {
+  const [saved, setSaved] = useState(false);
   return (
     <div>
+      <Modal
+        closeModal={() => setSaved(false)}
+        visible={saved}
+        modalTitle="You have unsaved changes"
+        modalBodyTextOne="Are you sure you want to leave ?"
+        dashboard
+      />
       <Spacer y={1.5} />
       <SubContentSettings
         subTitle="Legal"
@@ -15,11 +25,9 @@ const Legal = () => {
       />
       <Spacer />
       <div className="tiptap-container">
-        <TipTap label="Refund policy" settings />
-        <Spacer />
         <TipTap label="Privacy policy" settings />
         <Spacer />
-        <TipTap label="Terms of services" settings />
+        <TipTap label="Refund policy" settings />
         <Spacer />
         <TipTap label="Shipping policy" settings />
         <Spacer />
@@ -29,6 +37,7 @@ const Legal = () => {
             titleColor={COLORS.white}
             title="Save Changes"
             className="setting-submit-btn"
+            onClick={() => setSaved(true)}
           />
         </div>
       </div>

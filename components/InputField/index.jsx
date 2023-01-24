@@ -22,7 +22,7 @@ const InputField = ({
   className,
   data,
   dashboard,
-  disabled
+  disabled,
 }) => {
   const [eye, setEye] = useState(false);
 
@@ -251,6 +251,26 @@ const InputField = ({
             ))}
           </Select>
         </FormControl>
+      </div>
+    );
+  }
+
+  if (name === "native-select") {
+    return (
+      <div>
+        <BodyText
+          type="mr"
+          title={label}
+          color={COLORS.grayscale_900}
+          style={{ marginBottom: 5 }}
+        />
+        <select className={className}>
+          {data.map((select) => (
+            <option key={select.id} value={select.title}>
+              {select.title}
+            </option>
+          ))}
+        </select>
       </div>
     );
   }

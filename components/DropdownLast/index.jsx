@@ -21,7 +21,6 @@ import { BodyText } from "..";
 
 const DropdownLast = ({ data, dispatch, closeVisible }) => {
   const handleClick = (a) => {
-    console.log(a.title);
     switch (a.title) {
       case "Last created (c)":
         dispatch({ type: SORT_CUSTOMER_BY_DATE });

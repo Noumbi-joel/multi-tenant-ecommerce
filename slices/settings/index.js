@@ -1,4 +1,4 @@
-import { SETTINGS_NAV, VERTICAL_HEADER_ITEMS } from "../../helpers";
+import { SETTINGS_NAV, VERTICAL_HEADER_ITEMS, PAYMENTS } from "../../helpers";
 
 import { createSlice, createAction } from "@reduxjs/toolkit";
 
@@ -19,6 +19,7 @@ const initialState = {
   },
   settings_nav: SETTINGS_NAV,
   vertical_header_nav: VERTICAL_HEADER_ITEMS,
+  payments: PAYMENTS
 };
 
 let temp;

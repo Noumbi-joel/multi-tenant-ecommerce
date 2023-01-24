@@ -1,184 +1,103 @@
-import React from "react";
+import React, { useState } from "react";
 // comp
-import { BodyText, Button, InputField, SubContentSettings } from "..";
-import { Checkbox, Spacer } from "@nextui-org/react";
+import { Button, InputField, Modal, SubContentSettings } from "..";
+import { Spacer } from "@nextui-org/react";
 
 // assets
 import { COLORS } from "../../assets/colors";
-import UploadBlack from "../../public/upload-black.svg";
+import Upload from "../../public/upload.svg";
 
-const StoreDetails = ({ data: { SITE_LANG, TIMEZONE, CURRENCY } }) => {
+const StoreDetails = ({ data: { STATES, COUNTRIES } }) => {
+  const [saved, setSaved] = useState(false);
   return (
     <div>
+      <Modal
+        closeModal={() => setSaved(false)}
+        visible={saved}
+        modalTitle="You have unsaved changes"
+        modalBodyTextOne="Are you sure you want to leave ?"
+        dashboard
+      />
       <Spacer y={1.5} />
       <SubContentSettings
         subTitle="Store details"
         subDesc="Eduka and your customers will use this information to contact you."
       />
       <Spacer />
-      <div className="linear-layout-flat">
-        <div>
-          <InputField
-            ariaLabel="siteName"
-            label="This is your site name"
-            name="siteName"
-            type="text"
-            className="storeDetailsInputs"
-          />
-          <BodyText
-            type="mr"
-            color={COLORS.grayscale_900}
-            title="The name of your store as you want it to appear in your store's header."
-          />
-        </div>
-        <div>
-          <InputField
-            ariaLabel="storeEmail"
-            label="Store contact email"
-            name="storeEmail"
-            type="text"
-            className="storeDetailsInputs"
-          />
-          <BodyText
-            type="mr"
-            color={COLORS.grayscale_900}
-            title="We'll use this address if we need to contact you about your store."
-          />
-        </div>
-      </div>
-      <Spacer />
-      <div>
-        <InputField
-          ariaLabel="desc"
-          label="Description"
-          name="desc"
-          type="text"
-          className="desc"
-        />
-        <BodyText
-          type="mr"
-          color={COLORS.grayscale_900}
-          title="This will appear at the footer of the website."
-        />
-      </div>
-      <Spacer />
-
-      <div className="linear-layout-flat">
-        <InputField
-          ariaLabel="siteLang"
-          label="Main site Language"
-          name="select"
-          className="select-siteLang"
-          data={SITE_LANG}
-        />
-        <InputField
-          ariaLabel="siteLang"
-          label="Admin dashboard language"
-          name="select"
-          className="select-siteLang"
-          data={SITE_LANG}
-        />
-      </div>
-      <Spacer />
-      <div className="linear-layout-flat">
-        <InputField
-          ariaLabel="siteLang"
-          label="Timezone"
-          name="select"
-          className="select-siteLang"
-          data={TIMEZONE}
-        />
-        <InputField
-          ariaLabel="siteLang"
-          label="Currency"
-          name="select"
-          className="select-siteLang"
-          data={CURRENCY}
-        />
-      </div>
-      <Spacer y={2.5} />
-
-      <SubContentSettings
-        subTitle="Store address"
-        subDesc="This address will appear on your invoices."
+      <InputField
+        ariaLabel="siteName"
+        label="Your store name"
+        name="siteName"
+        type="text"
+        className="storeDetailsInputs"
       />
       <Spacer />
       <InputField
-        ariaLabel="storeEmail"
-        label="Store contact email"
-        name="storeEmail"
+        ariaLabel="desc"
+        label="Short store description"
+        name="desc"
         type="text"
-        className="storeAddressInput"
+        className="desc"
       />
       <Spacer />
 
       <div className="linear-layout-flat">
         <InputField
-          ariaLabel="phone"
-          label="Phone"
-          name="phone"
-          type="text"
-          className="storeDetailsInputs"
+          ariaLabel="siteLang"
+          label="Primary address"
+          name="priAddress"
+          className="address"
         />
+        <InputField
+          ariaLabel="siteLang"
+          label="Secondary address"
+          name="sndAddress"
+          className="address"
+        />
+      </div>
+
+      <Spacer />
+      <div className="linear-layout-flat">
         <InputField
           ariaLabel="city"
           label="City"
           name="city"
-          type="text"
-          className="storeDetailsInputs"
-        />
-      </div>
-      <Spacer />
-
-      <div className="linear-layout-flat">
-        <InputField
-          ariaLabel="address"
-          label="Address"
-          name="address"
-          type="text"
-          className="storeDetailsInputs"
+          className="cityCode"
         />
         <InputField
-          ariaLabel="residence"
-          label="Apartment, suite, etc."
-          name="residence"
-          type="text"
-          className="storeDetailsInputs"
+          ariaLabel="siteLang"
+          label="Postal code"
+          name="postalCode"
+          className="cityCode"
         />
       </div>
       <Spacer />
       <div className="linear-layout-flat">
         <InputField
-          ariaLabel="countryReg"
-          label="Country/Region"
-          name="select"
-          className="select-storeAddr"
-          data={CURRENCY}
-        />
-        <InputField
-          ariaLabel="state"
+          ariaLabel="siteLang"
           label="State"
           name="select"
-          className="select-storeAddr"
-          data={CURRENCY}
+          className="select-siteLang"
+          data={STATES}
         />
         <InputField
-          ariaLabel="zipCode"
-          label="Zip Code"
-          name="zipCode"
-          type="text"
-          className="storeDetailsZipCode"
+          ariaLabel="siteLang"
+          label="Country"
+          name="select"
+          className="select-siteLang"
+          data={COUNTRIES}
         />
       </div>
-      <Spacer />
-
+      <Spacer y={2.5} />
       <SubContentSettings
         subTitle="Favicon"
         subDesc="A favicon is a small icon next to your site title. Display a custom favicon to help visitors recognize your brand and stand out in their browser tabs."
       />
       <Spacer />
       <div className="linear-layout">
-        <img src="/got.jpg" alt="got" className="setting-favico" />
+        <div className="upload-outline-container">
+          <Upload />
+        </div>
         <Button
           titleType="lr"
           className="updateImg"
@@ -201,7 +120,9 @@ const StoreDetails = ({ data: { SITE_LANG, TIMEZONE, CURRENCY } }) => {
       <Spacer />
 
       <div className="linear-layout">
-        <UploadBlack style={{ marginRight: 20 }} />
+        <div className="upload-outline-container">
+          <Upload />
+        </div>
         <Button
           titleType="lr"
           className="updateImg"
@@ -225,7 +146,7 @@ const StoreDetails = ({ data: { SITE_LANG, TIMEZONE, CURRENCY } }) => {
 
       <div className="linear-layout">
         <div className="social-img-container">
-          <UploadBlack />
+          <Upload />
         </div>
         <Button
           titleType="lr"
@@ -240,21 +161,6 @@ const StoreDetails = ({ data: { SITE_LANG, TIMEZONE, CURRENCY } }) => {
           titleColor={COLORS.primary_base}
         />
       </div>
-
-      <Spacer />
-      <SubContentSettings
-        subTitle="Maintenance mode & access restriction"
-        subDesc="Put your store into maintenance mode or restrict the access."
-      />
-      <Spacer />
-      <Checkbox>
-        <BodyText
-          type="mr"
-          color={COLORS.grayscale_900}
-          title="Change mode & restrict"
-        />
-      </Checkbox>
-
       <Spacer />
       <div style={{ display: "flex", justifyContent: "flex-end" }}>
         <Button
@@ -262,6 +168,7 @@ const StoreDetails = ({ data: { SITE_LANG, TIMEZONE, CURRENCY } }) => {
           titleColor={COLORS.white}
           title="Save Changes"
           className="setting-submit-btn"
+          onClick={() => setSaved(true)}
         />
       </div>
 

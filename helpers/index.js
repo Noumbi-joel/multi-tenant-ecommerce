@@ -108,7 +108,7 @@ export const PRODUCTS = [
     published: true,
     draft: false,
     selected: false,
-    createdAt: new Date("2020-05-20").toISOString().toString()
+    createdAt: new Date("2020-05-20").toISOString().toString(),
   },
   {
     id: 2,
@@ -121,7 +121,7 @@ export const PRODUCTS = [
     published: false,
     draft: false,
     selected: false,
-    createdAt: new Date("2015-05-13").toISOString().toString()
+    createdAt: new Date("2015-05-13").toISOString().toString(),
   },
   {
     id: 3,
@@ -134,7 +134,7 @@ export const PRODUCTS = [
     published: false,
     draft: true,
     selected: false,
-    createdAt: new Date("2023-08-13").toISOString().toString()
+    createdAt: new Date("2023-08-13").toISOString().toString(),
   },
   {
     id: 4,
@@ -147,7 +147,7 @@ export const PRODUCTS = [
     published: false,
     draft: false,
     selected: false,
-    createdAt: new Date("2018-05-13").toISOString().toString()
+    createdAt: new Date("2018-05-13").toISOString().toString(),
   },
 ];
 
@@ -181,7 +181,7 @@ export const CATEGORIES = [
     published: true,
     draft: false,
     selected: false,
-    createdAt: new Date("2012-05-13").toISOString().toString()
+    createdAt: new Date("2012-05-13").toISOString().toString(),
   },
   {
     id: 2,
@@ -194,7 +194,7 @@ export const CATEGORIES = [
     published: false,
     draft: true,
     selected: false,
-    createdAt: new Date("2019-05-13").toISOString().toString()
+    createdAt: new Date("2019-05-13").toISOString().toString(),
   },
 ];
 
@@ -228,7 +228,7 @@ export const ORDERS = [
     customerName: "Muhammed Shuwa",
     fullF: true,
     total: "19,300",
-    createdAt: new Date("2019-05-13").toISOString().toString()
+    createdAt: new Date("2019-05-13").toISOString().toString(),
   },
   {
     id: 5,
@@ -236,7 +236,7 @@ export const ORDERS = [
     customerName: "Tunde Idiagbon",
     fullF: false,
     total: "19,300",
-    createdAt: new Date("2012-05-13").toISOString().toString()
+    createdAt: new Date("2012-05-13").toISOString().toString(),
   },
   {
     id: 3,
@@ -244,7 +244,7 @@ export const ORDERS = [
     customerName: "Samuel Akintola",
     fullF: true,
     total: "19,300",
-    createdAt: new Date("2014-05-13").toISOString().toString()
+    createdAt: new Date("2014-05-13").toISOString().toString(),
   },
   {
     id: 4,
@@ -252,7 +252,7 @@ export const ORDERS = [
     customerName: "Ayokunle Damola",
     fullF: true,
     total: "19,300",
-    createdAt: new Date("2025-05-13").toISOString().toString()
+    createdAt: new Date("2025-05-13").toISOString().toString(),
   },
   {
     id: 84,
@@ -260,7 +260,7 @@ export const ORDERS = [
     customerName: "Adolphus Wabara",
     fullF: true,
     total: "19,300",
-    createdAt: new Date("2020-05-13").toISOString().toString()
+    createdAt: new Date("2020-05-13").toISOString().toString(),
   },
   {
     id: 42,
@@ -268,7 +268,7 @@ export const ORDERS = [
     customerName: "Ike Nwachukwu",
     fullF: false,
     total: "19,300",
-    createdAt: new Date("2019-08-13").toISOString().toString()
+    createdAt: new Date("2019-08-13").toISOString().toString(),
   },
   {
     id: 58,
@@ -276,7 +276,7 @@ export const ORDERS = [
     customerName: "Aladewura Ayotola",
     fullF: true,
     total: "19,300",
-    createdAt: new Date("2019-05-25").toISOString().toString()
+    createdAt: new Date("2019-05-25").toISOString().toString(),
   },
   {
     id: 20,
@@ -284,7 +284,7 @@ export const ORDERS = [
     customerName: "Gbenga Bisi",
     fullF: false,
     total: "19,300",
-    createdAt: new Date("2019-02-13").toISOString().toString()
+    createdAt: new Date("2019-02-13").toISOString().toString(),
   },
   {
     id: 9,
@@ -292,7 +292,7 @@ export const ORDERS = [
     customerName: "Muhammed Shuwa",
     fullF: true,
     total: "19,300",
-    createdAt: new Date("2022-05-13").toISOString().toString()
+    createdAt: new Date("2022-05-13").toISOString().toString(),
   },
 ];
 
@@ -411,7 +411,7 @@ export const CUSTOMERS = [
     customerName: "Muhammed Shuwa",
     totalSpent: "59300",
     orders: "0",
-    createdAt: new Date('2019-05-18').toISOString().toString(),
+    createdAt: new Date("2019-05-18").toISOString().toString(),
   },
 ];
 
@@ -428,14 +428,113 @@ export const SITE_LANG = [
   { id: 2, title: "fr-FRA" },
 ];
 
-export const TIMEZONE = [
-  { id: 1, title: "UTC" },
-  { id: 2, title: "PNT" },
-  { id: 3, title: "PST" },
-  { id: 4, title: "MST" },
+export const STATES = [
+  { id: 1, title: "Adamaoua" },
+  { id: 8, title: "Centre" },
+  { id: 2, title: "Est" },
+  { id: 3, title: "Extrême-Nord" },
+  { id: 4, title: "Littoral" },
+  { id: 5, title: "Nord" },
+  { id: 6, title: "Nord-Ouest" },
+  { id: 7, title: "Ouest" },
 ];
 
-export const CURRENCY = [
-  { id: 1, title: "USD" },
-  { id: 2, title: "FCFA" },
+export const COUNTRIES = [
+  { id: 1, title: "Nigeria" },
+  { id: 2, title: "Cameroon" },
+  { id: 3, title: "Ivory coast" },
+];
+
+export const PAYMENTS_METHODS = [
+  { id: 1, title: "Orange money" },
+  { id: 2, title: "Mobile Money" },
+];
+
+export const PAYMENTS_OPERATORS = [
+  { id: 1, title: "Orange" },
+  { id: 2, title: "MTN" },
+];
+
+export const PAYMENTS = [
+  {
+    id: 1,
+    paymentMethod: "Orange money",
+    amount: "19300",
+    status: "Success",
+    phone: "+237670555555",
+    date: date,
+    createdAt: new Date("2019-05-13").toISOString().toString(),
+  },
+  {
+    id: 2,
+    paymentMethod: "Orange money",
+    amount: "19300",
+    status: "Success",
+    phone: "+237670555555",
+    date: date,
+    createdAt: new Date("2019-05-13").toISOString().toString(),
+  },
+  {
+    id: 3,
+    paymentMethod: "Orange money",
+    amount: "19300",
+    status: "Failed",
+    phone: "+237670555555",
+    date: date,
+    createdAt: new Date("2019-05-13").toISOString().toString(),
+  },
+  {
+    id: 4,
+    paymentMethod: "Orange money",
+    amount: "19300",
+    status: "Failed",
+    phone: "+237670555555",
+    date: date,
+    createdAt: new Date("2019-05-13").toISOString().toString(),
+  },
+  {
+    id: 5,
+    paymentMethod: "Orange money",
+    amount: "19300",
+    status: "Success",
+    phone: "+237670555555",
+    date: date,
+    createdAt: new Date("2019-05-13").toISOString().toString(),
+  },
+  {
+    id: 6,
+    paymentMethod: "Orange money",
+    amount: "19300",
+    status: "Pending",
+    phone: "+237670555555",
+    date: date,
+    createdAt: new Date("2019-05-13").toISOString().toString(),
+  },
+  {
+    id: 7,
+    paymentMethod: "Orange money",
+    amount: "19300",
+    status: "Success",
+    phone: "+237670555555",
+    date: date,
+    createdAt: new Date("2019-05-13").toISOString().toString(),
+  },
+  {
+    id: 8,
+    paymentMethod: "Orange money",
+    amount: "19300",
+    status: "Success",
+    phone: "+237670555555",
+    date: date,
+    createdAt: new Date("2019-05-13").toISOString().toString(),
+  },
+  {
+    id: 9,
+    paymentMethod: "Orange money",
+    amount: "19300",
+    status: "Success",
+    phone: "+237670555555",
+    date: date,
+    createdAt: new Date("2019-05-13").toISOString().toString(),
+  },
 ];

@@ -16,7 +16,7 @@ import {
 } from "../../../../components";
 
 // assets
-import { SITE_LANG, TIMEZONE, CURRENCY } from "../../../../helpers";
+import { SITE_LANG, STATES, COUNTRIES } from "../../../../helpers";
 
 const Settings = () => {
   const dispatch = useDispatch();
@@ -34,13 +34,14 @@ const Settings = () => {
             title="Settings"
           >
             {navStates.state.general && (
-              <StoreDetails data={{ SITE_LANG, TIMEZONE, CURRENCY }} />
+              <StoreDetails data={{ STATES, COUNTRIES }} />
             )}
-            {navStates.state.account && <AccountSettings data={{ SITE_LANG }} />}
+            {navStates.state.account && (
+              <AccountSettings data={{ SITE_LANG }} />
+            )}
             {navStates.state.socialProfiles && <SocialProfiles />}
             {navStates.state.payments && <SettingPayments />}
             {navStates.state.legal && <Legal />}
-            {navStates.state.password && <SettingPassword />}
           </PageDescription>
         </div>
       </div>

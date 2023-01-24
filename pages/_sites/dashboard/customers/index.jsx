@@ -1,8 +1,11 @@
+import { Spacer } from "@nextui-org/react";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 // comp
 import {
+  CustomerList,
   DashboardContainer,
   Empty,
   PageDescription,
@@ -12,7 +15,10 @@ import {
 import { searchFilterName } from "../../../../functions";
 
 const Customers = () => {
-  const { filteredCustomers, customers } = useSelector((state) => state.customers);
+  const { filteredCustomers, customers } = useSelector(
+    (state) => state.customers
+  );
+  const router = useRouter();
   const [search, setSearch] = useState("");
   const dispatch = useDispatch();
   return (
@@ -49,13 +55,17 @@ const Customers = () => {
             />
           )}
           {filteredCustomers.length > 0 && (
-            <Table
-              type="customers"
-              tableHeaderTitle={`Display: ${filteredCustomers.length} of ${filteredCustomers.length} items`}
-              tableHeaderOne="Total spent"
-              tableHeaderTwo="Orders"
-              data={filteredCustomers}
-            />
+            <>
+              <Spacer />
+              <CustomerList
+                router={router}
+                data={filteredCustomers}
+                tableHeaderTitle={`Display: ${filteredCustomers.length} of ${filteredCustomers.length} items`}
+                tableHeaderOne="Total spent"
+                tableHeaderTwo="Orders"
+              />
+              <Spacer y={2.5} />
+            </>
           )}
         </div>
       </div>

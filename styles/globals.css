@@ -877,7 +877,7 @@ a {
 }
 
 .desc {
-  height: 100px;
+  height: 75px;
   width: 100%;
   padding: 10px;
   border: 1px solid var(--grayscale_400);
@@ -885,6 +885,17 @@ a {
   font-size: 14px;
   color: var(--grayscale_900);
   resize: none;
+}
+
+.upload-outline-container {
+  width: 80px;
+  height: 80px;
+  border: 1px solid var(--grayscale_400);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  margin-right: 20px;
 }
 
 .editor {
@@ -963,12 +974,6 @@ a {
   cursor: pointer;
 }
 
-.order-item {
-  cursor: pointer;
-  margin: 8px 0;
-  height: 50px;
-}
-
 .orderDetails {
   display: flex;
   height: 500px;
@@ -1011,13 +1016,73 @@ a {
   background-color: var(--danger_light);
 }
 
+.itemList-cat {
+  width: 33.33%;
+}
+
 /* SETTINGS */
 .storeDetailsInputs {
   height: 50px;
-  width: 500px;
   border-radius: 4px;
   padding: 10px;
   border: 1px solid var(--grayscale_400);
+}
+
+.storeDetailsInputs::placeholder {
+  font-size: 12px;
+  color: var(--grayscale_400);
+}
+
+.socialsInput {
+  height: 50px;
+  border-radius: 4px;
+  padding: 10px;
+  border: 1px solid var(--grayscale_400);
+  width: 500px;
+}
+
+.socialsInput::placeholder {
+  font-size: 12px;
+  color: var(--grayscale_400);
+}
+
+.cityCode {
+  height: 50px;
+  width: 500px;
+  border-radius: 4px;
+  border: 1px solid var(--grayscale_400);
+  padding: 10px;
+}
+
+.cityCode::placeholder {
+  font-size: 12px;
+  color: var(--grayscale_400);
+}
+
+.name {
+  height: 50px;
+  width: 500px;
+  border-radius: 4px;
+  border: 1px solid var(--grayscale_400);
+  padding: 10px;
+}
+
+.name::placeholder {
+  font-size: 12px;
+  color: var(--grayscale_400);
+}
+
+.address {
+  height: 50px;
+  width: 500px;
+  border-radius: 4px;
+  border: 1px solid var(--grayscale_400);
+  padding: 10px;
+}
+
+.address::placeholder {
+  font-size: 12px;
+  color: var(--grayscale_400);
 }
 
 .storeAddressInput {
@@ -1028,9 +1093,77 @@ a {
   border: 1px solid var(--grayscale_400);
 }
 
+.email {
+  height: 50px;
+  width: 500px;
+  border-radius: 4px;
+  padding: 10px;
+  border: 1px solid var(--grayscale_400);
+}
+
+.password {
+  height: 50px;
+  width: 500px;
+  border-radius: 4px;
+  padding: 10px;
+  border: 1px solid var(--grayscale_400);
+}
+
+.momoNumber {
+  height: 50px;
+  width: 500px;
+  border-radius: 4px;
+  padding: 10px;
+  border: 1px solid var(--grayscale_400);
+}
+
+.payment-line {
+  padding-top: 10px;
+}
+
+.pay-fix-width {
+  width: 150px;
+}
+
+.pay-failed {
+  width: 80px;
+  height: 30px;
+  border-radius: 50px;
+  background-color: var(--grayscale_400);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pay-success {
+  width: 80px;
+  height: 30px;
+  border-radius: 50px;
+  background-color: var(--success_light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.withdraw-btn {
+  width: 100px;
+  height: 50px;
+  border-radius: 4px;
+  padding: 8px 16px;
+  background-color: var(--primary_base);
+  cursor: pointer;
+}
+
 .select-siteLang {
   width: 500px;
   height: 50px;
+}
+
+.select-withdraw {
+  width: 500px;
+  height: 50px;
+  border-radius: 4px;
+  text-indent: 5px;
+  border: 1px solid var(--grayscale_400);
 }
 
 .select-storeAddr {
@@ -1071,6 +1204,9 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 4px;
+  border: 1px solid var(--grayscale_400);
+  margin-right: 20px;
 }
 
 .setting-submit-btn {
@@ -1163,17 +1299,17 @@ a {
   background-color: var(--grayscale_300);
 }
 
-.itemList-checkbox {
-  width: 200px;
+table {
+  border-collapse: collapse;
+  width: 100%;
 }
 
-.order-fix-width {
-  width: 150px;
-  margin: 10px 0;
+th {
+  text-align: left;
 }
 
-.customer-fixed-width {
-  width: 150px;
+tr {
+  border-bottom: 1px solid var(--grayscale_300);
 }
 
 /* YEAH MEN I USE @MEDIA QUERY: SORRY!!!!!!! 🤣🤣🤣🤣 */

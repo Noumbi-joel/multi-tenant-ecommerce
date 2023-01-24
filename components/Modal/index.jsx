@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 
 //comp
-import { Modal, Text } from "@nextui-org/react";
+import { Modal, Spacer, Text } from "@nextui-org/react";
 import { HeadingText, BodyText, InputField, Button } from "..";
 
 //assets
@@ -9,11 +9,11 @@ import { COLORS } from "../../assets/colors";
 import Logo from "../../public/eduka.svg";
 import SmCross from "../../public/sm-cross.svg";
 
-
 // functions
 import { validateEmail } from "../../functions";
 import { useRouter } from "next/router";
 import { AuthContext } from "../../context/Auth";
+import { PAYMENTS_METHODS, PAYMENTS_OPERATORS, STATES } from "../../helpers";
 
 const ModalComp = ({
   visible,
@@ -26,7 +26,11 @@ const ModalComp = ({
   remove,
   modalBodyTextOne,
   modalBodyTextTwo,
-  deleteItem
+  deleteItem,
+  withdraw,
+  labelOne,
+  labelTwo,
+  labelThree,
 }) => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
@@ -123,6 +127,75 @@ const ModalComp = ({
       </Modal>
     );
   }
+
+  if (withdraw) {
+    return (
+      <div>
+        <Modal
+          aria-labelledby="modal-title"
+          open={visible}
+          width={600}
+          onClose={closeModal}
+        >
+          <div className="modal-header">
+            <div className="rounded" onClick={closeModal}>
+              <SmCross aria-label="sm-cross" />
+            </div>
+          </div>
+          <Modal.Body>
+            <HeadingText
+              type="h4"
+              title={modalTitle}
+              color={COLORS.grayscale_900}
+            />
+            <InputField
+              ariaLabel="native-select"
+              label={labelOne}
+              name="native-select"
+              className="select-withdraw"
+              data={PAYMENTS_METHODS}
+            />
+            <InputField
+              ariaLabel="siteLang"
+              label={labelTwo}
+              name="native-select"
+              className="select-withdraw"
+              data={PAYMENTS_OPERATORS}
+            />
+            <InputField
+              ariaLabel="momoNumber"
+              label={labelThree}
+              name="momoNumber"
+              type="text"
+              className="momoNumber"
+              placeholder="Mobile money number"
+            />
+          </Modal.Body>
+
+          <Modal.Footer>
+            <div className="linear-layout">
+              <Button
+                className="purpleBtnOutline"
+                onClick={closeModal}
+                title="Cancel"
+                titleType="lr"
+                titleColor={COLORS.primary_base}
+              />
+
+              <Button
+                className="purpleBtn"
+                onClick={closeModal}
+                title="Withdraw"
+                titleType="lr"
+                titleColor={COLORS.white}
+              />
+            </div>
+          </Modal.Footer>
+        </Modal>
+      </div>
+    );
+  }
+
   {
     /*
       @params: 

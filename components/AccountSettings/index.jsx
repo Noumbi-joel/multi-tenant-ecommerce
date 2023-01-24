@@ -1,19 +1,34 @@
+import React, { useState } from "react";
+
+// comp
+import { BodyText, Button, InputField, Modal, SubContentSettings } from "..";
 import { Spacer } from "@nextui-org/react";
-import React from "react";
-import { BodyText, Button, InputField, SubContentSettings } from "..";
+
+// assets
 import { COLORS } from "../../assets/colors";
+import Upload from "../../public/upload.svg";
 
 const AccountSettings = ({ data: { SITE_LANG } }) => {
+  const [saved, setSaved] = useState(false);
   return (
     <div>
+      <Modal
+        closeModal={() => setSaved(false)}
+        visible={saved}
+        modalTitle="You have unsaved changes"
+        modalBodyTextOne="Are you sure you want to leave ?"
+        dashboard
+      />
       <Spacer y={1.5} />
       <SubContentSettings
-        subTitle="Password"
-        subDesc="Update your password by entering your current and new passwords."
+        subTitle="Account settings"
+        subDesc="View and update your account details, profile, and more."
       />
       <Spacer />
       <div className="linear-layout">
-        <img src="/got.jpg" className="account-img" />
+        <div className="upload-outline-container">
+          <Upload />
+        </div>
         <Button
           titleType="lr"
           className="updateImg"
@@ -31,29 +46,32 @@ const AccountSettings = ({ data: { SITE_LANG } }) => {
 
       <div className="linear-layout-flat">
         <InputField
-          ariaLabel="storeEmail"
-          label="Name"
-          name="storeEmail"
+          ariaLabel="fName"
+          label="First name"
+          name="name"
           type="text"
-          className="storeDetailsInputs"
+          className="name"
+          placeholder="First name"
         />
         <InputField
-          ariaLabel="storeEmail"
-          label="Surname"
-          name="storeEmail"
+          ariaLabel="lName"
+          label="Last name"
+          name="name"
           type="text"
-          className="storeDetailsInputs"
+          className="name"
+          placeholder="Last name"
         />
       </div>
       <Spacer />
       <div className="linear-layout-flat">
         <InputField
-          ariaLabel="storeEmail"
-          label="Name"
-          name="storeEmail"
-          type="text"
+          ariaLabel="email"
+          label="Email"
+          name="email"
+          type="email"
           disabled
-          className="storeDetailsInputs"
+          placeholder="jim@gmail.com"
+          className="email"
         />
         <InputField
           ariaLabel="siteLang"
@@ -63,23 +81,39 @@ const AccountSettings = ({ data: { SITE_LANG } }) => {
           data={SITE_LANG}
         />
       </div>
-      <Spacer y={0.1} />
-      <BodyText
-          type="mr"
-          color="#4FC3F7"
-          title="Change email"
-          className="clickable"
-        />
       <Spacer />
-
+      <SubContentSettings
+        subTitle="Password"
+        subDesc="Update your password by entering your current and new passwords."
+      />
+      <Spacer />
+      <div className="linear-layout-flat">
+        <InputField
+          ariaLabel="password"
+          label="Old password"
+          name="password"
+          className="password"
+          type="password"
+        />
+        <InputField
+          ariaLabel="password"
+          label="New password"
+          name="password"
+          className="password"
+          type="password"
+        />
+      </div>
+      <Spacer y={1.5} />
       <div className="alignRight">
         <Button
           titleType="lr"
           titleColor={COLORS.white}
           title="Save changes"
           className="setting-submit-btn"
+          onClick={() => setSaved(true)}
         />
       </div>
+      <Spacer y={2.5} />
     </div>
   );
 };
