@@ -6,6 +6,7 @@ import {
   BodyText,
   Button,
   DashboardContainer,
+  Empty,
   HeadingText,
   Modal,
   SearchFilter,
@@ -26,7 +27,12 @@ import {
 } from "../../../../constants";
 
 // functions
-import { handleDeleteAllItems, handleDeleteItems, handleDiscard, searchFilter } from "../../../../functions";
+import {
+  handleDeleteAllItems,
+  handleDeleteItems,
+  handleDiscard,
+  searchFilter,
+} from "../../../../functions";
 
 const Products = () => {
   const [search, setSearch] = useState("");
@@ -140,16 +146,26 @@ const Products = () => {
             dispatch={dispatch}
             searchType="products"
           />
+          {filteredProducts.length <= 0 && (
+            <Empty
+              emptyConcern="products"
+              msg="Create a product to start receiving orders in your store"
+              btnTitle="Add products"
+              link="/_sites/dashboard/products/create"
+            />
+          )}
 
-          <Table
-            tableHeaderTitle={`Displaying ${filteredProducts.length} of ${filteredProducts.length} items`}
-            tableHeaderOne="Price"
-            tableHeaderTwo="Inventory"
-            productList
-            data={filteredProducts}
-            dispatch={dispatch}
-            allChecker={allChecker}
-          />
+          {filteredProducts.length > 0 && (
+            <Table
+              tableHeaderTitle={`Displaying ${filteredProducts.length} of ${filteredProducts.length} items`}
+              tableHeaderOne="Price"
+              tableHeaderTwo="Inventory"
+              productList
+              data={filteredProducts}
+              dispatch={dispatch}
+              allChecker={allChecker}
+            />
+          )}
         </div>
       </div>
     </DashboardContainer>

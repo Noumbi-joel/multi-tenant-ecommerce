@@ -51,7 +51,7 @@ const Customers = () => {
               emptyConcern="customers"
               msg="Create a product to get orders from customers in your store"
               btnTitle="Add products"
-              link="/_sites/dashboard/products"
+              link="/_sites/dashboard/products/create"
             />
           )}
           {filteredCustomers.length > 0 && (
