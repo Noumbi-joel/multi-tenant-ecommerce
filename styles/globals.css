@@ -1489,6 +1489,10 @@ tr {
 
   .topContainer-box {
     width: 100%;
+  }
+
+  .topContainer-box:nth-child(2) {
+    width: 100%;
     margin-top: 20px;
   }
 
@@ -1496,7 +1500,7 @@ tr {
     width: 8%;
   }
 
-  .filter-container {
+  .filter-input-container {
     width: 80%;
   }
 
