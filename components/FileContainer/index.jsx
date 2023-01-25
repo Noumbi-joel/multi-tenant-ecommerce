@@ -1,18 +1,39 @@
 import React from "react";
 
 // comp
-import BodyText from "../BodyText";
+import { BodyText, Button } from "..";
 import { Spacer } from "@nextui-org/react";
 
 // assets
 import { COLORS } from "../../assets/colors";
 import Upload from "../../public/upload.svg";
-import { DELETE_IMAGE, DELETE_IMAGE_CAT, SET_IMAGES, SET_IMAGES_CAT } from "../../constants";
-import ImagePlus from "../../public/image-plus.svg";
+import {
+  DELETE_ADMIN_LOGO,
+  DELETE_FAVICON,
+  DELETE_FULL_IMAGE,
+  DELETE_IMAGE,
+  DELETE_IMAGE_CAT,
+  DELETE_STORE_LOGO,
+  SET_ADMIN_LOGO,
+  SET_FAVICON,
+  SET_FULL_LOGO,
+  SET_IMAGES,
+  SET_IMAGES_CAT,
+  SET_STORE_LOGO,
+} from "../../constants";
 import ImageCross from "../../public/image-cross.svg";
-import toast  from "react-hot-toast";
+import toast from "react-hot-toast";
 
-const FileContainer = ({ dispatch, images, cat }) => {
+const FileContainer = ({
+  dispatch,
+  images,
+  cat,
+  type,
+  image,
+  fav,
+  logo,
+  admin,
+}) => {
   const onSelectFiles = (e) => {
     const selectedFiles = e.target.files;
 
@@ -38,6 +59,123 @@ const FileContainer = ({ dispatch, images, cat }) => {
     }
     dispatch({ type: DELETE_IMAGE, payload: image });
   };
+
+  const onSelectFile = (e) => {
+    const selectedFile = e.target.files;
+    const selectedFileArray = Array.from(selectedFile);
+    const file = URL.createObjectURL(selectedFileArray[0]);
+    if (fav) {
+      return dispatch({
+        type: SET_FAVICON,
+        payload: file,
+      });
+    }
+
+    if (logo) {
+      return dispatch({
+        type: SET_STORE_LOGO,
+        payload: file,
+      });
+    }
+
+    if (admin) {
+      return dispatch({
+        type: SET_ADMIN_LOGO,
+        payload: file,
+      });
+    }
+
+    return dispatch({
+      type: SET_FULL_LOGO,
+      payload: file,
+    });
+  };
+
+  const handleDelete = () => {
+    if (fav) {
+      return dispatch({ type: DELETE_FAVICON });
+    }
+    if (logo) {
+      return dispatch({ type: DELETE_STORE_LOGO });
+    }
+    return dispatch({ type: DELETE_ADMIN_LOGO });
+  };
+
+  if (type === "logo") {
+    return (
+      <div className="linear-layout">
+        {image === null ? (
+          <div className="upload-outline-container">
+            <Upload />
+          </div>
+        ) : (
+          <div className="upload-outline-container">
+            <img src={image} alt={image} className="logo" />
+          </div>
+        )}
+        <label>
+          <input
+            type="file"
+            onChange={onSelectFile}
+            accept="image/jpg, image/jpeg, image/png"
+            multiple
+            className="file"
+          />
+          <Button
+            titleType="lr"
+            className="updateImg"
+            title="Update image"
+            titleColor={COLORS.primary_base}
+          />
+        </label>
+        <Button
+          titleType="lr"
+          className="clickable"
+          title="Remove image"
+          titleColor={COLORS.primary_base}
+          onClick={() => handleDelete()}
+        />
+      </div>
+    );
+  }
+
+  if (type === "fullImage") {
+    return (
+      <div className="linear-layout">
+        {image === null ? (
+          <div className="social-img-container">
+            <Upload />
+          </div>
+        ) : (
+          <div className="social-img-container">
+            <img src={image} alt={image} className="social-img" />
+          </div>
+        )}
+        <label>
+          <input
+            type="file"
+            onChange={onSelectFile}
+            accept="image/jpg, image/jpeg, image/png"
+            multiple
+            className="file"
+          />
+          <Button
+            titleType="lr"
+            className="updateImg"
+            title="Update image"
+            titleColor={COLORS.primary_base}
+          />
+        </label>
+        <Button
+          titleType="lr"
+          className="clickable"
+          title="Remove image"
+          titleColor={COLORS.primary_base}
+          onClick={() => dispatch({ type: DELETE_FULL_IMAGE })}
+        />
+      </div>
+    );
+  }
 
   return (
     <>

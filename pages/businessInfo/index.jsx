@@ -80,7 +80,7 @@ const BusinessInfo = () => {
                   value={businessInfos.bName}
                   onChange={handleInput}
                 />
-                <Spacer y={0.2} />
+                <Spacer />
                 <InputField
                   type="text"
                   label="Store link"
@@ -91,7 +91,7 @@ const BusinessInfo = () => {
                   value={businessInfos.bUrl}
                   onChange={handleInput}
                 />
-                <Spacer y={0.2} />
+                <Spacer />
                 <BodyText
                   type="mr"
                   color={COLORS.grayscale_900}

@@ -1,13 +1,18 @@
 import React, { useState } from "react";
 // comp
-import { Button, InputField, Modal, SubContentSettings } from "..";
+import {
+  Button,
+  FileContainer,
+  InputField,
+  Modal,
+  SubContentSettings,
+} from "..";
 import { Spacer } from "@nextui-org/react";
 
 // assets
 import { COLORS } from "../../assets/colors";
-import Upload from "../../public/upload.svg";
 
-const StoreDetails = ({ data: { STATES, COUNTRIES } }) => {
+const StoreDetails = ({ data: { STATES, COUNTRIES, images, dispatch } }) => {
   const [saved, setSaved] = useState(false);
   return (
     <div>
@@ -94,23 +99,12 @@ const StoreDetails = ({ data: { STATES, COUNTRIES } }) => {
         subDesc="A favicon is a small icon next to your site title. Display a custom favicon to help visitors recognize your brand and stand out in their browser tabs."
       />
       <Spacer />
-      <div className="linear-layout">
-        <div className="upload-outline-container">
-          <Upload />
-        </div>
-        <Button
-          titleType="lr"
-          className="updateImg"
-          title="Update image"
-          titleColor={COLORS.primary_base}
-        />
-        <Button
-          titleType="lr"
-          className="clickable"
-          title="Remove image"
-          titleColor={COLORS.primary_base}
-        />
-      </div>
+      <FileContainer
+        type="logo"
+        dispatch={dispatch}
+        image={images.favicon}
+        fav
+      />
       <Spacer />
 
       <SubContentSettings
@@ -118,24 +112,12 @@ const StoreDetails = ({ data: { STATES, COUNTRIES } }) => {
         subDesc="You can upload the storefront logo here."
       />
       <Spacer />
-
-      <div className="linear-layout">
-        <div className="upload-outline-container">
-          <Upload />
-        </div>
-        <Button
-          titleType="lr"
-          className="updateImg"
-          title="Update image"
-          titleColor={COLORS.primary_base}
-        />
-        <Button
-          titleType="lr"
-          className="clickable"
-          title="Remove image"
-          titleColor={COLORS.primary_base}
-        />
-      </div>
+      <FileContainer
+        type="logo"
+        dispatch={dispatch}
+        image={images.storeLogo}
+        logo
+      />
       <Spacer />
 
       <SubContentSettings
@@ -143,24 +125,12 @@ const StoreDetails = ({ data: { STATES, COUNTRIES } }) => {
         subDesc="This image will be shared on social networks, including Facebook and Twitter. It's a great way to help visitors recognize your brand."
       />
       <Spacer />
-
-      <div className="linear-layout">
-        <div className="social-img-container">
-          <Upload />
-        </div>
-        <Button
-          titleType="lr"
-          className="updateImg"
-          title="Update image"
-          titleColor={COLORS.primary_base}
-        />
-        <Button
-          titleType="lr"
-          className="clickable"
-          title="Remove image"
-          titleColor={COLORS.primary_base}
-        />
-      </div>
+      <FileContainer
+        type="fullImage"
+        dispatch={dispatch}
+        image={images.fullLogo}
+        full
+      />
       <Spacer />
       <div style={{ display: "flex", justifyContent: "flex-end" }}>
         <Button

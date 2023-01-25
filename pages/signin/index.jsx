@@ -25,7 +25,7 @@ const Login = () => {
     email: "",
     password: "",
   });
-  const [rememberMe, setRememberMe] = useState("true");
+  const [rememberMe, setRememberMe] = useState(true);
 
   const handleInput = (e) => {
     setUserInfos((prev) => {
@@ -90,7 +90,7 @@ const Login = () => {
                 <div className="linear-layout-flat">
                   <Checkbox
                     aria-label="check"
-                    value={rememberMe}
+                    isSelected={rememberMe}
                     onChange={(e) => setRememberMe(e.valueOf())}
                   >
                     <BodyText

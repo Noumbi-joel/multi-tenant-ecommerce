@@ -22,6 +22,7 @@ const Settings = () => {
   const dispatch = useDispatch();
 
   const navStates = useSelector((state) => state.settings);
+  const images = useSelector((state) => state.image);
 
   return (
     <DashboardContainer>
@@ -34,10 +35,10 @@ const Settings = () => {
             title="Settings"
           >
             {navStates.state.general && (
-              <StoreDetails data={{ STATES, COUNTRIES }} />
+              <StoreDetails data={{ STATES, COUNTRIES, images, dispatch }} />
             )}
             {navStates.state.account && (
-              <AccountSettings data={{ SITE_LANG }} />
+              <AccountSettings data={{ SITE_LANG, images, dispatch }} />
             )}
             {navStates.state.socialProfiles && <SocialProfiles />}
             {navStates.state.payments && <SettingPayments />}

@@ -43,127 +43,121 @@ const SignUp = () => {
   return (
     <>
       <AppHeader />
-      <div style={{ display: "flex" }}>
-        <Modal
-          visible={visible}
-          closeModal={() => setVisible(false)}
-          modalTitle="Enter verification code"
-          modalBodyText="We have just sent a verification code to tynisha*****@mail.com"
-          modalBtnText="Verify"
-          modalLink="Send the code again"
-          goTo="/businessInfo"
-        />
-        <div className="signin-content">
-          {/* hero section */}
-          <div className="centered-container">
-            <div className="centered">
-              <HeadingText
-                style={{
-                  marginTop: 20,
-                  marginBottom: 40,
-                  textAlign: "center",
-                }}
-                type="h4"
-                color={COLORS.grayscale_900}
-                title="Create your account"
+      <Modal
+        visible={visible}
+        closeModal={() => setVisible(false)}
+        modalTitle="Enter verification code"
+        modalBodyText="We have just sent a verification code to tynisha*****@mail.com"
+        modalBtnText="Verify"
+        modalLink="Send the code again"
+        goTo="/businessInfo"
+      />
+      <div className="signin-content">
+        {/* hero section */}
+        <div className="centered-container">
+          <div className="centered">
+            <HeadingText
+              style={{
+                marginTop: 20,
+                marginBottom: 40,
+                textAlign: "center",
+              }}
+              type="h4"
+              color={COLORS.grayscale_900}
+              title="Create your account"
+            />
+            <form onSubmit={handleSubmit} className="form-container">
+              <div className="linear-layout-flat">
+                <InputField
+                  label="First name"
+                  name="fName"
+                  className="form-control-sg"
+                  placeholder="First name"
+                  value={userInfos.fName}
+                  onChange={handleInput}
+                  aria-label="fName"
+                />
+                <InputField
+                  label="Last name"
+                  name="lName"
+                  className="form-control-sg"
+                  placeholder="Last name"
+                  value={userInfos.lName}
+                  onChange={handleInput}
+                  aria-label="lName"
+                />
+              </div>
+              <Spacer />
+              <InputField
+                label="Email"
+                type="email"
+                name="email"
+                className="form-control"
+                placeholder="Email"
+                value={userInfos.email}
+                onChange={handleInput}
+                aria-label="email-s"
               />
-              <form onSubmit={handleSubmit} className="form-container">
-                <div className="linear-layout-flat">
-                  <InputField
-                    label="First name"
-                    name="fName"
-                    className="form-control-sg"
-                    placeholder="First name"
-                    value={userInfos.fName}
-                    onChange={handleInput}
-                    aria-label="fName"
-                  />
-                  <InputField
-                    label="Last name"
-                    name="lName"
-                    className="form-control-sg"
-                    placeholder="Last name"
-                    value={userInfos.lName}
-                    onChange={handleInput}
-                    aria-label="lName"
-                  />
-                </div>
-                <Spacer />
-                <InputField
-                  label="Email"
-                  type="email"
-                  name="email"
-                  className="form-control"
-                  placeholder="Email"
-                  value={userInfos.email}
-                  onChange={handleInput}
-                  aria-label="email-s"
-                />
-                <Spacer />
-                <InputField
-                  label="Password"
-                  type="password"
-                  name="password"
-                  className="form-control"
-                  placeholder="Password"
-                  value={userInfos.password}
-                  onChange={handleInput}
-                  aria-label="password-s"
-                />
-                <Spacer />
-                <div className="linear-layout">
-                  <Checkbox aria-label="check-s" />
-                  <div className="text-large-medium">
-                    By proceeding, you agree to the{" "}
-                    <div className="text-large-medium-green">
-                      Terms and Conditions
-                    </div>
+              <Spacer />
+              <InputField
+                label="Password"
+                type="password"
+                name="password"
+                className="form-control"
+                placeholder="Password"
+                value={userInfos.password}
+                onChange={handleInput}
+                aria-label="password-s"
+              />
+              <Spacer />
+              <div className="linear-layout">
+                <Checkbox aria-label="check-s" isSelected={true} />
+                <div className="text-large-medium">
+                  By proceeding, you agree to the{" "}
+                  <div className="text-large-medium-green">
+                    Terms and Conditions
                   </div>
                 </div>
-                <Spacer y={1.2} />
-                <Button type="submit" className="app-btn">
-                  Sign up
-                </Button>
-                <Spacer y={1.2} />
+              </div>
+              <Spacer y={1.2} />
+              <Button type="submit" className="app-btn">
+                Sign up
+              </Button>
+              <Spacer y={1.2} />
 
-                {/* Google Login */}
-                <div className="linear-layout-flat">
-                  <Divider className="divider" />
-                  <BodyText
-                    type="mr"
-                    colors={COLORS.grayscale_600}
-                    title="Or sign up with"
-                  />
-                  <Divider className="divider" />
-                </div>
-                <Spacer />
-                <GoogleBtn
-                  title="Google"
-                  onClick={() => authCtx.googleLogin()}
+              {/* Google Login */}
+              <div className="linear-layout-flat">
+                <Divider className="divider" />
+                <BodyText
+                  type="mr"
+                  colors={COLORS.grayscale_600}
+                  title="Or sign up with"
                 />
-                <Spacer />
+                <Divider className="divider" />
+              </div>
+              <Spacer />
+              <GoogleBtn title="Google" onClick={() => authCtx.googleLogin()} />
+              <Spacer />
 
-                {/* don't have an account text */}
-                <div className="linear-layout">
+              {/* don't have an account text */}
+              <div className="linear-layout">
+                <BodyText
+                  type="lr"
+                  color={COLORS.grayscale_600}
+                  title="Already have an account?"
+                />
+                <Link href="/signin">
                   <BodyText
-                    type="lr"
-                    color={COLORS.grayscale_600}
-                    title="Already have an account?"
+                    type="lb"
+                    color={COLORS.primary_base}
+                    title="Sign in"
                   />
-                  <Link href="/signin">
-                    <BodyText
-                      type="lb"
-                      color={COLORS.primary_base}
-                      title="Sign in"
-                    />
-                  </Link>
-                </div>
-              </form>
-            </div>
-            <AuthFooter />
+                </Link>
+              </div>
+            </form>
           </div>
+          <AuthFooter />
         </div>
-        {/* <AuthStatic /> */}
       </div>
     </>
   );

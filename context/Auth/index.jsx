@@ -95,6 +95,7 @@ export const AuthContextProvider = ({ children }) => {
               userEmail: res.user.email,
               noBusiness: true,
               createAt: new Date().toISOString(),
+              role: "admin"
             });
           res.user.sendEmailVerification({
             url: "http://localhost:3000/signin",
@@ -123,6 +124,7 @@ export const AuthContextProvider = ({ children }) => {
             userEmail: res.user.email,
             noBusiness: true,
             createAt: new Date().toISOString(),
+            role: "admin"
           });
           router.push("/businessInfo");
         }

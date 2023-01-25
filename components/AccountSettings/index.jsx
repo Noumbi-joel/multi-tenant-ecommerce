@@ -1,14 +1,21 @@
 import React, { useState } from "react";
 
 // comp
-import { BodyText, Button, InputField, Modal, SubContentSettings } from "..";
+import {
+  BodyText,
+  Button,
+  FileContainer,
+  InputField,
+  Modal,
+  SubContentSettings,
+} from "..";
 import { Spacer } from "@nextui-org/react";
 
 // assets
 import { COLORS } from "../../assets/colors";
 import Upload from "../../public/upload.svg";
 
-const AccountSettings = ({ data: { SITE_LANG } }) => {
+const AccountSettings = ({ data: { SITE_LANG, images, dispatch } }) => {
   const [saved, setSaved] = useState(false);
   return (
     <div>
@@ -25,23 +32,12 @@ const AccountSettings = ({ data: { SITE_LANG } }) => {
         subDesc="View and update your account details, profile, and more."
       />
       <Spacer />
-      <div className="linear-layout">
-        <div className="upload-outline-container">
-          <Upload />
-        </div>
-        <Button
-          titleType="lr"
-          className="updateImg"
-          title="Update image"
-          titleColor={COLORS.primary_base}
-        />
-        <Button
-          titleType="lr"
-          className="clickable"
-          title="Remove image"
-          titleColor={COLORS.primary_base}
-        />
-      </div>
+      <FileContainer
+        dispatch={dispatch}
+        image={images.adminLogo}
+        type="logo"
+        admin
+      />
       <Spacer />
 
       <div className="linear-layout-flat">

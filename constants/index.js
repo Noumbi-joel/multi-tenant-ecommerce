@@ -68,3 +68,14 @@ export const SORT_CATEGORY_BY_NAME = "sortCategoryByName";
 export const SORT_PRODUCT_BY_DATE = "sortProductByDate";
 export const SORT_PRODUCT_BY_NAME = "sortProductByName";
 export const SORT_PRODUCT_BY_STOCK = "sortProductByStock";
+
+export const SET_FAVICON = "setFavicon";
+export const SET_STORE_LOGO = "setStoreLogo";
+export const SET_FULL_LOGO = "setFullLogo";
+export const SET_ADMIN_LOGO = "setAdminLogo";
+
+export const DELETE_FAVICON = "deleteFavicon";
+export const DELETE_STORE_LOGO = "deleteStoreLogo";
+export const DELETE_FULL_IMAGE = "deleteFullImage";
+export const DELETE_ADMIN_LOGO = "deleteAdminLogo";
+
