@@ -6,35 +6,30 @@ import Expand from "../../public/Expand.svg";
 import { COLORS } from "../../assets/colors";
 
 // comp
-import { BodyText, Dropdown } from "..";
-import { Button } from "@nextui-org/react";
+import { BodyText, Button, Dropdown } from "..";
 
 const FilterBtn = ({ type, data, title }) => {
   const [visible, setVisible] = useState(false);
   const [lastUpdate, setLastUpdate] = useState(false);
   return (
-    <div style={{ position: "relative" }}>
+    <div className="filterBtnContainer">
       <Button
-        icon={
-          type === "filter" ? (
-            <Filter aria-label="filter" />
-          ) : (
-            <Expand aria-label="expand" />
-          )
-        }
+        titleType="lr"
+        title={title}
         className="filters"
-        onPress={
+        btnTextClassName="btnText-filters"
+        titleColor={COLORS.grayscale_900}
+        onClick={
           type === "filter"
             ? () => setVisible(!visible)
             : () => setLastUpdate(!lastUpdate)
         }
       >
-        <BodyText
-          type="lr"
-          title={title}
-          color={COLORS.grayscale_900}
-          style={{ marginLeft: 15, width: 120 }}
-        />
+        {type === "filter" ? (
+          <Filter aria-label="filter" />
+        ) : (
+          <Expand aria-label="expand" />
+        )}
       </Button>
       {visible && (
         <Dropdown filters data={data} closeVisible={() => setVisible(false)} />

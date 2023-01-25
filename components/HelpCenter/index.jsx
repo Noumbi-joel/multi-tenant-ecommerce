@@ -22,7 +22,7 @@ const HelperCenter = ({ closeHelper, community }) => {
             overflow: "hidden",
           }}
         >
-          <div className="linear-layout">
+          <div className="helper-center-row">
             <div className="bg-white">
               <WhatsApp aria-label="whatsapp" />
             </div>

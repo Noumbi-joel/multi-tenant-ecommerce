@@ -20,7 +20,6 @@ export { default as TipTap } from "./TipTap";
 export { default as FileContainer } from "./FileContainer";
 export { default as Button } from "./Button";
 export { default as SearchFilter } from "./SearchFilter";
-export { default as Table } from "./Table";
 export { default as TopProductList } from "./TopProductList";
 export { default as TopCustomerList } from "./TopCustomerList";
 export { default as ProductList } from "./ProductList";

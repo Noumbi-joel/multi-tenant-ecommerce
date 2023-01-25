@@ -9,7 +9,7 @@ import { BodyText } from "..";
 import { Checkbox, Spacer } from "@nextui-org/react";
 import { COLORS } from "../../assets/colors";
 
-const ListOrders = ({ data, dataHeaders, checkboxTitle }) => {
+const ListOrders = ({ data, dataHeaders, checkboxTitle, router }) => {
   return (
     <div>
       <Spacer />
@@ -36,7 +36,10 @@ const ListOrders = ({ data, dataHeaders, checkboxTitle }) => {
           ))}
         </tr>
         {data.map((order) => (
-          <tr key={order.id} className="order-item" onClick={() => {}}>
+          <tr
+            key={order.id}
+            onClick={() => router.push("/_sites/dashboard/orders/orderDetails")}
+          >
             <td>
               <BodyText
                 type="mr"

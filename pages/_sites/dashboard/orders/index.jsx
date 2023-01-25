@@ -1,4 +1,5 @@
 import { Spacer } from "@nextui-org/react";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -18,6 +19,7 @@ const Orders = () => {
   const { filteredOrders, orders } = useSelector((state) => state.orders);
   const [search, setSearch] = useState("");
   const dispatch = useDispatch();
+  const router = useRouter();
   return (
     <DashboardContainer>
       <div className="dashboard-dynamic">
@@ -55,6 +57,7 @@ const Orders = () => {
             <div>
               <Spacer />
               <ListOrders
+                router={router}
                 data={filteredOrders}
                 dataHeaders={ORDERS_HEADER}
                 checkboxTitle={`Display: ${filteredOrders.length} of ${filteredOrders.length} items`}

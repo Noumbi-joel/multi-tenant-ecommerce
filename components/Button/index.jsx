@@ -8,12 +8,13 @@ const Button = ({
   titleColor,
   className,
   style,
-  children
+  children,
+  btnTextClassName
 }) => {
   return (
     <div className={className} style={style} onClick={onClick}>
       {children}
-      <BodyText type={titleType} title={title} color={titleColor} />
+      <BodyText type={titleType} title={title} color={titleColor} className={btnTextClassName} />
     </div>
   );
 };

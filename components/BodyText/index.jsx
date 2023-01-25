@@ -3,7 +3,7 @@ import React from "react";
 //next UI
 import { Text } from "@nextui-org/react";
 
-const BodyText = ({ type, title, color, style, className }) => {
+const BodyText = ({ type, title, color, style, className, onClick }) => {
   let render = {
     normal: <Text>{title}</Text>,
     // extra large
@@ -73,6 +73,7 @@ const BodyText = ({ type, title, color, style, className }) => {
         className={className}
         color={color}
         size={14}
+        onClick={onClick}
       >
         {title}
       </Text>

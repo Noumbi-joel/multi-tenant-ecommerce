@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import {
   BodyText,
   Button,
+  CategoryList,
   DashboardContainer,
   Empty,
   HeadingText,
@@ -13,7 +14,11 @@ import {
 } from "../../../../components";
 
 // functions
-import { handleDeleteAllItemsCat, handleDiscardCat, searchFilter } from "../../../../functions";
+import {
+  handleDeleteAllItemsCat,
+  handleDiscardCat,
+  searchFilter,
+} from "../../../../functions";
 
 // assets
 import { COLORS } from "../../../../assets/colors";
@@ -27,6 +32,7 @@ import {
   CLOSE_SINGLE_MODAL_CAT,
   OPEN_MODAL_ALL_ITEMS_CAT,
 } from "../../../../constants";
+import { Spacer } from "@nextui-org/react";
 
 const Categories = () => {
   const { filteredCategories, categories, itemsSelected } = useSelector(
@@ -151,20 +157,20 @@ const Categories = () => {
             />
           ) : (
             <div>
-              <Table
+              <Spacer />
+              <CategoryList
                 tableHeaderTitle={`Displaying: ${filteredCategories.length} of ${filteredCategories.length} items`}
                 tableHeaderOne="Slug"
                 tableHeaderTwo="Items"
                 data={filteredCategories}
                 dispatch={dispatch}
                 allChecker={allCheckerCat}
-                cat
               />
             </div>
           )}
         </div>
       </div>
-      <div style={{ marginTop: 100 }} />
+      <Spacer y={2.5} />
     </DashboardContainer>
   );
 };

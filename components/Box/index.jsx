@@ -11,7 +11,7 @@ import RightArrowSm from "../../public/right-arrow-sm.svg";
 import { COLORS } from "../../assets/colors";
 import { TOP_CUSTOMERS, TOP_PRODUCTS } from "../../helpers";
 
-const Box = ({ title, amount, type, form }) => {
+const Box = ({ title, amount, type, form, router }) => {
   if (form === "topContainer") {
     return (
       <div className="topContainer-box">
@@ -23,6 +23,11 @@ const Box = ({ title, amount, type, form }) => {
               title="View all"
               color={COLORS.blue}
               style={{ marginRight: 10 }}
+              onClick={
+                title === "TOP CUSTOMERS"
+                  ? () => router.push("/_sites/dashboard/customers")
+                  : () => router.push("/_sites/dashboard/products")
+              }
             />
             <RightArrowSm aria-label="right arrow" />
           </div>

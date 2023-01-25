@@ -9,6 +9,7 @@ import {
   Empty,
   HeadingText,
   Modal,
+  ProductList,
   SearchFilter,
   Table,
 } from "../../../../components";
@@ -156,11 +157,10 @@ const Products = () => {
           )}
 
           {filteredProducts.length > 0 && (
-            <Table
+            <ProductList
               tableHeaderTitle={`Displaying ${filteredProducts.length} of ${filteredProducts.length} items`}
               tableHeaderOne="Price"
               tableHeaderTwo="Inventory"
-              productList
               data={filteredProducts}
               dispatch={dispatch}
               allChecker={allChecker}

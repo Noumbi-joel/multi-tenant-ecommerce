@@ -35,15 +35,23 @@ const SearchFilter = ({ onChange, value, type, dispatch, searchType }) => {
 
   return (
     <div className="linear-layout-flat" style={{ marginTop: 70 }}>
-      <InputField
-        type="text"
-        name="products"
-        placeholder={`Search ${searchType}`}
-        onChange={onChange}
-        value={value}
-        ariaLabel="search-p"
-        className="search-product"
-      />
+      <div
+        className={
+          searchType === "customers"
+            ? "filter-input-container-enhanced"
+            : "filter-input-container"
+        }
+      >
+        <InputField
+          type="text"
+          name="products"
+          placeholder={`Search ${searchType}`}
+          onChange={onChange}
+          value={value}
+          ariaLabel="search-p"
+          className="search-product"
+        />
+      </div>
       {searchType === "customers" ? null : (
         <FilterBtn
           type="filter"
