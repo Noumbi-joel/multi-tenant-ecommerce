@@ -46,7 +46,7 @@ const ProductList = ({
               type="mr"
               title={tableHeaderTitle}
               color={COLORS.grayscale_900}
-              style={{ margin: "25px 0" }}
+              style={{ margin: "20px 0" }}
             />
           </th>
           <th>
@@ -54,7 +54,6 @@ const ProductList = ({
               type="mr"
               title={tableHeaderOne}
               color={COLORS.grayscale_900}
-              style={{ margin: "25px 0" }}
             />
           </th>
           <th>
@@ -62,7 +61,6 @@ const ProductList = ({
               type="mr"
               title={tableHeaderTwo}
               color={COLORS.grayscale_900}
-              style={{ margin: "25px 0" }}
             />
           </th>
           <th></th>

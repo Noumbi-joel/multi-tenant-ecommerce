@@ -45,7 +45,7 @@ const CategoryList = ({
               type="mr"
               title={tableHeaderTitle}
               color={COLORS.grayscale_900}
-              style={{ margin: "25px 0" }}
+              style={{ margin: "15px 0" }}
             />
           </th>
           <th>
@@ -53,7 +53,6 @@ const CategoryList = ({
               type="mr"
               title={tableHeaderOne}
               color={COLORS.grayscale_900}
-              style={{ margin: "25px 0" }}
             />
           </th>
           <th>
@@ -61,7 +60,6 @@ const CategoryList = ({
               type="mr"
               title={tableHeaderTwo}
               color={COLORS.grayscale_900}
-              style={{ margin: "25px 0" }}
             />
           </th>
           <th></th>

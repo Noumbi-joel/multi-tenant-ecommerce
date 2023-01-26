@@ -25,7 +25,7 @@ const CustomerList = ({
               type="mr"
               title={tableHeaderTitle}
               color={COLORS.grayscale_900}
-              style={{ margin: "25px 0" }}
+              style={{ margin: "15px 0" }}
             />
           </th>
           <th>
@@ -33,7 +33,6 @@ const CustomerList = ({
               type="mr"
               title={tableHeaderOne}
               color={COLORS.grayscale_900}
-              style={{ margin: "25px 0" }}
             />
           </th>
           <th>
@@ -41,7 +40,6 @@ const CustomerList = ({
               type="mr"
               title={tableHeaderTwo}
               color={COLORS.grayscale_900}
-              style={{ margin: "25px 0" }}
             />
           </th>
         </tr>
@@ -52,7 +50,7 @@ const CustomerList = ({
                 type="mr"
                 title={customer.customerName}
                 color={COLORS.grayscale_900}
-                style={{ margin: "25px 0" }}
+                style={{ margin: "15px 0" }}
               />
             </td>
             <td>
@@ -60,7 +58,6 @@ const CustomerList = ({
                 type="mr"
                 title={"FCFA " + customer.totalSpent}
                 color={COLORS.grayscale_900}
-                style={{ margin: "25px 0" }}
               />
             </td>
             <td>
@@ -68,7 +65,6 @@ const CustomerList = ({
                 type="mr"
                 title={customer.orders}
                 color={COLORS.grayscale_900}
-                style={{ margin: "25px 0" }}
               />
             </td>
           </tr>

@@ -30,7 +30,7 @@ const ListOrders = ({ data, dataHeaders, checkboxTitle, router }) => {
                 type="mr"
                 title={h.title}
                 color={COLORS.grayscale_900}
-                style={{ margin: "25px 0" }}
+                style={{ margin: "15px 0" }}
               />
             </th>
           ))}
@@ -45,7 +45,7 @@ const ListOrders = ({ data, dataHeaders, checkboxTitle, router }) => {
                 type="mr"
                 color={COLORS.grayscale_900}
                 title={order.id}
-                style={{ margin: "25px 0" }}
+                style={{ margin: "15px 0" }}
               />
             </td>
             <td>
@@ -53,7 +53,6 @@ const ListOrders = ({ data, dataHeaders, checkboxTitle, router }) => {
                 type="mr"
                 color={COLORS.grayscale_900}
                 title={order.date}
-                style={{ margin: "25px 0" }}
               />
             </td>
             <td>
@@ -61,7 +60,6 @@ const ListOrders = ({ data, dataHeaders, checkboxTitle, router }) => {
                 type="mr"
                 color={COLORS.grayscale_900}
                 title={order.customerName}
-                style={{ margin: "25px 0" }}
               />
             </td>
             <td>{order.fullF ? <FullFilled /> : <UnFullFilled />}</td>
@@ -70,7 +68,6 @@ const ListOrders = ({ data, dataHeaders, checkboxTitle, router }) => {
                 type="mr"
                 color={COLORS.grayscale_900}
                 title={"FCFA" + order.total}
-                style={{ margin: "25px 0" }}
               />
             </td>
           </tr>

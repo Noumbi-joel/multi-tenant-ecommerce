@@ -49,6 +49,12 @@
   --blue: #0062ff;
   --purple: #8c62ff;
   --amber: #ffc837;
+
+  font-family: 'Inter', sans-serif !important;
+}
+
+@supports (font-variation-settings: normal) {
+  :root { font-family: 'Inter var', sans-serif; }
 }
 
 html,
@@ -56,9 +62,6 @@ body,
 * {
   padding: 0;
   margin: 0;
-  font-family: "Plus Jakarta Display", sans-serif, -apple-system,
-    BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans,
-    Droid Sans, Helvetica Neue !important;
   box-sizing: border-box;
 }
 ::-webkit-scrollbar {
@@ -521,7 +524,6 @@ a {
   border-radius: 8px;
   height: 433px;
   padding: 25px;
-  overflow-y: scroll;
 }
 
 .top-item {
@@ -696,13 +698,13 @@ a {
 .product-list-row {
   display: flex;
   align-items: center;
-  margin: 25px 0;
+  margin: 15px 0;
 }
 
 .category-list-row {
   display: flex;
   align-items: center;
-  margin: 25px 0;
+  margin: 15px 0;
 }
 
 .right-arrow-top {
