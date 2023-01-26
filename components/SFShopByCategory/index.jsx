@@ -14,7 +14,7 @@ const SFShopByCategory = () => {
         title="Shop by category"
         msg="North's new & stylish collections are dedicated to reinvent onself, to walk the fine line between urban and wilderness, and to discover luxurious bliss in life."
       />
-      <Grid container spacing={1} mt={5} sx={{ px: { xs: 2, sm: 10 } }}>
+      <Grid container spacing={1} mt={5} sx={{ px: { xs: 2 } }}>
         <Grid item xs={12} sm={4}>
           <div className="sf-category-img-container">
             <img

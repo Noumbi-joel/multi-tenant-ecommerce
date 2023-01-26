@@ -59,3 +59,4 @@ export { default as SFListNewCollection } from "./SFListNewCollection";
 export { default as SFSectionTexts } from "./SFSectionTexts";
 export { default as SFShopByCategory } from "./SFShopByCategory";
 export { default as SFFooter } from "./SFFooter";
+export { default as SFDrawer } from "./SFDrawer"

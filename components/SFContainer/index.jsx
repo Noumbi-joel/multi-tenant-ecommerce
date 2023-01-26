@@ -1,15 +1,10 @@
+import { Container } from "@mui/material";
 import React from "react";
 
 // comp
-import { Container } from "@nextui-org/react";
-import { BodyText } from "..";
 
 const SFContainer = ({ children }) => {
-  return (
-    <Container>
-      {children}
-    </Container>
-  );
+  return <div className="SFContainer">{children}</div>;
 };
 
 export default SFContainer;
