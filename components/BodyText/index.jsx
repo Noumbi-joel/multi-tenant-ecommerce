@@ -18,12 +18,12 @@ const BodyText = ({ type, title, color, style, className, onClick }) => {
       </Text>
     ),
     xlm: (
-      <Text weight="medium" color={color} style={style} size={18}>
+      <Text weight="medium" color={color} style={style}>
         {title}
       </Text>
     ),
     xlr: (
-      <Text weight="normal" color={color} size={18}>
+      <Text weight="normal" color={color} className={className} size={40}>
         {title}
       </Text>
     ),
@@ -45,7 +45,13 @@ const BodyText = ({ type, title, color, style, className, onClick }) => {
       </Text>
     ),
     lr: (
-      <Text weight="normal" style={style} className={className} color={color} size={16}>
+      <Text
+        weight="normal"
+        style={style}
+        className={className}
+        color={color}
+        size={16}
+      >
         {title}
       </Text>
     ),
@@ -96,7 +102,13 @@ const BodyText = ({ type, title, color, style, className, onClick }) => {
       </Text>
     ),
     sr: (
-      <Text weight="normal" className={className} color={color} size={12}>
+      <Text
+        weight="normal"
+        className={className}
+        style={style}
+        color={color}
+        size={12}
+      >
         {title}
       </Text>
     ),

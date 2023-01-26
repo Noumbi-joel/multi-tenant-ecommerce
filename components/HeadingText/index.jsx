@@ -3,7 +3,7 @@ import React from "react";
 //next UI
 import { Text } from "@nextui-org/react";
 
-const HeadingText = ({ type, title, color, style }) => {
+const HeadingText = ({ type, title, color, style, md, className }) => {
   let render = {
     normal: <Text>{title}</Text>,
     h1: (
@@ -17,7 +17,13 @@ const HeadingText = ({ type, title, color, style }) => {
       </Text>
     ),
     h3: (
-      <Text weight="bold" style={style} color={color} size={32}>
+      <Text
+        weight={md ? "medium" : "bold"}
+        style={style}
+        color={color}
+        size={32}
+        className={className}
+      >
         {title}
       </Text>
     ),

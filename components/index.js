@@ -49,3 +49,13 @@ export { default as Legal } from "./Legal";
 export { default as SettingPassword } from "./SettingPassword";
 export { default as SubContentSettings } from "./SubContentSettings";
 export { default as PaymentCard } from "./PaymentCard";
+
+// store front container
+export { default as SFHeader } from "./SFHeader";
+export { default as SFContainer } from "./SFContainer";
+export { default as SFBanner } from "./SFBanner";
+export { default as SFNewCollection } from "./SFNewCollection";
+export { default as SFListNewCollection } from "./SFListNewCollection";
+export { default as SFSectionTexts } from "./SFSectionTexts";
+export { default as SFShopByCategory } from "./SFShopByCategory";
+export { default as SFFooter } from "./SFFooter";

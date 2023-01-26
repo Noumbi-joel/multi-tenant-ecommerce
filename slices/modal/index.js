@@ -21,6 +21,10 @@ const openSingleModalCat = createAction("openSingleModalCat");
 const closeSingleModalCat = createAction("closeSingleModalCat");
 const setCatName = createAction("setCatName");
 
+// Drawer
+const openDrawer = createAction("openDrawer");
+const closeDrawer = createAction("closeDrawer");
+
 //init states
 const initialState = {
   modalSingleItem: false,
@@ -30,6 +34,7 @@ const initialState = {
   allCheckerCat: false,
   modalSingleItemCat: false,
   modalAllItemCat: false,
+  drawerVisible: false,
 };
 
 //slices && reducers
@@ -92,6 +97,14 @@ export const modalSlice = createSlice({
 
     builder.addCase(closeSingleModalCat, (state) => {
       state.modalSingleItemCat = false;
+    });
+
+    builder.addCase(openDrawer, (state) => {
+      state.drawerVisible = true;
+    });
+
+    builder.addCase(closeDrawer, (state) => {
+      state.drawerVisible = false;
     });
 
     builder.addDefaultCase((state) => {

@@ -1,6 +1,7 @@
 export const USERS = "users";
 export const STORES = "stores";
 export const BASE_URL = "http://localhost:3000";
+export const MODEL_URL = "https://images.unsplash.com/photo-1613876214872-a73df2a1b8bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YmxhY2slMjBtb2RlbHxlbnwwfHwwfHw%3D&w=1000&q=80"
 
 // IN APP CONSTANTS
 export const SET_FILTER = "setFilter";
@@ -79,3 +80,5 @@ export const DELETE_STORE_LOGO = "deleteStoreLogo";
 export const DELETE_FULL_IMAGE = "deleteFullImage";
 export const DELETE_ADMIN_LOGO = "deleteAdminLogo";
 
+export const OPEN_DRAWER = "openDrawer";
+export const CLOSE_DRAWER = "closeDrawer";

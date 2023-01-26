@@ -50,11 +50,13 @@
   --purple: #8c62ff;
   --amber: #ffc837;
 
-  font-family: 'Inter', sans-serif !important;
+  font-family: "Inter", sans-serif !important;
 }
 
 @supports (font-variation-settings: normal) {
-  :root { font-family: 'Inter var', sans-serif; }
+  :root {
+    font-family: "Inter var", sans-serif;
+  }
 }
 
 html,
@@ -1396,7 +1398,212 @@ tr {
   border-bottom: 1px solid var(--grayscale_300);
 }
 
+/* STORE FRONT */
+.sf-header {
+  background-color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+}
+
+.sf-header .sf-header-links {
+  display: flex;
+  gap: 16px;
+}
+
+.sf-header .sf-socials-links {
+  display: flex;
+  gap: 20px;
+}
+
+.shopping-bag {
+  margin-left: 64px;
+}
+
+.SFContainer {
+  margin-left: 80px;
+  margin-right: 80px;
+}
+
+.sf-banner {
+  width: 100%;
+  height: 472px;
+  border-radius: 16px;
+  position: relative;
+  margin-bottom: 36px;
+}
+
+.sf-banner .banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.sf-banner .banner-title {
+  font-size: 40px;
+  line-height: 48px;
+  color: var(--white);
+  text-align: center;
+}
+
+.sf-banner .banner-msg {
+  width: 460px;
+  text-align: center;
+}
+
+.sf-banner .banner-texts {
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding-bottom: 45px;
+  gap: 32px;
+}
+
+.sf-shop-now {
+  border: 1px solid var(--white);
+  bottom: 50px;
+  height: 50px;
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.sf-banner-bottom-texts {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.sf-list-collection-image {
+  width: 100%;
+  height: 315px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.sf-view-all-btn-container {
+  display: flex;
+  justify-content: center;
+}
+
+.sf-view-all-btn {
+  width: 125px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--grayscale_900);
+  border-radius: 4px;
+}
+
+.shop-by-category-container {
+  background-color: var(--grayscale_200);
+  margin-top: 50px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.sf-category-image {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.sf-category-img-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+}
+
+.sf-category-title {
+  position: absolute;
+}
+
+.sf-footer-container {
+  background-color: #000;
+  height: 120px;
+  padding-top: 20px;
+}
+
+.bars {
+  display: none;
+}
+
+.sf-divider-footer {
+  height: 0.5px;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin-left: 80px;
+  margin-right: 80px;
+  margin-top: 20px;
+}
+
+.sf-footer-content-row {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 80px;
+  margin-right: 80px;
+}
+
+.sf-footer-links {
+  display: flex;
+  gap: 10px;
+}
+
+.sf-container {
+  position: relative;
+}
+
+.sf-drawer-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.sf-drawer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sf-drawer {
+  position: absolute;
+  top: 100px;
+  left: -3000px;
+  z-index: 9999;
+  width: 100%;
+  height: 2px;
+  padding: 20px;
+  transition: all 1s;
+}
+
+.sf-drawer-anim {
+  background-color: var(--white);
+  right: 1000px;
+  position: absolute;
+  top: 100px;
+  left: 0;
+  z-index: 9999;
+  height: 465vh;
+  width: 100%;
+  padding: 20px;
+  transition: all 1s;
+}
+
 /* YEAH MEN I USE @MEDIA QUERY: SORRY!!!!!!! 🤣🤣🤣🤣 */
+
 @media screen and (max-width: 950px) {
   .centered {
     width: 650px;
@@ -1519,6 +1726,28 @@ tr {
   .helper-center-container {
     flex-direction: column;
     height: fit-content;
+  }
+  .bars {
+    display: flex;
+  }
+
+  .sf-header .sf-header-links,
+  .sf-facebook,
+  .sf-instagram,
+  .sf-twitter {
+    display: none;
+  }
+
+  .sf-footer-container {
+    height: 165px;
+  }
+
+  .sf-footer-content-row {
+    flex-direction: column;
+    margin-left: 20px;
+    margin-right: 20px;
+    align-items: center;
+    gap: 10px;
   }
 }
 
