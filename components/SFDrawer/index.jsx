@@ -3,9 +3,9 @@ import { COLORS } from "../../assets/colors";
 import { CLOSE_DRAWER } from "../../constants";
 import BodyText from "../BodyText";
 import Cross from "../../public/cross.svg";
-import Facebook from "../../public/Facebook.svg";
-import Instagram from "../../public/Instagram.svg";
-import Twitter from "../../public/Twitter.svg";
+import Facebook from "../../public/facebook.svg";
+import Instagram from "../../public/instagram.svg";
+import Twitter from "../../public/twitter.svg";
 
 const SFDrawer = ({ drawerVisible, dispatch }) => {
   return (
