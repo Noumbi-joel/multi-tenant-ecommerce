@@ -9,9 +9,10 @@ import {
   AppHeader,
   InputField,
   AuthFooter,
+  Button,
 } from "../../components";
 import Link from "next/link";
-import { Button, Divider, Spacer, Checkbox } from "@nextui-org/react";
+import { Divider, Spacer, Checkbox } from "@nextui-org/react";
 
 //assets
 import { COLORS } from "../../assets/colors";
@@ -116,13 +117,15 @@ const Login = () => {
 
                 {/* Google Login */}
                 <div className="linear-layout-flat">
-                  <Divider className="divider" />
-                  <BodyText
-                    type="mr"
-                    colors={COLORS.grayscale_600}
-                    title="Or login with"
-                  />
-                  <Divider className="divider" />
+                  <Divider style={{ width: 150 }} className="divider" />
+                  <div className="orLoginWith">
+                    <BodyText
+                      type="mr"
+                      colors={COLORS.grayscale_600}
+                      title="Or login with"
+                    />
+                  </div>
+                  <Divider style={{ width: 150 }} className="divider" />
                 </div>
                 <Spacer />
                 <GoogleBtn
