@@ -82,3 +82,5 @@ export const DELETE_ADMIN_LOGO = "deleteAdminLogo";
 
 export const OPEN_DRAWER = "openDrawer";
 export const CLOSE_DRAWER = "closeDrawer";
+export const OPEN_FILTER_DRAWER = "openFilterDrawer";
+export const CLOSE_FILTER_DRAWER = "closeFilterDrawer";

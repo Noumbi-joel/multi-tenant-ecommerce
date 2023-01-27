@@ -24,6 +24,8 @@ const setCatName = createAction("setCatName");
 // Drawer
 const openDrawer = createAction("openDrawer");
 const closeDrawer = createAction("closeDrawer");
+const openFilterDrawer = createAction("openFilterDrawer");
+const closeFilterDrawer = createAction("closeFilterDrawer");
 
 //init states
 const initialState = {
@@ -35,6 +37,7 @@ const initialState = {
   modalSingleItemCat: false,
   modalAllItemCat: false,
   drawerVisible: false,
+  filterDrawerVisible: false,
 };
 
 //slices && reducers
@@ -105,6 +108,14 @@ export const modalSlice = createSlice({
 
     builder.addCase(closeDrawer, (state) => {
       state.drawerVisible = false;
+    });
+
+    builder.addCase(openFilterDrawer, (state) => {
+      state.filterDrawerVisible = true;
+    });
+
+    builder.addCase(closeFilterDrawer, (state) => {
+      state.filterDrawerVisible = false;
     });
 
     builder.addDefaultCase((state) => {

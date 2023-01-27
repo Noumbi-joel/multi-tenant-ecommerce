@@ -243,7 +243,12 @@ const InputField = ({
           style={{ marginBottom: 5 }}
         />
         <FormControl className={className}>
-          <Select value={value} onChange={onChange} className="" name={name}>
+          <Select
+            value={value}
+            onChange={onChange}
+            className={className}
+            name={name}
+          >
             {data.map((select) => (
               <MenuItem key={select.id} value={select.title}>
                 {select.title}

@@ -5,7 +5,7 @@ import { COLORS } from "../../assets/colors";
 import BodyText from "../BodyText";
 import Button from "../Button";
 
-const SFListNewCollection = ({ data }) => {
+const SFListNewCollection = ({ data,btnTitleList }) => {
   return (
     <div>
       <Grid container spacing={1} mt={5}>
@@ -27,7 +27,7 @@ const SFListNewCollection = ({ data }) => {
           titleType="lr"
           titleColor={COLORS.grayscale_900}
           className="sf-view-all-btn"
-          title="View all"
+          title={btnTitleList}
         />
       </div>
     </div>

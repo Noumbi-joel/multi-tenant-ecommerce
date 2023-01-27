@@ -7,7 +7,7 @@ const SFNewCollection = ({ collectionTitle, collectionMsg, data }) => {
   return (
     <div className="sf-banner-bottom-texts">
       <SFSectionTexts title={collectionTitle} msg={collectionMsg} />
-      <SFListNewCollection data={data} />
+      <SFListNewCollection data={data} btnTitleList="View all" />
     </div>
   );
 };

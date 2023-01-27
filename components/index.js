@@ -60,3 +60,5 @@ export { default as SFSectionTexts } from "./SFSectionTexts";
 export { default as SFShopByCategory } from "./SFShopByCategory";
 export { default as SFFooter } from "./SFFooter";
 export { default as SFDrawer } from "./SFDrawer"
+export { default as SFDrawerContainer } from "./SFDrawerContainer"
+export { default as SFFilters } from "./SFFilters"

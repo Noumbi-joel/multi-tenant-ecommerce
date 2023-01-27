@@ -537,6 +537,8 @@ export const PAYMENTS = [
   },
 ];
 
+// STORE FRONT
+
 export const NEW_COLLECTIONS = [
   { id: 1, image: "https://assets.vogue.com/photos/6356dcf58e93a0413a14f9f1/4:3/w_1600%2Cc_limit/00018-chanel-spring-2023-ready-t.jpeg", title: "Small Convertible Flex Bag", price: "320,000" },
   { id: 2, image: "https://assets.vogue.com/photos/6356dcf58e93a0413a14f9f1/4:3/w_1600%2Cc_limit/00018-chanel-spring-2023-ready-t.jpeg", title: "Small Convertible Flex Bag", price: "320,000" },
@@ -546,4 +548,55 @@ export const NEW_COLLECTIONS = [
   { id: 6, image: "https://assets.vogue.com/photos/6356dcf58e93a0413a14f9f1/4:3/w_1600%2Cc_limit/00018-chanel-spring-2023-ready-t.jpeg", title: "Small Convertible Flex Bag", price: "320,000" },
   { id: 7, image: "https://assets.vogue.com/photos/6356dcf58e93a0413a14f9f1/4:3/w_1600%2Cc_limit/00018-chanel-spring-2023-ready-t.jpeg", title: "Small Convertible Flex Bag", price: "320,000" },
   { id: 8, image: "https://assets.vogue.com/photos/6356dcf58e93a0413a14f9f1/4:3/w_1600%2Cc_limit/00018-chanel-spring-2023-ready-t.jpeg", title: "Small Convertible Flex Bag", price: "320,000" },
+];
+
+export const SF_PRODUCTS = [
+  { id: 1, image: "https://assets.vogue.com/photos/6356dcf58e93a0413a14f9f1/4:3/w_1600%2Cc_limit/00018-chanel-spring-2023-ready-t.jpeg", title: "Small Convertible Flex Bag", price: "320,000" },
+  { id: 2, image: "https://assets.vogue.com/photos/6356dcf58e93a0413a14f9f1/4:3/w_1600%2Cc_limit/00018-chanel-spring-2023-ready-t.jpeg", title: "Small Convertible Flex Bag", price: "320,000" },
+  { id: 3, image: "https://assets.vogue.com/photos/6356dcf58e93a0413a14f9f1/4:3/w_1600%2Cc_limit/00018-chanel-spring-2023-ready-t.jpeg", title: "Small Convertible Flex Bag", price: "320,000" },
+  { id: 4, image: "https://assets.vogue.com/photos/6356dcf58e93a0413a14f9f1/4:3/w_1600%2Cc_limit/00018-chanel-spring-2023-ready-t.jpeg", title: "Small Convertible Flex Bag", price: "320,000" },
+  { id: 5, image: "https://assets.vogue.com/photos/6356dcf58e93a0413a14f9f1/4:3/w_1600%2Cc_limit/00018-chanel-spring-2023-ready-t.jpeg", title: "Small Convertible Flex Bag", price: "320,000" },
+  { id: 6, image: "https://assets.vogue.com/photos/6356dcf58e93a0413a14f9f1/4:3/w_1600%2Cc_limit/00018-chanel-spring-2023-ready-t.jpeg", title: "Small Convertible Flex Bag", price: "320,000" },
+  { id: 7, image: "https://assets.vogue.com/photos/6356dcf58e93a0413a14f9f1/4:3/w_1600%2Cc_limit/00018-chanel-spring-2023-ready-t.jpeg", title: "Small Convertible Flex Bag", price: "320,000" },
+  { id: 8, image: "https://assets.vogue.com/photos/6356dcf58e93a0413a14f9f1/4:3/w_1600%2Cc_limit/00018-chanel-spring-2023-ready-t.jpeg", title: "Small Convertible Flex Bag", price: "320,000" },
+  { id: 9, image: "https://assets.vogue.com/photos/6356dcf58e93a0413a14f9f1/4:3/w_1600%2Cc_limit/00018-chanel-spring-2023-ready-t.jpeg", title: "Small Convertible Flex Bag", price: "320,000" },
+  { id: 10, image: "https://assets.vogue.com/photos/6356dcf58e93a0413a14f9f1/4:3/w_1600%2Cc_limit/00018-chanel-spring-2023-ready-t.jpeg", title: "Small Convertible Flex Bag", price: "320,000" },
+  { id: 11, image: "https://assets.vogue.com/photos/6356dcf58e93a0413a14f9f1/4:3/w_1600%2Cc_limit/00018-chanel-spring-2023-ready-t.jpeg", title: "Small Convertible Flex Bag", price: "320,000" },
+  { id: 12, image: "https://assets.vogue.com/photos/6356dcf58e93a0413a14f9f1/4:3/w_1600%2Cc_limit/00018-chanel-spring-2023-ready-t.jpeg", title: "Small Convertible Flex Bag", price: "320,000" },
+];
+
+
+export const SF_AVAILABILITIES = [
+  { id: 1, title: "Availability" },
+  { id: 2, title: "Availability" },
+  { id: 3, title: "Availability" },
+  { id: 4, title: "Availability" },
+];
+
+export const SF_CATEGORIES = [
+  { id: 1, title: "Category" },
+  { id: 2, title: "Category" },
+  { id: 3, title: "Category" },
+  { id: 4, title: "Category" },
+];
+
+export const SF_PRICE = [
+  { id: 1, title: "Price" },
+  { id: 2, title: "Price" },
+  { id: 3, title: "Price" },
+  { id: 4, title: "Price" },
+];
+
+export const SF_COLOR = [
+  { id: 1, title: "Color" },
+  { id: 2, title: "Color" },
+  { id: 3, title: "Color" },
+  { id: 4, title: "Color" },
+];
+
+export const SF_SORT = [
+  { id: 1, title: "Sort" },
+  { id: 2, title: "Sort" },
+  { id: 3, title: "Sort" },
+  { id: 4, title: "Sort" },
 ];

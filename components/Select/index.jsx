@@ -3,7 +3,21 @@ import React from "react";
 // helpers
 import { SELECT_VALUES } from "../../helpers";
 
-const Select = ({ onChange, lang, name }) => {
+const Select = ({ onChange, lang, name, type, className, data }) => {
+  if (type === "sf-select") {
+    return (
+      <div>
+        <select className={className} name={name} onChange={onChange} required>
+          {data.map((v) => (
+            <option key={v.id} value={v.title}>
+              {v.title}
+            </option>
+          ))}
+        </select>
+      </div>
+    );
+  }
+
   return (
     <div>
       <select

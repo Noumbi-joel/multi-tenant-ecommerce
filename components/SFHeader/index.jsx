@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 // assets
 import { COLORS } from "../../assets/colors";
@@ -8,12 +8,12 @@ import Instagram from "../../public/instagram.svg";
 import Twitter from "../../public/twitter.svg";
 import ShoppingBag from "../../public/ShoppingBag.svg";
 import Bars from "../../public/Bars.svg";
+import { OPEN_DRAWER } from "../../constants";
 
 // comp
 import BodyText from "../BodyText";
-import { OPEN_DRAWER } from "../../constants";
 
-const SFHeader = ({ dispatch }) => {
+const SFHeader = ({ dispatch, router }) => {
   return (
     <div className="sf-header">
       <Bars className="bars" onClick={() => dispatch({ type: OPEN_DRAWER })} />
@@ -22,19 +22,19 @@ const SFHeader = ({ dispatch }) => {
           type="lm"
           title="Shop"
           color={COLORS.grayscale_900}
-          onClick={() => {}}
+          onClick={() => router.push("/_sites/shop")}
         />
         <BodyText
           type="lm"
           title="About"
           color={COLORS.grayscale_900}
-          onClick={() => {}}
+          onClick={() => router.push("/_sites/about")}
         />
         <BodyText
           type="lm"
           title="Contact"
           color={COLORS.grayscale_900}
-          onClick={() => {}}
+          onClick={() => router.push("/_sites/contact")}
         />
       </div>
       <North />

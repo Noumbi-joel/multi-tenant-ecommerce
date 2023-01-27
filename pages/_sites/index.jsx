@@ -4,38 +4,31 @@ import React from "react";
 import {
   SFBanner,
   SFContainer,
-  SFHeader,
   SFNewCollection,
   SFShopByCategory,
   SFFooter,
-  SFDrawer,
+  SFDrawerContainer,
 } from "../../components";
 import { Spacer } from "@nextui-org/react";
 
 // assets
-import { NEW_COLLECTIONS } from "../../helpers";
-
-import { useSelector, useDispatch } from "react-redux";
+import { SF_PRODUCTS } from "../../helpers";
 
 const StoreFront = () => {
-  const { drawerVisible } = useSelector((state) => state.modal);
-  const dispatch = useDispatch();
   return (
-    <div className="sf-container">
-      <SFDrawer dispatch={dispatch} drawerVisible={drawerVisible} />
+    <SFDrawerContainer>
       <SFContainer>
-        <SFHeader dispatch={dispatch} />
         <Spacer />
         <SFBanner />
         <SFNewCollection
           collectionTitle="New and stylish collection"
           collectionMsg="North's new & stylish collections are dedicated to reinvent onself, to walk the fine line between urban and wilderness, and to discover luxurious bliss in life."
-          data={NEW_COLLECTIONS}
+          data={SF_PRODUCTS.slice(0, 8)}
         />
       </SFContainer>
       <SFShopByCategory />
       <SFFooter />
-    </div>
+    </SFDrawerContainer>
   );
 };
 
