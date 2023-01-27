@@ -16,7 +16,7 @@ import { Divider, Spacer } from "@nextui-org/react";
 
 // assets
 import { COLORS } from "../../../../assets/colors";
-import { PRODUCTS, SF_CATEGORIES } from "../../../../helpers";
+import { PRODUCTS, SF_CATEGORIES, SF_COLORS, SF_SIZES } from "../../../../helpers";
 import { useRouter } from "next/router";
 
 const SFShopDetails = () => {
@@ -63,13 +63,13 @@ const SFShopDetails = () => {
             <Spacer />
             <Select
               type="sf-select"
-              data={SF_CATEGORIES}
+              data={SF_COLORS}
               className="sf-select-filter-drawer"
             />
             <Spacer />
             <Select
               type="sf-select"
-              data={SF_CATEGORIES}
+              data={SF_SIZES}
               className="sf-select-filter-drawer"
             />
             <Spacer />

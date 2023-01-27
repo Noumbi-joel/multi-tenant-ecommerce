@@ -1,18 +1,92 @@
-import React from "react";
+import { Divider, Spacer } from "@nextui-org/react";
+import React, { useState } from "react";
 
 // comp
-import { BodyText, Button, Select, SFFilters } from "..";
+import { BodyText, Button, Empty, Select, SFFilters } from "..";
 
 // assets
 import { COLORS } from "../../assets/colors";
-import { CLOSE_DRAWER, CLOSE_FILTER_DRAWER } from "../../constants";
+import {
+  CLOSE_CART_DRAWER,
+  CLOSE_DRAWER,
+  CLOSE_FILTER_DRAWER,
+} from "../../constants";
 import { SF_CATEGORIES, SF_COLOR, SF_PRICE, SF_SORT } from "../../helpers";
 import Cross from "../../public/cross.svg";
 import Facebook from "../../public/facebook.svg";
 import Instagram from "../../public/instagram.svg";
 import Twitter from "../../public/twitter.svg";
+import SFCart from "../SFCart";
 
 const SFDrawer = ({ drawerVisible, dispatch, type }) => {
+  const [empty, setEmpty] = useState(false);
+  if (type === "cart") {
+    return (
+      <div className={drawerVisible ? "sf-drawer-cart-anim" : "sf-drawer-cart"}>
+        {empty ? (
+          <Empty
+            setEmpty={setEmpty}
+            empty={empty}
+            dispatch={dispatch}
+            type="cart"
+          />
+        ) : (
+          <div className="sf-cart-container">
+            <div>
+              <div className="sf-drawer-row">
+                <BodyText
+                  type="mm"
+                  title="Cart"
+                  color={COLORS.grayscale_900}
+                  onClick={() => setEmpty(!empty)}
+                />
+                <Cross onClick={() => dispatch({ type: CLOSE_CART_DRAWER })} />
+              </div>
+              <SFCart
+                image="/model-banner.png"
+                title="Straight leg pant"
+                color="Red"
+                size="XL"
+                qty="1"
+                unitPrice="114,000"
+              />
+              <SFCart
+                image="/got.jpg"
+                title="Flared midi skirt"
+                color="Red"
+                size="XL"
+                qty="1"
+                unitPrice="114,000"
+              />
+            </div>
+            <div>
+              <Divider className="sf-divider" />
+              <Spacer />
+              <div className="sf-cart-row-remove-container">
+                <BodyText type="mm" title="Subtotal" color="#151515" />
+                <BodyText type="lr" title="FCFA125,000" color="#444444" />
+              </div>
+              <Spacer />
+              <Button
+                titleColor={COLORS.white}
+                titleType="lr"
+                title="Checkout"
+                className="sf-checkout-btn"
+              />
+              <Spacer />
+              <BodyText
+                type="lr"
+                title="Continue shopping"
+                color={COLORS.grayscale_900}
+                style={{ textAlign: "center" }}
+              />
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  }
+
   if (type === "filters") {
     return (
       <div className={drawerVisible ? "sf-drawer-anim" : "sf-drawer"}>

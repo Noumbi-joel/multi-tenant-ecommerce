@@ -26,6 +26,8 @@ const openDrawer = createAction("openDrawer");
 const closeDrawer = createAction("closeDrawer");
 const openFilterDrawer = createAction("openFilterDrawer");
 const closeFilterDrawer = createAction("closeFilterDrawer");
+const openCartDrawer = createAction("openCartDrawer");
+const closeCartDrawer = createAction("closeCartDrawer");
 
 //init states
 const initialState = {
@@ -38,6 +40,7 @@ const initialState = {
   modalAllItemCat: false,
   drawerVisible: false,
   filterDrawerVisible: false,
+  cartDrawerVisible: false,
 };
 
 //slices && reducers
@@ -116,6 +119,14 @@ export const modalSlice = createSlice({
 
     builder.addCase(closeFilterDrawer, (state) => {
       state.filterDrawerVisible = false;
+    });
+
+    builder.addCase(openCartDrawer, (state) => {
+      state.cartDrawerVisible = true;
+    });
+
+    builder.addCase(closeCartDrawer, (state) => {
+      state.cartDrawerVisible = false;
     });
 
     builder.addDefaultCase((state) => {

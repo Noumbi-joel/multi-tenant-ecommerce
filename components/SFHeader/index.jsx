@@ -8,7 +8,7 @@ import Instagram from "../../public/instagram.svg";
 import Twitter from "../../public/twitter.svg";
 import ShoppingBag from "../../public/ShoppingBag.svg";
 import Bars from "../../public/Bars.svg";
-import { OPEN_DRAWER } from "../../constants";
+import { OPEN_CART_DRAWER, OPEN_DRAWER } from "../../constants";
 
 // comp
 import BodyText from "../BodyText";
@@ -44,7 +44,7 @@ const SFHeader = ({ dispatch, router }) => {
         <Instagram className="sf-instagram" />
         <Twitter className="sf-twitter" />
         <div className="shopping-bag">
-          <ShoppingBag />
+          <ShoppingBag onClick={() => dispatch({ type: OPEN_CART_DRAWER })} />
         </div>
       </div>
     </div>

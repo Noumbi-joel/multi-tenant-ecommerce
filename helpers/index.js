@@ -589,3 +589,17 @@ export const SF_SORT = [
   { id: 3, title: "Sort" },
   { id: 4, title: "Sort" },
 ];
+
+export const SF_COLORS = [
+  { id: 1, title: "Color" },
+  { id: 2, title: "Color" },
+  { id: 3, title: "Color" },
+  { id: 4, title: "Color" },
+];
+
+export const SF_SIZES = [
+  { id: 1, title: "Size" },
+  { id: 2, title: "Size" },
+  { id: 3, title: "Size" },
+  { id: 4, title: "Size" },
+];

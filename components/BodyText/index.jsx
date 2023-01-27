@@ -74,7 +74,7 @@ const BodyText = ({ type, title, color, style, className, onClick }) => {
       </Text>
     ),
     mm: (
-      <Text weight="medium" color={color} size={14}>
+      <Text weight="medium" color={color} size={14} onClick={onClick}>
         {title}
       </Text>
     ),

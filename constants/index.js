@@ -84,3 +84,5 @@ export const OPEN_DRAWER = "openDrawer";
 export const CLOSE_DRAWER = "closeDrawer";
 export const OPEN_FILTER_DRAWER = "openFilterDrawer";
 export const CLOSE_FILTER_DRAWER = "closeFilterDrawer";
+export const OPEN_CART_DRAWER = "openCartDrawer";
+export const CLOSE_CART_DRAWER = "closeCartDrawer";
