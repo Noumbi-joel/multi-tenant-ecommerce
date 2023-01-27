@@ -5,7 +5,7 @@ import { COLORS } from "../../assets/colors";
 import BodyText from "../BodyText";
 import Button from "../Button";
 
-const SFListNewCollection = ({ data,btnTitleList }) => {
+const SFListNewCollection = ({ data, btnTitleList, router }) => {
   return (
     <div>
       <Grid container spacing={1} mt={5}>
@@ -15,6 +15,7 @@ const SFListNewCollection = ({ data,btnTitleList }) => {
               src={item.image}
               alt={item.title}
               className="sf-list-collection-image"
+              onClick={() => router?.push("/_sites/shop/details")}
             />
             <BodyText type="mr" title={item.title} color="#121212" />
             <BodyText type="lm" title={"FCFA " + item.price} color="#121212" />
@@ -23,12 +24,14 @@ const SFListNewCollection = ({ data,btnTitleList }) => {
       </Grid>
       <Spacer />
       <div className="sf-view-all-btn-container">
-        <Button
-          titleType="lr"
-          titleColor={COLORS.grayscale_900}
-          className="sf-view-all-btn"
-          title={btnTitleList}
-        />
+        {btnTitleList && (
+          <Button
+            titleType="lr"
+            titleColor={COLORS.grayscale_900}
+            className="sf-view-all-btn"
+            title={btnTitleList}
+          />
+        )}
       </div>
     </div>
   );

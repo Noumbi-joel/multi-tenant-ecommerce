@@ -49,7 +49,11 @@ const Shop = () => {
             color={COLORS.grayscale_900}
           />
         </div>
-        <SFListNewCollection data={SF_PRODUCTS} btnTitleList="Load more" />
+        <SFListNewCollection
+          router={router}
+          data={SF_PRODUCTS}
+          btnTitleList="Load more"
+        />
       </SFContainer>
       <Spacer y={2} />
       <SFFooter />

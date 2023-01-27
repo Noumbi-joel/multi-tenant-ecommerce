@@ -539,17 +539,6 @@ export const PAYMENTS = [
 
 // STORE FRONT
 
-export const NEW_COLLECTIONS = [
-  { id: 1, image: "https://assets.vogue.com/photos/6356dcf58e93a0413a14f9f1/4:3/w_1600%2Cc_limit/00018-chanel-spring-2023-ready-t.jpeg", title: "Small Convertible Flex Bag", price: "320,000" },
-  { id: 2, image: "https://assets.vogue.com/photos/6356dcf58e93a0413a14f9f1/4:3/w_1600%2Cc_limit/00018-chanel-spring-2023-ready-t.jpeg", title: "Small Convertible Flex Bag", price: "320,000" },
-  { id: 3, image: "https://assets.vogue.com/photos/6356dcf58e93a0413a14f9f1/4:3/w_1600%2Cc_limit/00018-chanel-spring-2023-ready-t.jpeg", title: "Small Convertible Flex Bag", price: "320,000" },
-  { id: 4, image: "https://assets.vogue.com/photos/6356dcf58e93a0413a14f9f1/4:3/w_1600%2Cc_limit/00018-chanel-spring-2023-ready-t.jpeg", title: "Small Convertible Flex Bag", price: "320,000" },
-  { id: 5, image: "https://assets.vogue.com/photos/6356dcf58e93a0413a14f9f1/4:3/w_1600%2Cc_limit/00018-chanel-spring-2023-ready-t.jpeg", title: "Small Convertible Flex Bag", price: "320,000" },
-  { id: 6, image: "https://assets.vogue.com/photos/6356dcf58e93a0413a14f9f1/4:3/w_1600%2Cc_limit/00018-chanel-spring-2023-ready-t.jpeg", title: "Small Convertible Flex Bag", price: "320,000" },
-  { id: 7, image: "https://assets.vogue.com/photos/6356dcf58e93a0413a14f9f1/4:3/w_1600%2Cc_limit/00018-chanel-spring-2023-ready-t.jpeg", title: "Small Convertible Flex Bag", price: "320,000" },
-  { id: 8, image: "https://assets.vogue.com/photos/6356dcf58e93a0413a14f9f1/4:3/w_1600%2Cc_limit/00018-chanel-spring-2023-ready-t.jpeg", title: "Small Convertible Flex Bag", price: "320,000" },
-];
-
 export const SF_PRODUCTS = [
   { id: 1, image: "https://assets.vogue.com/photos/6356dcf58e93a0413a14f9f1/4:3/w_1600%2Cc_limit/00018-chanel-spring-2023-ready-t.jpeg", title: "Small Convertible Flex Bag", price: "320,000" },
   { id: 2, image: "https://assets.vogue.com/photos/6356dcf58e93a0413a14f9f1/4:3/w_1600%2Cc_limit/00018-chanel-spring-2023-ready-t.jpeg", title: "Small Convertible Flex Bag", price: "320,000" },
