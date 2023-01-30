@@ -24,7 +24,7 @@ const Shop = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   return (
-    <SFDrawerContainer>
+    <SFDrawerContainer router={router}>
       <SFContainer />
       <Divider className="sf-divider" />
       <SFContainer fluid>

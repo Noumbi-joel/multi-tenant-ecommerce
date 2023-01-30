@@ -62,3 +62,6 @@ export { default as SFFooter } from "./SFFooter";
 export { default as SFDrawer } from "./SFDrawer"
 export { default as SFDrawerContainer } from "./SFDrawerContainer"
 export { default as SFFilters } from "./SFFilters"
+export { default as SFCheckoutProd } from "./SFCheckoutProd"
+export { default as CheckoutTotal } from "./CheckoutTotal"
+export { default as SFHistory } from "./SFHistory"

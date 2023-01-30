@@ -289,7 +289,7 @@ const InputField = ({
       }}
     >
       <BodyText
-        type="mr"
+        type={name === "sf-email" ? "lr" : "mr"}
         color={COLORS.grayscale_900}
         title={label}
         style={{ marginBottom: 5 }}

@@ -16,7 +16,12 @@ import { Divider, Spacer } from "@nextui-org/react";
 
 // assets
 import { COLORS } from "../../../../assets/colors";
-import { PRODUCTS, SF_CATEGORIES, SF_COLORS, SF_SIZES } from "../../../../helpers";
+import {
+  PRODUCTS,
+  SF_CATEGORIES,
+  SF_COLORS,
+  SF_SIZES,
+} from "../../../../helpers";
 import { useRouter } from "next/router";
 
 const SFShopDetails = () => {
@@ -83,7 +88,7 @@ const SFShopDetails = () => {
                 titleType="lr"
                 titleColor={COLORS.white}
                 title="Add to cart"
-                onClick={() => {}}
+                onClick={() => router.push("/_sites/checkout")}
                 className="sf-addToCart"
               />
             </div>

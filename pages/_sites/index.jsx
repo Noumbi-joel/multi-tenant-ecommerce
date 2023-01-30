@@ -18,7 +18,7 @@ import { useRouter } from "next/router";
 const StoreFront = () => {
   const router = useRouter();
   return (
-    <SFDrawerContainer>
+    <SFDrawerContainer router={router}>
       <SFContainer>
         <Spacer />
         <SFBanner />

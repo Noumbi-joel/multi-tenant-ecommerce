@@ -13,7 +13,16 @@ import { OPEN_CART_DRAWER, OPEN_DRAWER } from "../../constants";
 // comp
 import BodyText from "../BodyText";
 
-const SFHeader = ({ dispatch, router }) => {
+const SFHeader = ({ dispatch, router, checkout }) => {
+  if (checkout) {
+    return (
+      <div>
+        <div className="sf-header-checkout">
+          <North />
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="sf-header">
       <Bars className="bars" onClick={() => dispatch({ type: OPEN_DRAWER })} />

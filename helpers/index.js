@@ -603,3 +603,10 @@ export const SF_SIZES = [
   { id: 3, title: "Size" },
   { id: 4, title: "Size" },
 ];
+
+export const SF_HISTORY = [
+  { id: 1, title: "Cart" },
+  { id: 2, title: "Information" },
+  { id: 3, title: "Shipping" },
+  { id: 4, title: "Payment" },
+];

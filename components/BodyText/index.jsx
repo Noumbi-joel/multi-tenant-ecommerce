@@ -18,7 +18,7 @@ const BodyText = ({ type, title, color, style, className, onClick }) => {
       </Text>
     ),
     xlm: (
-      <Text weight="medium" color={color} style={style}>
+      <Text weight="medium" color={color} style={style} size={18}>
         {title}
       </Text>
     ),

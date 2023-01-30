@@ -30,6 +30,11 @@ const SFListNewCollection = ({ data, btnTitleList, router }) => {
             titleColor={COLORS.grayscale_900}
             className="sf-view-all-btn"
             title={btnTitleList}
+            onClick={
+              btnTitleList === "View all"
+                ? () => router.push("/_sites/shop")
+                : () => {}
+            }
           />
         )}
       </div>

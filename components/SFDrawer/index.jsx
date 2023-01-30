@@ -2,7 +2,7 @@ import { Divider, Spacer } from "@nextui-org/react";
 import React, { useState } from "react";
 
 // comp
-import { BodyText, Button, Empty, Select, SFFilters } from "..";
+import { BodyText, Button, Empty, Select } from "..";
 
 // assets
 import { COLORS } from "../../assets/colors";
@@ -18,7 +18,7 @@ import Instagram from "../../public/instagram.svg";
 import Twitter from "../../public/twitter.svg";
 import SFCart from "../SFCart";
 
-const SFDrawer = ({ drawerVisible, dispatch, type }) => {
+const SFDrawer = ({ drawerVisible, dispatch, type, router }) => {
   const [empty, setEmpty] = useState(false);
   if (type === "cart") {
     return (
@@ -129,9 +129,24 @@ const SFDrawer = ({ drawerVisible, dispatch, type }) => {
       <div className="sf-drawer-row">
         <div className="sf-drawer-links">
           <BodyText type="mm" title="Menu" color={COLORS.grayscale_900} />
-          <BodyText type="mm" title="Shop" color={COLORS.grayscale_900} />
-          <BodyText type="mm" title="About" color={COLORS.grayscale_900} />
-          <BodyText type="mm" title="Contact" color={COLORS.grayscale_900} />
+          <BodyText
+            type="mm"
+            title="Shop"
+            color={COLORS.grayscale_900}
+            onClick={() => router.push("/_sites/shop")}
+          />
+          <BodyText
+            type="mm"
+            title="About"
+            color={COLORS.grayscale_900}
+            onClick={() => router.push("/_sites/about")}
+          />
+          <BodyText
+            type="mm"
+            title="Contact"
+            color={COLORS.grayscale_900}
+            onClick={() => router.push("/_sites/contact")}
+          />
         </div>
         <div>
           <Cross onClick={() => dispatch({ type: CLOSE_DRAWER })} />
