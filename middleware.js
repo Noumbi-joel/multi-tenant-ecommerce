@@ -7,7 +7,6 @@ import { server } from "./config";
 export default function middleware(req) {
   let connected = req.cookies.get("user");
   let url = req.url;
-  let bTenant = req.cookies.get("bTenant");
   // if (
   //   (!connected && url.includes("/dashboard")) ||
   //   (!connected && url.includes("/businessInfo"))
@@ -66,7 +65,7 @@ export default function middleware(req) {
   // (in the case of "test.vercel.app", "vercel.app" is the root URL)
   const currentHost =
     process.env.NODE_ENV == "production"
-      ? hostname?.replace(`.vercel.app`, "") // PUT YOUR DOMAIN HERE
+      ? hostname?.replace(`.localhost:3000`, "") // PUT YOUR DOMAIN HERE
       : hostname?.replace(`.localhost:3000`, "");
 
   // Prevent security issues – users should not be able to canonically access
