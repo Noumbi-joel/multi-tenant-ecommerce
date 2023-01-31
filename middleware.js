@@ -13,6 +13,45 @@ export default function middleware(req) {
     return NextResponse.redirect("http://localhost:3000/signin");
   }
 
+  if (
+    connected &&
+    !req.cookies.get("noBusiness") &&
+    url.includes("/businessInfo")
+  ) {
+    return NextResponse.redirect("http://localhost:3000/signin");
+  }
+
+  
+  if (
+    connected &&
+    !req.cookies.get("noBusiness") &&
+    url.includes("/dashboard")
+  ) {
+    return NextResponse.redirect("http://localhost:3000/signin");
+  }
+
+  if (
+    connected &&
+    req.cookies.get("noBusiness")?.value === "true" &&
+    url.includes("/dashboard")
+  ) {
+    return NextResponse.redirect("http://localhost:3000/businessInfo");
+  }
+
+  if (
+    connected &&
+    req.cookies.get("noBusiness")?.value === "false" &&
+    url.includes("/businessInfo")
+  ) {
+    return NextResponse.redirect("http://localhost:3000/_sites/dashboard");
+  }
+
+  /**
+   * 
+   * MULTI TENANCY LOGIC
+   * 
+   */
+
   // const { pathname } = req.nextUrl;
   // // Get hostname (e.g. vercel.com, test.vercel.app, etc.)
   // const hostname = req.headers.get("host");

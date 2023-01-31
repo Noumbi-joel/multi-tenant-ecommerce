@@ -4,7 +4,7 @@ import React, { useContext, useState } from "react";
 import { COLORS } from "../../assets/colors";
 
 //comp
-import { Button, Spacer } from "@nextui-org/react";
+import { Spacer } from "@nextui-org/react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/router";
 import {
@@ -14,6 +14,7 @@ import {
   InputField,
   Select,
   AuthFooter,
+  Button,
 } from "../../components";
 
 // context API
@@ -44,8 +45,7 @@ const BusinessInfo = () => {
       return toast.error("Please fill correctly the business informations");
     }
 
-    // authCtx.saveBusiness(businessInfos);
-    router.push("/_sites/dashboard");
+    authCtx.saveBusiness(businessInfos);
   };
 
   return (
@@ -100,12 +100,13 @@ const BusinessInfo = () => {
                 <Spacer y={0.2} />
                 <Select name="bCategory" onChange={handleInput} />
                 <Button
-                  type="submit"
                   className="app-btn"
                   style={{ marginTop: 25 }}
-                >
-                  Continue
-                </Button>
+                  titleType="lr"
+                  titleColor={COLORS.white}
+                  title="Continue"
+                  onClick={(e) => handleSubmit(e)}
+                />
               </div>
             </div>
             <AuthFooter />

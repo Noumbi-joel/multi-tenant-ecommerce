@@ -68,7 +68,7 @@ const SignUp = () => {
               title="Create your account"
             />
             <div className="form">
-              <form onSubmit={handleSubmit} className="form-container">
+              <form className="form-container">
                 <div className="form-signup-row-flat">
                   <InputField
                     label="First name"
@@ -122,9 +122,13 @@ const SignUp = () => {
                   </div>
                 </div>
                 <Spacer y={1.2} />
-                <Button type="submit" className="app-btn">
-                  Sign up
-                </Button>
+                <Button
+                  className="app-btn"
+                  titleType="lr"
+                  titleColor={COLORS.white}
+                  title="Sign up"
+                  onClick={(e) => handleSubmit(e)}
+                />
                 <Spacer y={1.2} />
 
                 {/* Google Login */}

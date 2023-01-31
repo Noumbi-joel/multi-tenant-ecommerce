@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 
 // comp
 import {
@@ -8,7 +8,10 @@ import {
   PageDescription,
 } from "../../../components";
 import { Spacer } from "@nextui-org/react";
+
+// assets
 import { useRouter } from "next/router";
+import { verifyBusiness } from "../../../functions";
 
 const Dashboard = () => {
   const [helperVisible, setHelperVisible] = useState(true);
@@ -16,6 +19,7 @@ const Dashboard = () => {
   const handleVisible = () => {
     setHelperVisible(false);
   };
+
   return (
     <DashboardContainer>
       <div className="dashboard-dynamic">

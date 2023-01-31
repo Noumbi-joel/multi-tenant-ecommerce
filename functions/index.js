@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import {
   CLOSE_ALL_CAT_CHECKER,
   CLOSE_ALL_CHECKER,
@@ -16,7 +17,9 @@ import {
   SET_FILTER_CATEGORY,
   SET_FILTER_ORDER,
   SET_FILTER_PRODUCT,
+  USERS,
 } from "../constants";
+import firebase from "../firebase.config";
 
 // verify if email is valid or not
 export const validateEmail = (email) => {
@@ -144,4 +147,23 @@ export const handleDeleteAllItemsCat = (dispatch) => {
   dispatch({ type: DELETE_CAT_ITEMS });
   dispatch({ type: CLOSE_ALL_SELECTED_MODAL_CAT });
   dispatch({ type: CLOSE_ALL_CAT_CHECKER });
+};
+
+// verify if the user already has a business
+export const verifyBusiness = async (router) => {
+  const uid = firebase.auth().currentUser?.uid;
+
+  firebase
+    .firestore()
+    .collection(USERS)
+    .doc(uid)
+    .get()
+    .then((res) => {
+      if (res.data()?.noBusiness) {
+        return router.push("/businessInfo");
+      }
+    })
+    .catch((err) => {
+      return toast.error("An error occured: ", err.message);
+    });
 };

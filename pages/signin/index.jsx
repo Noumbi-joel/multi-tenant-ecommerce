@@ -65,7 +65,7 @@ const Login = () => {
                 color={COLORS.grayscale_900}
                 title="Log in to your account"
               />
-              <form onSubmit={handleSubmit} className="form-container">
+              <form className="form-container">
                 <InputField
                   label="Email"
                   type="email"
@@ -110,9 +110,13 @@ const Login = () => {
                   </span>
                 </div>
                 <Spacer y={1.2} />
-                <Button type="submit" className="app-btn">
-                  Log in
-                </Button>
+                <Button
+                  className="app-btn"
+                  titleType="lr"
+                  title="Log in"
+                  titleColor={COLORS.white}
+                  onClick={(e) => handleSubmit(e)}
+                />
                 <Spacer y={1.2} />
 
                 {/* Google Login */}

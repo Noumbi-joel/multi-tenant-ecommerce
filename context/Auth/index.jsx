@@ -95,7 +95,7 @@ export const AuthContextProvider = ({ children }) => {
               userEmail: res.user.email,
               noBusiness: true,
               createAt: new Date().toISOString(),
-              role: "admin"
+              role: "admin",
             });
           res.user.sendEmailVerification({
             url: "http://localhost:3000/signin",
@@ -124,7 +124,7 @@ export const AuthContextProvider = ({ children }) => {
             userEmail: res.user.email,
             noBusiness: true,
             createAt: new Date().toISOString(),
-            role: "admin"
+            role: "admin",
           });
           router.push("/businessInfo");
         }
@@ -178,7 +178,6 @@ export const AuthContextProvider = ({ children }) => {
       Cookies.get("noBusiness") === undefined ||
       Cookies.get("noBusiness") === null
     ) {
-      console.log("no cookie found looking in the db");
       firebase
         .firestore()
         .collection(USERS)
@@ -196,8 +195,26 @@ export const AuthContextProvider = ({ children }) => {
               .set({
                 storeId: uid + "/" + bName,
                 storeName: bName,
-                storeLink: bUrl,
+                storeTenant: bUrl,
+                storeFullLink: bUrl + ".myeduka.com",
                 storeCategory: bCategory,
+                storeSocialLinks: [],
+                storeProducts: [],
+                storeProductsCategories: [],
+                storeOrders: [],
+                storeCustomers: [],
+                storeDesc: "",
+                storeAddress: "",
+                storeCity: "",
+                storePostalCode: "",
+                storeState: "",
+                storeCountry: "",
+                storeFavicon: "",
+                storeBanner: "",
+                storeLogo: "",
+                storeBrand: "",
+                storePayments: [],
+                storeLegal: [],
                 createdAt: new Date().toISOString(),
               });
             firebase
@@ -218,7 +235,6 @@ export const AuthContextProvider = ({ children }) => {
     }
 
     if (Cookies.get("noBusiness") === "true") {
-      console.log("no business yet");
       Cookies.set("noBusiness", false, { expires: 365 });
       firebase
         .firestore()
@@ -229,8 +245,25 @@ export const AuthContextProvider = ({ children }) => {
         .set({
           storeId: uid + "/" + bName,
           storeName: bName,
-          storeLink: bUrl,
+          storeTenant: bUrl,
+          storeFullLink: bUrl + ".myeduka.com",
           storeCategory: bCategory,
+          storeSocialLinks: [],
+          storeProducts: [],
+          storeProductsCategories: [],
+          storeOrders: [],
+          storeCustomers: [],
+          storeDesc: "",
+          storeAddress: "",
+          storeCity: "",
+          storePostalCode: "",
+          storeState: "",
+          storeCountry: "",
+          storeFavicon: "",
+          storeLogo: "",
+          storeBrand: "",
+          storePayments: [],
+          storeLegal: [],
           createdAt: new Date().toISOString(),
         });
       firebase
@@ -241,10 +274,6 @@ export const AuthContextProvider = ({ children }) => {
         .then(() => router.push("/_sites/dashboard"))
         .catch((err) => toast.error(err.message));
       return;
-    }
-    if (Cookies.get("noBusiness") === "false") {
-      console.log("already have a business");
-      return toast.error("You can just manage one business for the moment");
     }
   };
 
