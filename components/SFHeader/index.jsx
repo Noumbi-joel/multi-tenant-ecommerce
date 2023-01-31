@@ -13,7 +13,7 @@ import { OPEN_CART_DRAWER, OPEN_DRAWER } from "../../constants";
 // comp
 import BodyText from "../BodyText";
 
-const SFHeader = ({ dispatch, router, checkout }) => {
+const SFHeader = ({ dispatch, router, checkout, storeName }) => {
   if (checkout) {
     return (
       <div>
@@ -31,23 +31,23 @@ const SFHeader = ({ dispatch, router, checkout }) => {
           type="lm"
           title="Shop"
           color={COLORS.grayscale_900}
-          onClick={() => router.push("/_sites/shop")}
+          onClick={() => router.push("/shop")}
         />
         <BodyText
           type="lm"
           title="About"
           color={COLORS.grayscale_900}
-          onClick={() => router.push("/_sites/about")}
+          onClick={() => router.push("/about")}
         />
         <BodyText
           type="lm"
           title="Contact"
           color={COLORS.grayscale_900}
-          onClick={() => router.push("/_sites/contact")}
+          onClick={() => router.push("/contact")}
         />
       </div>
-      <North />
-
+      {/* <North /> */}
+      <BodyText type="xlm" title={storeName} color="#000" />
       <div className="sf-socials-links">
         <Facebook className="sf-facebook" />
         <Instagram className="sf-instagram" />

@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect } from "react";
 import toast from "react-hot-toast";
 
 //firebase
@@ -10,11 +10,8 @@ import { STORES, USERS } from "../../constants";
 // functions
 import { validateEmail } from "../../functions";
 
-// cookies
-import Cookies from "js-cookie";
-
 import { useRouter } from "next/router";
-import axios from "axios";
+import { server } from "../../config";
 
 export const AuthContext = createContext({
   signin: async () => {},
@@ -27,15 +24,6 @@ export const AuthContext = createContext({
 
 export const AuthContextProvider = ({ children }) => {
   const router = useRouter();
-
-  useEffect(() => {
-    firebase.auth().onAuthStateChanged((user) => {
-      if (!user) {
-        return;
-      }
-      Cookies.set("user", "connected", { expires: 1 });
-    });
-  }, []);
 
   // sign in method for old user
   const signin = async (email, password) => {
@@ -56,11 +44,9 @@ export const AuthContextProvider = ({ children }) => {
           .get()
           .then((res) => {
             if (res.data()?.noBusiness) {
-              Cookies.set("noBusiness", true, { expires: 365 });
               router.push("/businessInfo");
             } else {
-              Cookies.set("noBusiness", false, { expires: 365 });
-              router.push("/_sites/dashboard");
+              console.log("You already have a store");
             }
           });
       },
@@ -84,7 +70,6 @@ export const AuthContextProvider = ({ children }) => {
       {
         loading: "Creating your account...",
         success: (res) => {
-          Cookies.set("noBusiness", true, { expires: 365 });
           firebase
             .firestore()
             .collection(USERS)
@@ -98,7 +83,7 @@ export const AuthContextProvider = ({ children }) => {
               role: "admin",
             });
           res.user.sendEmailVerification({
-            url: "http://localhost:3000/signin",
+            url: `${server}/signin`,
           });
           return "Verify the link sent to your email  | spam email";
         },
@@ -107,6 +92,7 @@ export const AuthContextProvider = ({ children }) => {
     );
   };
 
+  // sign in or sign up with google
   const googleLogin = async () => {
     const provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().useDeviceLanguage();
@@ -116,8 +102,6 @@ export const AuthContextProvider = ({ children }) => {
       .signInWithPopup(provider)
       .then((res) => {
         if (res.additionalUserInfo.isNewUser) {
-          console.log("new user");
-          Cookies.set("noBusiness", true, { expires: 365 });
           firebase.firestore().collection(USERS).doc(res.user.uid).set({
             userId: res.user.uid,
             userName: res.user.displayName,
@@ -136,11 +120,9 @@ export const AuthContextProvider = ({ children }) => {
             .get()
             .then((res) => {
               if (res.data()?.noBusiness) {
-                Cookies.set("noBusiness", true, { expires: 365 });
                 router.push("/businessInfo");
               } else {
-                Cookies.set("noBusiness", false, { expires: 365 });
-                router.push("/_sites/dashboard");
+               console.log("You already have a business")
               }
             });
         }
@@ -148,6 +130,7 @@ export const AuthContextProvider = ({ children }) => {
       .catch((err) => toast.error(err.message));
   };
 
+  // update your password
   const updatePassword = (closeModal, email) => {
     firebase
       .auth()
@@ -162,11 +145,10 @@ export const AuthContextProvider = ({ children }) => {
       });
   };
 
+  // logout
   const logout = async () => {
     try {
       await firebase.auth().signOut();
-      router.push("/signin");
-      Cookies.remove("user");
     } catch (error) {
       toast.error(error.message);
     }
@@ -174,107 +156,59 @@ export const AuthContextProvider = ({ children }) => {
 
   const saveBusiness = async ({ bName, bUrl, bCategory }) => {
     const uid = firebase.auth().currentUser.uid;
-    if (
-      Cookies.get("noBusiness") === undefined ||
-      Cookies.get("noBusiness") === null
-    ) {
-      firebase
-        .firestore()
-        .collection(USERS)
-        .doc(uid)
-        .get()
-        .then((res) => {
-          Cookies.set("noBusiness", false, { expires: 365 });
-          if (res.data()?.noBusiness) {
-            firebase
-              .firestore()
-              .collection(USERS)
-              .doc(uid)
-              .collection(STORES)
-              .doc(bName)
-              .set({
-                storeId: uid + "/" + bName,
-                storeName: bName,
-                storeTenant: bUrl,
-                storeFullLink: bUrl + ".myeduka.com",
-                storeCategory: bCategory,
-                storeSocialLinks: [],
-                storeProducts: [],
-                storeProductsCategories: [],
-                storeOrders: [],
-                storeCustomers: [],
-                storeDesc: "",
-                storeAddress: "",
-                storeCity: "",
-                storePostalCode: "",
-                storeState: "",
-                storeCountry: "",
-                storeFavicon: "",
-                storeBanner: "",
-                storeLogo: "",
-                storeBrand: "",
-                storePayments: [],
-                storeLegal: [],
-                createdAt: new Date().toISOString(),
-              });
-            firebase
-              .firestore()
-              .collection(USERS)
-              .doc(uid)
-              .update({ noBusiness: false })
-              .then(() => router.push("/_sites/dashboard"))
-              .catch((err) => toast.error(err.message));
-            return;
-          } else {
-            return toast.error(
-              "You can just manage one business for the moment"
-            );
-          }
-        })
-        .catch((e) => toast.error(e.message));
-    }
-
-    if (Cookies.get("noBusiness") === "true") {
-      Cookies.set("noBusiness", false, { expires: 365 });
-      firebase
-        .firestore()
-        .collection(USERS)
-        .doc(uid)
-        .collection(STORES)
-        .doc(bName)
-        .set({
-          storeId: uid + "/" + bName,
-          storeName: bName,
-          storeTenant: bUrl,
-          storeFullLink: bUrl + ".myeduka.com",
-          storeCategory: bCategory,
-          storeSocialLinks: [],
-          storeProducts: [],
-          storeProductsCategories: [],
-          storeOrders: [],
-          storeCustomers: [],
-          storeDesc: "",
-          storeAddress: "",
-          storeCity: "",
-          storePostalCode: "",
-          storeState: "",
-          storeCountry: "",
-          storeFavicon: "",
-          storeLogo: "",
-          storeBrand: "",
-          storePayments: [],
-          storeLegal: [],
-          createdAt: new Date().toISOString(),
-        });
-      firebase
-        .firestore()
-        .collection(USERS)
-        .doc(uid)
-        .update({ noBusiness: false })
-        .then(() => router.push("/_sites/dashboard"))
-        .catch((err) => toast.error(err.message));
-      return;
-    }
+    firebase
+      .firestore()
+      .collection(USERS)
+      .doc(uid)
+      .get()
+      .then((res) => {
+        if (res.data()?.noBusiness) {
+          firebase
+            .firestore()
+            .collection(USERS)
+            .doc(uid)
+            .collection(STORES)
+            .doc(bName)
+            .set({
+              storeId: uid + "/" + bName,
+              storeName: bName,
+              storeTenant: bUrl,
+              storeFullLink: bUrl + ".myeduka.com",
+              storeCategory: bCategory,
+              storeSocialLinks: [],
+              storeProducts: [],
+              storeProductsCategories: [],
+              storeOrders: [],
+              storeCustomers: [],
+              storeDesc: "",
+              storeAddress: "",
+              storeCity: "",
+              storePostalCode: "",
+              storeState: "",
+              storeCountry: "",
+              storeFavicon: "",
+              storeBanner: "",
+              storeLogo: "",
+              storeBrand: "",
+              storePayments: [],
+              storeLegal: [],
+              createdAt: new Date().toISOString(),
+            });
+          firebase
+            .firestore()
+            .collection(USERS)
+            .doc(uid)
+            .update({ noBusiness: false })
+            .then(() =>
+              toast.success("Store link: " + bUrl + ".localhost:3000")
+            )
+            .catch((err) => toast.error(err.message));
+          return;
+        } else {
+          toast.error("You already have a store");
+        }
+      })
+      .catch((e) => toast.error(e.message));
   };
 
   const value = {

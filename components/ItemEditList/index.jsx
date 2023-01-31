@@ -22,7 +22,7 @@ const ItemEditList = ({ data, item, cat }) => {
 
   const handleClick = (a) => {
     if (a.id === 1) {
-      return router.push("/_sites/dashboard/products/create");
+      return router.push("/dashboard/products/create");
     }
     if (a.id === 2) {
       dispatch({ type: HANDLE_MODAL_VISIBLE, payload: item.id });
@@ -38,7 +38,7 @@ const ItemEditList = ({ data, item, cat }) => {
 
   const handleClickCat = (a) => {
     if (a.id === 1) {
-      return router.push("/_sites/dashboard/categories/create");
+      return router.push("/dashboard/categories/create");
     }
 
     if (a.id === 2) {

@@ -25,8 +25,8 @@ const Box = ({ title, amount, type, form, router }) => {
               style={{ marginRight: 10 }}
               onClick={
                 title === "TOP CUSTOMERS"
-                  ? () => router.push("/_sites/dashboard/customers")
-                  : () => router.push("/_sites/dashboard/products")
+                  ? () => router.push("/dashboard/customers")
+                  : () => router.push("/dashboard/products")
               }
             />
             <RightArrowSm aria-label="right arrow" />

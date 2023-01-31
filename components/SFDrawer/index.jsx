@@ -133,19 +133,19 @@ const SFDrawer = ({ drawerVisible, dispatch, type, router }) => {
             type="mm"
             title="Shop"
             color={COLORS.grayscale_900}
-            onClick={() => router.push("/_sites/shop")}
+            onClick={() => router.push("/shop")}
           />
           <BodyText
             type="mm"
             title="About"
             color={COLORS.grayscale_900}
-            onClick={() => router.push("/_sites/about")}
+            onClick={() => router.push("/about")}
           />
           <BodyText
             type="mm"
             title="Contact"
             color={COLORS.grayscale_900}
-            onClick={() => router.push("/_sites/contact")}
+            onClick={() => router.push("/contact")}
           />
         </div>
         <div>

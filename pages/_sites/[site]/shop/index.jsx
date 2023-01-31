@@ -3,8 +3,8 @@ import React from "react";
 // assets
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
-import { COLORS } from "../../../assets/colors";
-import Filters from "../../../public/Filters.svg";
+import { COLORS } from "../../../../assets/colors";
+import Filters from "../../../../public/Filters.svg";
 
 // comp
 import {
@@ -15,10 +15,10 @@ import {
   SFFilters,
   SFListNewCollection,
   SFFooter,
-} from "../../../components";
+} from "../../../../components";
 import { Divider, Spacer } from "@nextui-org/react";
-import { SF_PRODUCTS } from "../../../helpers";
-import { OPEN_FILTER_DRAWER } from "../../../constants";
+import { SF_PRODUCTS } from "../../../../helpers";
+import { OPEN_FILTER_DRAWER } from "../../../../constants";
 
 const Shop = () => {
   const router = useRouter();

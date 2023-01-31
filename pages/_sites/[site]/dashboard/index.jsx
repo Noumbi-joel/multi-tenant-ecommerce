@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, {  useState } from "react";
 
 // comp
 import {
@@ -6,12 +6,11 @@ import {
   DashboardContainer,
   HelpCenter,
   PageDescription,
-} from "../../../components";
+} from "../../../../components";
 import { Spacer } from "@nextui-org/react";
 
 // assets
 import { useRouter } from "next/router";
-import { verifyBusiness } from "../../../functions";
 
 const Dashboard = () => {
   const [helperVisible, setHelperVisible] = useState(true);

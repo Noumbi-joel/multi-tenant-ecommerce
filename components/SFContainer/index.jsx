@@ -5,12 +5,14 @@ import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { SFHeader } from "..";
 
-const SFContainer = ({ children, fluid }) => {
+const SFContainer = ({ children, fluid, storeName }) => {
   const router = useRouter();
   const dispatch = useDispatch();
   return (
     <div className={fluid ? "SFContainer-fluid" : "SFContainer"}>
-      {!fluid && <SFHeader router={router} dispatch={dispatch} />}
+      {!fluid && (
+        <SFHeader storeName={storeName} router={router} dispatch={dispatch} />
+      )}
       {children}
     </div>
   );

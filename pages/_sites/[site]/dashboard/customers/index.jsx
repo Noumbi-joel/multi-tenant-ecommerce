@@ -11,8 +11,8 @@ import {
   PageDescription,
   SearchFilter,
   Table,
-} from "../../../../components";
-import { searchFilterName } from "../../../../functions";
+} from "../../../../../components";
+import { searchFilterName } from "../../../../../functions";
 
 const Customers = () => {
   const { filteredCustomers, customers } = useSelector(
@@ -51,7 +51,7 @@ const Customers = () => {
               emptyConcern="customers"
               msg="Create a product to get orders from customers in your store"
               btnTitle="Add products"
-              link="/_sites/dashboard/products/create"
+              link="/dashboard/products/create"
             />
           )}
           {filteredCustomers.length > 0 && (

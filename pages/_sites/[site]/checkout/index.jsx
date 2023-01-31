@@ -12,15 +12,15 @@ import {
   SFDrawerContainer,
   SFHeader,
   SFHistory,
-} from "../../../components";
+} from "../../../../components";
 
 // assets
-import ArrowLeft from "../../../public/arrow-left.svg";
-import Panier from "../../../public/panier.svg";
-import ArrowUp from "../../../public/ArrowUp.svg";
-import ArrowDown from "../../../public/ArrowDown.svg";
-import { COLORS } from "../../../assets/colors";
-import { SF_HISTORY } from "../../../helpers";
+import ArrowLeft from "../../../../public/arrow-left.svg";
+import Panier from "../../../../public/panier.svg";
+import ArrowUp from "../../../../public/ArrowUp.svg";
+import ArrowDown from "../../../../public/ArrowDown.svg";
+import { COLORS } from "../../../../assets/colors";
+import { SF_HISTORY } from "../../../../helpers";
 
 const Checkout = () => {
   const [open, setOpen] = useState(true);

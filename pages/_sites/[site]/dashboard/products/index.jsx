@@ -12,20 +12,20 @@ import {
   ProductList,
   SearchFilter,
   Table,
-} from "../../../../components";
+} from "../../../../../components";
 
 // redux
 import { useDispatch, useSelector } from "react-redux";
 
 // assets
-import { COLORS } from "../../../../assets/colors";
-import Plus from "../../../../public/plus.svg";
-import Trash from "../../../../public/trash.svg";
+import { COLORS } from "../../../../../assets/colors";
+import Plus from "../../../../../public/plus.svg";
+import Trash from "../../../../../public/trash.svg";
 import {
   CLOSE_ALL_SELECTED_MODAL,
   CLOSE_SINGLE_MODAL,
   DELETE_ITEM,
-} from "../../../../constants";
+} from "../../../../../constants";
 
 // functions
 import {
@@ -33,7 +33,7 @@ import {
   handleDeleteItems,
   handleDiscard,
   searchFilter,
-} from "../../../../functions";
+} from "../../../../../functions";
 
 const Products = () => {
   const [search, setSearch] = useState("");
@@ -92,7 +92,7 @@ const Products = () => {
             {itemsSelected.length <= 0 && (
               <Button
                 className="create-prod"
-                onClick={() => router.push("/_sites/dashboard/products/create")}
+                onClick={() => router.push("/dashboard/products/create")}
                 title="Create product"
                 titleColor={COLORS.white}
                 titleType="lr"
@@ -152,7 +152,7 @@ const Products = () => {
               emptyConcern="products"
               msg="Create a product to start receiving orders in your store"
               btnTitle="Add products"
-              link="/_sites/dashboard/products/create"
+              link="/dashboard/products/create"
             />
           )}
 

@@ -10,20 +10,19 @@ import {
   HeadingText,
   Modal,
   SearchFilter,
-  Table,
-} from "../../../../components";
+} from "../../../../../components";
 
 // functions
 import {
   handleDeleteAllItemsCat,
   handleDiscardCat,
   searchFilter,
-} from "../../../../functions";
+} from "../../../../../functions";
 
 // assets
-import { COLORS } from "../../../../assets/colors";
-import Plus from "../../../../public/plus.svg";
-import Trash from "../../../../public/trash.svg";
+import { COLORS } from "../../../../../assets/colors";
+import Plus from "../../../../../public/plus.svg";
+import Trash from "../../../../../public/trash.svg";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -31,7 +30,7 @@ import {
   DELETE_CAT_ITEM,
   CLOSE_SINGLE_MODAL_CAT,
   OPEN_MODAL_ALL_ITEMS_CAT,
-} from "../../../../constants";
+} from "../../../../../constants";
 import { Spacer } from "@nextui-org/react";
 
 const Categories = () => {
@@ -95,7 +94,7 @@ const Categories = () => {
                 titleColor={COLORS.white}
                 style={{ backgroundColor: COLORS.primary_base }}
                 onClick={() =>
-                  router.push("/_sites/dashboard/categories/create")
+                  router.push("/dashboard/categories/create")
                 }
               >
                 <Plus aria-label="plus" className="plus" />
@@ -153,7 +152,7 @@ const Categories = () => {
               emptyConcern="categories"
               msg="Create categories to group similar products in your store."
               btnTitle="Add collection"
-              link="/_sites/dashboard/product/create"
+              link="/dashboard/product/create"
             />
           ) : (
             <div>

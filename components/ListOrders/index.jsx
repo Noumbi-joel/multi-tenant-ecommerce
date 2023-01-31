@@ -38,7 +38,7 @@ const ListOrders = ({ data, dataHeaders, checkboxTitle, router }) => {
         {data.map((order) => (
           <tr
             key={order.id}
-            onClick={() => router.push("/_sites/dashboard/orders/orderDetails")}
+            onClick={() => router.push("/dashboard/orders/orderDetails")}
           >
             <td>
               <BodyText

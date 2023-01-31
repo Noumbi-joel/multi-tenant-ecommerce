@@ -11,17 +11,16 @@ import {
   Select,
   Button,
   SFListNewCollection,
-} from "../../../../components";
+} from "../../../../../components";
 import { Divider, Spacer } from "@nextui-org/react";
 
 // assets
-import { COLORS } from "../../../../assets/colors";
+import { COLORS } from "../../../../../assets/colors";
 import {
   PRODUCTS,
-  SF_CATEGORIES,
   SF_COLORS,
   SF_SIZES,
-} from "../../../../helpers";
+} from "../../../../../helpers";
 import { useRouter } from "next/router";
 
 const SFShopDetails = () => {
@@ -88,7 +87,7 @@ const SFShopDetails = () => {
                 titleType="lr"
                 titleColor={COLORS.white}
                 title="Add to cart"
-                onClick={() => router.push("/_sites/checkout")}
+                onClick={() => router.push("/checkout")}
                 className="sf-addToCart"
               />
             </div>

@@ -9,15 +9,15 @@ import {
   InputField,
   Modal,
   TipTap,
-} from "../../../../../components";
+} from "../../../../../../components";
 import { Checkbox, Divider, Spacer } from "@nextui-org/react";
 
 // assets
-import { COLORS } from "../../../../../assets/colors";
+import { COLORS } from "../../../../../../assets/colors";
 import { FormControl, MenuItem, Select } from "@mui/material";
-import PurplePlus from "../../../../../public/purple-plus.svg";
-import Trash from "../../../../../public/covered-trash.svg";
-import FileContainer from "../../../../../components/FileContainer";
+import PurplePlus from "../../../../../../public/purple-plus.svg";
+import Trash from "../../../../../../public/covered-trash.svg";
+import FileContainer from "../../../../../../components/FileContainer";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 
@@ -55,7 +55,7 @@ const Products = () => {
     <DashboardContainer>
       <Modal
         closeModal={() => {
-          router.push("/_sites/dashboard/products");
+          router.push("/dashboard/products");
           setModalVisible(false);
         }}
         visible={modalVisible}

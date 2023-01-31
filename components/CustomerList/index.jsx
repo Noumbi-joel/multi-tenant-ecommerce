@@ -14,7 +14,7 @@ const CustomerList = ({
   tableHeaderTwo,
 }) => {
   const handleClick = () => {
-    return router.push(`/_sites/dashboard/customers/customerDetails`);
+    return router.push(`/dashboard/customers/customerDetails`);
   };
   return (
     <div>
