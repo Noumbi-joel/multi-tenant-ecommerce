@@ -15,7 +15,7 @@ const SFListNewCollection = ({ data, btnTitleList, router }) => {
               src={item.image}
               alt={item.title}
               className="sf-list-collection-image"
-              onClick={() => router.push("/shop/details")}
+              onClick={() => router.push(`/shop/${item.id}`)}
             />
             <BodyText type="mr" title={item.title} color="#121212" />
             <BodyText type="lm" title={"FCFA " + item.price} color="#121212" />
@@ -43,5 +43,3 @@ const SFListNewCollection = ({ data, btnTitleList, router }) => {
 };
 
 export default SFListNewCollection;
-
-/**sx={{ bgcolor: "red" }} */

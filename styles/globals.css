@@ -1687,7 +1687,7 @@ tr {
 }
 
 .sf-img-details-full {
-  width: 100%;
+  width: 1000px;
   height: 100%;
   object-fit: cover;
 }

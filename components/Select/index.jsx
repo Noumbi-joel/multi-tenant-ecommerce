@@ -8,9 +8,9 @@ const Select = ({ onChange, lang, name, type, className, data }) => {
     return (
       <div>
         <select className={className} name={name} onChange={onChange} required>
-          {data.map((v) => (
-            <option key={v.id} value={v.title}>
-              {v.title}
+          {data.map((v, i) => (
+            <option key={i} value={v}>
+              {v}
             </option>
           ))}
         </select>

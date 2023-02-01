@@ -10,10 +10,15 @@ const SFDrawerContainer = ({ children, router }) => {
   const { drawerVisible, filterDrawerVisible, cartDrawerVisible } = useSelector(
     (state) => state.modal
   );
+  const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   return (
     <div className="sf-container">
-      <SFDrawer dispatch={dispatch} drawerVisible={drawerVisible} router={router} />
+      <SFDrawer
+        dispatch={dispatch}
+        drawerVisible={drawerVisible}
+        router={router}
+      />
       <SFDrawer
         type="filters"
         dispatch={dispatch}
@@ -25,6 +30,7 @@ const SFDrawerContainer = ({ children, router }) => {
         dispatch={dispatch}
         drawerVisible={cartDrawerVisible}
         router={router}
+        cart={cart}
       />
       {children}
     </div>

@@ -20,7 +20,7 @@ import { Divider, Spacer } from "@nextui-org/react";
 import { SF_PRODUCTS } from "../../../../helpers";
 import { OPEN_FILTER_DRAWER } from "../../../../constants";
 
-const Shop = () => {
+const Shop = ({ products }) => {
   const router = useRouter();
   const dispatch = useDispatch();
   return (
@@ -45,13 +45,13 @@ const Shop = () => {
           <SFFilters />
           <BodyText
             type="mr"
-            title="32 products"
+            title={`${products?.data?.length} products`}
             color={COLORS.grayscale_900}
           />
         </div>
         <SFListNewCollection
           router={router}
-          data={SF_PRODUCTS}
+          data={products?.data}
           btnTitleList="Load more"
         />
       </SFContainer>
@@ -62,3 +62,12 @@ const Shop = () => {
 };
 
 export default Shop;
+
+export const getServerSideProps = async (context) => {
+  const res = await fetch(`http://localhost:4000/sf-products`);
+  const data = await res.json();
+  const products = data?.find((p) => p.tenant === context.params.site);
+  return {
+    props: { products },
+  };
+};

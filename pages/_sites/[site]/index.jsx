@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 // comp
 import {
@@ -12,11 +12,10 @@ import {
 import { Spacer } from "@nextui-org/react";
 
 // assets
-import { SF_PRODUCTS } from "../../../helpers";
 import { useRouter } from "next/router";
 import { server } from "../../../config";
 
-const StoreFront = ({ project }) => {
+const StoreFront = ({ project, products }) => {
   const router = useRouter();
   return (
     <SFDrawerContainer router={router}>
@@ -26,7 +25,7 @@ const StoreFront = ({ project }) => {
         <SFNewCollection
           collectionTitle="New and stylish collection"
           collectionMsg="North's new & stylish collections are dedicated to reinvent onself, to walk the fine line between urban and wilderness, and to discover luxurious bliss in life."
-          data={SF_PRODUCTS.slice(0, 8)}
+          data={products?.data?.slice(0, 8)}
           router={router}
         />
       </SFContainer>
@@ -45,13 +44,19 @@ export const getStaticProps = async (context) => {
     (p) => p.storeTenant === context.params.site
   );
 
+  const prodRes = await fetch(`http://localhost:4000/sf-products`);
+  const prodData = await prodRes.json();
+  const products = prodData?.find(
+    (p) => p.id === project?.storeId.split("/")[0]
+  );
+
   if (!project) {
     return {
       notFound: true,
     };
   }
   return {
-    props: { project },
+    props: { project, products },
   };
 };
 
@@ -62,7 +67,6 @@ export async function getStaticPaths() {
   for (let i = 0; i < data?.data?.length; i++) {
     paths.push({ params: { site: data?.data[i]?.storeTenant } });
   }
-  console.log(paths);
   return {
     paths: paths,
     fallback: "blocking",

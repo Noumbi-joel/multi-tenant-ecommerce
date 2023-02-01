@@ -1,5 +1,5 @@
 import { Divider, Spacer } from "@nextui-org/react";
-import React, { useState } from "react";
+import React from "react";
 
 // comp
 import { BodyText, Button, Empty, Select } from "..";
@@ -18,15 +18,12 @@ import Instagram from "../../public/instagram.svg";
 import Twitter from "../../public/twitter.svg";
 import SFCart from "../SFCart";
 
-const SFDrawer = ({ drawerVisible, dispatch, type, router }) => {
-  const [empty, setEmpty] = useState(false);
+const SFDrawer = ({ drawerVisible, dispatch, type, router, cart }) => {
   if (type === "cart") {
     return (
       <div className={drawerVisible ? "sf-drawer-cart-anim" : "sf-drawer-cart"}>
-        {empty ? (
+        {cart?.cartItems?.length <= 0 ? (
           <Empty
-            setEmpty={setEmpty}
-            empty={empty}
             dispatch={dispatch}
             type="cart"
           />

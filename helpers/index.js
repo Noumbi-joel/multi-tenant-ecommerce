@@ -540,20 +540,113 @@ export const PAYMENTS = [
 // STORE FRONT
 
 export const SF_PRODUCTS = [
-  { id: 1, image: "https://assets.vogue.com/photos/6356dcf58e93a0413a14f9f1/4:3/w_1600%2Cc_limit/00018-chanel-spring-2023-ready-t.jpeg", title: "Small Convertible Flex Bag", price: "320,000" },
-  { id: 2, image: "https://assets.vogue.com/photos/6356dcf58e93a0413a14f9f1/4:3/w_1600%2Cc_limit/00018-chanel-spring-2023-ready-t.jpeg", title: "Small Convertible Flex Bag", price: "320,000" },
-  { id: 3, image: "https://assets.vogue.com/photos/6356dcf58e93a0413a14f9f1/4:3/w_1600%2Cc_limit/00018-chanel-spring-2023-ready-t.jpeg", title: "Small Convertible Flex Bag", price: "320,000" },
-  { id: 4, image: "https://assets.vogue.com/photos/6356dcf58e93a0413a14f9f1/4:3/w_1600%2Cc_limit/00018-chanel-spring-2023-ready-t.jpeg", title: "Small Convertible Flex Bag", price: "320,000" },
-  { id: 5, image: "https://assets.vogue.com/photos/6356dcf58e93a0413a14f9f1/4:3/w_1600%2Cc_limit/00018-chanel-spring-2023-ready-t.jpeg", title: "Small Convertible Flex Bag", price: "320,000" },
-  { id: 6, image: "https://assets.vogue.com/photos/6356dcf58e93a0413a14f9f1/4:3/w_1600%2Cc_limit/00018-chanel-spring-2023-ready-t.jpeg", title: "Small Convertible Flex Bag", price: "320,000" },
-  { id: 7, image: "https://assets.vogue.com/photos/6356dcf58e93a0413a14f9f1/4:3/w_1600%2Cc_limit/00018-chanel-spring-2023-ready-t.jpeg", title: "Small Convertible Flex Bag", price: "320,000" },
-  { id: 8, image: "https://assets.vogue.com/photos/6356dcf58e93a0413a14f9f1/4:3/w_1600%2Cc_limit/00018-chanel-spring-2023-ready-t.jpeg", title: "Small Convertible Flex Bag", price: "320,000" },
-  { id: 9, image: "https://assets.vogue.com/photos/6356dcf58e93a0413a14f9f1/4:3/w_1600%2Cc_limit/00018-chanel-spring-2023-ready-t.jpeg", title: "Small Convertible Flex Bag", price: "320,000" },
-  { id: 10, image: "https://assets.vogue.com/photos/6356dcf58e93a0413a14f9f1/4:3/w_1600%2Cc_limit/00018-chanel-spring-2023-ready-t.jpeg", title: "Small Convertible Flex Bag", price: "320,000" },
-  { id: 11, image: "https://assets.vogue.com/photos/6356dcf58e93a0413a14f9f1/4:3/w_1600%2Cc_limit/00018-chanel-spring-2023-ready-t.jpeg", title: "Small Convertible Flex Bag", price: "320,000" },
-  { id: 12, image: "https://assets.vogue.com/photos/6356dcf58e93a0413a14f9f1/4:3/w_1600%2Cc_limit/00018-chanel-spring-2023-ready-t.jpeg", title: "Small Convertible Flex Bag", price: "320,000" },
-];
+  {
+    id: 1,
+    image:
+      "https://assets.vogue.com/photos/6356dcf58e93a0413a14f9f1/4:3/w_1600%2Cc_limit/00018-chanel-spring-2023-ready-t.jpeg",
+    images: [],
+    title: "Small Convertible Flex Bag",
+    price: "320,000",
+  },
+  {
+    id: 2,
+    image:
+      "https://i0.wp.com/prog.world/wp-content/uploads/2021/05/4a7e68c6e9efd6ef1d8ec0fcb3797111.jpg?fit=1920%2C1279&ssl=1",
+    images: [],
 
+    title: "Flex Bag",
+    price: "5,000",
+  },
+  {
+    id: 3,
+    image: "https://i.ebayimg.com/images/g/fnEAAOSw3QldTh1C/s-l1600.jpg",
+    images: [],
+
+    title: "Billy Jeans DVD",
+    price: "1,000",
+  },
+  {
+    id: 4,
+    image:
+      "https://thumbs.dreamstime.com/b/wardrobe-cute-baby-clothes-home-stuff-133409491.jpg",
+    images: [],
+
+    title: "Wardrobe Baby",
+    price: "100,000",
+  },
+  {
+    id: 5,
+    image:
+      "https://andscape.com/wp-content/uploads/2021/07/74876E_LS_4-e1626124022792.jpg?w=700",
+    images: [],
+
+    title: "Nba Ball",
+    price: "15,000",
+  },
+  {
+    id: 6,
+    image:
+      "https://m.media-amazon.com/images/I/A13usaonutL._CLa%7C2140%2C2000%7C51MGxAYx-9L.png%7C0%2C0%2C2140%2C2000%2B0.0%2C0.0%2C2140.0%2C2000.0_AC_SL1500_.png",
+    images: [],
+
+    title: "Vogue T-shirt",
+    price: "4,000",
+  },
+  {
+    id: 7,
+    image:
+      "https://thumbs.dreamstime.com/b/woman-louis-vuitton-bag-chanel-scarf-fendi-fashion-show-milan-week-italy-september-street-style-194224047.jpg",
+    images: [],
+
+    title: "LV Bag",
+    price: "80,000",
+  },
+  {
+    id: 8,
+    image:
+      "http://cdn.shopify.com/s/files/1/1288/9423/products/IMG_20210527_164012_1024x1024.jpg?v=1622207585",
+    images: [],
+
+    title: "Givenchi watch",
+    price: "54,000",
+  },
+  {
+    id: 9,
+    image:
+      "https://www.apple.com/v/apple-watch-se/i/images/overview/hero/hero__fmx18j9bq0ya_large.jpg",
+    images: [],
+
+    title: "Apple Watch",
+    price: "39,000",
+  },
+  {
+    id: 10,
+    image:
+      "https://cdn.luxe.digital/media/2019/09/12091012/most-expensive-rolex-pearlmaster-luxe-digital.jpg",
+    images: [],
+
+    title: "Rolex Watch Diamonds",
+    price: "500,000",
+  },
+  {
+    id: 11,
+    image:
+      "https://images.lifestyleasia.com/wp-content/uploads/2019/12/11001946/Richard_Mille_Tourbillon-RM-56-02-Sapphire-front_LG-e1576004009721.jpg?tr=w-1200,h-900",
+    images: [],
+
+    title: "Rich mill Watch Tourbillon",
+    price: "1000,000",
+  },
+  {
+    id: 12,
+    image:
+      "http://cdn.shopify.com/s/files/1/0599/5941/0859/products/air-jordan-1-mid-light-smoke-grey-BL542.1_1200x1200.png?v=1643209037",
+    images: [],
+
+    title: "Nike & Jordan 1996",
+    price: "100,000",
+  },
+];
 
 export const SF_AVAILABILITIES = [
   { id: 1, title: "Availability" },
@@ -562,46 +655,29 @@ export const SF_AVAILABILITIES = [
   { id: 4, title: "Availability" },
 ];
 
-export const SF_CATEGORIES = [
-  { id: 1, title: "Category" },
-  { id: 2, title: "Category" },
-  { id: 3, title: "Category" },
-  { id: 4, title: "Category" },
-];
+export const SF_CATEGORIES = ["Category", "Category", "Category", "Category"];
 
-export const SF_PRICE = [
-  { id: 1, title: "Price" },
-  { id: 2, title: "Price" },
-  { id: 3, title: "Price" },
-  { id: 4, title: "Price" },
-];
+export const SF_PRICE = ["Price", "Price", "Price", "Price"];
 
-export const SF_COLOR = [
-  { id: 1, title: "Color" },
-  { id: 2, title: "Color" },
-  { id: 3, title: "Color" },
-  { id: 4, title: "Color" },
-];
+export const SF_COLOR = ["Color", "Color", "Color", "Color"];
 
-export const SF_SORT = [
-  { id: 1, title: "Sort" },
-  { id: 2, title: "Sort" },
-  { id: 3, title: "Sort" },
-  { id: 4, title: "Sort" },
-];
+export const SF_SORT = ["Sort", "Sort", "Sort", "Sort"];
 
 export const SF_COLORS = [
-  { id: 1, title: "Color" },
-  { id: 2, title: "Color" },
-  { id: 3, title: "Color" },
-  { id: 4, title: "Color" },
+  { id: 1, title: "Green" },
+  { id: 2, title: "Red" },
+  { id: 3, title: "Yellow" },
+  { id: 4, title: "Dark" },
 ];
 
 export const SF_SIZES = [
-  { id: 1, title: "Size" },
-  { id: 2, title: "Size" },
-  { id: 3, title: "Size" },
-  { id: 4, title: "Size" },
+  { id: 1, title: "XXS" },
+  { id: 2, title: "XS" },
+  { id: 3, title: "S" },
+  { id: 4, title: "M" },
+  { id: 5, title: "L" },
+  { id: 6, title: "XL" },
+  { id: 7, title: "XXl" },
 ];
 
 export const SF_HISTORY = [
@@ -609,4 +685,11 @@ export const SF_HISTORY = [
   { id: 2, title: "Information" },
   { id: 3, title: "Shipping" },
   { id: 4, title: "Payment" },
+];
+
+export const SF_PROD_IMG_DETAILS = [
+  "https://media.istockphoto.com/id/1294339577/fr/photo/jeune-belle-femme.jpg?s=612x612&w=0&k=20&c=MFJMOH8nzBDZcfi5Q9P6nc1hZNo5_cy0uT-s5xUzzyA=",
+  "https://media.istockphoto.com/id/1294339577/fr/photo/jeune-belle-femme.jpg?s=612x612&w=0&k=20&c=MFJMOH8nzBDZcfi5Q9P6nc1hZNo5_cy0uT-s5xUzzyA=",
+  "https://media.istockphoto.com/id/1294339577/fr/photo/jeune-belle-femme.jpg?s=612x612&w=0&k=20&c=MFJMOH8nzBDZcfi5Q9P6nc1hZNo5_cy0uT-s5xUzzyA=",
+  "https://media.istockphoto.com/id/1294339577/fr/photo/jeune-belle-femme.jpg?s=612x612&w=0&k=20&c=MFJMOH8nzBDZcfi5Q9P6nc1hZNo5_cy0uT-s5xUzzyA=",
 ];

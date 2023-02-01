@@ -13,16 +13,7 @@ import Link from "next/link";
 import { Spacer } from "@nextui-org/react";
 import { CLOSE_CART_DRAWER } from "../../constants";
 
-const Empty = ({
-  emptyConcern,
-  msg,
-  btnTitle,
-  link,
-  type,
-  setEmpty,
-  dispatch,
-  empty,
-}) => {
+const Empty = ({ emptyConcern, msg, btnTitle, link, type, dispatch }) => {
   if (type === "cart") {
     return (
       <div
@@ -33,12 +24,7 @@ const Empty = ({
         }}
       >
         <div className="sf-drawer-row-cart">
-          <BodyText
-            type="mm"
-            title="Cart"
-            color={COLORS.grayscale_900}
-            onClick={() => setEmpty(!empty)}
-          />
+          <BodyText type="mm" title="Cart" color={COLORS.grayscale_900} />
           <Cross onClick={() => dispatch({ type: CLOSE_CART_DRAWER })} />
         </div>
         <div className="sf-cart-empty">
