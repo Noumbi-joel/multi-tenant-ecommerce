@@ -95,7 +95,11 @@ const SFShopDetails = ({ foundProduct, products }) => {
               />
             </div>
             <Spacer />
-            <BodyText type="lr" title={foundProduct?.description} color="#121212" />
+            <BodyText
+              type="lr"
+              title={foundProduct?.description}
+              color="#121212"
+            />
           </form>
         </div>
 
@@ -126,6 +130,13 @@ export const getStaticProps = async ({ params: { prodId, site } }) => {
   const data = await res.json();
   const products = data?.find((p) => p.tenant === site);
   const foundProduct = products?.data?.find((p) => p.id === +prodId);
+
+  if (!foundProduct) {
+    return {
+      notFound: true,
+    };
+  }
+
   return {
     props: { foundProduct, products },
   };
