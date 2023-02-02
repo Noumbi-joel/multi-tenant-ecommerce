@@ -2,17 +2,43 @@ import React from "react";
 
 // assets
 import { useRouter } from "next/router";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { SFHeader } from "..";
 
-const SFContainer = ({ children, fluid, storeName }) => {
+const SFContainer = ({ children, fluid, storeName, shop }) => {
   const router = useRouter();
   const dispatch = useDispatch();
+  const { cartItems } = useSelector((state) => state.cart);
+
+  if (shop) {
+    return <div className="SFContainer-shop">{children}</div>;
+  }
+
+  if (fluid) {
+    return (
+      <div className="SFContainer-fluid">
+        <SFHeader
+          storeName={storeName}
+          router={router}
+          dispatch={dispatch}
+          cartNb={cartItems.length}
+          checkout
+        />
+
+        {children}
+      </div>
+    );
+  }
+
   return (
-    <div className={fluid ? "SFContainer-fluid" : "SFContainer"}>
-      {!fluid && (
-        <SFHeader storeName={storeName} router={router} dispatch={dispatch} />
-      )}
+    <div className="SFContainer">
+      <SFHeader
+        storeName={storeName}
+        router={router}
+        dispatch={dispatch}
+        cartNb={cartItems.length}
+      />
+
       {children}
     </div>
   );

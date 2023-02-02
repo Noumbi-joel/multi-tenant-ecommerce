@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 // comp
 import {
@@ -17,29 +17,37 @@ import { Divider, Spacer } from "@nextui-org/react";
 
 // assets
 import { COLORS } from "../../../../../assets/colors";
-import {
-  PRODUCTS,
-  SF_COLORS,
-  SF_PROD_IMG_DETAILS,
-  SF_SIZES,
-} from "../../../../../helpers";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 
-import { SET_CART_QTY } from "../../../../../constants";
+import {
+  ADD_TO_CART,
+  SET_CART_COLOR,
+  SET_CART_QTY,
+  SET_CART_SIZE,
+} from "../../../../../constants";
 import { server } from "../../../../../config";
+import toast from "react-hot-toast";
 
 const SFShopDetails = ({ foundProduct, products }) => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { cartItems, showCart, totalQuantities, qty } = useSelector(
+  const { cartItems, totalQuantities, qty, size, color } = useSelector(
     (state) => state.cart
   );
+
+  const handleSubmit = () => {
+    if (!size || !color) {
+      return toast.error("Please choose a color and size");
+    }
+    dispatch({ type: ADD_TO_CART, payload: foundProduct });
+  };
+
   return (
     <SFDrawerContainer>
       <SFContainer />
       <Divider className="sf-divider" />
-      <SFContainer fluid>
+      <SFContainer shop>
         <SFSectionTexts
           title={foundProduct?.title}
           msg={`Home / Shop / ${foundProduct?.category} / ${foundProduct?.title}`}
@@ -62,7 +70,9 @@ const SFShopDetails = ({ foundProduct, products }) => {
                 type="sf-select"
                 data={foundProduct?.colors}
                 className="sf-select-filter-drawer"
-                onChange={(e) => console.log(e.target.value)}
+                onChange={(e) =>
+                  dispatch({ type: SET_CART_COLOR, payload: e.target.value })
+                }
               />
             )}
 
@@ -72,7 +82,9 @@ const SFShopDetails = ({ foundProduct, products }) => {
                 type="sf-select"
                 data={foundProduct?.sizes}
                 className="sf-select-filter-drawer"
-                onChange={(e) => console.log(e.target.value)}
+                onChange={(e) =>
+                  dispatch({ type: SET_CART_SIZE, payload: e.target.value })
+                }
               />
             )}
             <Spacer />
@@ -82,7 +94,7 @@ const SFShopDetails = ({ foundProduct, products }) => {
                 min="0"
                 value={qty}
                 onChange={(e) =>
-                  dispatch({ type: SET_CART_QTY, payload: e.target.value })
+                  dispatch({ type: SET_CART_QTY, payload: +e.target.value })
                 }
                 className="sf-form-nbItem"
               />
@@ -90,7 +102,7 @@ const SFShopDetails = ({ foundProduct, products }) => {
                 titleType="lr"
                 titleColor={COLORS.white}
                 title="Add to cart"
-                onClick={() => router.push("/checkout")}
+                onClick={handleSubmit}
                 className="sf-addToCart"
               />
             </div>
@@ -130,6 +142,7 @@ export const getStaticProps = async ({ params: { prodId, site } }) => {
   const data = await res.json();
   const products = data?.find((p) => p.tenant === site);
   const foundProduct = products?.data?.find((p) => p.id === +prodId);
+  +foundProduct?.price;
 
   if (!foundProduct) {
     return {

@@ -269,7 +269,7 @@ const InputField = ({
           color={COLORS.grayscale_900}
           style={{ marginBottom: 5 }}
         />
-        <select className={className}>
+        <select className={className} onChange={onChange}>
           {data.map((select) => (
             <option key={select.id} value={select.title}>
               {select.title}

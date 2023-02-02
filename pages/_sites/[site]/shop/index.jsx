@@ -27,7 +27,7 @@ const Shop = ({ products }) => {
     <SFDrawerContainer router={router}>
       <SFContainer />
       <Divider className="sf-divider" />
-      <SFContainer fluid>
+      <SFContainer shop>
         <Spacer />
         <SFSectionTexts
           title="Shop"

@@ -13,7 +13,7 @@
             "https://static01.nyt.com/images/2022/10/06/fashion/02PFW-WOW-BELLA-01/02PFW-WOW-BELLA-01-mobileMasterAt3x.jpg"
           ],
           "title": "Small Convertible Flex Bag",
-          "price": "320,000",
+          "price": 320000,
           "category": "Music",
           "colors": ["Green", "Red", "Yellow"],
           "sizes": ["XXS", "XS", "L", "M", "XL", "XXL"],
@@ -29,7 +29,7 @@
           ],
 
           "title": "Flex Bag",
-          "price": "5,000",
+          "price": 5000,
           "category": "Music",
           "colors": ["Green", "Red", "Yellow"],
           "sizes": ["XXS", "XS", "L", "M", "XL", "XXL"],
@@ -44,7 +44,7 @@
             "https://media.ginza.se/Images/item_img_1200_back/15957.jpg"
           ],
           "title": "Billy Jeans DVD",
-          "price": "1,000",
+          "price": 1000,
           "category": "Music",
           "colors": ["Green", "Red", "Yellow"],
           "sizes": ["XXS", "XS", "L", "M", "XL", "XXL"],
@@ -59,7 +59,7 @@
             "https://jaydearchives.com/wp-content/uploads/2020/03/20200316-DSC_0837v2-1024x594.jpg"
           ],
           "title": "Wardrobe Baby",
-          "price": "100,000",
+          "price": 100000,
           "category": "Music",
           "colors": ["Green", "Red", "Yellow"],
           "sizes": ["XXS", "XS", "L", "M", "XL", "XXL"],
@@ -74,7 +74,7 @@
             "https://e0.365dm.com/21/02/2048x1152/skysports-nba-lamelo-ball-charlotte-hornets_5265614.jpg"
           ],
           "title": "Nba Ball",
-          "price": "15,000",
+          "price": 15000,
           "category": "Music",
           "colors": ["Green", "Red", "Yellow"],
           "sizes": [],
@@ -89,7 +89,7 @@
             "https://assets.vogue.com/photos/620508040009ec3af7e4f469/2:3/w_1200,h_1800,c_limit/voguecollection_classics_tshirt_e_weissmitschwarz_0002%20(1).jpg"
           ],
           "title": "Vogue T-shirt",
-          "price": "4,000",
+          "price": 4000,
           "category": "Music",
           "colors": ["Green", "Red", "Yellow"],
           "sizes": ["XXS", "XS", "L", "M", "XL", "XXL"],
@@ -104,7 +104,7 @@
             "https://sothebys-com.brightspotcdn.com/dims4/default/177b304/2147483647/strip/false/crop/4292x3648+590+0/resize/1000x850!/quality/90/?url=http%3A%2F%2Fsothebys-brightspot.s3.amazonaws.com%2Fdotcom%2Fd0%2F3c%2F758d62af495b8628a2a44cf1b5e6%2Fgettyimages-856781808.jpg"
           ],
           "title": "LV Bag",
-          "price": "80,000",
+          "price": 80000,
           "category": "Music",
           "colors": ["Green", "Red", "Yellow"],
           "sizes": ["XXS", "XS", "L", "M", "XL", "XXL"],
@@ -119,7 +119,7 @@
             "https://p1.liveauctioneers.com/5584/209304/106530919_1_x.jpg?quality=80&version=1625000702"
           ],
           "title": "Givenchi watch",
-          "price": "54,000",
+          "price": 54000,
           "category": "Music",
           "colors": ["Green", "Red", "Yellow"],
           "sizes": ["XXS", "XS", "L", "M", "XL", "XXL"],
@@ -134,7 +134,7 @@
             "https://www.zdnet.com/a/img/2022/09/27/206941ac-4a0c-4560-a55a-e8db6c5b8953/watch-face-full-view-apple-watch-8.jpg"
           ],
           "title": "Apple Watch",
-          "price": "39,000",
+          "price": 39000,
           "category": "Music",
           "colors": ["Green", "Red", "Yellow"],
           "sizes": ["XXS", "XS", "L", "M", "XL", "XXL"],
@@ -149,7 +149,7 @@
             "https://www.tswatch.vn/img_data/images/rolex-oyster-perpetual-datejust-41mm-full-diamond-luxury-az-factory-rldj01.jpg"
           ],
           "title": "Rolex Watch Diamonds",
-          "price": "500,000",
+          "price": 500000,
           "category": "Music",
           "colors": ["Green", "Red", "Yellow"],
           "sizes": ["XXS", "XS", "L", "M", "XL", "XXL"],
@@ -164,7 +164,7 @@
             "https://media.richardmille.com/wp-content/uploads/2020/02/19143323/richard-mille-rm-56-01-tourbillon-sapphire-45481.jpg?dpr=1&width=2000"
           ],
           "title": "Rich mill Watch Tourbillon",
-          "price": "1000,000",
+          "price": 1000000,
           "category": "Music",
           "colors": ["Green", "Red", "Yellow"],
           "sizes": ["XXS", "XS", "L", "M", "XL", "XXL"],
@@ -179,7 +179,7 @@
             "https://www.basketusa.com/wp-content/uploads/2022/06/Air-Jordan-36-Multi-Release-Info-4.webp"
           ],
           "title": "Nike & Jordan 1996",
-          "price": "100,000",
+          "price": 100000,
           "category": "Music",
           "colors": ["Green", "Red", "Yellow"],
           "sizes": ["XXS", "XS", "L", "M", "XL", "XXL"],
@@ -200,7 +200,7 @@
             "https://www.tomsguide.fr/content/uploads/sites/2/2021/11/nouveau-pc.jpg"
           ],
           "title": "PC Gamer v1",
-          "price": "320,000",
+          "price": 320000,
           "category": "Music",
           "colors": ["Green", "Red", "Yellow"],
           "sizes": [],
@@ -216,7 +216,7 @@
           ],
 
           "title": "Keyboard Ultimate",
-          "price": "5,000",
+          "price": 5000,
           "category": "Farm",
           "colors": ["Green", "Red", "Yellow"],
           "sizes": [],
@@ -232,7 +232,7 @@
             "https://pic.clubic.com/v1/images/2036526/raw?fit=smartCrop&width=550&height=450&hash=7360ce14e6a65e289893a2e7f0f3e86c8ed299b1"
           ],
           "title": "Mouse Gamer",
-          "price": "1,000",
+          "price": 1000,
           "category": "Gaming",
           "colors": ["Green", "Red", "Yellow"],
           "sizes": [],
@@ -248,7 +248,7 @@
             "https://blog.materiel.net/wp-content/uploads/2019/08/mickael_olivet764.jpg"
           ],
           "title": "Water Cooling Ultimate",
-          "price": "100,000",
+          "price": 100000,
           "category": "Household",
           "colors": ["Green", "Red", "Yellow"],
           "sizes": [],
@@ -264,7 +264,7 @@
             "https://www.lebonpanier.fr/wp-content/uploads/meilleure-chaise-gamer.jpg"
           ],
           "title": "Gamer Chair Deluxe",
-          "price": "15,000",
+          "price": 15000,
           "category": "Lux",
           "colors": ["Green", "Red", "Yellow"],
           "sizes": [],
@@ -280,7 +280,7 @@
             "https://static.onecms.io/wp-content/uploads/sites/6/2020/10/27/Gaming-Headphones-tout.jpg"
           ],
           "title": "Gamer Headset Virtuoso",
-          "price": "4,000",
+          "price": 4000,
           "category": "Jazz",
           "colors": ["Green", "Red", "Yellow"],
           "sizes": [],
@@ -296,7 +296,7 @@
             "https://scufgaming.com/media/prismic/6d795422-45c5-4813-880c-72b9bd5260c1_instinct_base_black_xbox_series_x_controller_850x600.png"
           ],
           "title": "Gamer Controller",
-          "price": "80,000",
+          "price": 80000,
           "category": "Music",
           "colors": ["Green", "Red", "Yellow"],
           "sizes": [],
@@ -312,7 +312,7 @@
             "https://variety.com/wp-content/uploads/2020/11/video-games.jpg?w=1000"
           ],
           "title": "Ps5 / Xbox series",
-          "price": "54,000",
+          "price": 54000,
           "category": "Computer",
           "colors": ["Green", "Red", "Yellow"],
           "sizes": [],
@@ -328,7 +328,7 @@
             "https://static-prod-web.miniclip.com/assets/news/17_PR_SYBO.jpg"
           ],
           "title": "Subway Surfer",
-          "price": "39,000",
+          "price": 39000,
           "category": "Game",
           "colors": ["Green", "Red", "Yellow"],
           "sizes": [],
@@ -344,7 +344,7 @@
             "https://images.complex.com/complex/images/c_fill,dpr_auto,f_auto,q_auto,w_1400/fl_lossy,pg_1/qi3gqverqthxatrgu18v/fortnite-logo2?fimg-ssr-default"
           ],
           "title": "Fortnite",
-          "price": "500,000",
+          "price": 500000,
           "category": "Cooking",
           "colors": ["Green", "Red", "Yellow"],
           "sizes": [],
@@ -360,7 +360,7 @@
             "https://assets.xboxservices.com/assets/6d/51/6d5120da-c8b9-4581-a725-12053666e45a.jpg?n=XGP-2022_Small-tout-0_08-11-22_1067x600.jpg"
           ],
           "title": "Subscribe to Xbox Game Pass ",
-          "price": "1000,000",
+          "price": 1000000,
           "category": "Game",
           "colors": ["Green", "Red", "Yellow"],
           "sizes": [],
@@ -376,7 +376,7 @@
             "https://www.leparisien.fr/resizer/YCao17fJEErk5IU0X_NPjkcjNLI=/932x582/cloudfront-eu-central-1.images.arcpublishing.com/lpguideshopping/QBUVHIW3A42YJ3NBYNM4NHT4QI.jpg"
           ],
           "title": "Playstation + 12 Months Accessibility",
-          "price": "100,000",
+          "price": 100000,
           "category": "Console",
           "colors": ["Green", "Red", "Yellow"],
           "sizes": [],

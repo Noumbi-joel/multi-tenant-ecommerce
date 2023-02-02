@@ -88,6 +88,10 @@ export const OPEN_CART_DRAWER = "openCartDrawer";
 export const CLOSE_CART_DRAWER = "closeCartDrawer";
 
 export const SET_CART_QTY = "setCartQty";
-export const ADD_TO_CART = "addtoCart";
+export const ADD_TO_CART = "addToCart";
 export const TOGGLE_CART_ITEM_QTY = "toggleCartItemQty";
 export const REMOVE_CART_ITEM = "removeCartItem";
+
+export const SET_CART_COLOR = "setCartColor";
+export const SET_CART_SIZE = "setCartSize";
+

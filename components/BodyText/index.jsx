@@ -57,6 +57,7 @@ const BodyText = ({ type, title, color, style, className, onClick }) => {
         className={className}
         color={color}
         size={16}
+        onClick={onClick}
       >
         {title}
       </Text>
@@ -114,6 +115,7 @@ const BodyText = ({ type, title, color, style, className, onClick }) => {
         style={style}
         color={color}
         size={12}
+        onClick={onClick}
       >
         {title}
       </Text>

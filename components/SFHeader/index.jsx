@@ -13,18 +13,9 @@ import { OPEN_CART_DRAWER, OPEN_DRAWER } from "../../constants";
 // comp
 import BodyText from "../BodyText";
 
-const SFHeader = ({ dispatch, router, checkout, storeName }) => {
-  if (checkout) {
-    return (
-      <div>
-        <div className="sf-header-checkout">
-          <North />
-        </div>
-      </div>
-    );
-  }
+const SFHeader = ({ dispatch, router, checkout, storeName, cartNb }) => {
   return (
-    <div className="sf-header">
+    <div className={checkout ? "sf-header-checkout" : "sf-header"}>
       <Bars className="bars" onClick={() => dispatch({ type: OPEN_DRAWER })} />
       <div className="sf-header-links">
         <BodyText
@@ -52,8 +43,16 @@ const SFHeader = ({ dispatch, router, checkout, storeName }) => {
         <Facebook className="sf-facebook" />
         <Instagram className="sf-instagram" />
         <Twitter className="sf-twitter" />
-        <div className="shopping-bag">
-          <ShoppingBag onClick={() => dispatch({ type: OPEN_CART_DRAWER })} />
+        <div
+          className="shopping-bag"
+          onClick={() => dispatch({ type: OPEN_CART_DRAWER })}
+        >
+          <ShoppingBag />
+          {cartNb > 0 && (
+            <div className="sf-shopping-nb">
+              <BodyText type="xsm" title={cartNb} color={COLORS.white} />
+            </div>
+          )}
         </div>
       </div>
     </div>

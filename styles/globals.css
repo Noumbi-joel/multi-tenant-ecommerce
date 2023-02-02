@@ -1403,12 +1403,23 @@ tr {
   height: 80px;
 }
 
-.sf-header-checkout{
+.sf-header-checkout {
   background-color: var(--white);
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   height: 80px;
+  padding: 0 80px;
+}
+
+.sf-header-checkout .sf-header-links {
+  display: flex;
+  gap: 16px;
+}
+
+.sf-header-checkout .sf-socials-links {
+  display: flex;
+  gap: 20px;
 }
 
 .sf-header .sf-header-links {
@@ -1423,6 +1434,20 @@ tr {
 
 .shopping-bag {
   margin-left: 64px;
+  position: relative;
+}
+
+.sf-shopping-nb {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: red;
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .sf-banner {
@@ -1438,9 +1463,12 @@ tr {
   padding-right: 80px;
 }
 
-.SFContainer-fluid {
+.SFContainer-shop {
   padding-left: 80px;
   padding-right: 80px;
+}
+
+.SFContainer-fluid {
 }
 
 .sf-divider {
@@ -1812,8 +1840,12 @@ tr {
 }
 
 .sf-checkout-row-container {
-  display: flex;
-  margin-top: 80px;
+  margin-top: 40px;
+  width: 625px;
+  background-color: var(--white);
+  border-radius: 8px;
+  padding: 20px;
+  height: 115vh;
 }
 
 .sf-checkout-infos {
@@ -1879,10 +1911,26 @@ tr {
 
 .sf-checkout-input {
   height: 50px;
-  border: 1px solid #d9d9d9;
+  border: 1px solid #b2b8bd;
   border-radius: 5px;
   width: 100%;
   padding: 10px;
+}
+
+.sf-checkout-input::placeholder{
+  font-size: 14px;
+  color: "#b2b8bd"
+}
+
+.sf-checkout-row-name-number {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sf-checkout-row-name,
+.sf-checkout-row-phone {
+  width: 48%;
 }
 
 .sf-chekout-name {
@@ -1937,10 +1985,34 @@ tr {
   justify-content: space-between;
 }
 
-.sf-checkout-mobile,.sf-checkout-row-history {
+.sf-checkout-mobile,
+.sf-checkout-row-history {
   display: none;
 }
 
+.sf-checkout-container {
+  background-color: var(--grayscale_100);
+  display: flex;
+  justify-content: center;
+}
+
+.sf-checkout-deliveries{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #B2B8BD;
+  height: 55px;
+  padding: 0 16px;
+}
+.sf-checkout-payments{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+  border: 1px solid #B2B8BD;
+  padding: 16px;
+}
 
 /* YEAH MEN I USE @MEDIA QUERY: SORRY!!!!!!! 🤣🤣🤣🤣 */
 
@@ -2007,13 +2079,18 @@ tr {
     width: 150px;
   }
 
+  .SFContainer-shop {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
   .SFContainer {
     padding-left: 20px;
     padding-right: 20px;
   }
   .SFContainer-fluid {
-    padding-left: 20px;
-    padding-right: 20px;
+    /* padding-left: 20px;
+    padding-right: 20px; */
   }
   .shop-by-category-container {
     padding-left: 20px;
@@ -2026,28 +2103,28 @@ tr {
 }
 
 @media screen and (max-width: 768px) {
-  .sf-checkout-row-company{
+  .sf-checkout-row-company {
     flex-direction: column-reverse;
     align-items: flex-start;
   }
 
-  .sf-checkout-company{
+  .sf-checkout-company {
     margin-bottom: 16px;
     width: 100%;
   }
 
-  .sf-checkout-row-continueShop{
+  .sf-checkout-row-continueShop {
     flex-direction: column-reverse;
   }
 
-  .sf-btn-checkout{
+  .sf-btn-checkout {
     width: 100%;
   }
 
-  .sf-checkout-goBack{
+  .sf-checkout-goBack {
     margin-top: 30px;
   }
-  .sf-checkout-row-history{
+  .sf-checkout-row-history {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -2069,6 +2146,9 @@ tr {
     padding: 20px;
   }
   .SFContainer-fluid {
+    /* padding: 0 20px; */
+  }
+  .SFContainer-shop {
     padding: 0 20px;
   }
   .checkout-form {
@@ -2076,8 +2156,7 @@ tr {
     padding: 20px;
   }
   .sf-checkout-row-container {
-    flex-direction: column-reverse;
-    margin-top: 0;
+    margin-top: 40px;
   }
   .topContainer-row {
     flex-direction: column;
@@ -2168,6 +2247,13 @@ tr {
   }
 
   .sf-header .sf-header-links,
+  .sf-facebook,
+  .sf-instagram,
+  .sf-twitter {
+    display: none;
+  }
+
+  .sf-header-checkout .sf-header-links,
   .sf-facebook,
   .sf-instagram,
   .sf-twitter {

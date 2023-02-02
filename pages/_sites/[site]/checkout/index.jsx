@@ -5,235 +5,213 @@ import { Checkbox, Divider, Spacer } from "@nextui-org/react";
 import {
   BodyText,
   Button,
-  CheckoutTotal,
+  HeadingText,
   InputField,
-  SFCheckoutProd,
   SFContainer,
+  SFDeliveryMethod,
   SFDrawerContainer,
-  SFHeader,
-  SFHistory,
+  SFPaymentMethods,
 } from "../../../../components";
 
 // assets
-import ArrowLeft from "../../../../public/arrow-left.svg";
-import Panier from "../../../../public/panier.svg";
-import ArrowUp from "../../../../public/ArrowUp.svg";
-import ArrowDown from "../../../../public/ArrowDown.svg";
 import { COLORS } from "../../../../assets/colors";
-import { SF_HISTORY } from "../../../../helpers";
+import { useRouter } from "next/router";
 
 const Checkout = () => {
-  const [open, setOpen] = useState(true);
+  const router = useRouter();
+  const [checkoutInfos, setCheckoutInfos] = useState({
+    user: {
+      fullName: "",
+      phone: "",
+      fullAddress: "",
+      city: "",
+      country: "",
+    },
+    saveInfo: false,
+    deliveryMethod: {
+      free: false,
+      pay: false,
+    },
+    paymentMethod: {
+      accept: false,
+      type: "Orange money",
+      number: "",
+    },
+  });
+
+  const handleInputs = (e) => {
+    setCheckoutInfos((prev) => {
+      return {
+        ...prev,
+        user: {
+          ...prev.user,
+          [e.target.name]: e.target.value,
+        },
+      };
+    });
+  };
+
+  const handleCountry = (e) => {
+    setCheckoutInfos((prev) => {
+      return {
+        ...prev,
+        user: {
+          ...prev.user,
+          country: e.target.value,
+        },
+      };
+    });
+  };
+
+  const handleCheckbox = (e, type) => {
+    if (type === "delivery") {
+      return setCheckoutInfos((prev) => {
+        return {
+          ...prev,
+          deliveryMethod: {
+            ...prev.deliveryMethod,
+            [e.target.name]: e.target.value,
+          },
+        };
+      });
+    }
+    if (type === "payment") {
+      return setCheckoutInfos((prev) => {
+        return {
+          ...prev,
+          paymentMethod: {
+            ...prev.paymentMethod,
+            [e.target.name]: e.target.value,
+          },
+        };
+      });
+    }
+    setCheckoutInfos((prev) => {
+      return {
+        ...prev,
+        saveInfo: !prev.saveInfo,
+      };
+    });
+  };
+
   return (
-    <div>
-      <SFDrawerContainer>
-        <SFHeader checkout />
+    <SFDrawerContainer>
+      <SFContainer fluid>
         <Divider className="sf-divider" />
-        <SFContainer fluid>
-          <div className="sf-checkout-row-container">
-            <div className="checkout-form">
-              <SFHistory data={SF_HISTORY} />
-              <div className="sf-checkout-contact-infos">
-                <BodyText
-                  type="xlm"
-                  title="Contact Information"
-                  color={COLORS.grayscale_900}
-                />
+        <div className="sf-checkout-container">
+          <form className="sf-checkout-row-container">
+            <HeadingText type="h6" title="Shipping address" color="#333333" />
+            <Spacer />
+            <div className="sf-checkout-row-name-number">
+              <div className="sf-checkout-row-name">
                 <InputField
-                  ariaLabel="fName"
-                  name="sf-email"
-                  type="email"
-                  className="sf-checkout-input"
-                  placeholder="Email"
-                />
-                <Spacer />
-                <div className="sf-chekout-name">
-                  <div className="sf-name">
-                    <InputField
-                      ariaLabel="fName"
-                      name="sf-fName"
-                      type="text"
-                      className="sf-name-input"
-                      placeholder="First name"
-                    />
-                  </div>
-                  <Spacer />
-                  <div className="sf-name">
-                    <InputField
-                      ariaLabel="lName"
-                      name="sf-lName"
-                      type="text"
-                      className="sf-name-input"
-                      placeholder="Last name"
-                    />
-                  </div>
-                </div>
-                <Spacer />
-                <BodyText
-                  type="xlm"
-                  title="Shipping address"
-                  color={COLORS.grayscale_900}
-                />
-                <div className="shipping-address">
-                  <InputField
-                    label="Country/Region"
-                    ariaLabel="select"
-                    name="native-select"
-                    type="text"
-                    className="sf-checkout-input"
-                    data={[
-                      { id: 0, title: "Cameroon" },
-                      { id: 1, title: "Nigeria" },
-                      { id: 2, title: "Ghana" },
-                    ]}
-                  />
-                  <Spacer />
-                  <InputField
-                    ariaLabel="address"
-                    name="sf-address"
-                    type="text"
-                    className="sf-checkout-input"
-                    placeholder="Address"
-                  />
-                </div>
-                <Spacer />
-                <InputField
-                  ariaLabel="address"
-                  name="sf-address"
+                  label="Full name"
+                  ariaLabel="fullName"
+                  name="fullName"
                   type="text"
+                  value={checkoutInfos.user.fullName}
+                  onChange={(e) => handleInputs(e)}
                   className="sf-checkout-input"
-                  placeholder="City"
-                />
-                <Spacer />
-                <InputField
-                  ariaLabel="address"
-                  name="sf-address"
-                  type="text"
-                  className="sf-checkout-input"
-                  placeholder="Phone (optional)"
-                />
-                <Spacer />
-                <InputField
-                  ariaLabel="address"
-                  name="sf-address"
-                  type="text"
-                  className="sf-checkout-input"
-                  placeholder="Apartment, suite, etc. (optional)"
+                  placeholder="Full name"
                 />
               </div>
-              <Spacer />
-              <div className="sf-checkout-row-company">
-                <div className="sf-checkout-company">
-                  <Checkbox isSelected={true} className="sf-checkout-checkbox">
-                    <BodyText
-                      type="mr"
-                      title="Save this information for next time"
-                      color="#535353"
-                    />
-                  </Checkbox>
-                </div>
-                <div className="sf-checkout-company">
-                  <InputField
-                    label="Company (optional)"
-                    ariaLabel="sf-company"
-                    name="sf-company"
-                    type="text"
-                    value="Eduka"
-                    className="sf-checkout-company-input"
-                  />
-                </div>
-              </div>
-              <Spacer />
-              <div className="sf-checkout-row-continueShop">
-                <div className="sf-checkout-goBack">
-                  <ArrowLeft />
-                  <BodyText
-                    type="lr"
-                    color={COLORS.grayscale_900}
-                    title="Return to cart"
-                    style={{ marginLeft: 12 }}
-                  />
-                </div>
-                <Button
-                  titleType="lr"
-                  titleColor={COLORS.white}
-                  onClick={() => {}}
-                  title="Continue to shipping"
-                  className="sf-btn-checkout"
+              <div className="sf-checkout-row-phone">
+                <InputField
+                  label="Phone number"
+                  ariaLabel="phone number"
+                  name="phone"
+                  type="text"
+                  value={checkoutInfos.user.phone}
+                  onChange={(e) => handleInputs(e)}
+                  className="sf-checkout-input"
+                  placeholder="+237"
                 />
               </div>
-              <Spacer />
-              <Divider className="sf-divider" />
-              <Spacer />
+            </div>
+            <Spacer />
+            <div className="sf-checkout-row-name-number">
+              <div className="sf-checkout-row-name">
+                <InputField
+                  label="Full address"
+                  ariaLabel="fullAddress"
+                  name="fullAddress"
+                  type="text"
+                  value={checkoutInfos.user.fullAddress}
+                  onChange={(e) => handleInputs(e)}
+                  className="sf-checkout-input"
+                  placeholder="nickel oil, logbessou plateau"
+                />
+              </div>
+              <div className="sf-checkout-row-phone">
+                <InputField
+                  label="City"
+                  ariaLabel="city"
+                  name="city"
+                  type="text"
+                  value={checkoutInfos.user.city}
+                  onChange={(e) => handleInputs(e)}
+                  className="sf-checkout-input"
+                  placeholder="Douala"
+                />
+              </div>
+            </div>
+            <Spacer />
+            <InputField
+              label="Country"
+              ariaLabel="select"
+              name="native-select"
+              type="text"
+              className="sf-checkout-input"
+              value={checkoutInfos.user.country}
+              onChange={(e) => handleCountry(e)}
+              data={[
+                { id: 0, title: "Cameroon" },
+                { id: 1, title: "Nigeria" },
+                { id: 2, title: "Ghana" },
+              ]}
+            />
+            <Spacer />
+            <Checkbox
+              isSelected={checkoutInfos.saveInfo}
+              onChange={(e) => handleCheckbox(e)}
+            >
               <BodyText
-                type="lr"
-                color="#737373"
-                title="All rights reserved to Eduka"
+                type="mr"
+                title="Save this information for next time"
+                color="#535353"
               />
-            </div>
-            <div className="sf-checkout-infos">
-              <div className="sf-checkout-mobile">
-                <div className="sf-checkout-mobile-row">
-                  <Panier />
-                  <BodyText
-                    type="mr"
-                    title={open ? "Hide order summary" : "Show order summary"}
-                    color={COLORS.grayscale_900}
-                    style={{ marginLeft: 10, marginRight: 10 }}
-                    onClick={() => setOpen(!open)}
-                  />
-                  {open ? <ArrowUp /> : <ArrowDown />}
-                </div>
-                <CheckoutTotal remove totalType="Total" totalPrice="10,000" />
-              </div>
-              {open ? (
-                <div>
-                  <SFCheckoutProd
-                    prodImage="/got.jpg"
-                    prodTitle="Straight Leg Pant"
-                    prodColor="Ice Grey"
-                    prodPrice="275,000"
-                    prodQty="1"
-                    prodSize="L"
-                  />
-                  <SFCheckoutProd
-                    prodImage="/model-banner.png"
-                    prodTitle="Straight Leg Pant"
-                    prodColor="Ice Grey"
-                    prodPrice="275,000"
-                    prodQty="1"
-                    prodSize="L"
-                  />
-                  <SFCheckoutProd
-                    prodImage="/got.jpg"
-                    prodTitle="Straight Leg Pant"
-                    prodColor="Ice Grey"
-                    prodPrice="275,000"
-                    prodQty="1"
-                    prodSize="L"
-                  />
-                  <Divider className="sf-divider" />
-                  <Spacer />
-                  <CheckoutTotal
-                    totalType="Subtotal"
-                    totalPrice="FCFA 478,000"
-                  />
-                  <CheckoutTotal
-                    totalType="Shipping"
-                    totalPrice="FCFA 100,000"
-                  />
-                  <Spacer y={0.5} />
-                  <Spacer />
-                  <Divider className="sf-divider" />
-                  <Spacer />
-                  <CheckoutTotal totalType="Total" totalPrice="100,000" />
-                </div>
-              ) : null}
-            </div>
-          </div>
-        </SFContainer>
-      </SFDrawerContainer>
-    </div>
+            </Checkbox>
+            <SFDeliveryMethod
+              pay={checkoutInfos.deliveryMethod.pay}
+              free={checkoutInfos.deliveryMethod.free}
+              onChange={(e) => handleCheckbox(e, "delivery")}
+            />
+            <SFPaymentMethods
+              accept={checkoutInfos.paymentMethod.accept}
+              type={checkoutInfos.paymentMethod.type}
+              number={checkoutInfos.paymentMethod.number}
+              onChange={(e) => handleCheckbox(e, "payment")}
+            />
+            <Spacer />
+            <Button
+              titleType="lr"
+              titleColor={COLORS.white}
+              title={"Pay XAF21,500"}
+              onClick={() => console.log(checkoutInfos)}
+              className="sf-checkout-btn"
+            />
+            <Spacer y={0.5} />
+            <BodyText
+              type="mr"
+              title="Return to shop"
+              color={COLORS.grayscale_900}
+              style={{ textAlign: "center" }}
+              onClick={() => router.push("/shop")}
+            />
+          </form>
+        </div>
+      </SFContainer>
+    </SFDrawerContainer>
   );
 };
 

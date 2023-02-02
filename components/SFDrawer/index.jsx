@@ -1,8 +1,9 @@
 import { Divider, Spacer } from "@nextui-org/react";
+import { useRouter } from "next/router";
 import React from "react";
 
 // comp
-import { BodyText, Button, Empty, Select } from "..";
+import { BodyText, Button, Empty, Select, SFCart } from "..";
 
 // assets
 import { COLORS } from "../../assets/colors";
@@ -16,52 +17,41 @@ import Cross from "../../public/cross.svg";
 import Facebook from "../../public/facebook.svg";
 import Instagram from "../../public/instagram.svg";
 import Twitter from "../../public/twitter.svg";
-import SFCart from "../SFCart";
 
-const SFDrawer = ({ drawerVisible, dispatch, type, router, cart }) => {
+const SFDrawer = ({ drawerVisible, dispatch, type, cart }) => {
+  const router = useRouter();
   if (type === "cart") {
     return (
       <div className={drawerVisible ? "sf-drawer-cart-anim" : "sf-drawer-cart"}>
         {cart?.cartItems?.length <= 0 ? (
-          <Empty
-            dispatch={dispatch}
-            type="cart"
-          />
+          <Empty dispatch={dispatch} type="cart" />
         ) : (
           <div className="sf-cart-container">
             <div>
               <div className="sf-drawer-row">
-                <BodyText
-                  type="mm"
-                  title="Cart"
-                  color={COLORS.grayscale_900}
-                  onClick={() => setEmpty(!empty)}
-                />
+                <BodyText type="mm" title="Cart" color={COLORS.grayscale_900} />
                 <Cross onClick={() => dispatch({ type: CLOSE_CART_DRAWER })} />
               </div>
-              <SFCart
-                image="/model-banner.png"
-                title="Straight leg pant"
-                color="Red"
-                size="XL"
-                qty="1"
-                unitPrice="114,000"
-              />
-              <SFCart
-                image="/got.jpg"
-                title="Flared midi skirt"
-                color="Red"
-                size="XL"
-                qty="1"
-                unitPrice="114,000"
-              />
+              {cart?.cartItems?.map((cartItem) => (
+                <SFCart
+                  dispatch={dispatch}
+                  key={cartItem?.id}
+                  id={cartItem?.id}
+                  image={cartItem?.image}
+                  title={cartItem?.title}
+                  color={cartItem?.selectedColor}
+                  size={cartItem?.selectedSize}
+                  qty={cartItem?.quantity}
+                  unitPrice={cartItem?.price}
+                />
+              ))}
             </div>
             <div>
               <Divider className="sf-divider" />
               <Spacer />
               <div className="sf-cart-row-remove-container">
                 <BodyText type="mm" title="Subtotal" color="#151515" />
-                <BodyText type="lr" title="FCFA125,000" color="#444444" />
+                <BodyText type="lr" title={cart?.totalPrice} color="#444444" />
               </div>
               <Spacer />
               <Button
@@ -69,6 +59,10 @@ const SFDrawer = ({ drawerVisible, dispatch, type, router, cart }) => {
                 titleType="lr"
                 title="Checkout"
                 className="sf-checkout-btn"
+                onClick={() => {
+                  dispatch({ type: CLOSE_CART_DRAWER });
+                  router?.push("/checkout");
+                }}
               />
               <Spacer />
               <BodyText
@@ -76,6 +70,7 @@ const SFDrawer = ({ drawerVisible, dispatch, type, router, cart }) => {
                 title="Continue shopping"
                 color={COLORS.grayscale_900}
                 style={{ textAlign: "center" }}
+                onClick={() => dispatch({ type: CLOSE_CART_DRAWER })}
               />
             </div>
           </div>
