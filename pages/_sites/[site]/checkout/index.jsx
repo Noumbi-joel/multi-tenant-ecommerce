@@ -16,82 +16,87 @@ import {
 // assets
 import { COLORS } from "../../../../assets/colors";
 import { useRouter } from "next/router";
+import toast from "react-hot-toast";
 
 const Checkout = () => {
   const router = useRouter();
-  const [checkoutInfos, setCheckoutInfos] = useState({
-    user: {
-      fullName: "",
-      phone: "",
-      fullAddress: "",
-      city: "",
-      country: "",
-    },
-    saveInfo: false,
-    deliveryMethod: {
-      free: false,
-      pay: false,
-    },
-    paymentMethod: {
-      accept: false,
-      type: "Orange money",
-      number: "",
-    },
+  const [saveInfos, setSaveInfos] = useState(false);
+  const [deliveryMethods, setDeliveryMethods] = useState({
+    free: false,
+    pay: true,
+  });
+  const [paymentMethods, setPaymentMethods] = useState({
+    accept: true,
+    type: "Orange money",
+    number: "",
+  });
+  const [userInfos, setUserInfos] = useState({
+    fullName: "",
+    phone: "",
+    fullAddress: "",
+    city: "",
+    country: "Cameroon",
   });
 
   const handleInputs = (e) => {
-    setCheckoutInfos((prev) => {
+    setUserInfos((prev) => {
       return {
         ...prev,
-        user: {
-          ...prev.user,
-          [e.target.name]: e.target.value,
-        },
+        [e.target.name]: e.target.value,
       };
     });
   };
 
   const handleCountry = (e) => {
-    setCheckoutInfos((prev) => {
+    setUserInfos((prev) => {
       return {
         ...prev,
-        user: {
-          ...prev.user,
-          country: e.target.value,
-        },
+        country: e.target.value,
       };
     });
   };
 
-  const handleCheckbox = (e, type) => {
-    if (type === "delivery") {
-      return setCheckoutInfos((prev) => {
+  const handleCheckbox = (e) => {
+    if (e === "pay" || e === "free") {
+      return setDeliveryMethods((prev) => {
         return {
           ...prev,
-          deliveryMethod: {
-            ...prev.deliveryMethod,
-            [e.target.name]: e.target.value,
-          },
+          free: e === "free" ? !prev.free : false,
+          pay: e === "pay" ? !prev.pay : false,
         };
       });
     }
-    if (type === "payment") {
-      return setCheckoutInfos((prev) => {
+    if (e === "type") {
+      return setPaymentMethods((prev) => {
         return {
           ...prev,
-          paymentMethod: {
-            ...prev.paymentMethod,
-            [e.target.name]: e.target.value,
-          },
+          type: e,
         };
       });
     }
-    setCheckoutInfos((prev) => {
+  };
+
+  const handlePaymentMethods = (e, value) => {
+    setPaymentMethods((prev) => {
       return {
         ...prev,
-        saveInfo: !prev.saveInfo,
+        [value]: e.target.value,
       };
     });
+  };
+
+  const handleSubmit = () => {
+    if (
+      !userInfos.city ||
+      !userInfos.country ||
+      !userInfos.fullAddress ||
+      !userInfos.fullName ||
+      !userInfos.phone
+    ) {
+      return toast.error("Please fill correctly the shipping address");
+    }
+
+    console.log(userInfos, saveInfos, deliveryMethods, paymentMethods);
   };
 
   return (
@@ -109,7 +114,7 @@ const Checkout = () => {
                   ariaLabel="fullName"
                   name="fullName"
                   type="text"
-                  value={checkoutInfos.user.fullName}
+                  value={userInfos.fullName}
                   onChange={(e) => handleInputs(e)}
                   className="sf-checkout-input"
                   placeholder="Full name"
@@ -120,8 +125,8 @@ const Checkout = () => {
                   label="Phone number"
                   ariaLabel="phone number"
                   name="phone"
-                  type="text"
-                  value={checkoutInfos.user.phone}
+                  type="number"
+                  value={userInfos.phone}
                   onChange={(e) => handleInputs(e)}
                   className="sf-checkout-input"
                   placeholder="+237"
@@ -136,7 +141,7 @@ const Checkout = () => {
                   ariaLabel="fullAddress"
                   name="fullAddress"
                   type="text"
-                  value={checkoutInfos.user.fullAddress}
+                  value={userInfos.fullAddress}
                   onChange={(e) => handleInputs(e)}
                   className="sf-checkout-input"
                   placeholder="nickel oil, logbessou plateau"
@@ -148,7 +153,7 @@ const Checkout = () => {
                   ariaLabel="city"
                   name="city"
                   type="text"
-                  value={checkoutInfos.user.city}
+                  value={userInfos.city}
                   onChange={(e) => handleInputs(e)}
                   className="sf-checkout-input"
                   placeholder="Douala"
@@ -162,7 +167,7 @@ const Checkout = () => {
               name="native-select"
               type="text"
               className="sf-checkout-input"
-              value={checkoutInfos.user.country}
+              value={userInfos.country}
               onChange={(e) => handleCountry(e)}
               data={[
                 { id: 0, title: "Cameroon" },
@@ -172,8 +177,8 @@ const Checkout = () => {
             />
             <Spacer />
             <Checkbox
-              isSelected={checkoutInfos.saveInfo}
-              onChange={(e) => handleCheckbox(e)}
+              isSelected={saveInfos}
+              onChange={() => setSaveInfos(!saveInfos)}
             >
               <BodyText
                 type="mr"
@@ -182,22 +187,22 @@ const Checkout = () => {
               />
             </Checkbox>
             <SFDeliveryMethod
-              pay={checkoutInfos.deliveryMethod.pay}
-              free={checkoutInfos.deliveryMethod.free}
-              onChange={(e) => handleCheckbox(e, "delivery")}
+              pay={deliveryMethods.pay}
+              free={deliveryMethods.free}
+              onChange={(e) => handleCheckbox(e)}
             />
             <SFPaymentMethods
-              accept={checkoutInfos.paymentMethod.accept}
-              type={checkoutInfos.paymentMethod.type}
-              number={checkoutInfos.paymentMethod.number}
-              onChange={(e) => handleCheckbox(e, "payment")}
+              accept={paymentMethods.accept}
+              type={paymentMethods.type}
+              number={paymentMethods.number}
+              onChange={handlePaymentMethods}
             />
             <Spacer />
             <Button
               titleType="lr"
               titleColor={COLORS.white}
               title={"Pay XAF21,500"}
-              onClick={() => console.log(checkoutInfos)}
+              onClick={handleSubmit}
               className="sf-checkout-btn"
             />
             <Spacer y={0.5} />

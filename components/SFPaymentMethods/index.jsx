@@ -27,7 +27,7 @@ const SFPaymentMethods = ({ accept, type, number, onChange }) => {
           type="text"
           className="sf-checkout-input"
           value={type}
-          onChange={onChange}
+          onChange={(e) => onChange(e, "type")}
           data={[
             { id: 0, title: "Orange money" },
             { id: 1, title: "Mobile money" },
@@ -36,9 +36,9 @@ const SFPaymentMethods = ({ accept, type, number, onChange }) => {
         <InputField
           ariaLabel="paymentPhone"
           name="number"
-          type="text"
+          type="number"
           value={number}
-          onChange={onChange}
+          onChange={(e) => onChange(e, "number")}
           className="sf-checkout-input"
           placeholder="Mobile money number"
         />

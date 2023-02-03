@@ -30,6 +30,10 @@ export const validateEmail = (email) => {
     );
 };
 
+// export const validatePhoneNumber = (value) => {
+//   return String(value).toLowerCase().match(/^(+?237)?[6-9]{1}d{7}$/g);
+// };
+
 // input search filter for products && categories
 export const searchFilter = (
   e,

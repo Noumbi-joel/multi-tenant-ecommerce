@@ -304,6 +304,7 @@ const InputField = ({
         value={value}
         aria-label={ariaLabel}
         disabled={disabled}
+        min="0"
       />
     </div>
   );

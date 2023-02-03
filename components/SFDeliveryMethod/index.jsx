@@ -11,7 +11,7 @@ const SFDeliveryMethod = ({ pay, free, onChange }) => {
       <HeadingText type="h6" title="Delivery method" color="#333333" />
       <Spacer />
       <div className="sf-checkout-deliveries">
-        <Checkbox isSelected={pay} name="pay" onChange={onChange}>
+        <Checkbox isSelected={pay} onChange={() => onChange("pay")}>
           <BodyText
             type="mr"
             title="Standard delivery (same day)"
@@ -23,7 +23,7 @@ const SFDeliveryMethod = ({ pay, free, onChange }) => {
         </div>
       </div>
       <div className="sf-checkout-deliveries">
-        <Checkbox isSelected={free} name="free" onChange={onChange}>
+        <Checkbox isSelected={free} onChange={() => onChange("free")}>
           <BodyText type="mr" title="Self pickup" color="#535353" />
         </Checkbox>
         <div>
