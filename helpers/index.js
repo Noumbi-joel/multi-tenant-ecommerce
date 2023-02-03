@@ -655,13 +655,24 @@ export const SF_AVAILABILITIES = [
   { id: 4, title: "Availability" },
 ];
 
-export const SF_CATEGORIES = ["Category", "Category", "Category", "Category"];
+export const SF_CATEGORIES = ["Music", "Game", "Console", "Cooking"];
 
-export const SF_PRICE = ["Price", "Price", "Price", "Price"];
+export const SF_PRICE = [
+  ">=10 000",
+  ">=25 000",
+  ">=50 000",
+  ">=75 000",
+  ">=100 000",
+];
 
-export const SF_COLOR = ["Color", "Color", "Color", "Color"];
+export const SF_COLOR = ["Green", "Red", "Yellow", "Dark"];
 
-export const SF_SORT = ["Sort", "Sort", "Sort", "Sort"];
+export const SF_SORT = [
+  "Most recent",
+  "Most purchased",
+  "Most liked",
+  "Most searched",
+];
 
 export const SF_COLORS = [
   { id: 1, title: "Green" },
